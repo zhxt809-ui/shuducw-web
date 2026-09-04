@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>税务行政处罚裁量基准（2026年版）征求意见稿 · 思维导图</title>
+<style>
+  :root{
+    --bg:#f7f8fb; --panel:#ffffff; --ink:#1f2733; --muted:#6b7686;
+    --line:#c7d0dd; --root:#1f3a5f; --rootbg:#eaf1fb;
+  }
+  *{box-sizing:border-box;}
+  html,body{margin:0;padding:0;background:var(--bg);color:var(--ink);
+    font-family:-apple-system,"PingFang SC","Microsoft YaHei",Segoe UI,Roboto,sans-serif;}
+  header{background:linear-gradient(135deg,#1f3a5f,#2c5282);color:#fff;
+    padding:18px 26px;box-shadow:0 2px 10px rgba(0,0,0,.12);}
+  header h1{margin:0;font-size:20px;letter-spacing:.5px;}
+  header p{margin:6px 0 0;font-size:13px;opacity:.9;}
+  .toolbar{padding:10px 26px;background:var(--panel);border-bottom:1px solid #e6eaf0;
+    display:flex;gap:14px;align-items:center;font-size:13px;color:var(--muted);flex-wrap:wrap;}
+  .toolbar button{border:1px solid #d4dbe6;background:#fff;color:#2c5282;
+    padding:5px 12px;border-radius:6px;cursor:pointer;font-size:12px;}
+  .toolbar button:hover{background:#eaf1fb;}
+  .canvas{position:relative;overflow:auto;height:calc(100vh - 150px);}
+  #stage{position:relative;min-width:100%;min-height:100%;padding:30px;}
+  svg.links{position:absolute;left:0;top:0;pointer-events:none;}
+  .node{position:absolute;background:var(--panel);border:1px solid var(--line);
+    border-radius:9px;padding:7px 11px;font-size:13px;line-height:1.45;
+    box-shadow:0 1px 3px rgba(31,39,51,.08);max-width:248px;
+    transition:box-shadow .15s,transform .15s;cursor:default;}
+  .node:hover{box-shadow:0 4px 14px rgba(31,39,51,.18);transform:translateY(-1px);}
+  .node .tag{display:inline-block;font-size:10px;font-weight:600;color:#fff;
+    border-radius:4px;padding:1px 6px;margin-bottom:3px;}
+  .node.toggle{cursor:pointer;}
+  .node .cnt{font-size:10px;color:var(--muted);margin-left:6px;}
+  .node.root{background:var(--rootbg);border-color:#bcd0ec;font-weight:700;font-size:15px;
+    max-width:300px;color:var(--root);box-shadow:0 4px 16px rgba(31,58,95,.18);}
+  .legend{position:absolute;right:18px;bottom:14px;background:rgba(255,255,255,.92);
+    border:1px solid #e6eaf0;border-radius:10px;padding:10px 12px;font-size:11px;
+    color:var(--muted);line-height:1.7;box-shadow:0 2px 8px rgba(0,0,0,.06);}
+  .legend b{color:var(--ink);}
+  .legend i{display:inline-block;width:10px;height:10px;border-radius:3px;margin-right:5px;vertical-align:-1px;}
+  footer{padding:8px 26px;font-size:11.5px;color:var(--muted);background:var(--panel);
+    border-top:1px solid #e6eaf0;}
+</style>
+</head>
+<body>
+<header>
+  <h1>《税务行政处罚裁量基准（2026年版）》征求意见稿</h1>
+  <p>思维导图 · 全国统一的税务行政处罚裁量尺度 · 公开征求意见截至 2026年8月13日</p>
+</header>
+<div class="toolbar">
+  <button onclick="expandAll()">展开全部</button>
+  <button onclick="collapseL1()">收起一级分支</button>
+  <span>提示：点击带 <b>＋/－</b> 的节点可折叠 / 展开分支</span>
+</div>
+<div class="canvas"><div id="stage"></div></div>
+<div class="legend" id="legend"></div>
+<footer>
+  资料来源：国家税务总局《公告（征求意见稿）》及其起草说明（中国税务报 2026-07-17）、
+  国家税务总局官网意见征集、第一财经/中国青年网报道。本图基于公开征求意见稿梳理，最终以正式发布文本为准。
+</footer>
+
+<script>
+const COLORS = ["#2c5282","#2f855a","#c05621","#9c4221","#6b46c1","#2b6cb0","#b83280","#2c7a7b","#975a16"];
+const CNAME = ["起草背景","公告正文(6条)","附件一·裁量基准(9类66项)","裁量阶次(5级)","附件二·轻微不罚清单(8项)","三大特点","重点·偷税罚款四档","征求意见安排","制度意义"];
+
+const DATA = {
+  text:"税务行政处罚裁量基准（2026年版）· 征求意见稿",
+  root:true,
+  children:[
+    {text:"一、起草背景", color:0, children:[
+      {text:"二十届三中全会、四中全会：完善行政裁量权基准制度"},
+      {text:"2026《政府工作报告》：统一执法尺度、健全涉企执法长效机制"},
+      {text:"区域基准存在问题：体例结构不统一、科学依据不足、裁量因素不一"},
+      {text:"目标：服务全国统一大市场建设，平等维护各类经营主体权益"}
+    ]},
+    {text:"二、公告正文（共6条）", color:1, children:[
+      {text:"严格依法依规处罚，在裁量基准范围内作出决定"},
+      {text:"明确实施处罚时如何引用裁量基准"},
+      {text:"“轻微不罚”事项清单 + 集体审议程序"},
+      {text:"保障纳税人缴费人合法权益"},
+      {text:"动态调整裁量基准（依立改废持续修改）"},
+      {text:"施行与衔接：自2026年X月X日起施行，区域不一致按本基准"}
+    ]},
+    {text:"三、附件一·裁量基准（9类66项）", color:2, children:[
+      {text:"① 税务登记"},{text:"② 账簿凭证"},{text:"③ 纳税申报"},
+      {text:"④ 税款征收"},{text:"⑤ 税务检查"},{text:"⑥ 发票及票证"},
+      {text:"⑦ 纳税担保"},{text:"⑧ 涉税专业服务管理"},{text:"⑨ 涉税信息报送"},
+      {text:"逐项明确：法定依据 / 裁量阶次 / 适用条件 / 具体标准"}
+    ]},
+    {text:"四、裁量阶次（5级）", color:3, children:[
+      {text:"轻微：不予行政处罚"},
+      {text:"较轻：首次/危害小，低幅度"},
+      {text:"一般：中等情节，中幅度"},
+      {text:"较重：情节严重，高幅度"},
+      {text:"严重：情节特别严重，顶格"}
+    ]},
+    {text:"五、附件二·轻微不罚清单（8项）", color:4, children:[
+      {text:"1. 未按期办理税务登记或注销登记（主动/限期改正，无危害后果）"},
+      {text:"2. 未按期变更税务登记"},
+      {text:"3. 不办理税务登记"},
+      {text:"4. 扣缴义务人未按规定办理扣缴税款登记"},
+      {text:"5. 未按规定安装、使用税控装置"},
+      {text:"6. 未规定存放和保管发票（25份以下）"},
+      {text:"7. 丢失发票（已失效/停用/信息化管理，主动报告补救）"},
+      {text:"8. 互联网平台企业未按规定报送涉税信息"}
+    ]},
+    {text:"六、三大特点", color:5, children:[
+      {text:"统一体例结构：逐项列明依据/阶次/条件/标准，便于执行"},
+      {text:"统一基准内容：综合裁量因素，“一把尺子量到底”"},
+      {text:"防止“一刀切”：采用“定额＋幅度”，留合理裁量空间"}
+    ]},
+    {text:"七、重点·偷税罚款四档（征管法63/64条）", color:6, children:[
+      {text:"较轻：5年内首次 + 配合检查 → 处0.5–1倍"},
+      {text:"一般：5年内2次以上 + 配合 → 处1–3倍"},
+      {text:"较重：5年内首次 + 不配合 → 处3–4倍"},
+      {text:"严重：2次以上 + 不配合 / 其他严重情节 → 处4–5倍"},
+      {text:"裁量因素：偷逃税次数 · 配合检查态度 · 偷税金额占应纳税额比例"}
+    ]},
+    {text:"八、征求意见安排", color:7, children:[
+      {text:"截止日期：2026年8月13日"},
+      {text:"渠道一：登录国家税务总局网站“意见征集”栏目"},
+      {text:"渠道二：邮寄信函至税务总局"}
+    ]},
+    {text:"九、制度意义", color:8, children:[
+      {text:"全国统一税务行政处罚尺度"},
+      {text:"压缩行政执法自由裁量空间"},
+      {text:"防止同案不同罚"},
+      {text:"提升税收治理效能"}
+    ]}
+  ]
+};
+
+// assign color indices to L1 branches
+DATA.children.forEach((c,i)=>{ c.color = i; });
+
+const NW=250, HGAP=64, LEAF=58;
+const stage=document.getElementById('stage');
+let uid=0;
+function prep(n,depth){
+  n._id=uid++; n._depth=depth; n.collapsed=false;
+  (n.children||[]).forEach(c=>prep(c,depth+1));
+}
+prep(DATA,0);
+
+function layout(n,yc){
+  n.x = n._depth*(NW+HGAP);
+  if(!n.children||n.children.length===0||n.collapsed){
+    n.y = yc.v; yc.v += LEAF; return n.y;
+  }
+  let first,last;
+  n.children.forEach((c,i)=>{ const y=layout(c,yc); if(i===0)first=y; last=y; });
+  n.y = (first+last)/2; return n.y;
+}
+function render(){
+  stage.innerHTML='';
+  const yc={v:0}; layout(DATA,yc);
+  const totalH=yc.v+40, totalW=(maxDepth(DATA)+1)*(NW+HGAP)+40;
+  stage.style.height=totalH+'px'; stage.style.width=Math.max(totalW,stage.parentElement.clientWidth)+'px';
+  const svg=document.createElementNS('http://www.w3.org/2000/svg','svg');
+  svg.setAttribute('class','links'); svg.setAttribute('width',totalW); svg.setAttribute('height',totalH);
+  stage.appendChild(svg);
+  drawNode(DATA,svg);
+}
+function maxDepth(n){ if(!n.children||!n.children.length)return n._depth;
+  return Math.max(...n.children.map(maxDepth)); }
+function drawNode(n,svg){
+  const rect=document.createElement('div');
+  rect.className='node'+(n.root?' root':'');
+  rect.style.left=n.x+'px'; rect.style.top=n.y+'px';
+  const col=COLORS[(n.color??0)%COLORS.length];
+  if(n.root){ rect.textContent=n.text; }
+  else{
+    if(n.children&&n.children.length){
+      const tg=document.createElement('span'); tg.className='tag'; tg.style.background=col;
+      tg.textContent=(n.collapsed?'＋ ':'－ ')+''; rect.appendChild(tg);
+    }
+    const sp=document.createElement('span'); sp.textContent=n.text; rect.appendChild(sp);
+    if(n.collapsed&&n.children){ const c=document.createElement('span'); c.className='cnt';
+      c.textContent='（'+countLeaves(n)+'）'; rect.appendChild(c);}
+  }
+  rect.style.borderLeft='4px solid '+col;
+  if(n.children&&n.children.length){
+    rect.classList.add('toggle');
+    rect.onclick=()=>{ n.collapsed=!n.collapsed; render(); };
+  }
+  stage.appendChild(rect);
+  const rx=n.x, ry=n.y+rect.offsetHeight/2;
+  // approximate half-height for link start (use fixed 18)
+  const cy=n.y+18;
+  if(n.children&&!n.collapsed){
+    n.children.forEach(c=>{
+      const cEl=stage.querySelector(`.node`); // not used
+      const px=n.x+NW, py=n.y+18;
+      const cx=c.x, cyy=c.y+18;
+      const mx=(px+cx)/2;
+      const path=document.createElementNS('http://www.w3.org/2000/svg','path');
+      path.setAttribute('d',`M${px},${py} C${mx},${py} ${mx},${cyy} ${cx},${cyy}`);
+      path.setAttribute('fill','none'); path.setAttribute('stroke',COLORS[(c.color??0)%COLORS.length]);
+      path.setAttribute('stroke-width','1.6'); path.setAttribute('opacity','.55');
+      svg.appendChild(path);
+      drawNode(c,svg);
+    });
+  }
+}
+function countLeaves(n){ if(!n.children)return 0; let s=0; n.children.forEach(c=>s+= (c.children&&c.children.length)?countLeaves(c):1); return s; }
+
+function expandAll(){ setAll(DATA,false); render(); }
+function collapseL1(){ DATA.children.forEach(c=>c.collapsed=true); render(); }
+function setAll(n,v){ if(n.children)n.children.forEach(c=>{c.collapsed=v; setAll(c,v);}); }
+
+// legend
+const lg=document.getElementById('legend');
+let html='<b>分支图例</b><br>';
+for(let i=0;i<CNAME.length;i++){ html+=`<i style="background:${COLORS[i]}"></i>${CNAME[i]}<br>`; }
+lg.innerHTML=html;
+
+render();
+</script>
+</body>
+</html>

@@ -1,0 +1,6 @@
+# Coze 沙箱专用文件（Vercel 不需要）
+.coze
+.cozeproj
+scripts/
+src/server.ts
+.preview
