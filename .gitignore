@@ -12,7 +12,6 @@ __pycache__/
 *.egg-info/
 /.env
 .env
-.cozeproj/reduction
 
 # JS/TS bundlers & build outputs
 .next
@@ -162,5 +161,4 @@ Desktop.ini
 # TypeScript
 *.tsbuildinfo
 # Misc
-.coze-logs
 .codegraph
