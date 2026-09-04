@@ -193,7 +193,24 @@ NEXT_PUBLIC_ADMIN_PASSWORD=请更换为强密码
 # 建议同步备份到百度云 BOS 对象存储（跨机容灾）
 ```
 
-## 九、上线检查清单
+## 九、GitHub 版本控制（2026-09 启用）
+
+项目代码统一托管在 GitHub（私有仓库），任何代码变更遵循「改 → 提交 → 推送」流程。
+
+- 仓库：`https://github.com/zhxt809-ui/shuducw-web`（私有，账户 zhxt809-ui）
+- 分支：`main`
+- 工作流：本地 `extracted/projects` 修改代码 → 构建/测试通过 → `git add` → `git commit` → `git push origin main`
+- 已排除入库：`node_modules/`、`.next/`、`.env*`（密钥）、`data/`（运行时数据以服务器为准，不入库）
+- 发布到服务器的新代码，同步 commit + push 到 GitHub，保持版本一致
+
+### 本机 git 环境（Windows）
+
+- TLS：已启用 OpenSSL 后端，绕过本机 schannel `SEC_E_NO_CREDENTIALS` 故障（`git config http.sslBackend openssl`）
+- 代理：本机访问 GitHub 走 Clash 代理（`git config http.proxy http://127.0.0.1:7890`，https 同）
+- 认证：Git Credential Manager（系统级 `manager`），推送时弹浏览器授权
+- 以上为仓库内局部配置，换新仓库需重新设置
+
+## 十、上线检查清单
 
 - [ ] ICP 备案通过（百度智能云提交，2-4 周）
 - [ ] 域名 A 记录指向服务器 IP（删除 Vercel 的 CNAME）
@@ -204,7 +221,7 @@ NEXT_PUBLIC_ADMIN_PASSWORD=请更换为强密码
 - [ ] 百度站长平台（ziyuan.baidu.com）提交 sitemap.xml
 - [ ] 检查 `/api/health` 返回 ok
 
-## 十、SEO/AI 收录提交
+## 十一、SEO/AI 收录提交
 
 1. 百度搜索资源平台：提交站点验证（已有 `baidu_verify_codeva-t1LOLMCF42.html`）+ sitemap
 2. Bing Webmaster：提交 BingSiteAuth.xml（已有）
