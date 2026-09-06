@@ -1,5 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { listArticles, countArticles, createArticle, slugExists } from '@/lib/store';
+import { isAdminAuthorized, unauthorized } from '@/lib/admin-auth';
 
 // GET /api/articles — 获取文章列表
 // 查询参数: category, is_published, limit, offset
@@ -33,9 +34,13 @@ export async function GET(request: NextRequest) {
   }
 }
 
-// POST /api/articles — 创建文章
+// POST /api/articles — 创建文章（需管理鉴权）
 export async function POST(request: NextRequest) {
   try {
+    if (!isAdminAuthorized(request)) {
+      return unauthorized();
+    }
+
     const body = await request.json();
 
     const { title, slug, category, summary, content, cover_image, is_published, sort_order } = body;

@@ -111,6 +111,9 @@ coverage/
 !.env.example
 # Runtime data (articles/consultations 以服务器为准)
 /data/
+# 本地打包临时目录（Windows tar 打包用）
+/.deploy-stage/
+/deploy-*.tar.gz
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*

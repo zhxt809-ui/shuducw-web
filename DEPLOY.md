@@ -56,6 +56,14 @@ cd /var/www/shuducw
 node scripts/init-data.mjs
 ```
 
+> ⚠️ **Windows 打包部署的符号链接修复（2026-09-06 必读）**
+> Next standalone + pnpm 的 `node_modules` 用 `.pnpm` 虚拟存储 + 顶层符号链接。**Windows 的 tar 无法忠实保存这些符号链接**，在 Linux 解压后 `styled-jsx`、`@next/env` 等顶层链接缺失，报错 `Cannot find module 'styled-jsx/package.json'`（线上曾因此宕机）。
+> **解压后、重启前务必执行**（幂等）：
+> ```bash
+> bash /var/www/shuducw-run/scripts/standalone-symlink-fix.sh
+> # 或从工作区上传 .server-standalone-symlink-fix.sh 执行
+> ```
+
 ### 方式 B：标准 next start（简单）
 
 ```bash
@@ -163,14 +171,17 @@ COZE_PROJECT_DOMAIN_DEFAULT=www.shuducw.com
 # 数据目录（默认 ./data，可指定）
 DATA_DIR=/var/www/shuducw/data
 
-# 管理后台密码（必改！）
-NEXT_PUBLIC_ADMIN_PASSWORD=请更换为强密码
+# 管理后台密码（服务端校验，必改！）
+# 2026-09-06 起：后台 API（创建/更新/删除文章、查看咨询）改为服务端鉴权，
+# 客户端登录时把密码放在 x-admin-token 头，与本变量比对。此值勿用 NEXT_PUBLIC_ 前缀。
+ADMIN_API_PASSWORD=请更换为强密码
 
 # 存储后端：file（默认，本地 JSON）/ supabase（过渡期兼容）
 # DATA_STORE=file
 ```
 
 > ⚠️ 管理后台密码务必修改默认值，否则 `/admin` 存在被爆破风险。
+> 历史版本使用的 `NEXT_PUBLIC_ADMIN_PASSWORD` 已弃用（旧密码打进前端包、前端比对的弱校验，2026-09-06 移除）。
 
 ## 七、数据迁移（从 Supabase）
 

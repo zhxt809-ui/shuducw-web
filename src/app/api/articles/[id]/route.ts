@@ -1,5 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { getArticleById, updateArticle, deleteArticle, slugExists } from '@/lib/store';
+import { isAdminAuthorized, unauthorized } from '@/lib/admin-auth';
 
 // GET /api/articles/[id] — 获取单篇文章
 export async function GET(
@@ -25,12 +26,16 @@ export async function GET(
   }
 }
 
-// PUT /api/articles/[id] — 更新文章
+// PUT /api/articles/[id] — 更新文章（需管理鉴权）
 export async function PUT(
   request: NextRequest,
   { params }: { params: Promise<{ id: string }> }
 ) {
   try {
+    if (!isAdminAuthorized(request)) {
+      return unauthorized();
+    }
+
     const { id } = await params;
     const numericId = parseInt(id, 10);
     if (isNaN(numericId)) {
@@ -72,12 +77,16 @@ export async function PUT(
   }
 }
 
-// DELETE /api/articles/[id] — 删除文章
+// DELETE /api/articles/[id] — 删除文章（需管理鉴权）
 export async function DELETE(
-  _request: NextRequest,
+  request: NextRequest,
   { params }: { params: Promise<{ id: string }> }
 ) {
   try {
+    if (!isAdminAuthorized(request)) {
+      return unauthorized();
+    }
+
     const { id } = await params;
     const numericId = parseInt(id, 10);
     if (isNaN(numericId)) {

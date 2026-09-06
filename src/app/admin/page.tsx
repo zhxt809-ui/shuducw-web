@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useEffect, useCallback, useMemo } from 'react';
+import { useState, useEffect, useCallback, useMemo, useRef } from 'react';
 import Link from 'next/link';
 import {
   Plus, Pencil, Trash2, Eye, EyeOff, Save, X, ChevronLeft, ChevronRight,
@@ -63,13 +63,12 @@ interface Consultation {
   created_at: string;
 }
 
-// 管理员密码：部署时通过环境变量 ADMIN_PASSWORD 配置（必须修改默认值！）
-// 提示：默认密码仅用于开发环境，生产部署请务必设置 ADMIN_PASSWORD 环境变量
-const ADMIN_PASSWORD = process.env.NEXT_PUBLIC_ADMIN_PASSWORD || 'shudu2025';
+// 管理密码由服务端校验（2026-09-06 修复：密码不再打进前端包，登录走 /api/auth/check）
 
 export default function AdminPage() {
   // 密码验证
   const [authed, setAuthed] = useState(false);
+  const tokenRef = useRef('');
   const [pwdInput, setPwdInput] = useState('');
   const [pwdError, setPwdError] = useState('');
 
@@ -92,18 +91,25 @@ export default function AdminPage() {
   const [consultTotal, setConsultTotal] = useState(0);
   const [consultLoading, setConsultLoading] = useState(false);
 
-  // 登录检查
-  useEffect(() => {
-    if (sessionStorage.getItem('admin_authed') === '1') setAuthed(true);
-  }, []);
+  // 登录检查：每次访问需重新输入密码（密码只存于本次会话内存，不落 sessionStorage）
 
-  const handleLogin = () => {
-    if (pwdInput === ADMIN_PASSWORD) {
-      setAuthed(true);
-      sessionStorage.setItem('admin_authed', '1');
-      setPwdError('');
-    } else {
-      setPwdError('密码错误');
+  // 登录：服务端校验密码（x-admin-token 与 ADMIN_API_PASSWORD 比对）
+  const handleLogin = async () => {
+    setPwdError('');
+    try {
+      const res = await fetch('/api/auth/check', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', 'x-admin-token': pwdInput },
+        body: JSON.stringify({}),
+      });
+      if (res.ok) {
+        setAuthed(true);
+        tokenRef.current = pwdInput;
+      } else {
+        setPwdError('密码错误');
+      }
+    } catch {
+      setPwdError('网络错误，请重试');
     }
   };
 
@@ -136,7 +142,7 @@ export default function AdminPage() {
   const fetchConsultations = useCallback(async () => {
     setConsultLoading(true);
     try {
-      const res = await fetch('/api/consultations');
+      const res = await fetch('/api/consultations', { headers: { 'x-admin-token': tokenRef.current } });
       const json = await res.json();
       if (!res.ok) throw new Error(json.error || '获取咨询记录失败');
       setConsultations(json.data || []);
@@ -189,9 +195,14 @@ export default function AdminPage() {
       const method = editing ? 'PUT' : 'POST';
       const res = await fetch(url, {
         method,
-        headers: { 'Content-Type': 'application/json' },
+        headers: { 'Content-Type': 'application/json', 'x-admin-token': tokenRef.current },
         body: JSON.stringify(form),
       });
+      if (res.status === 401) {
+        setAuthed(false);
+        setError('登录已失效，请重新登录');
+        return;
+      }
       const json = await res.json();
       if (!res.ok) throw new Error(json.error || '保存失败');
       setEditing(null);
@@ -208,7 +219,12 @@ export default function AdminPage() {
   const handleDelete = async (id: number) => {
     if (!confirm('确定要删除这篇文章吗？')) return;
     try {
-      const res = await fetch(`/api/articles/${id}`, { method: 'DELETE' });
+      const res = await fetch(`/api/articles/${id}`, { method: 'DELETE', headers: { 'x-admin-token': tokenRef.current } });
+      if (res.status === 401) {
+        setAuthed(false);
+        setError('登录已失效，请重新登录');
+        return;
+      }
       const json = await res.json();
       if (!res.ok) throw new Error(json.error || '删除失败');
       fetchArticles();
@@ -221,9 +237,14 @@ export default function AdminPage() {
     try {
       const res = await fetch(`/api/articles/${article.id}`, {
         method: 'PUT',
-        headers: { 'Content-Type': 'application/json' },
+        headers: { 'Content-Type': 'application/json', 'x-admin-token': tokenRef.current },
         body: JSON.stringify({ is_published: !article.is_published }),
       });
+      if (res.status === 401) {
+        setAuthed(false);
+        setError('登录已失效，请重新登录');
+        return;
+      }
       const json = await res.json();
       if (!res.ok) throw new Error(json.error || '操作失败');
       fetchArticles();

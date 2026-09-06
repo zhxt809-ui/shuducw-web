@@ -1,9 +1,14 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { listConsultations, countConsultations, createConsultation } from '@/lib/store';
+import { isAdminAuthorized, unauthorized } from '@/lib/admin-auth';
 
-// GET /api/consultations — 获取咨询记录列表
-export async function GET() {
+// GET /api/consultations — 获取咨询记录列表（含客户电话，需管理鉴权）
+export async function GET(request: NextRequest) {
   try {
+    if (!isAdminAuthorized(request)) {
+      return unauthorized();
+    }
+
     const [data, total] = await Promise.all([listConsultations(100), countConsultations()]);
     return NextResponse.json({ data, total });
   } catch (err) {
