@@ -72,7 +72,7 @@ node scripts/init-data.mjs
 > **解压后、重启前务必执行**（幂等）：
 > ```bash
 > bash /var/www/shuducw-run/scripts/standalone-symlink-fix.sh
-> # 或从工作区上传 .server-standalone-symlink-fix.sh 执行
+> # 或本机执行仓库内脚本（已纳入 GitHub 管理）：ops/deploy/standalone-symlink-fix.sh
 > ```
 
 ### 方式 B：标准 next start（简单）
