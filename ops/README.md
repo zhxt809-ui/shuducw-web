@@ -13,11 +13,13 @@ ops/
 ├── deploy/
 │   ├── deploy.sh                 # 部署主流程（打包上传后原子替换 .next/node_modules/server.js/public + 符号链接修复 + 重启）
 │   ├── standalone-symlink-fix.sh # Windows 打包后重建 standalone 顶层符号链接（部署后必跑）
-│   └── nginx-shuducw.conf        # 生产 Nginx 配置参考（443 default 444 + 未知 Host 掐断）
+│   └── nginx-shuducw.conf        # 生产 Nginx 配置参考（443 default 444 + HSTS + 登录限流 + 隐藏版本号）
 ├── monitor/                      # 巡检脚本（在服务器上跑）
 │   ├── crawlers-check.sh         # 各搜索引擎蜘蛛抓取统计
 │   ├── bingbot-logs.sh           # Bingbot 访问明细与状态码
 │   ├── security-audit.sh         # 安全审计（未知 Host/子域名探测/异常 UA）
+│   ├── security-audit-full.sh    # 全量安全审查（DNS/444/基线/API鉴权/敏感路径/权限/日志攻击面）
+│   ├── security-harden.sh        # 安全加固（nginx 换配+权限修复+PM2 绑 127.0.0.1+限流验证）
 │   ├── sitemap-count.sh          # sitemap 精确计数
 │   ├── sitemap-force.sh          # 强制重生成 sitemap（rm ISR 缓存 + 重启）
 │   └── verifyfiles-check.sh      # 各平台验证文件在线检查
