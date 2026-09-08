@@ -56,6 +56,17 @@ cd /var/www/shuducw
 node scripts/init-data.mjs
 ```
 
+> ⚠️ **构建前必须先同步服务器数据（2026-09-07 必读）**
+> 文章数据以服务器 `data/articles.json` 为准（运行时通过 API 增删改）。构建时的静态/ISR 预渲染
+> 读的是**本地** `data/articles.json`——若本地是旧数据，`/news` 等静态页会渲染旧文章列表
+> （曾出现线上列表只有 13 篇 test 占位文章的问题）。**每次构建前**：
+> ```bash
+> python sftp-download.py /var/www/shuducw-run/data/articles.json extracted/projects/data/articles.json
+> python sftp-download.py /var/www/shuducw-run/data/consultations.json extracted/projects/data/consultations.json
+> ```
+> 同时 `/news` 列表页已改为 ISR（revalidate=60），发布新文章后 1 分钟内前台自动更新。
+> `data/` 不入 Git（运行时数据以服务器为准）。
+
 > ⚠️ **Windows 打包部署的符号链接修复（2026-09-06 必读）**
 > Next standalone + pnpm 的 `node_modules` 用 `.pnpm` 虚拟存储 + 顶层符号链接。**Windows 的 tar 无法忠实保存这些符号链接**，在 Linux 解压后 `styled-jsx`、`@next/env` 等顶层链接缺失，报错 `Cannot find module 'styled-jsx/package.json'`（线上曾因此宕机）。
 > **解压后、重启前务必执行**（幂等）：

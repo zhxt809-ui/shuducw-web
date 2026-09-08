@@ -1,6 +1,10 @@
 import type { Metadata } from 'next';
 import NewsListPage from '@/components/news-list';
 
+// 2026-09-07 修复：列表页必须是 ISR（revalidate=60），否则构建时用本地数据静态预渲染，
+// 发布新文章后前台列表不会更新（曾出现"只有 13 篇"的旧数据问题）。
+export const revalidate = 60;
+
 export const metadata: Metadata = {
   title: '财税资讯_西安数度财务咨询_公司注册_代理记账_税务政策解读',
   description:
