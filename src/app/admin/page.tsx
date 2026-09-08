@@ -124,6 +124,11 @@ export default function AdminPage() {
       if (filterCategory) params.set('category', filterCategory);
 
       const res = await fetch(`/api/articles?${params}`, { headers: { 'x-admin-token': tokenRef.current } });
+      if (res.status === 401) {
+        setAuthed(false);
+        setError('登录已失效，请重新登录');
+        return;
+      }
       const json = await res.json();
       if (!res.ok) throw new Error(json.error || '获取列表失败');
       setArticles(json.data || []);
@@ -135,14 +140,22 @@ export default function AdminPage() {
     }
   }, [page, limit, filterCategory]);
 
+  // 登录后才加载数据（登录前 token 为空，请求管理接口会 401）
   useEffect(() => {
-    fetchArticles();
-  }, [fetchArticles]);
+    if (authed) {
+      fetchArticles();
+    }
+  }, [authed, fetchArticles]);
 
   const fetchConsultations = useCallback(async () => {
     setConsultLoading(true);
     try {
       const res = await fetch('/api/consultations', { headers: { 'x-admin-token': tokenRef.current } });
+      if (res.status === 401) {
+        setAuthed(false);
+        setError('登录已失效，请重新登录');
+        return;
+      }
       const json = await res.json();
       if (!res.ok) throw new Error(json.error || '获取咨询记录失败');
       setConsultations(json.data || []);
@@ -155,10 +168,10 @@ export default function AdminPage() {
   }, []);
 
   useEffect(() => {
-    if (activeTab === 'consultations') {
+    if (authed && activeTab === 'consultations') {
       fetchConsultations();
     }
-  }, [activeTab, fetchConsultations]);
+  }, [authed, activeTab, fetchConsultations]);
 
   const handleNew = () => {
     setEditing(null);
