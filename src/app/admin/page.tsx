@@ -123,7 +123,7 @@ export default function AdminPage() {
       });
       if (filterCategory) params.set('category', filterCategory);
 
-      const res = await fetch(`/api/articles?${params}`);
+      const res = await fetch(`/api/articles?${params}`, { headers: { 'x-admin-token': tokenRef.current } });
       const json = await res.json();
       if (!res.ok) throw new Error(json.error || '获取列表失败');
       setArticles(json.data || []);

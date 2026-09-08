@@ -4,6 +4,9 @@ import { isAdminAuthorized, unauthorized } from '@/lib/admin-auth';
 
 // GET /api/articles — 获取文章列表
 // 查询参数: category, is_published, limit, offset
+// 2026-09-07 修复：仅显式 is_published=true 允许公开访问（只含已发布文章）。
+// 其余情况（不带参数 = 含草稿、is_published=false）会返回草稿内容，必须管理鉴权，
+// 否则草稿文章（如"待审阅"状态）会通过公开接口泄露，且后台列表看不到草稿。
 export async function GET(request: NextRequest) {
   try {
     const { searchParams } = request.nextUrl;
@@ -13,9 +16,12 @@ export async function GET(request: NextRequest) {
     const limit = parseInt(searchParams.get('limit') || '20', 10);
     const offset = parseInt(searchParams.get('offset') || '0', 10);
 
-    const publishedOnly = isPublishedParam === null || isPublishedParam === undefined || isPublishedParam === ''
-      ? undefined
-      : isPublishedParam === 'true';
+    const explicitPublished = isPublishedParam === 'true';
+    if (!explicitPublished && !isAdminAuthorized(request)) {
+      return unauthorized();
+    }
+    // explicitPublished=true → 仅已发布；false → 不过滤（返回全部含草稿）
+    const publishedOnly = explicitPublished ? true : false;
 
     const [data, total] = await Promise.all([
       listArticles({
