@@ -80,6 +80,11 @@ export default function HomePage() {
             description:
               '西安数度财务咨询有限公司2012年成立，首届西安市代理记账协会副会长单位，专业提供工商财税托管、企业财税合规、内部管理审计、高端财税风控落地服务。',
             foundingDate: '2012',
+            hasCredential: {
+              '@type': 'EducationalOccupationalCredential',
+              name: '代理记账许可证书',
+              credentialCategory: '代理记账',
+            },
             address: {
               '@type': 'PostalAddress',
               streetAddress: '唐延路35号旺座现代城D座1006室',
@@ -177,8 +182,8 @@ export default function HomePage() {
             <div className="flex items-center gap-3 p-4 bg-brand-bg rounded-sm">
               <FileCheck size={28} className="text-brand-gold flex-shrink-0" />
               <div>
-                <p className="font-bold text-brand-navy leading-snug">统一社会信用代码</p>
-                <p className="text-xs text-brand-text-muted mt-1">91610131587433138F</p>
+                <p className="font-bold text-brand-navy leading-snug">代理记账许可证书</p>
+                <p className="text-xs text-brand-text-muted mt-1">DLJZ61010120170035 · 西安市财政局核发</p>
               </div>
             </div>
             <div className="flex items-center gap-3 p-4 bg-brand-bg rounded-sm">
