@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
 import { Building2, FileCheck, TrendingUp, ArrowRight, Briefcase, Layers } from 'lucide-react';
+import { districts } from '@/data/districts';
 
 export const metadata: Metadata = {
   title: '财税业务范围_西安数度财务咨询_工商财税托管_财税合规_内部审计_财税风控',
@@ -226,6 +227,34 @@ export default function ServicesPage() {
                 <Briefcase size={16} className="text-brand-gold flex-shrink-0" />
                 <span className="text-sm text-brand-text">{service}</span>
               </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* 区域专项服务 */}
+      <section className="bg-white">
+        <div className="container-brand section-padding">
+          <div className="text-center mb-12">
+            <h2 className="text-2xl md:text-3xl font-bold text-brand-navy mb-4">区域专项服务</h2>
+            <div className="w-16 h-[2px] bg-brand-gold mx-auto mb-6" />
+            <p className="text-brand-text-muted max-w-2xl mx-auto">
+              面向西安各区县企业、商户与个体经营者，提供本地化的注册、记账、报税与财税合规服务
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+            {districts.map((d) => (
+              <Link
+                key={d.slug}
+                href={`/services/district/${d.slug}`}
+                className="group p-5 bg-brand-bg border border-brand-border rounded-sm hover:border-brand-navy hover:shadow-sm transition-all"
+              >
+                <h3 className="font-bold text-brand-navy group-hover:text-brand-gold mb-2">
+                  {d.name} {d.keyword}
+                </h3>
+                <p className="text-xs text-brand-text-muted leading-relaxed line-clamp-2">{d.metaDescription}</p>
+              </Link>
             ))}
           </div>
         </div>

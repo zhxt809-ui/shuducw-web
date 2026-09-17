@@ -1,5 +1,6 @@
 import { NextResponse } from 'next/server';
 import { listArticles } from '@/lib/store';
+import { districts } from '@/data/districts';
 
 // ISR：新增文章后 sitemap 定期更新
 export const revalidate = 300;
@@ -49,6 +50,13 @@ export async function GET() {
     { url: `${siteUrl}/services/basic`, lastModified: now, changeFrequency: 'monthly', priority: 0.8 },
     { url: `${siteUrl}/services/compliance`, lastModified: now, changeFrequency: 'monthly', priority: 0.8 },
     { url: `${siteUrl}/services/consulting`, lastModified: now, changeFrequency: 'monthly', priority: 0.8 },
+    { url: `${siteUrl}/services/live-commerce`, lastModified: now, changeFrequency: 'monthly', priority: 0.7 },
+    ...districts.map((d) => ({
+      url: `${siteUrl}/services/district/${d.slug}`,
+      lastModified: now,
+      changeFrequency: 'monthly',
+      priority: 0.7,
+    })),
     { url: `${siteUrl}/contact`, lastModified: now, changeFrequency: 'monthly', priority: 0.7 },
     { url: `${siteUrl}/faq`, lastModified: now, changeFrequency: 'monthly', priority: 0.8 },
     { url: `${siteUrl}/news`, lastModified: now, changeFrequency: 'daily', priority: 0.9 },

@@ -110,6 +110,35 @@ export default function BasicServicePage() {
     serviceType: ['公司注册', '代理记账', '报税托管', '工商注销', '汇算清缴'],
   };
 
+  const faqList = [
+    {
+      q: '西安注册公司，注册资本填多少合适？',
+      a: '按公司三到五年经营所需资金量填，够用即可，不必攀比。贸易、服务、咨询类公司 10 万到 100 万常见；有行业门槛的（如劳务派遣不低于 200 万）按门槛来。2024 年 7 月 1 日新《公司法》施行后，有限公司认缴出资须自成立之日起五年内缴足。',
+    },
+    {
+      q: '西安注册个体户对地址有什么要求？',
+      a: '个体户注册需要提供合法经营场所，可使用自有房产、租赁房屋（需提供租赁合同及产权证明）或符合当地政策的托管地址。不同区县对住宅改商用、集群注册的规定有差异，具体以当地市场监督管理部门要求为准。',
+    },
+    {
+      q: '西安小规模纳税人代理记账收费一般包含哪些服务？',
+      a: '市场常见收费区间在 2000-4000 元/年（视开票量与业务复杂度而定），一般包含：月度记账、增值税及附加税申报、企业所得税季度预缴、个税代扣代缴、年度汇算清缴、工商年报及日常财税咨询。签约前建议确认服务清单与责任划分。',
+    },
+    {
+      q: '公司没有业务也要报税吗？',
+      a: '需要。公司在领取营业执照后应当按期进行纳税申报，没有收入、没有应纳税额的可以办理零申报，但不能不申报。长期不申报会导致税务异常，影响纳税信用，进而影响发票领用、银行授信和招投标。',
+    },
+    {
+      q: '报税逾期会产生什么后果？',
+      a: '未按期申报或缴纳税款的，税务机关会责令限期改正，并可从滞纳税款之日起按日加收万分之五滞纳金；情节严重的可能面临罚款。逾期记录还会影响纳税信用评级。发现逾期应尽快补报并联系主管税务机关处理。',
+    },
+  ];
+
+  const relatedArticles = [
+    { href: '/news/zhuce-zijin-renjiao-2026', title: '公司注册资金填多少合适？认缴制下的几个坑' },
+    { href: '/news/xian-kaigongsi-leixing-duibi-2026', title: '西安开公司选哪种类型？个体户、有限公司对比' },
+    { href: '/news/gongsi-liangtaozhang-fengxian', title: '公司有两套账？这个风险比你想象的大' },
+  ];
+
   return (
     <>
       <script
@@ -236,6 +265,63 @@ export default function BasicServicePage() {
                 </div>
               );
             })}
+          </div>
+        </div>
+      </section>
+
+      {/* 常见问题 FAQ（页内问答，利于长尾收录与转化） */}
+      <section className="bg-brand-bg">
+        <div className="container-brand section-padding">
+          <script
+            type="application/ld+json"
+            dangerouslySetInnerHTML={{
+              __html: JSON.stringify({
+                '@context': 'https://schema.org',
+                '@type': 'FAQPage',
+                mainEntity: faqList.map((f) => ({
+                  '@type': 'Question',
+                  name: f.q,
+                  acceptedAnswer: { '@type': 'Answer', text: f.a },
+                })),
+              }),
+            }}
+          />
+          <div className="text-center mb-10">
+            <h2 className="text-2xl md:text-3xl font-bold text-brand-navy mb-4">老板常问的问题</h2>
+            <div className="w-16 h-[2px] bg-brand-gold mx-auto" />
+          </div>
+          <div className="max-w-3xl mx-auto space-y-3">
+            {faqList.map((f) => (
+              <details
+                key={f.q}
+                className="group bg-white border border-brand-border rounded-sm p-4 open:shadow-sm"
+              >
+                <summary className="flex items-center justify-between gap-4 cursor-pointer list-none text-brand-navy font-medium">
+                  <span>{f.q}</span>
+                  <span className="text-brand-gold text-lg flex-shrink-0 group-open:rotate-45 transition-transform">
+                    +
+                  </span>
+                </summary>
+                <p className="mt-3 text-sm text-brand-text leading-relaxed">{f.a}</p>
+              </details>
+            ))}
+          </div>
+
+          {/* 相关科普文章内链 */}
+          <div className="mt-10 max-w-3xl mx-auto">
+            <h3 className="text-lg font-bold text-brand-navy mb-4">相关财税科普</h3>
+            <div className="space-y-3">
+              {relatedArticles.map((a) => (
+                <Link
+                  key={a.href}
+                  href={a.href}
+                  className="flex items-center justify-between gap-4 p-4 bg-white border border-brand-border rounded-sm hover:border-brand-navy hover:shadow-sm transition-all group"
+                >
+                  <span className="text-sm text-brand-text group-hover:text-brand-navy">{a.title}</span>
+                  <ArrowRight size={14} className="text-brand-gold flex-shrink-0" />
+                </Link>
+              ))}
+            </div>
           </div>
         </div>
       </section>

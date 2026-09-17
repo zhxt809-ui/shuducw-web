@@ -97,6 +97,31 @@ export default function ConsultingPage() {
     serviceType: ['高端财税咨询', '税务风控', '股权架构搭建', '投融资财税尽调', '企业财税顾问'],
   };
 
+  const faqList = [
+    {
+      q: '税务筹划和偷逃税有什么区别？',
+      a: '本质区别在于商业实质和合法性。合法合规的税务安排是基于真实业务、依据现行政策做出的合理安排，有商业实质、经得起核查；偷逃税则是通过隐匿收入、虚开发票、虚构成本等方式少缴税款。以降低税负为目的但缺乏商业实质的安排，可能被穿透认定，风险极大。',
+    },
+    {
+      q: '股权架构怎么搭建更合规？',
+      a: '股权架构设计涉及持股主体选择（个人/法人/有限合伙）、出资方式、表决权安排和转让路径，需结合股东诉求、行业监管和税务影响综合设计。建议在设立阶段就规划清楚，避免后期变更带来的高额税负和程序成本，涉及具体方案建议咨询专业机构。',
+    },
+    {
+      q: '公司税负感觉偏高，怎么合规应对？',
+      a: '先做税负测算，分析各税种负担与行业水平差异；再核查是否有未充分利用的税收优惠（如小微优惠、研发加计扣除、专项附加扣除等）和可规范的扣除凭证。合规路径是先自查、再规划，而不是简单通过私户收款、虚开发票等方式"节税"。',
+    },
+    {
+      q: '投融资尽调会查什么？',
+      a: '投资人或银行尽调重点核查：收入确认口径、往来账款真实性、关联交易、税务合规情况、社保公积金缴纳、重大合同和历史股权变更。账务规范、凭证完整的企业在尽调中更有优势，也能避免估值缩水或融资受阻。',
+    },
+  ];
+
+  const relatedArticles = [
+    { href: '/news/2026-shuiwujicha-zhongdian', title: '2026年税务稽查重点：四大方向与高风险行为' },
+    { href: '/news/2026-caishui-4tiao-hongxian', title: '2026年财税4条红线：老板逐条自查' },
+    { href: '/news/zhuce-zijin-renjiao-2026', title: '公司注册资金填多少合适？认缴制下的几个坑' },
+  ];
+
   return (
     <>
       <script
@@ -186,6 +211,63 @@ export default function ConsultingPage() {
                 </div>
               );
             })}
+          </div>
+        </div>
+      </section>
+
+      {/* 常见问题 FAQ（页内问答，利于长尾收录与转化） */}
+      <section className="bg-brand-bg">
+        <div className="container-brand section-padding">
+          <script
+            type="application/ld+json"
+            dangerouslySetInnerHTML={{
+              __html: JSON.stringify({
+                '@context': 'https://schema.org',
+                '@type': 'FAQPage',
+                mainEntity: faqList.map((f) => ({
+                  '@type': 'Question',
+                  name: f.q,
+                  acceptedAnswer: { '@type': 'Answer', text: f.a },
+                })),
+              }),
+            }}
+          />
+          <div className="text-center mb-10">
+            <h2 className="text-2xl md:text-3xl font-bold text-brand-navy mb-4">老板常问的问题</h2>
+            <div className="w-16 h-[2px] bg-brand-gold mx-auto" />
+          </div>
+          <div className="max-w-3xl mx-auto space-y-3">
+            {faqList.map((f) => (
+              <details
+                key={f.q}
+                className="group bg-white border border-brand-border rounded-sm p-4 open:shadow-sm"
+              >
+                <summary className="flex items-center justify-between gap-4 cursor-pointer list-none text-brand-navy font-medium">
+                  <span>{f.q}</span>
+                  <span className="text-brand-gold text-lg flex-shrink-0 group-open:rotate-45 transition-transform">
+                    +
+                  </span>
+                </summary>
+                <p className="mt-3 text-sm text-brand-text leading-relaxed">{f.a}</p>
+              </details>
+            ))}
+          </div>
+
+          {/* 相关科普文章内链 */}
+          <div className="mt-10 max-w-3xl mx-auto">
+            <h3 className="text-lg font-bold text-brand-navy mb-4">相关财税科普</h3>
+            <div className="space-y-3">
+              {relatedArticles.map((a) => (
+                <Link
+                  key={a.href}
+                  href={a.href}
+                  className="flex items-center justify-between gap-4 p-4 bg-white border border-brand-border rounded-sm hover:border-brand-navy hover:shadow-sm transition-all group"
+                >
+                  <span className="text-sm text-brand-text group-hover:text-brand-navy">{a.title}</span>
+                  <ArrowRight size={14} className="text-brand-gold flex-shrink-0" />
+                </Link>
+              ))}
+            </div>
           </div>
         </div>
       </section>

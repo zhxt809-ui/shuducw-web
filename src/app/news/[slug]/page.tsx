@@ -94,7 +94,7 @@ export async function generateMetadata({
 
   if (result.status === 'ok') {
     return {
-      title: `${result.article.title}_${categoryLabels[result.article.category] || '财税资讯'}`,
+      title: `${result.article.title}_${categoryLabels[result.article.category] || '财税资讯'}_西安数度财务咨询`,
       description: result.article.summary || result.article.title,
       keywords: [
         '西安数度财务咨询',
@@ -354,6 +354,46 @@ export default async function ArticlePage({
                 </div>
               </div>
             )}
+
+            {/* 相关业务（按分类映射业务页，补足业务内链，利于 SEO） */}
+            {(() => {
+              const bizMap: Record<string, { href: string; name: string; desc: string }> = {
+                tips: {
+                  href: '/services/basic',
+                  name: '代理记账 · 公司注册',
+                  desc: '西安本地工商财税托管，小规模/一般纳税人代理记账、公司注册、工商变更一站式服务',
+                },
+                cases: {
+                  href: '/services/compliance',
+                  name: '财税合规 · 内部审计',
+                  desc: '企业财税合规自查、内部管理审计、历史账务梳理，帮您提前排查涉税风险',
+                },
+                policies: {
+                  href: '/services/consulting',
+                  name: '财税咨询 · 风控落地',
+                  desc: '税务政策解读、税收优惠适用性评估、高端财税风控方案设计与落地',
+                },
+              };
+              const biz = bizMap[article.category];
+              if (!biz) return null;
+              return (
+                <div className="mt-10">
+                  <h2 className="text-lg font-bold text-brand-navy mb-4">相关业务</h2>
+                  <Link
+                    href={biz.href}
+                    className="flex items-center justify-between gap-4 p-4 bg-white border border-brand-border rounded-sm hover:border-brand-navy hover:shadow-sm transition-all group"
+                  >
+                    <div>
+                      <p className="text-sm font-semibold text-brand-navy group-hover:text-brand-gold">
+                        {biz.name}
+                      </p>
+                      <p className="text-xs text-brand-muted mt-1 leading-relaxed">{biz.desc}</p>
+                    </div>
+                    <ArrowRight size={16} className="text-brand-gold flex-shrink-0" />
+                  </Link>
+                </div>
+              );
+            })()}
 
             {/* 文末咨询 CTA — 将阅读流量转化为咨询线索 */}
             <div className="mt-12 bg-brand-navy text-white rounded-sm p-6 md:p-8">

@@ -58,6 +58,14 @@
 - [基础财税服务](https://www.shuducw.com/services/basic): 工商全项、记账报税、基础配套 + 中端增值 + 服务流程
 - [高端合规内审](https://www.shuducw.com/services/compliance): 合规体系搭建、内部管理审计、高端财税咨询、专项风控 + 服务流程
 - [财税咨询风控](https://www.shuducw.com/services/consulting): 常年顾问、税负合规计划、稽查协助、股权架构搭建、风险评估 + 服务流程
+- [直播电商个体户财税咨询](https://www.shuducw.com/services/live-commerce): 直播电商个体户与主播收入申报、注册、征收方式、发票管理、私户收款风险排查
+- [西安高新区代理记账](https://www.shuducw.com/services/district/gaoxin): 高新区科技/软件/商贸企业代理记账、公司注册、高新企业财税辅导、乱账清理
+- [西安未央区个体户注册报税](https://www.shuducw.com/services/district/weiyang): 未央区个体户执照办理、核定/查账申报、代理记账
+- [西安莲湖区个体户注册报税](https://www.shuducw.com/services/district/lianhu): 莲湖区商户与商贸企业代理记账、报税、发票管理
+- [西安雁塔区代理记账](https://www.shuducw.com/services/district/yanta): 雁塔区初创与科技文化企业公司注册、代理记账、研发费用辅导
+- [西安长安区代理记账](https://www.shuducw.com/services/district/changan): 长安区新企业注册、代理记账、个体户报税、乱账清理
+- [西安西咸新区企业注册代理记账](https://www.shuducw.com/services/district/xixian): 西咸新区企业注册落户、代理记账、园区政策财税衔接
+- [西安新城区个体户注册报税](https://www.shuducw.com/services/district/xincheng): 新城区火车站商圈商户与商贸企业代理记账、报税、发票管理
 - [财税资讯](https://www.shuducw.com/news): 财税案例、财税知识、政策解读
 - [财税案例](https://www.shuducw.com/news/cases): 真实企业财税服务案例
 - [财税知识](https://www.shuducw.com/news/tips): 实用财税知识与操作技巧

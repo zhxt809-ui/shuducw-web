@@ -156,6 +156,42 @@ export default function HomePage() {
         </div>
       </section>
 
+      {/* 信任背书（资质来自国家公共信用信息报告 2026-09 核验） */}
+      <section className="bg-white border-b border-brand-border">
+        <div className="container-brand section-padding !py-8 md:!py-10">
+          <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
+            <div className="flex items-center gap-3 p-4 bg-brand-bg rounded-sm">
+              <Award size={28} className="text-brand-gold flex-shrink-0" />
+              <div>
+                <p className="font-bold text-brand-navy leading-snug">2025 年度纳税信用 A 级</p>
+                <p className="text-xs text-brand-text-muted mt-1">国家税务总局评定</p>
+              </div>
+            </div>
+            <div className="flex items-center gap-3 p-4 bg-brand-bg rounded-sm">
+              <Shield size={28} className="text-brand-gold flex-shrink-0" />
+              <div>
+                <p className="font-bold text-brand-navy leading-snug">守信激励对象 · 存续</p>
+                <p className="text-xs text-brand-text-muted mt-1">无严重失信 / 经营异常记录</p>
+              </div>
+            </div>
+            <div className="flex items-center gap-3 p-4 bg-brand-bg rounded-sm">
+              <FileCheck size={28} className="text-brand-gold flex-shrink-0" />
+              <div>
+                <p className="font-bold text-brand-navy leading-snug">统一社会信用代码</p>
+                <p className="text-xs text-brand-text-muted mt-1">91610131587433138F</p>
+              </div>
+            </div>
+            <div className="flex items-center gap-3 p-4 bg-brand-bg rounded-sm">
+              <Building2 size={28} className="text-brand-gold flex-shrink-0" />
+              <div>
+                <p className="font-bold text-brand-navy leading-snug">首届西安市代理记账协会副会长单位</p>
+                <p className="text-xs text-brand-text-muted mt-1">2012 年成立，深耕西安十余年</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* 企业简介 */}
       <section className="bg-white">
         <div className="container-brand section-padding">

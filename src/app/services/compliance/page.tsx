@@ -99,6 +99,35 @@ export default function CompliancePage() {
     serviceType: ['企业财税合规', '内部管理审计', '财务内控搭建', '财税风险排查'],
   };
 
+  const faqList = [
+    {
+      q: '企业财税合规自查多久做一次合适？',
+      a: '建议至少每半年做一次全面自查，重点检查增值税进销项匹配度、税前扣除凭证完整性、个税代扣代缴到位情况、关联交易定价合理性和税收优惠条件是否持续满足。拖得越久，历史问题越难处理，滞纳金也按日万分之五累积。',
+    },
+    {
+      q: '公司账务混乱、有历史遗留问题怎么办？',
+      a: '建议先做全面账务梳理，摸清真实财务状况，再逐项排查涉税风险、按轻重缓急制定整改方案。涉及多年错账、漏报的，尽早请专业机构协助规范调整，避免问题积累扩大。',
+    },
+    {
+      q: '内部管理审计主要审什么？',
+      a: '内部管理审计重点审查资金管理、采购与费用审批、收入确认口径、往来账款、存货、关联交易和内控制度执行情况，帮助企业发现流程漏洞、资产损失风险和潜在舞弊隐患，属于经营管理层面的风险体检。',
+    },
+    {
+      q: '收到税务稽查通知怎么办？',
+      a: '首先配合检查、如实提供资料，不拖延不隐瞒；其次梳理涉税事项、评估可能的风险点，必要时请专业财税人员协助准备和应对。配合检查的态度直接影响处罚裁量，主动配合通常能争取从宽处理。',
+    },
+    {
+      q: '金税四期下，企业最该注意什么？',
+      a: '金税四期实现发票流、资金流、货物流、合同流交叉核验，重点注意：经营收入走对公账户、不虚开发票、进销品名金额匹配、研发费用真实归集、往来账款定期清理。四流一致是基本要求。',
+    },
+  ];
+
+  const relatedArticles = [
+    { href: '/news/2026-shuiwujicha-zhongdian', title: '2026年税务稽查重点：四大方向与高风险行为' },
+    { href: '/news/2026-caishui-4tiao-hongxian', title: '2026年财税4条红线：老板逐条自查' },
+    { href: '/news/gongsi-liangtaozhang-fengxian', title: '公司有两套账？这个风险比你想象的大' },
+  ];
+
   return (
     <>
       <script
@@ -202,6 +231,63 @@ export default function CompliancePage() {
                 </div>
               );
             })}
+          </div>
+        </div>
+      </section>
+
+      {/* 常见问题 FAQ（页内问答，利于长尾收录与转化） */}
+      <section className="bg-brand-bg">
+        <div className="container-brand section-padding">
+          <script
+            type="application/ld+json"
+            dangerouslySetInnerHTML={{
+              __html: JSON.stringify({
+                '@context': 'https://schema.org',
+                '@type': 'FAQPage',
+                mainEntity: faqList.map((f) => ({
+                  '@type': 'Question',
+                  name: f.q,
+                  acceptedAnswer: { '@type': 'Answer', text: f.a },
+                })),
+              }),
+            }}
+          />
+          <div className="text-center mb-10">
+            <h2 className="text-2xl md:text-3xl font-bold text-brand-navy mb-4">老板常问的问题</h2>
+            <div className="w-16 h-[2px] bg-brand-gold mx-auto" />
+          </div>
+          <div className="max-w-3xl mx-auto space-y-3">
+            {faqList.map((f) => (
+              <details
+                key={f.q}
+                className="group bg-white border border-brand-border rounded-sm p-4 open:shadow-sm"
+              >
+                <summary className="flex items-center justify-between gap-4 cursor-pointer list-none text-brand-navy font-medium">
+                  <span>{f.q}</span>
+                  <span className="text-brand-gold text-lg flex-shrink-0 group-open:rotate-45 transition-transform">
+                    +
+                  </span>
+                </summary>
+                <p className="mt-3 text-sm text-brand-text leading-relaxed">{f.a}</p>
+              </details>
+            ))}
+          </div>
+
+          {/* 相关科普文章内链 */}
+          <div className="mt-10 max-w-3xl mx-auto">
+            <h3 className="text-lg font-bold text-brand-navy mb-4">相关财税科普</h3>
+            <div className="space-y-3">
+              {relatedArticles.map((a) => (
+                <Link
+                  key={a.href}
+                  href={a.href}
+                  className="flex items-center justify-between gap-4 p-4 bg-white border border-brand-border rounded-sm hover:border-brand-navy hover:shadow-sm transition-all group"
+                >
+                  <span className="text-sm text-brand-text group-hover:text-brand-navy">{a.title}</span>
+                  <ArrowRight size={14} className="text-brand-gold flex-shrink-0" />
+                </Link>
+              ))}
+            </div>
           </div>
         </div>
       </section>
