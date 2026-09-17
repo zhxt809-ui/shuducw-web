@@ -12,6 +12,15 @@ all_urls = [
     'https://www.shuducw.com/services/basic',
     'https://www.shuducw.com/services/compliance',
     'https://www.shuducw.com/services/consulting',
+    'https://www.shuducw.com/services/live-commerce',
+    # 区域落地页（数据驱动，新增区县后同步补充）
+    'https://www.shuducw.com/services/district/gaoxin',
+    'https://www.shuducw.com/services/district/weiyang',
+    'https://www.shuducw.com/services/district/lianhu',
+    'https://www.shuducw.com/services/district/yanta',
+    'https://www.shuducw.com/services/district/changan',
+    'https://www.shuducw.com/services/district/xixian',
+    'https://www.shuducw.com/services/district/xincheng',
     'https://www.shuducw.com/contact',
     'https://www.shuducw.com/faq',
     'https://www.shuducw.com/news',
@@ -19,7 +28,8 @@ all_urls = [
     'https://www.shuducw.com/news/cases',
     'https://www.shuducw.com/news/tips',
     'https://www.shuducw.com/news/policies',
-    # 14 篇文章（2026-09 关键词 slug，与 sitemap 一致）
+    # 15 篇文章（2026-09 关键词 slug，与 sitemap 一致）
+    'https://www.shuducw.com/news/zhuce-zijin-renjiao-2026',
     'https://www.shuducw.com/news/xian-kaigongsi-leixing-duibi-2026',
     'https://www.shuducw.com/news/2026-geshui-9000yi',
     'https://www.shuducw.com/news/langzi-gaoxin-zige-quxiao',
@@ -49,7 +59,7 @@ req = urllib.request.Request('https://api.indexnow.org/indexnow', data=body,
                              headers={'Content-Type': 'application/json; charset=utf-8', 'User-Agent': 'Mozilla/5.0'})
 try:
     r = urllib.request.urlopen(req, timeout=30)
-    print('IndexNow POST all 26 URLs:', r.status, '(200 = 已接收)')
+    print('IndexNow POST', len(all_urls), 'URLs:', r.status, '(200 = 已接收)')
 except urllib.error.HTTPError as e:
     print('IndexNow POST:', e.code, e.read().decode('utf-8','ignore')[:200])
 except Exception as e:
