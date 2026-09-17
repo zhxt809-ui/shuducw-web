@@ -30,6 +30,7 @@ const contactInfo = [
     icon: MapPin,
     title: '公司地址',
     content: '西安市高新区唐延路35号旺座现代城D座1006室',
+    mapLink: true,
   },
   {
     icon: Clock,
@@ -37,6 +38,11 @@ const contactInfo = [
     content: '6521552259',
   },
 ];
+
+// 百度地图定位（手机端会唤起百度地图 App 导航）
+const MAP_URL =
+  'https://map.baidu.com/search/' +
+  encodeURIComponent('西安市高新区唐延路35号旺座现代城');
 
 const serviceInquiry = [
   '基础工商财税服务',
@@ -104,6 +110,17 @@ export default function ContactPage() {
                   </div>
                   <h3 className="font-bold text-brand-navy mb-2">{info.title}</h3>
                   <p className="text-brand-text font-medium text-sm">{info.content}</p>
+                  {info.mapLink && (
+                    <a
+                      href={MAP_URL}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="mt-3 inline-flex items-center gap-1.5 text-sm text-brand-gold hover:text-brand-navy transition-colors"
+                    >
+                      查看百度地图 / 导航
+                      <span aria-hidden="true">→</span>
+                    </a>
+                  )}
                 </div>
               );
             })}
