@@ -47,6 +47,10 @@ all_urls = [
     'https://www.shuducw.com/news/gongsi-liangtaozhang-fengxian',
     'https://www.shuducw.com/news/wuliangye-zhongxiaoqiye-caiwuhegui',
     'https://www.shuducw.com/news/xian-canyin-hezhengzhenshou-butui',
+    # 3 篇客户案例（2026-09 发布，脱敏版）
+    'https://www.shuducw.com/news/xian-shipin-yecaishui-yitihua-anli',
+    'https://www.shuducw.com/news/xian-baoxian-caiwu-zixun-shuiwu-hegui-anli',
+    'https://www.shuducw.com/news/xian-gaoxin-jishu-qiye-caiwu-guwen-anli',
 ]
 
 print('total URLs:', len(all_urls))
