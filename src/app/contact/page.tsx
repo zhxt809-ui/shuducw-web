@@ -1,5 +1,6 @@
 import type { Metadata } from 'next';
 import { Phone, Mail, MapPin, Clock } from 'lucide-react';
+import BaiduMap from '@/components/baidu-map';
 import ConsultationForm from '@/components/consultation-form';
 
 export const metadata: Metadata = {
@@ -124,6 +125,38 @@ export default function ContactPage() {
                 </div>
               );
             })}
+          </div>
+        </div>
+      </section>
+
+      {/* 公司位置（内嵌百度地图） */}
+      <section className="bg-brand-bg">
+        <div className="container-brand section-padding">
+          <div className="text-center mb-10">
+            <h2 className="text-2xl md:text-3xl font-bold text-brand-navy mb-4">公司位置</h2>
+            <div className="w-16 h-[2px] bg-brand-gold mx-auto mb-6" />
+            <p className="text-brand-text-muted max-w-xl mx-auto text-sm">
+              西安市高新区唐延路35号旺座现代城D座1006室（地图可直接缩放，点击红色标记查看信息）
+            </p>
+          </div>
+          <div className="max-w-3xl mx-auto">
+            <BaiduMap />
+            <div className="mt-4 flex flex-col sm:flex-row items-center justify-center gap-3">
+              <a
+                href={MAP_URL}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 px-6 py-3 bg-brand-navy text-white font-medium rounded-sm hover:bg-brand-navy-light transition-colors"
+              >
+                在百度地图中查看 / 导航
+              </a>
+              <a
+                href="tel:02984556877"
+                className="inline-flex items-center gap-2 px-6 py-3 border border-brand-navy text-brand-navy rounded-sm hover:bg-brand-navy/5 transition-colors"
+              >
+                到店前电话预约：029-84556877
+              </a>
+            </div>
           </div>
         </div>
       </section>
