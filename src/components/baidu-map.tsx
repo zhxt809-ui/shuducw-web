@@ -3,7 +3,7 @@
 import { useEffect, useRef } from 'react';
 
 // 百度地图浏览器端 AK（公开用途，受 Referer 白名单约束，非机密）
-const BAIDU_MAP_AK = '6ngs3Qmd4BqYCFnnYYUmI63OL4nGee1P';
+const BAIDU_MAP_AK = 'FPO1FZ68t7p78X8EpBfqHvbXZHRFE2UZ';
 
 // 百度地图全局类型最小声明（API 脚本运行时动态加载，无官方类型包）
 type BPoint = { lng: number; lat: number };
