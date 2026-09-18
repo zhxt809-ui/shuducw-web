@@ -53,7 +53,8 @@ export function Footer() {
             </div>
             <p className="text-white/70 text-sm leading-relaxed mb-6 max-w-md">
               2012 年成立，首届西安市代理记账协会副会长单位，深耕西安财税行业十余年，
-              专业提供工商财税托管、企业财税合规、内部管理审计、高端财税风控落地服务。
+              专业提供工商财税托管、企业财税合规、内部管理审计、高端财税风控落地服务，
+              覆盖零售、物流、建筑工程、科技、酒店、老年公寓、管理咨询、商贸、电商、劳务、跨境等行业。
             </p>
             <div className="space-y-2.5">
               <div className="flex items-center gap-3 text-sm text-white/80">

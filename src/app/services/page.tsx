@@ -1,6 +1,22 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
-import { Building2, FileCheck, TrendingUp, ArrowRight, Briefcase, Layers } from 'lucide-react';
+import {
+  Building2,
+  FileCheck,
+  TrendingUp,
+  ArrowRight,
+  Briefcase,
+  Layers,
+  Store,
+  Truck,
+  Cpu,
+  Hotel,
+  Home,
+  ShoppingBag,
+  ShoppingCart,
+  Users,
+  Globe,
+} from 'lucide-react';
 import { districts } from '@/data/districts';
 
 export const metadata: Metadata = {
@@ -80,6 +96,20 @@ const extendedServices = [
   '财务部门托管',
   '全员薪酬个税合规规划',
   '各类企业专项财税补贴申报',
+];
+
+const industryAreas = [
+  { icon: Store, name: '零售' },
+  { icon: Truck, name: '物流' },
+  { icon: Building2, name: '建筑工程' },
+  { icon: Cpu, name: '科技' },
+  { icon: Hotel, name: '酒店' },
+  { icon: Home, name: '老年公寓' },
+  { icon: Briefcase, name: '管理咨询' },
+  { icon: ShoppingBag, name: '商贸' },
+  { icon: ShoppingCart, name: '电商' },
+  { icon: Users, name: '劳务' },
+  { icon: Globe, name: '跨境贸易' },
 ];
 
 export default function ServicesPage() {
@@ -256,6 +286,35 @@ export default function ServicesPage() {
                 <p className="text-xs text-brand-text-muted leading-relaxed line-clamp-2">{d.metaDescription}</p>
               </Link>
             ))}
+          </div>
+        </div>
+      </section>
+
+      {/* 服务行业 */}
+      <section className="bg-brand-bg">
+        <div className="container-brand section-padding">
+          <div className="text-center mb-12">
+            <h2 className="text-2xl md:text-3xl font-bold text-brand-navy mb-4">服务行业</h2>
+            <div className="w-16 h-[2px] bg-brand-gold mx-auto mb-6" />
+            <p className="text-brand-text-muted max-w-2xl mx-auto">
+              深耕西安十余年，服务覆盖零售、物流、建筑工程、科技、酒店、老年公寓、管理咨询、
+              商贸、电商、劳务、跨境贸易等行业，为各行业企业提供适配其经营特点的财税服务
+            </p>
+          </div>
+
+          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-4">
+            {industryAreas.map((ind) => {
+              const Icon = ind.icon;
+              return (
+                <div
+                  key={ind.name}
+                  className="flex flex-col items-center justify-center gap-3 p-6 bg-white border border-brand-border rounded-sm hover:border-brand-navy hover:shadow-sm transition-all text-center"
+                >
+                  <Icon size={24} className="text-brand-gold" />
+                  <span className="text-sm font-medium text-brand-navy">{ind.name}</span>
+                </div>
+              );
+            })}
           </div>
         </div>
       </section>
