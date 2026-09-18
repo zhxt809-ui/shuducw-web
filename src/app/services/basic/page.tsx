@@ -323,6 +323,9 @@ export default function BasicServicePage() {
               ))}
             </div>
           </div>
+          <p className="mt-10 max-w-3xl mx-auto text-xs text-brand-text-muted leading-relaxed text-center">
+            免责声明：本网站内容仅作为财税知识科普参考，不构成个性化税务方案；具体业务以双方签订的服务合同为准。
+          </p>
         </div>
       </section>
 
@@ -352,6 +355,12 @@ export default function BasicServicePage() {
                 className="inline-flex items-center gap-2 px-6 py-3 border border-brand-navy text-brand-navy rounded-sm hover:bg-brand-navy/5 transition-colors duration-200 text-sm"
               >
                 查看常见问题
+              </Link>
+              <Link
+                href="/self-check"
+                className="inline-flex items-center gap-2 px-6 py-3 border border-brand-gold text-brand-gold rounded-sm hover:bg-brand-gold/5 transition-colors duration-200 text-sm"
+              >
+                账务风险自查
               </Link>
             </div>
           </div>

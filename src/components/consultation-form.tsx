@@ -1,13 +1,13 @@
 'use client';
 
 import { useState, type FormEvent } from 'react';
-import { MessageSquare, CheckCircle, Loader2 } from 'lucide-react';
+import { MessageSquare, CheckCircle, Loader2, Shield, BookOpen } from 'lucide-react';
 
-export default function ConsultationForm() {
+export default function ConsultationForm({ defaultContent = '' }: { defaultContent?: string }) {
   const [formData, setFormData] = useState({
     companyName: '',
     phone: '',
-    content: '',
+    content: defaultContent,
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSubmitted, setIsSubmitted] = useState(false);
@@ -65,12 +65,41 @@ export default function ConsultationForm() {
   if (isSubmitted) {
     return (
       <div className="bg-white border border-brand-border rounded-sm p-6 md:p-8">
-        <div className="text-center py-8">
+        <div className="text-center py-4">
           <CheckCircle size={48} className="mx-auto text-green-500 mb-4" />
           <h3 className="text-xl font-bold text-brand-navy mb-2">提交成功</h3>
-          <p className="text-brand-text-muted text-sm mb-6">
-            感谢您的咨询，我们将在 1 个工作日内与您联系
+          <p className="text-brand-text-muted text-sm mb-1">
+            客服将在工作时段与您联系，由持有代理记账资质的会计一对一沟通
           </p>
+          <p className="text-brand-text-muted text-xs mb-6">
+            也可以关注我们的小红书账号（6521552259），获取最新财税政策更新
+          </p>
+
+          {/* 新办小微企业财税避坑清单 */}
+          <div className="text-left bg-brand-bg border border-brand-border rounded-sm p-5 mb-6">
+            <div className="flex items-center gap-2 mb-3">
+              <BookOpen size={16} className="text-brand-gold flex-shrink-0" />
+              <h4 className="font-bold text-brand-navy text-sm">《西安新办小微企业财税避坑清单》</h4>
+            </div>
+            <ul className="space-y-2.5 text-sm text-brand-text leading-relaxed">
+              <li>
+                ① 领取营业执照后 <strong>30 日内</strong>办理税务登记，确认税种认定与申报周期。
+              </li>
+              <li>
+                ② 从登记次月起<strong>按期申报</strong>——即使没有经营、没有收入也要零申报，逾期将产生罚款。
+              </li>
+              <li>
+                ③ 不盲目长期零申报：有实际经营却连续零申报，会触发风险比对、可能被认定为异常户。
+              </li>
+              <li>
+                ④ 经营收款尽量走对公账户：用个人微信/支付宝收经营款不入账，是稽查高频处罚项。
+              </li>
+              <li>
+                ⑤ 不买卖发票：虚开发票属重大违法，进销项不匹配会被金税系统预警。
+              </li>
+            </ul>
+          </div>
+
           <button
             onClick={() => setIsSubmitted(false)}
             className="px-6 py-2 bg-brand-navy text-white text-sm font-medium rounded-sm hover:bg-brand-navy-light transition-colors"
@@ -156,6 +185,10 @@ export default function ConsultationForm() {
           </button>
           <p className="text-xs text-brand-text-muted mt-2 text-center">
             提交后我们将在 1 个工作日内与您联系
+          </p>
+          <p className="text-xs text-brand-text-muted mt-1.5 text-center flex items-center justify-center gap-1.5">
+            <Shield size={12} className="text-brand-gold flex-shrink-0" />
+            提交信息后由持有代理记账资质的会计对接，信息严格保密
           </p>
         </div>
       </form>

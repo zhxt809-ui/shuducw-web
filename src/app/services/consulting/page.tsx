@@ -100,7 +100,7 @@ export default function ConsultingPage() {
   const faqList = [
     {
       q: '税务筹划和偷逃税有什么区别？',
-      a: '本质区别在于商业实质和合法性。合法合规的税务安排是基于真实业务、依据现行政策做出的合理安排，有商业实质、经得起核查；偷逃税则是通过隐匿收入、虚开发票、虚构成本等方式少缴税款。以降低税负为目的但缺乏商业实质的安排，可能被穿透认定，风险极大。',
+      a: '本质区别在于商业实质和合法性。合法合规的税务安排是基于真实业务、依据现行政策做出的合理安排，有商业实质、经得起核查；偷逃税则是通过隐匿收入、虚开发票、虚构成本等方式少缴税款。以规避纳税义务为目的但缺乏商业实质的安排，可能被穿透认定，风险极大。',
     },
     {
       q: '股权架构怎么搭建更合规？',
@@ -108,7 +108,7 @@ export default function ConsultingPage() {
     },
     {
       q: '公司税负感觉偏高，怎么合规应对？',
-      a: '先做税负测算，分析各税种负担与行业水平差异；再核查是否有未充分利用的税收优惠（如小微优惠、研发加计扣除、专项附加扣除等）和可规范的扣除凭证。合规路径是先自查、再规划，而不是简单通过私户收款、虚开发票等方式"节税"。',
+      a: '先做税负测算，分析各税种负担与行业水平差异；再核查是否有未充分利用的税收优惠（如小微优惠、研发加计扣除、专项附加扣除等）和可规范的扣除凭证。合规路径是先自查、再规划，而不是通过私户收款、虚开发票等违法方式少缴税。',
     },
     {
       q: '投融资尽调会查什么？',
@@ -269,6 +269,9 @@ export default function ConsultingPage() {
               ))}
             </div>
           </div>
+          <p className="mt-10 max-w-3xl mx-auto text-xs text-brand-text-muted leading-relaxed text-center">
+            免责声明：本网站内容仅作为财税知识科普参考，不构成个性化税务方案；具体业务以双方签订的服务合同为准。
+          </p>
         </div>
       </section>
 
@@ -298,6 +301,12 @@ export default function ConsultingPage() {
                 className="inline-flex items-center gap-2 px-6 py-3 border border-brand-navy text-brand-navy rounded-sm hover:bg-brand-navy/5 transition-colors duration-200 text-sm"
               >
                 查看常见问题
+              </Link>
+              <Link
+                href="/self-check"
+                className="inline-flex items-center gap-2 px-6 py-3 border border-brand-gold text-brand-gold rounded-sm hover:bg-brand-gold/5 transition-colors duration-200 text-sm"
+              >
+                账务风险自查
               </Link>
             </div>
           </div>

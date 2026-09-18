@@ -1,7 +1,7 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
 import { permanentRedirect } from 'next/navigation';
-import { ArrowLeft, ArrowRight, Calendar, Tag, FileQuestion, FileX, AlertCircle, Phone, MessageSquare } from 'lucide-react';
+import { ArrowLeft, ArrowRight, Calendar, Tag, FileQuestion, FileX, AlertCircle, Phone, MessageSquare, Clock3 } from 'lucide-react';
 import { getArticleBySlug, listArticles } from '@/lib/store';
 import { marked } from 'marked';
 import { cache } from 'react';
@@ -224,6 +224,13 @@ export default async function ArticlePage({
     return `${d.getFullYear()} 年 ${d.getMonth() + 1} 月 ${d.getDate()} 日`;
   };
 
+  // 判断文章是否有实质更新（更新时间比发布时间晚 1 天以上才展示“最后更新”）
+  const isUpdatedAfterPublish = (published: string, updated: string) => {
+    const pub = new Date(published).getTime();
+    const upd = new Date(updated).getTime();
+    return upd - pub > 24 * 60 * 60 * 1000;
+  };
+
   const jsonLd = {
     '@context': 'https://schema.org',
     '@type': 'Article',
@@ -292,6 +299,12 @@ export default async function ArticlePage({
                   <span className="flex items-center gap-1">
                     <Calendar size={14} />
                     {formatDate(article.published_at)}
+                  </span>
+                )}
+                {article.updated_at && article.published_at && isUpdatedAfterPublish(article.published_at, article.updated_at) && (
+                  <span className="flex items-center gap-1">
+                    <Clock3 size={14} />
+                    最后更新 {formatDate(article.updated_at)}
                   </span>
                 )}
                 <span>数度财税</span>

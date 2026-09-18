@@ -161,14 +161,24 @@ export default function DistrictLandingPage({ district }: { district: DistrictCo
             <p className="text-sm text-brand-text-muted text-center mb-8">{district.formSub}</p>
             <ConsultationForm />
           </div>
-          <div className="text-center mt-8">
+          <div className="flex items-center justify-center gap-4 mt-8">
             <Link
               href="/contact"
               className="inline-flex items-center gap-2 text-brand-navy hover:text-brand-gold font-medium"
             >
               或直接查看联系我们 <ArrowRight size={16} />
             </Link>
+            <span className="text-brand-border">|</span>
+            <Link
+              href="/self-check"
+              className="inline-flex items-center gap-2 text-brand-gold hover:text-brand-navy font-medium"
+            >
+              账务风险自查 <ArrowRight size={16} />
+            </Link>
           </div>
+          <p className="mt-8 max-w-3xl mx-auto text-xs text-brand-text-muted leading-relaxed text-center">
+            免责声明：本网站内容仅作为财税知识科普参考，不构成个性化税务方案；具体业务以双方签订的服务合同为准。
+          </p>
         </div>
       </section>
     </>

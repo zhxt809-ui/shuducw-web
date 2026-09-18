@@ -28,6 +28,7 @@ const footerLinks = [
       { label: '核心优势', href: '/about#advantages' },
       { label: '服务理念', href: '/about#philosophy' },
       { label: '联系我们', href: '/contact' },
+      { label: '隐私政策', href: '/privacy' },
     ],
   },
 ];
@@ -103,6 +104,9 @@ export function Footer() {
               陕ICP备2026024295号
             </a>
           </div>
+          <p className="mt-4 text-xs text-white/40 leading-relaxed text-center md:text-left">
+            网站内容仅作财税知识科普参考，不构成个性化税务方案，具体业务以双方签订的服务合同为准。
+          </p>
         </div>
       </div>
     </footer>

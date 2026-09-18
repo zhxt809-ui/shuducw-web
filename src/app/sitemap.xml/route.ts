@@ -59,6 +59,8 @@ export async function GET() {
     })),
     { url: `${siteUrl}/contact`, lastModified: now, changeFrequency: 'monthly', priority: 0.7 },
     { url: `${siteUrl}/faq`, lastModified: now, changeFrequency: 'monthly', priority: 0.8 },
+    { url: `${siteUrl}/self-check`, lastModified: now, changeFrequency: 'monthly', priority: 0.7 },
+    { url: `${siteUrl}/privacy`, lastModified: now, changeFrequency: 'yearly', priority: 0.3 },
     { url: `${siteUrl}/news`, lastModified: now, changeFrequency: 'daily', priority: 0.9 },
     { url: `${siteUrl}/news/cases`, lastModified: now, changeFrequency: 'daily', priority: 0.8 },
     { url: `${siteUrl}/news/tips`, lastModified: now, changeFrequency: 'daily', priority: 0.8 },
