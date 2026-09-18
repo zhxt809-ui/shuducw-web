@@ -24,6 +24,8 @@ all_urls = [
     'https://www.shuducw.com/services/district/beilin',
     'https://www.shuducw.com/contact',
     'https://www.shuducw.com/faq',
+    'https://www.shuducw.com/self-check',
+    'https://www.shuducw.com/privacy',
     'https://www.shuducw.com/news',
     # categories
     'https://www.shuducw.com/news/cases',
