@@ -21,6 +21,7 @@ all_urls = [
     'https://www.shuducw.com/services/district/changan',
     'https://www.shuducw.com/services/district/xixian',
     'https://www.shuducw.com/services/district/xincheng',
+    'https://www.shuducw.com/services/district/beilin',
     'https://www.shuducw.com/contact',
     'https://www.shuducw.com/faq',
     'https://www.shuducw.com/news',
