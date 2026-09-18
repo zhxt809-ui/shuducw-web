@@ -18,6 +18,7 @@ export async function GET(request: NextRequest) {
 }
 
 // POST /api/consultations — 提交咨询
+// 2026-09 安全加固：服务端强校验（电话格式/长度上限），防脏数据与滥用
 export async function POST(request: NextRequest) {
   try {
     const body = await request.json();
@@ -27,10 +28,24 @@ export async function POST(request: NextRequest) {
       return NextResponse.json({ error: '缺少必填字段' }, { status: 400 });
     }
 
+    const name = String(company_name).trim();
+    const phoneStr = String(phone).trim();
+    const contentStr = String(content).trim();
+
+    if (name.length < 2 || name.length > 50) {
+      return NextResponse.json({ error: '企业名称长度需在 2-50 字之间' }, { status: 400 });
+    }
+    if (!/^[\d\-+\s]{7,20}$/.test(phoneStr)) {
+      return NextResponse.json({ error: '请输入有效的联系电话' }, { status: 400 });
+    }
+    if (contentStr.length < 5 || contentStr.length > 500) {
+      return NextResponse.json({ error: '咨询内容长度需在 5-500 字之间' }, { status: 400 });
+    }
+
     await createConsultation({
-      company_name: String(company_name).trim(),
-      phone: String(phone).trim(),
-      content: String(content).trim(),
+      company_name: name,
+      phone: phoneStr,
+      content: contentStr,
     });
 
     return NextResponse.json({ success: true, message: '咨询已提交' });

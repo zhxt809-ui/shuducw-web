@@ -13,6 +13,10 @@ mv /tmp/deploy-stage/node_modules node_modules
 cp /tmp/deploy-stage/server.js server.js
 cp -r /tmp/deploy-stage/public/. public/
 rm -rf /tmp/deploy-stage
+echo "=== 3.5 权限修复（Windows 打包 tar 常带 world-writable 权限）==="
+chmod -R o-w /var/www/shuducw-run 2>/dev/null || true
+chmod 755 /var/www/shuducw-run /var/www/shuducw-run/data 2>/dev/null || true
+echo "perms fixed"
 echo "=== 4. standalone 符号链接修复（关键步骤，2026-09-06 事故教训）==="
 python3 - <<'EOF'
 import os, glob
