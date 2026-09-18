@@ -262,6 +262,34 @@ export default function ServicesPage() {
         </div>
       </section>
 
+      {/* 直播电商专项 */}
+      <section className="bg-white">
+        <div className="container-brand section-padding !py-10 md:!py-12">
+          <Link
+            href="/services/live-commerce"
+            className="group flex flex-col md:flex-row items-start md:items-center justify-between gap-4 p-6 md:p-8 bg-gradient-to-r from-brand-navy to-brand-navy-light text-white rounded-sm"
+          >
+            <div className="flex items-start gap-4">
+              <div className="w-12 h-12 bg-brand-gold/20 border border-brand-gold/40 rounded-sm flex items-center justify-center flex-shrink-0">
+                <TrendingUp size={22} className="text-brand-gold" />
+              </div>
+              <div>
+                <h3 className="text-lg font-bold mb-1 group-hover:text-brand-gold-light transition-colors">
+                  直播电商个体户财税咨询
+                </h3>
+                <p className="text-white/75 text-sm leading-relaxed">
+                  主播报税、直播电商个体户注册、征收方式选择、发票管理、私户收款风险排查——
+                  面向直播电商从业者与 MCN 机构的专项财税服务
+                </p>
+              </div>
+            </div>
+            <span className="inline-flex items-center gap-2 px-5 py-2.5 bg-brand-gold text-white text-sm font-medium rounded-sm flex-shrink-0 group-hover:bg-brand-gold-light transition-colors">
+              查看专项服务 <ArrowRight size={14} />
+            </span>
+          </Link>
+        </div>
+      </section>
+
       {/* 区域专项服务 */}
       <section className="bg-white">
         <div className="container-brand section-padding">
