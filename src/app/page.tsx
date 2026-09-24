@@ -1,6 +1,11 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
-import { Shield, Building2, FileCheck, TrendingUp, Award, Users, CheckCircle2, ArrowRight, HelpCircle } from 'lucide-react';
+import { Shield, Building2, FileCheck, TrendingUp, Award, Users, CheckCircle2, ArrowRight, HelpCircle, BadgeCheck, Newspaper } from 'lucide-react';
+import { listArticles } from '@/lib/store';
+import { XiaohongshuIcon } from '@/components/xiaohongshu-icon';
+
+// 首页含服务实录动态数据，ISR 定期刷新
+export const revalidate = 60;
 
 export const metadata: Metadata = {
   title: '西安数度财务咨询_2012年老牌财税咨询_企业财税合规_内部管理审计服务',
@@ -63,7 +68,9 @@ const advantages = [
   },
 ];
 
-export default function HomePage() {
+export default async function HomePage() {
+  // 首页"客户服务实录"区块：仅展示自有服务案例（category=shilu）
+  const shiluArticles = await listArticles({ category: 'shilu', publishedOnly: true, limit: 3 });
   return (
     <>
       {/* JSON-LD 结构化数据 */}
@@ -169,7 +176,7 @@ export default function HomePage() {
               <Award size={28} className="text-brand-gold flex-shrink-0" />
               <div>
                 <p className="font-bold text-brand-navy leading-snug">2025 年度纳税信用 A 级</p>
-                <p className="text-xs text-brand-text-muted mt-1">国家税务总局评定</p>
+                <p className="text-xs text-brand-text-muted mt-1">信用中国查询核验</p>
               </div>
             </div>
             <div className="flex items-center gap-3 p-4 bg-brand-bg rounded-sm">
@@ -179,19 +186,34 @@ export default function HomePage() {
                 <p className="text-xs text-brand-text-muted mt-1">无严重失信 / 经营异常记录</p>
               </div>
             </div>
-            <div className="flex items-center gap-3 p-4 bg-brand-bg rounded-sm">
+            <Link href="/about" className="flex items-center gap-3 p-4 bg-brand-bg rounded-sm group hover:bg-brand-bg/80 transition-colors">
               <FileCheck size={28} className="text-brand-gold flex-shrink-0" />
               <div>
                 <p className="font-bold text-brand-navy leading-snug">代理记账许可证书</p>
-                <p className="text-xs text-brand-text-muted mt-1">DLJZ61010120170035 · 西安市财政局核发</p>
+                <p className="text-xs text-brand-text-muted mt-1 group-hover:text-brand-gold transition-colors">DLJZ61010120170035 · 西安市财政局核发 · 查看证照 →</p>
               </div>
-            </div>
+            </Link>
             <div className="flex items-center gap-3 p-4 bg-brand-bg rounded-sm">
               <Building2 size={28} className="text-brand-gold flex-shrink-0" />
               <div>
                 <p className="font-bold text-brand-navy leading-snug">首届西安市代理记账协会副会长单位</p>
                 <p className="text-xs text-brand-text-muted mt-1">2012 年成立，深耕西安十余年</p>
               </div>
+            </div>
+          </div>
+          {/* 媒体报道：高校特邀讲座（来源：西安财经大学商学院官网） */}
+          <div className="mt-4 flex items-center gap-3 p-4 bg-brand-bg rounded-sm">
+            <Newspaper size={28} className="text-brand-gold flex-shrink-0" />
+            <div className="min-w-0">
+              <p className="font-bold text-brand-navy leading-snug">媒体报道 · 高校特邀讲座</p>
+              <a
+                href="https://sxy.xaufe.edu.cn/info/1061/10377.htm"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-xs text-brand-gold hover:underline mt-1 inline-block"
+              >
+                2026 年 4 月受邀于西安财经大学商学院开展「财税计划与职业发展」专题讲座（来源：西安财经大学商学院官网）
+              </a>
             </div>
           </div>
         </div>
@@ -277,6 +299,51 @@ export default function HomePage() {
         </div>
       </section>
 
+      {/* 客户服务实录 */}
+      <section className="bg-brand-bg">
+        <div className="container-brand section-padding">
+          <div className="flex flex-col md:flex-row items-start md:items-end justify-between gap-4 mb-10">
+            <div>
+              <h2 className="text-2xl md:text-3xl font-bold text-brand-navy mb-3">客户服务实录</h2>
+              <div className="w-16 h-[2px] bg-brand-gold mb-4" />
+              <p className="text-brand-text-muted max-w-xl text-sm md:text-base">
+                西安数度财务咨询真实客户服务案例（已脱敏）——从基础代理记账到高端财税咨询与合规体系搭建，
+                见证企业不同发展阶段的财税需求。
+              </p>
+            </div>
+            <Link
+              href="/cases"
+              className="flex-shrink-0 inline-flex items-center gap-2 text-sm text-brand-navy font-medium hover:text-brand-gold transition-colors"
+            >
+              查看全部服务实录 <ArrowRight size={15} />
+            </Link>
+          </div>
+
+          {shiluArticles.length > 0 ? (
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+              {shiluArticles.map((article) => (
+                <Link key={article.id} href={`/news/${article.slug}`} className="card-brand group flex flex-col">
+                  <div className="flex items-center gap-2 mb-3">
+                    <span className="inline-flex items-center gap-1 px-2.5 py-0.5 text-xs font-medium text-white rounded bg-[#0E7C66]">
+                      <BadgeCheck size={12} /> 服务实录
+                    </span>
+                  </div>
+                  <h3 className="text-base font-bold text-brand-text mb-2.5 line-clamp-2 group-hover:text-brand-navy transition-colors leading-relaxed">
+                    {article.title}
+                  </h3>
+                  {article.summary && (
+                    <p className="text-sm text-brand-text-muted line-clamp-3 leading-relaxed flex-1">{article.summary}</p>
+                  )}
+                  <span className="mt-4 inline-flex items-center gap-1 text-sm text-brand-navy font-medium group-hover:text-brand-gold transition-colors">
+                    查看案例详情 <ArrowRight size={14} />
+                  </span>
+                </Link>
+              ))}
+            </div>
+          ) : null}
+        </div>
+      </section>
+
       {/* 服务理念 */}
       <section className="bg-brand-navy text-white">
         <div className="container-brand section-padding">
@@ -305,10 +372,8 @@ export default function HomePage() {
         <div className="container-brand section-padding !py-10 md:!py-14">
           <div className="flex flex-col md:flex-row items-center justify-center gap-6 bg-gradient-to-r from-red-50 to-orange-50 border border-red-100 rounded-sm p-6 md:p-8">
             <div className="flex items-center gap-4">
-              <div className="w-14 h-14 bg-red-500 rounded-lg flex items-center justify-center flex-shrink-0">
-                <svg viewBox="0 0 24 24" className="w-8 h-8 text-white" fill="currentColor">
-                  <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm4.64 13.2c-.24.64-.96 1.28-1.6 1.44-.32.08-.72.16-1.2.16-.48 0-.88-.08-1.2-.16-.64-.16-1.36-.8-1.6-1.44-.16-.48-.24-.88-.24-1.36 0-.48.08-.88.24-1.36.24-.64.96-1.28 1.6-1.44.32-.08.72-.16 1.2-.16.48 0 .88.08 1.2.16.64.16 1.36.8 1.6 1.44.16.48.24.88.24 1.36 0 .48-.08.88-.24 1.36zM12 4c4.41 0 8 3.59 8 8s-3.59 8-8 8-8-3.59-8-8 3.59-8 8-8z"/>
-                </svg>
+              <div className="flex-shrink-0">
+                <XiaohongshuIcon size={36} />
               </div>
               <div>
                 <h3 className="text-lg md:text-xl font-bold text-brand-navy">关注小红书，获取更多财税知识</h3>
@@ -334,7 +399,7 @@ export default function HomePage() {
               <div>
                 <h3 className="text-lg md:text-xl font-bold text-brand-navy mb-1">老板关心的财税问题，这里都有答案</h3>
                 <p className="text-sm text-brand-text-muted">
-                  代理记账多少钱、公司注册材料、税务异常处理等 20 个高频问题解答
+                  代理记账多少钱、公司注册材料、税务异常处理等 28 个高频问题解答
                 </p>
               </div>
             </div>

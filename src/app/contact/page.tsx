@@ -1,7 +1,8 @@
 import type { Metadata } from 'next';
-import { Phone, Mail, MapPin, Clock } from 'lucide-react';
+import { Phone, Mail, MapPin } from 'lucide-react';
 import BaiduMap from '@/components/baidu-map';
 import ConsultationForm from '@/components/consultation-form';
+import { XiaohongshuIcon } from '@/components/xiaohongshu-icon';
 
 export const metadata: Metadata = {
   title: '联系我们_西安数度财务咨询_西安财税咨询_预约财税服务',
@@ -31,10 +32,9 @@ const contactInfo = [
     icon: MapPin,
     title: '公司地址',
     content: '西安市高新区唐延路35号旺座现代城D座1006室',
-    mapLink: true,
   },
   {
-    icon: Clock,
+    icon: XiaohongshuIcon,
     title: '小红书号',
     content: '6521552259',
   },
@@ -111,17 +111,6 @@ export default function ContactPage() {
                   </div>
                   <h3 className="font-bold text-brand-navy mb-2">{info.title}</h3>
                   <p className="text-brand-text font-medium text-sm">{info.content}</p>
-                  {info.mapLink && (
-                    <a
-                      href={MAP_URL}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="mt-3 inline-flex items-center gap-1.5 text-sm text-brand-gold hover:text-brand-navy transition-colors"
-                    >
-                      查看百度地图 / 导航
-                      <span aria-hidden="true">→</span>
-                    </a>
-                  )}
                 </div>
               );
             })}
