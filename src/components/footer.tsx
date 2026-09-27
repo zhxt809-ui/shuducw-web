@@ -14,6 +14,8 @@ const footerLinks = [
   {
     title: '财税资讯',
     links: [
+      { label: '客户服务实录', href: '/cases' },
+      { label: '服务实录', href: '/news/shilu' },
       { label: '财税案例', href: '/news/cases' },
       { label: '财税知识', href: '/news/tips' },
       { label: '政策解读', href: '/news/policies' },
@@ -96,14 +98,28 @@ export function Footer() {
         <div className="mt-10 pt-6 border-t border-white/10">
           <div className="flex flex-col md:flex-row items-center justify-between gap-2 text-sm text-white/50">
             <p>&copy; 2012-2026 西安数度财务咨询有限公司 版权所有</p>
-            <a
-              href="https://beian.miit.gov.cn"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="hover:text-white/80 transition-colors"
-            >
-              陕ICP备2026024295号
-            </a>
+            <div className="flex flex-col sm:flex-row items-center gap-2 sm:gap-5">
+              <a
+                href="https://beian.miit.gov.cn"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="hover:text-white/80 transition-colors"
+              >
+                陕ICP备2026024295号
+              </a>
+              <a
+                href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=61019002004274"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-1.5 hover:text-white/80 transition-colors"
+              >
+                <svg width="14" height="14" viewBox="0 0 20 20" aria-hidden="true" className="flex-shrink-0">
+                  <path d="M10 1.2 16.8 4.2v5.4c0 4.8-2.9 7.6-6.8 8.7-3.9-1.1-6.8-3.9-6.8-8.7V4.2L10 1.2Z" fill="#3B82F6" />
+                  <path d="M10 5.4l1.1 3.4h3.6l-2.9 2.1 1.1 3.4-2.9-2.1-2.9 2.1 1.1-3.4-2.9-2.1h3.6L10 5.4Z" fill="#FBBF24" />
+                </svg>
+                陕公网安备61019002004274号
+              </a>
+            </div>
           </div>
           <p className="mt-4 text-xs text-white/40 leading-relaxed text-center md:text-left">
             网站内容仅作财税知识科普参考，不构成个性化税务方案，具体业务以双方签订的服务合同为准。
