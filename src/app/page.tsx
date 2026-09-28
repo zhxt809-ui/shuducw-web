@@ -119,7 +119,7 @@ export default async function HomePage() {
               'https://www.xiaohongshu.com/user/profile/6521552259',
             ],
             serviceType: ['财税咨询', '代理记账', '企业财税合规', '内部管理审计', '税务筹划'],
-            priceRange: '¥¥',
+            priceRange: '小规模纳税人代理记账 2000-4000 元/年，一般纳税人略高（具体以企业实际情况核算）',
             hasOfferCatalog: {
               '@type': 'OfferCatalog',
               name: '财税服务',

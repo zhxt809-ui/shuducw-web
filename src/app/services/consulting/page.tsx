@@ -282,6 +282,9 @@ export default function ConsultingPage() {
             <div>
               <h3 className="text-xl md:text-2xl font-bold text-brand-navy mb-2">需要专业的财税咨询或风控服务？</h3>
               <p className="text-brand-text-muted text-sm md:text-base">高端持证团队为企业提供全方位财税安全保障，从咨询到落地一站式服务。</p>
+              <p className="text-xs text-brand-text-muted mt-2">
+                费用说明：合规体系搭建、内部审计、股权架构、常年财税顾问等按项目复杂度、服务范围与工作量评估报价，先免费初步沟通诊断，再确定方案与费用。
+              </p>
               <div className="flex flex-wrap items-center gap-4 mt-4 text-sm text-brand-text">
                 <span className="flex items-center gap-2">
                   <Phone size={14} className="text-brand-gold" />

@@ -16,6 +16,12 @@ import {
   ShoppingCart,
   Users,
   Globe,
+  FileText,
+  CalendarCheck,
+  CalendarDays,
+  ShieldAlert,
+  UserCheck,
+  Archive,
 } from 'lucide-react';
 import { districts } from '@/data/districts';
 
@@ -97,6 +103,59 @@ const extendedServices = [
   '财务部门托管',
   '全员薪酬个税合规规划',
   '各类企业专项财税补贴申报',
+];
+
+// 服务交付标准（依据法定期限与行业通行惯例表述，不含编造的时效承诺）
+const deliveryStandards = [
+  {
+    icon: FileText,
+    title: '记账与报表交付',
+    desc: '每月账务处理完成后，交付财务报表、纳税申报表及完税凭证；账务资料按规范归档留存，企业可随时查阅、随时取回。',
+  },
+  {
+    icon: CalendarCheck,
+    title: '纳税申报时效',
+    desc: '按税务机关公布的申报期限完成各税种申报；申报期限最后一日为法定节假日的，依法顺延。申报完成后及时反馈申报结果。',
+  },
+  {
+    icon: CalendarDays,
+    title: '年度事项办理',
+    desc: '企业所得税汇算清缴按法定期限（次年 5 月 31 日前）完成；工商年报在法定年报期（每年 1 月 1 日至 6 月 30 日）内提醒并协助办理。',
+  },
+  {
+    icon: ShieldAlert,
+    title: '风险提示义务',
+    desc: '发现账务异常、发票疑点、申报数据比对异常或政策变化影响企业时，及时告知并给出处理建议，不隐瞒、不拖延。',
+  },
+  {
+    icon: UserCheck,
+    title: '专属会计对接',
+    desc: '由持有代理记账资质的会计人员对接服务，日常财税问题在工作时间内答疑，重大事项提供书面说明。',
+  },
+  {
+    icon: Archive,
+    title: '资料交接规范',
+    desc: '服务期间账簿、凭证、申报资料完整保管；服务终止时，按清单完整移交全部账务资料，不扣押、不留存。',
+  },
+];
+
+// 费用参考（区间口径与 FAQ、基础财税服务页保持一致）
+const feeReference = [
+  {
+    title: '个体户 / 零申报',
+    range: '通常低于小规模档位',
+    desc: '业务简单、票据量少或零申报的个体户，费用通常低于小规模企业档位，具体按票据张数与申报频次核算。',
+  },
+  {
+    title: '小规模纳税人代理记账',
+    range: '2000-4000 元/年',
+    desc: '含月度记账、增值税及附加申报、企业所得税季度预缴、年度汇算清缴、财务报表与凭证交付；视开票量与进销存复杂度浮动。',
+  },
+  {
+    title: '一般纳税人代理记账',
+    range: '高于小规模（按票据量核算）',
+    desc: '涉及进项销项认证抵扣、月度申报与更复杂的账务处理，费用高于小规模档位，具体按开票量与业务复杂度评估。',
+  },
 ];
 
 const industryAreas = [
@@ -345,6 +404,82 @@ export default function ServicesPage() {
               );
             })}
           </div>
+        </div>
+      </section>
+
+      {/* 服务交付标准 */}
+      <section className="bg-white">
+        <div className="container-brand section-padding">
+          <div className="text-center mb-12">
+            <h2 className="text-2xl md:text-3xl font-bold text-brand-navy mb-4">服务交付标准</h2>
+            <div className="w-16 h-[2px] bg-brand-gold mx-auto mb-6" />
+            <p className="text-brand-text-muted max-w-2xl mx-auto">
+              交付什么、按什么节点交付、责任如何界定——服务过程可预期、可追溯
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {deliveryStandards.map((item) => {
+              const Icon = item.icon;
+              return (
+                <div key={item.title} className="p-6 bg-brand-bg border border-brand-border rounded-sm">
+                  <div className="flex items-center gap-3 mb-3">
+                    <div className="w-10 h-10 bg-white border border-brand-border rounded-sm flex items-center justify-center flex-shrink-0">
+                      <Icon size={18} className="text-brand-gold" />
+                    </div>
+                    <h3 className="font-bold text-brand-navy text-base">{item.title}</h3>
+                  </div>
+                  <p className="text-sm text-brand-text-muted leading-relaxed">{item.desc}</p>
+                </div>
+              );
+            })}
+          </div>
+
+          <p className="mt-8 text-xs text-brand-text-muted leading-relaxed text-center max-w-3xl mx-auto">
+            以上为服务交付的一般标准。具体服务内容、交付要求与双方权责，以双方签订的服务合同约定为准；
+            涉及纳税申报的具体期限，以税务机关当期公布的规定为准。
+          </p>
+        </div>
+      </section>
+
+      {/* 费用参考 */}
+      <section className="bg-brand-bg">
+        <div className="container-brand section-padding">
+          <div className="text-center mb-12">
+            <h2 className="text-2xl md:text-3xl font-bold text-brand-navy mb-4">服务费用参考</h2>
+            <div className="w-16 h-[2px] bg-brand-gold mx-auto mb-6" />
+            <p className="text-brand-text-muted max-w-2xl mx-auto">
+              财税服务的费用与企业类型、开票量、票据张数、业务复杂度直接相关，以下为市场常见参考范围，具体以企业实际情况核算
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+            {feeReference.map((item) => (
+              <div key={item.title} className="p-6 bg-white border border-brand-border rounded-sm">
+                <h3 className="font-bold text-brand-navy text-base mb-2">{item.title}</h3>
+                <p className="text-2xl font-bold text-brand-gold mb-3">{item.range}</p>
+                <p className="text-sm text-brand-text-muted leading-relaxed">{item.desc}</p>
+              </div>
+            ))}
+          </div>
+
+          <div className="mt-8 p-5 bg-white border border-brand-border rounded-sm">
+            <p className="text-sm text-brand-text-muted leading-relaxed">
+              <strong className="text-brand-navy">高端合规与咨询类服务</strong>（财税合规体系搭建、内部管理审计、股权架构与常年财税顾问、
+              专项财税风控）：这类服务需先了解企业实际经营与账务状况，按项目复杂度、服务范围与工作量评估报价，
+              提供<strong className="text-brand-navy">免费初步诊断</strong>后再确定方案与费用。
+            </p>
+            <Link
+              href="/contact"
+              className="mt-4 inline-flex items-center gap-2 px-5 py-2.5 bg-brand-navy text-white text-sm font-medium rounded-sm hover:bg-brand-navy-light transition-colors"
+            >
+              免费测算我的服务费用 <ArrowRight size={14} />
+            </Link>
+          </div>
+
+          <p className="mt-6 text-xs text-brand-text-muted leading-relaxed text-center max-w-3xl mx-auto">
+            以上区间为市场常见参考范围，不构成最终报价；具体服务内容与费用以双方签订的服务合同约定为准。
+          </p>
         </div>
       </section>
 

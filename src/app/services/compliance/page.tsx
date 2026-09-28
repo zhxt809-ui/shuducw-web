@@ -302,6 +302,9 @@ export default function CompliancePage() {
             <div>
               <h3 className="text-xl md:text-2xl font-bold text-brand-navy mb-2">需要高端合规或内审服务？</h3>
               <p className="text-brand-text-muted text-sm md:text-base">资深持证团队为您提供从风险排查到整改落地的全流程闭环服务。</p>
+              <p className="text-xs text-brand-text-muted mt-2">
+                费用说明：合规体系搭建、内部管理审计按项目复杂度、服务范围与工作量评估报价，先免费初步诊断，再确定方案与费用。
+              </p>
               <div className="flex flex-wrap items-center gap-4 mt-4 text-sm text-brand-text">
                 <span className="flex items-center gap-2">
                   <Phone size={14} className="text-brand-gold" />
