@@ -1,16 +1,17 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
-import { BookOpen, TrendingUp, FileText, ArrowRight, ChevronRight } from 'lucide-react';
+import { BookOpen, TrendingUp, FileText, Award, ArrowRight, ChevronRight } from 'lucide-react';
 import { listArticles } from '@/lib/store';
 
 export const revalidate = 60;
 
 export const metadata: Metadata = {
-  title: '财税资讯_财税案例_财税知识_政策解读',
+  title: '财税资讯_服务实录_财税案例_财税知识_政策解读',
   description:
-    '西安数度财务咨询有限公司财税资讯频道，提供企业财税案例分享、财税知识普及、最新财税政策解读，助力企业合规经营、优化税负。',
+    '西安数度财务咨询有限公司财税资讯频道，提供真实客户服务实录、公开税务案例解读、财税知识普及与最新财税政策解读，助力企业合规经营、优化税负。',
   keywords: [
     '西安财税资讯',
+    '西安财税服务实录',
     '西安财税案例',
     '西安财税知识',
     '西安财税政策解读',
@@ -30,7 +31,8 @@ interface ArticleRow {
 }
 
 const categoryConfig: Record<string, { label: string; icon: React.ElementType; color: string; desc: string }> = {
-  cases: { label: '财税案例', icon: BookOpen, color: 'bg-brand-navy', desc: '真实企业财税服务案例，展示专业落地能力' },
+  shilu: { label: '服务实录', icon: Award, color: 'bg-[#0E7C66]', desc: '西安数度财务咨询真实客户服务案例（已脱敏），展示专业落地能力' },
+  cases: { label: '财税案例', icon: BookOpen, color: 'bg-brand-navy', desc: '公开税务稽查案例与行业事件解读，揭示合规红线与实务启示' },
   tips: { label: '财税知识', icon: TrendingUp, color: 'bg-brand-gold', desc: '实用财税知识与操作技巧，提升财务管理水平' },
   policies: { label: '政策解读', icon: FileText, color: 'bg-[#2A5A8C]', desc: '最新财税政策深度解读，把握合规方向' },
 };
@@ -174,6 +176,11 @@ export default async function NewsListPage({
                         {cat && (
                           <span className={`inline-block px-2.5 py-0.5 text-xs font-medium text-white rounded ${cat.color}`}>
                             {cat.label}
+                          </span>
+                        )}
+                        {article.category === 'cases' && (
+                          <span className="inline-block px-2 py-0.5 text-xs text-brand-text-muted bg-brand-bg border border-brand-border rounded">
+                            公开案例解读
                           </span>
                         )}
                         <span className="text-xs text-brand-text-muted">

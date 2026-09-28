@@ -18,8 +18,8 @@ export const metadata: Metadata = {
 const advantages = [
   {
     icon: Award,
-    title: '老牌本土品牌，行业公信力突出',
-    desc: '西安数度财务咨询有限公司2012年成立，深耕西安财税市场十余年，为首届西安市代理记账协会副会长单位，熟悉本地政策规则，实战经验深厚，行业认可度与客户口碑优异。',
+    title: '负责人财务出身，深耕行业十余年',
+    desc: '负责人出身财务一线，从业至今始终专注财税咨询行业，2012 年创立西安数度财务咨询，深耕西安财税市场十余年，专业积淀与行业经验深厚。',
   },
   {
     icon: Users,
@@ -34,7 +34,7 @@ const advantages = [
   {
     icon: Target,
     title: '全行业适配，定制化解决痛点',
-    desc: '服务覆盖初创、成长型、中大型企业，适配商贸、建筑、电商、劳务、高新、跨境等全行业场景，可针对性解决各行业专属财税难题。',
+    desc: '服务覆盖初创、成长型、中小型企业，适配商贸、建筑、电商、劳务、高新、跨境等全行业场景，可针对性解决各行业专属财税难题。',
   },
   {
     icon: CheckCircle2,
@@ -108,6 +108,19 @@ export default function AboutPage() {
                   账务税务规范、财税合规体系搭建、内部管理审计、高端财税咨询与风控落地服务。依托十余年一线实战经验，
                   聚焦企业财税风险防控、内部财务管控优化、业务涉税合规整改，为企业提供合规、安全、可落地的全生命周期财税解决方案。
                 </p>
+                <p>
+                  公司总经理陈文华（高级会计师、高级财税合规师、国际注册会计师）于 2026 年 4 月受邀担任西安财经大学商学院
+                  「财税计划与职业发展」专题讲座主讲嘉宾，面向 MAud / MPAcc 专业研究生分享财税行业合规实践、业财税一体化
+                  实操要点与职业发展规划。
+                  <a
+                    href="https://sxy.xaufe.edu.cn/info/1061/10377.htm"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-brand-gold hover:underline ml-1"
+                  >
+                    媒体报道原文
+                  </a>
+                </p>
               </div>
             </div>
             <div>
@@ -137,7 +150,31 @@ export default function AboutPage() {
                     </span>
                   ))}
                 </div>
-                <p className="text-sm text-brand-text-muted mt-3">适配初创、成长型、中大型企业全周期需求</p>
+                <p className="text-sm text-brand-text-muted mt-3">适配初创、成长型、中小型企业全周期需求</p>
+              </div>
+              <div className="bg-brand-bg p-6 rounded-sm border border-brand-border mt-6">
+                <h3 className="font-bold text-brand-navy mb-4">资质证照</h3>
+                <div className="grid grid-cols-2 gap-3">
+                  <a href="/license-yingye.jpg" target="_blank" rel="noopener noreferrer" className="block group">
+                    <img
+                      src="/license-yingye.jpg"
+                      alt="西安数度财务咨询有限公司营业执照"
+                      className="w-full border border-brand-border rounded-sm bg-white p-1.5 group-hover:opacity-90 transition-opacity"
+                      loading="lazy"
+                    />
+                    <p className="text-xs text-brand-text-muted mt-2 text-center group-hover:text-brand-gold transition-colors">营业执照</p>
+                  </a>
+                  <a href="/license-daiji.jpg" target="_blank" rel="noopener noreferrer" className="block group">
+                    <img
+                      src="/license-daiji.jpg"
+                      alt="西安数度财务咨询有限公司代理记账许可证书"
+                      className="w-full border border-brand-border rounded-sm bg-white p-1.5 group-hover:opacity-90 transition-opacity"
+                      loading="lazy"
+                    />
+                    <p className="text-xs text-brand-text-muted mt-2 text-center group-hover:text-brand-gold transition-colors">代理记账许可证</p>
+                  </a>
+                </div>
+                <p className="text-xs text-brand-text-muted mt-3">点击可查看大图 · 营业执照与代理记账许可证书均为实拍</p>
               </div>
             </div>
           </div>

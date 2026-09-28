@@ -76,7 +76,7 @@ export const districts: DistrictConfig[] = [
       },
     ],
     formTitle: '免费获取高新区财税方案',
-    formSub: '提交后 1 个工作日内联系您，提供免费税负测算与合规建议',
+    formSub: '提交后 1 个工作日内联系您（法定节假日顺延），提供免费税负测算与合规建议',
     serviceType: ['代理记账', '公司注册', '高新企业财税辅导', '乱账清理'],
   },
   {
@@ -128,7 +128,7 @@ export const districts: DistrictConfig[] = [
       },
     ],
     formTitle: '免费咨询个体户财税问题',
-    formSub: '提交后 1 个工作日内联系您，提供免费注册与报税方案建议',
+    formSub: '提交后 1 个工作日内联系您（法定节假日顺延），提供免费注册与报税方案建议',
     serviceType: ['个体户注册', '个体户报税', '代理记账'],
   },
   {
@@ -180,7 +180,7 @@ export const districts: DistrictConfig[] = [
       },
     ],
     formTitle: '免费获取莲湖区财税方案',
-    formSub: '提交后 1 个工作日内联系您，提供免费税负测算与合规建议',
+    formSub: '提交后 1 个工作日内联系您（法定节假日顺延），提供免费税负测算与合规建议',
     serviceType: ['个体户注册', '商贸企业代理记账', '报税', '乱账清理'],
   },
   {
@@ -232,7 +232,7 @@ export const districts: DistrictConfig[] = [
       },
     ],
     formTitle: '免费获取雁塔区初创企业财税方案',
-    formSub: '提交后 1 个工作日内联系您，提供免费注册与记账建议',
+    formSub: '提交后 1 个工作日内联系您（法定节假日顺延），提供免费注册与记账建议',
     serviceType: ['代理记账', '公司注册', '初创企业财税', '研发费用辅导'],
   },
   {
@@ -284,7 +284,7 @@ export const districts: DistrictConfig[] = [
       },
     ],
     formTitle: '免费获取长安区财税方案',
-    formSub: '提交后 1 个工作日内联系您，提供免费注册与报税建议',
+    formSub: '提交后 1 个工作日内联系您（法定节假日顺延），提供免费注册与报税建议',
     serviceType: ['代理记账', '公司注册', '个体户报税', '乱账清理'],
   },
   {
@@ -336,7 +336,7 @@ export const districts: DistrictConfig[] = [
       },
     ],
     formTitle: '免费获取西咸新区落地财税方案',
-    formSub: '提交后 1 个工作日内联系您，提供免费注册与税负测算建议',
+    formSub: '提交后 1 个工作日内联系您（法定节假日顺延），提供免费注册与税负测算建议',
     serviceType: ['企业注册', '代理记账', '园区政策财税衔接', '合规排查'],
   },
   {
@@ -388,7 +388,7 @@ export const districts: DistrictConfig[] = [
       },
     ],
     formTitle: '免费获取新城区财税方案',
-    formSub: '提交后 1 个工作日内联系您，提供免费税负测算与合规建议',
+    formSub: '提交后 1 个工作日内联系您（法定节假日顺延），提供免费税负测算与合规建议',
     serviceType: ['个体户注册', '商贸企业代理记账', '报税', '乱账清理'],
   },
   {
@@ -440,7 +440,7 @@ export const districts: DistrictConfig[] = [
       },
     ],
     formTitle: '免费获取碑林区财税方案',
-    formSub: '提交后 1 个工作日内联系您，提供免费注册与报税建议',
+    formSub: '提交后 1 个工作日内联系您（法定节假日顺延），提供免费注册与报税建议',
     serviceType: ['代理记账', '公司注册', '个体户报税', '乱账清理'],
   },
   {
@@ -493,7 +493,7 @@ export const districts: DistrictConfig[] = [
       },
     ],
     formTitle: '免费获取灞桥区财税方案',
-    formSub: '提交后 1 个工作日内联系您，提供免费注册与报税建议',
+    formSub: '提交后 1 个工作日内联系您（法定节假日顺延），提供免费注册与报税建议',
     serviceType: ['代理记账', '公司注册', '个体户报税', '乱账清理'],
   },
 ];

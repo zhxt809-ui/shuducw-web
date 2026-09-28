@@ -18,7 +18,7 @@
 import { promises as fs } from 'fs';
 import path from 'path';
 
-export type ArticleCategory = 'cases' | 'tips' | 'policies';
+export type ArticleCategory = 'shilu' | 'cases' | 'tips' | 'policies';
 
 export interface Article {
   id: number;

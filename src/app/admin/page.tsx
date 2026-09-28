@@ -5,7 +5,7 @@ import Link from 'next/link';
 import {
   Plus, Pencil, Trash2, Eye, EyeOff, Save, X, ChevronLeft, ChevronRight,
   BookOpen, TrendingUp, FileText, Search, MessageSquare, FileText as ArticleIcon,
-  Lock, Upload,
+  Lock, Upload, Award,
 } from 'lucide-react';
 
 import { marked } from 'marked';
@@ -36,6 +36,7 @@ interface Article {
 }
 
 const CATEGORIES = [
+  { value: 'shilu', label: '服务实录', icon: Award, color: 'bg-[#0E7C66]' },
   { value: 'cases', label: '财税案例', icon: BookOpen, color: 'bg-brand-navy' },
   { value: 'tips', label: '财税知识', icon: TrendingUp, color: 'bg-brand-gold' },
   { value: 'policies', label: '政策解读', icon: FileText, color: 'bg-[#2A5A8C]' },
@@ -716,7 +717,7 @@ export default function AdminPage() {
               <table className="w-full">
                 <thead>
                   <tr className="bg-gray-50 border-b">
-                    <th className="text-left px-4 py-3 text-xs font-semibold text-brand-text-muted uppercase">公司名称</th>
+                    <th className="text-left px-4 py-3 text-xs font-semibold text-brand-text-muted uppercase">企业类型</th>
                     <th className="text-left px-4 py-3 text-xs font-semibold text-brand-text-muted uppercase">联系电话</th>
                     <th className="text-left px-4 py-3 text-xs font-semibold text-brand-text-muted uppercase hidden md:table-cell">咨询内容</th>
                     <th className="text-left px-4 py-3 text-xs font-semibold text-brand-text-muted uppercase hidden lg:table-cell">提交时间</th>

@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, type FormEvent } from 'react';
+import { useRef, useState, type FormEvent } from 'react';
 import { MessageSquare, CheckCircle, Loader2, Shield, BookOpen } from 'lucide-react';
 
 export default function ConsultationForm({ defaultContent = '' }: { defaultContent?: string }) {
@@ -12,6 +12,8 @@ export default function ConsultationForm({ defaultContent = '' }: { defaultConte
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [errorMsg, setErrorMsg] = useState('');
+  // 蜜罐字段（不可见）：正常用户不会填写，机器人自动填充后被服务端拦截
+  const honeypotRef = useRef<HTMLInputElement>(null);
 
   const handleSubmit = async (e: FormEvent) => {
     e.preventDefault();
@@ -45,6 +47,7 @@ export default function ConsultationForm({ defaultContent = '' }: { defaultConte
           company_name: formData.companyName.trim(),
           phone: formData.phone.trim(),
           content: formData.content.trim(),
+          website: honeypotRef.current?.value || '',
         }),
       });
 
@@ -124,6 +127,17 @@ export default function ConsultationForm({ defaultContent = '' }: { defaultConte
       </div>
 
       <form onSubmit={handleSubmit} className="space-y-4">
+        {/* 蜜罐字段：对用户不可见，用于拦截机器人自动提交 */}
+        <input
+          ref={honeypotRef}
+          type="text"
+          name="website"
+          defaultValue=""
+          tabIndex={-1}
+          autoComplete="off"
+          aria-hidden="true"
+          className="absolute -left-[9999px] w-px h-px opacity-0 pointer-events-none"
+        />
         <div>
           <label htmlFor="company-name" className="block text-sm font-medium text-brand-navy mb-1.5">
             企业名称 <span className="text-red-500">*</span>
@@ -184,7 +198,7 @@ export default function ConsultationForm({ defaultContent = '' }: { defaultConte
             )}
           </button>
           <p className="text-xs text-brand-text-muted mt-2 text-center">
-            提交后我们将在 1 个工作日内与您联系
+            提交后我们将在 1 个工作日内与您联系（法定节假日顺延）
           </p>
           <p className="text-xs text-brand-text-muted mt-1.5 text-center flex items-center justify-center gap-1.5">
             <Shield size={12} className="text-brand-gold flex-shrink-0" />

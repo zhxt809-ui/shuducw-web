@@ -19,6 +19,7 @@ const navItems = [
     ],
   },
   { href: '/news', label: '财税资讯' },
+  { href: '/cases', label: '客户案例' },
   { href: '/faq', label: '常见问题' },
   { href: '/contact', label: '联系我们' },
 ];

@@ -56,7 +56,8 @@ const businessAreas = [
       '税务风控服务：税负测算、税务合规优化、税务异常解除、稽查协助',
       '企业配套服务：稳岗补贴申报、简易财务制度搭建、财务辅导',
     ],
-    href: '/services/basic',
+    // 中端增值并入基础财税页对应板块，锚点直达
+    href: '/services/basic#mid-tier',
   },
   {
     icon: FileCheck,

@@ -13,7 +13,7 @@ import NewsListPage from '@/components/news-list';
 export const revalidate = 60;
 
 // 资讯分类页 slug（当 /news/cases 等被访问时渲染分类列表，而非文章详情）
-const CATEGORY_SLUGS = ['cases', 'tips', 'policies'];
+const CATEGORY_SLUGS = ['shilu', 'cases', 'tips', 'policies'];
 
 // 旧 slug -> 新 slug 301 跳转映射（2026-09 slug 关键词优化，保留旧链接 SEO 权重）
 const LEGACY_SLUG_REDIRECTS: Record<string, string> = {
@@ -41,6 +41,7 @@ function redirectLegacySlug(slug: string): void {
 }
 
 const categoryLabels: Record<string, string> = {
+  shilu: '服务实录',
   cases: '财税案例',
   tips: '财税知识',
   policies: '政策解读',
@@ -105,10 +106,10 @@ export async function generateMetadata({
     };
   }
 
-  // 文章未找到：若为旧 slug 则 301 跳转到新 slug（保留权重）
+  // 文章未找到 / 未发布：旧 slug 先尝试 301；并加 noindex，避免软 404 页面被搜索引擎收录
   redirectLegacySlug(slug);
 
-  return { title: '文章未找到_西安数度财务咨询' };
+  return { title: '文章未找到_西安数度财务咨询', robots: { index: false, follow: false } };
 }
 
 marked.setOptions({
@@ -371,6 +372,11 @@ export default async function ArticlePage({
             {/* 相关业务（按分类映射业务页，补足业务内链，利于 SEO） */}
             {(() => {
               const bizMap: Record<string, { href: string; name: string; desc: string }> = {
+                shilu: {
+                  href: '/services/compliance',
+                  name: '财税合规 · 内部审计',
+                  desc: '企业财税合规自查、内部管理审计、常年财税顾问，帮您把账做规范、把风险控住',
+                },
                 tips: {
                   href: '/services/basic',
                   name: '代理记账 · 公司注册',

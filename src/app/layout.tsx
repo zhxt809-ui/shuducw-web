@@ -30,6 +30,14 @@ export const metadata: Metadata = {
     locale: 'zh_CN',
     type: 'website',
     siteName: '西安数度财务咨询',
+    images: [
+      {
+        url: 'https://www.shuducw.com/og.png',
+        width: 1200,
+        height: 630,
+        alt: '西安数度财务咨询 - 企业财税合规 · 内部管理审计 · 财税咨询风控',
+      },
+    ],
   },
   formatDetection: {
     telephone: false,

@@ -211,7 +211,7 @@ export default function LiveCommercePage() {
           <div className="max-w-2xl mx-auto bg-white border border-brand-border rounded-sm p-6 md:p-10">
             <h2 className="text-2xl font-bold text-brand-navy mb-2 text-center">免费咨询直播电商财税问题</h2>
             <p className="text-sm text-brand-text-muted text-center mb-8">
-              提交后 1 个工作日内联系您，提供免费收入申报与合规方案建议
+              提交后 1 个工作日内联系您（法定节假日顺延），提供免费收入申报与合规方案建议
             </p>
             <ConsultationForm />
           </div>

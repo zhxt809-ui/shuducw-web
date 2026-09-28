@@ -198,8 +198,8 @@ export default function BasicServicePage() {
         </div>
       </section>
 
-      {/* 中端增值财税服务 */}
-      <section className="bg-brand-bg">
+      {/* 中端增值财税服务（业务范围页锚点 mid-tier 直达） */}
+      <section id="mid-tier" className="bg-brand-bg">
         <div className="container-brand section-padding">
           <div className="text-center mb-12">
             <h2 className="text-2xl md:text-3xl font-bold text-brand-navy mb-4">中端增值财税服务</h2>
