@@ -1,5 +1,6 @@
 import Link from 'next/link';
 import { Phone, Mail, MapPin } from 'lucide-react';
+import { districts } from '@/data/districts';
 
 const footerLinks = [
   {
@@ -92,6 +93,23 @@ export function Footer() {
               </ul>
             </div>
           ))}
+        </div>
+
+        {/* 服务区域（全站内链：本地搜索友好，帮助搜索引擎发现各区县页） */}
+        <div className="mt-12 pt-8 border-t border-white/10">
+          <h3 className="text-sm font-bold text-white mb-4">服务区域</h3>
+          <div className="flex flex-wrap gap-x-5 gap-y-2.5 text-sm text-white/60">
+            {districts.map((d) => (
+              <Link
+                key={d.slug}
+                href={`/services/district/${d.slug}`}
+                className="hover:text-white/90 transition-colors"
+              >
+                {d.name}
+                {d.keyword}
+              </Link>
+            ))}
+          </div>
         </div>
 
         {/* 底部分割线与版权 */}

@@ -3,6 +3,7 @@ import Link from 'next/link';
 import { Shield, Building2, FileCheck, TrendingUp, Award, Users, CheckCircle2, ArrowRight, HelpCircle, BadgeCheck, Newspaper } from 'lucide-react';
 import { listArticles } from '@/lib/store';
 import { XiaohongshuIcon } from '@/components/xiaohongshu-icon';
+import { districts } from '@/data/districts';
 
 // 首页含服务实录动态数据，ISR 定期刷新
 export const revalidate = 60;
@@ -408,6 +409,39 @@ export default async function HomePage() {
               className="flex-shrink-0 inline-flex items-center gap-2 px-6 py-3 bg-brand-navy text-white font-medium rounded-sm hover:bg-brand-navy-light transition-colors duration-200"
             >
               查看常见问题 FAQ <ArrowRight size={16} />
+            </Link>
+          </div>
+        </div>
+      </section>
+
+      {/* 服务区域（西安全域本地化入口，含各区县页内链） */}
+      <section className="bg-brand-bg">
+        <div className="container-brand section-padding !py-10 md:!py-14">
+          <div className="text-center mb-8">
+            <h2 className="text-xl md:text-2xl font-bold text-brand-navy mb-3">服务区域</h2>
+            <div className="w-16 h-[2px] bg-brand-gold mx-auto mb-4" />
+            <p className="text-sm text-brand-text-muted max-w-2xl mx-auto">
+              公司总部位于高新区，服务覆盖西安全域——按区县提供本地化的注册、记账、报税与财税合规服务
+            </p>
+          </div>
+          <div className="flex flex-wrap justify-center gap-3">
+            {districts.map((d) => (
+              <Link
+                key={d.slug}
+                href={`/services/district/${d.slug}`}
+                className="px-4 py-2 bg-white border border-brand-border rounded-sm text-sm text-brand-navy hover:border-brand-navy hover:text-brand-gold transition-colors"
+              >
+                {d.name}
+                {d.keyword}
+              </Link>
+            ))}
+          </div>
+          <div className="text-center mt-6">
+            <Link
+              href="/services"
+              className="inline-flex items-center gap-1.5 text-sm text-brand-gold hover:text-brand-navy transition-colors"
+            >
+              查看区域专项服务详情 <ArrowRight size={14} />
             </Link>
           </div>
         </div>
