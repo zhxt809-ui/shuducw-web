@@ -162,6 +162,26 @@ export default function BasicServicePage() {
         </div>
       </section>
 
+      {/* 参考价格条（直给区间，减少价格敏感客户流失；口径与 FAQ/费用参考一致） */}
+      <section className="bg-brand-bg border-b border-brand-border">
+        <div className="container-brand !py-5 md:!py-6">
+          <div className="flex flex-col sm:flex-row flex-wrap items-center justify-center gap-x-6 gap-y-2 text-sm">
+            <span className="text-brand-navy font-medium">代账参考区间：</span>
+            <span className="text-brand-navy">
+              小规模纳税人 <strong className="text-brand-gold text-base">2000-4000 元/年</strong>
+            </span>
+            <span className="text-brand-text-muted">一般纳税人略高 · 个体户/零申报更低</span>
+            <span className="text-brand-text-muted">具体按开票量与票据量核算，以服务合同为准</span>
+            <Link
+              href="/services/delivery"
+              className="inline-flex items-center gap-1.5 text-brand-gold hover:text-brand-navy transition-colors"
+            >
+              查看交付标准 <ArrowRight size={13} />
+            </Link>
+          </div>
+        </div>
+      </section>
+
       {/* 基础一站式工商财税服务 */}
       <section className="bg-white">
         <div className="container-brand section-padding">
