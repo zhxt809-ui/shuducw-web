@@ -4,6 +4,7 @@ import { Shield, Building2, FileCheck, TrendingUp, Award, Users, CheckCircle2, A
 import { listArticles } from '@/lib/store';
 import { XiaohongshuIcon } from '@/components/xiaohongshu-icon';
 import { districts } from '@/data/districts';
+import { InlineConsultForm } from '@/components/inline-consult-form';
 
 // 首页含服务实录动态数据，ISR 定期刷新
 export const revalidate = 60;
@@ -443,6 +444,15 @@ export default async function HomePage() {
             >
               查看区域专项服务详情 <ArrowRight size={14} />
             </Link>
+          </div>
+        </div>
+      </section>
+
+      {/* 极简留资（首页直接转化入口：无需跳转联系页） */}
+      <section className="bg-white">
+        <div className="container-brand section-padding !py-10 md:!py-14">
+          <div className="max-w-3xl mx-auto border border-brand-border rounded-sm bg-brand-bg">
+            <InlineConsultForm />
           </div>
         </div>
       </section>

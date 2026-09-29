@@ -1,13 +1,15 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
 import { permanentRedirect } from 'next/navigation';
-import { ArrowLeft, ArrowRight, Calendar, Tag, FileQuestion, FileX, AlertCircle, Phone, MessageSquare, Clock3 } from 'lucide-react';
+import { ArrowLeft, ArrowRight, Calendar, Tag, FileQuestion, FileX, AlertCircle, Phone, MessageSquare, Clock3, ShieldCheck } from 'lucide-react';
+import Image from 'next/image';
 import { getArticleBySlug, listArticles } from '@/lib/store';
 import { marked } from 'marked';
 import { cache } from 'react';
 import ShareButton from '@/components/share-button';
 import { HtmlRenderer } from '@/components/html-renderer';
 import NewsListPage from '@/components/news-list';
+import { XiaohongshuIcon } from '@/components/xiaohongshu-icon';
 
 // 本地文件存储 + ISR 缓存
 export const revalidate = 60;
@@ -337,6 +339,48 @@ export default async function ArticlePage({
                 dangerouslySetInnerHTML={{ __html: renderMarkdown(article.content) }}
               />
             )}
+
+            {/* 公私域互导（小红书 + 企微顾问 + 免费测评） */}
+            <div className="mt-10 p-6 md:p-8 bg-brand-bg border border-brand-border rounded-sm">
+              <div className="flex flex-col sm:flex-row items-start sm:items-center gap-6">
+                <div className="flex-1">
+                  <h3 className="font-bold text-brand-navy mb-2">看完还有疑问？两种方式继续聊</h3>
+                  <p className="text-sm text-brand-text-muted leading-relaxed">
+                    财税政策与账务处理因企业情况而异。关注小红书看日常财税科普，
+                    或扫码添加企微顾问，把您的具体情况发给持证会计免费评估；
+                    也可以先做一次免费的账务风险自查。
+                  </p>
+                  <div className="flex flex-wrap items-center gap-4 mt-4 text-sm">
+                    <a
+                      href="https://www.xiaohongshu.com/user/profile/6521552259"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center gap-1.5 text-brand-navy hover:text-brand-gold transition-colors"
+                    >
+                      <XiaohongshuIcon size={16} />
+                      小红书：6521552259
+                    </a>
+                    <Link
+                      href="/self-check"
+                      className="inline-flex items-center gap-1.5 text-brand-navy hover:text-brand-gold transition-colors"
+                    >
+                      <ShieldCheck size={15} className="text-brand-gold" />
+                      免费账务风险自查
+                    </Link>
+                  </div>
+                </div>
+                <div className="flex-shrink-0 text-center">
+                  <Image
+                    src="/qr-wecom.png"
+                    alt="西安数度财务咨询企业微信顾问二维码"
+                    width={112}
+                    height={112}
+                    className="rounded-sm border border-brand-border bg-white p-1.5"
+                  />
+                  <p className="text-xs text-brand-text-muted mt-2">扫码加企微顾问</p>
+                </div>
+              </div>
+            </div>
 
             <div className="mt-12 pt-8 border-t border-brand-border">
               <Link
