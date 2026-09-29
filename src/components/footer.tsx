@@ -10,6 +10,7 @@ const footerLinks = [
       { label: '高端合规内审', href: '/services/compliance' },
       { label: '财税咨询风控', href: '/services/consulting' },
       { label: '业务范围总览', href: '/services' },
+      { label: '服务交付标准', href: '/services/delivery' },
     ],
   },
   {

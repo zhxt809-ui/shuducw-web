@@ -9,6 +9,7 @@ export default function ConsultationForm({ defaultContent = '' }: { defaultConte
     phone: '',
     content: defaultContent,
   });
+  const [preferredTime, setPreferredTime] = useState('');
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [errorMsg, setErrorMsg] = useState('');
@@ -46,7 +47,9 @@ export default function ConsultationForm({ defaultContent = '' }: { defaultConte
         body: JSON.stringify({
           company_name: formData.companyName.trim(),
           phone: formData.phone.trim(),
-          content: formData.content.trim(),
+          content:
+            formData.content.trim() +
+            (preferredTime ? `\n【方便联系时段】${preferredTime}` : ''),
           website: honeypotRef.current?.value || '',
         }),
       });
@@ -163,6 +166,21 @@ export default function ConsultationForm({ defaultContent = '' }: { defaultConte
             placeholder="请输入联系电话"
             className="w-full px-4 py-2.5 border border-brand-border rounded-sm text-sm text-brand-text bg-white focus:outline-none focus:border-brand-navy focus:ring-1 focus:ring-brand-navy/20 transition-colors"
           />
+        </div>
+        <div>
+          <label htmlFor="preferred-time" className="block text-sm font-medium text-brand-navy mb-1.5">
+            方便联系时段 <span className="text-brand-text-muted font-normal">（选填，减少打扰）</span>
+          </label>
+          <select
+            id="preferred-time"
+            value={preferredTime}
+            onChange={(e) => setPreferredTime(e.target.value)}
+            className="w-full px-4 py-2.5 border border-brand-border rounded-sm text-sm text-brand-text bg-white focus:outline-none focus:border-brand-navy focus:ring-1 focus:ring-brand-navy/20 transition-colors"
+          >
+            <option value="">不限，工作时段均可</option>
+            <option value="上午 9:00-12:00">上午 9:00-12:00</option>
+            <option value="下午 13:30-18:00">下午 13:30-18:00</option>
+          </select>
         </div>
         <div>
           <label htmlFor="content" className="block text-sm font-medium text-brand-navy mb-1.5">

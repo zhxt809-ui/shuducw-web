@@ -1,0 +1,38 @@
+#!/bin/bash
+B="https://www.shuducw.com"
+echo "===== 核验 DeepSeek 评价①：HTTP 是否跳转 HTTPS（它说 http 直接返回内容） ====="
+echo "--- http://www.shuducw.com 响应头 ---"
+curl -s -I http://www.shuducw.com | head -5
+echo "--- http 裸域 ---"
+curl -s -I http://shuducw.com | head -4
+echo ""
+echo "===== 核验②：网站是否\"只有几个页面\"（它说导航深度不足、页面少） ====="
+echo "sitemap 总 URL 数: $(curl -s $B/sitemap.xml | grep -c '<loc>')"
+echo "  其中 资讯文章: $(curl -s $B/sitemap.xml | grep -o '/news/' | wc -l)"
+echo "  区县页: $(curl -s $B/sitemap.xml | grep -o '/services/district/' | wc -l)"
+echo "  案例页: $(curl -s $B/sitemap.xml | grep -o '/cases' | wc -l)"
+echo ""
+echo "===== 核验③：是否有客户案例与评价（它说完全没有案例） ====="
+echo "首页'客户服务实录'区块: $(curl -s $B/ | grep -c '服务实录')"
+echo "/cases 页案例数: $(curl -s $B/cases | grep -oE '服务案例' | wc -l)"
+echo "首页'好评'表述: $(curl -s $B/ | grep -oE '.{0,20}好评.{0,20}' | head -2)"
+echo ""
+echo "===== 核验④：政策解读文章是否标注文号/来源（它说无法验证时效） ====="
+for s in 2026-shuiwujicha-zhongdian; do
+  echo "--- /news/$s ---"
+  curl -s "$B/news/$s" | grep -oE '(国家税务总局公告|财政部|公告 ?20[0-9]{2} ?年第 ?[0-9]+ ?号|文号|来源：)[^<"]{0,45}' | head -6
+  echo "  含'来源'链接数: $(curl -s $B/news/$s | grep -oE 'href="https?://[^"]*(gov\.cn|chinatax)[^"]*"' | wc -l)"
+done
+echo ""
+echo "===== 核验⑤：FAQ 是否标注更新日期 ====="
+echo "FAQ 含日期(2026年X月): $(curl -s $B/faq | grep -oE '20[0-9]{2} 年 [0-9]+ 月' | head -3)"
+echo "FAQ 含'以最新政策为准': $(curl -s $B/faq | grep -o '以最新政策为准' | wc -l)"
+echo ""
+echo "===== 核验⑥：是否有在线咨询（它说无在线咨询/智能客服） ====="
+echo "首页 浮动咨询/企微/弹窗: $(curl -s $B/ | grep -cE '浮动|企微|在线咨询')"
+echo "首页 表单字段: $(curl -s $B/ | grep -o '<select' | wc -l) 个下拉 + $(curl -s $B/ | grep -o '<input' | wc -l) 输入"
+echo "联系页表单: $(curl -s $B/contact | grep -o '<input' | wc -l) 输入"
+echo ""
+echo "===== 核验⑦：是否完全没有在线工具（它建议加计算器） ====="
+echo "/self-check 免费账务风险自查: $(curl -s -o /dev/null -w '%{http_code}' $B/self-check)"
+echo "全站'计算器/测算工具': $(curl -s $B/ | grep -cE '计算器|测算工具')"

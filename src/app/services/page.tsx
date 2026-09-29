@@ -435,6 +435,15 @@ export default function ServicesPage() {
             })}
           </div>
 
+          <div className="text-center mt-8">
+            <Link
+              href="/services/delivery"
+              className="inline-flex items-center gap-2 px-6 py-3 border border-brand-navy text-brand-navy text-sm font-medium rounded-sm hover:bg-brand-navy/5 transition-colors"
+            >
+              查看完整服务流程与交付标准 <ArrowRight size={14} />
+            </Link>
+          </div>
+
           <p className="mt-8 text-xs text-brand-text-muted leading-relaxed text-center max-w-3xl mx-auto">
             以上为服务交付的一般标准。具体服务内容、交付要求与双方权责，以双方签订的服务合同约定为准；
             涉及纳税申报的具体期限，以税务机关当期公布的规定为准。

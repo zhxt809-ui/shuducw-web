@@ -57,6 +57,7 @@
 
 ### 服务交付标准
 
+- 完整流程与交付物见 https://www.shuducw.com/services/delivery ：签约需求确认 → 建账与资料交接 → 每月账务处理 → 纳税申报 → 报表与凭证交付 → 年度事项办理 → 归档与年度复盘（共 7 个节点，每节点列明交付物与责任边界）
 - 记账与报表交付：每月账务处理完成后交付财务报表、纳税申报表及完税凭证，账务资料规范归档、可随时查阅取回
 - 纳税申报时效：按税务机关公布的申报期限完成各税种申报（期限最后一日为法定节假日的依法顺延），申报后及时反馈结果
 - 年度事项办理：企业所得税汇算清缴按法定期限（次年 5 月 31 日前）完成；工商年报在法定年报期（每年 1 月 1 日至 6 月 30 日）内提醒并协助办理
@@ -82,7 +83,8 @@
 - [基础财税服务](https://www.shuducw.com/services/basic): 工商全项、记账报税、基础配套 + 中端增值 + 服务流程
 - [高端合规内审](https://www.shuducw.com/services/compliance): 合规体系搭建、内部管理审计、高端财税咨询、专项风控 + 服务流程
 - [财税咨询风控](https://www.shuducw.com/services/consulting): 常年顾问、税负合规计划、稽查协助、股权架构搭建、风险评估 + 服务流程
-- [直播电商个体户财税咨询](https://www.shuducw.com/services/live-commerce): 直播电商个体户与主播收入申报、注册、征收方式、发票管理、私户收款风险排查
+- [直播电商个体户财税咨询](https://www.shuducw.com/services/live-commerce): 直播电商个体户与主播收入申报、注册、征收方式选择、发票管理、私户收款风险排查
+- [服务交付标准](https://www.shuducw.com/services/delivery): 代理记账与财税服务 7 个交付节点全流程、每节点交付物、双方责任边界
 - [西安高新区代理记账](https://www.shuducw.com/services/district/gaoxin): 高新区科技/软件/商贸企业代理记账、公司注册、高新企业财税辅导、乱账清理
 - [西安未央区个体户注册报税](https://www.shuducw.com/services/district/weiyang): 未央区个体户执照办理、核定/查账申报、代理记账
 - [西安莲湖区个体户注册报税](https://www.shuducw.com/services/district/lianhu): 莲湖区商户与商贸企业代理记账、报税、发票管理
