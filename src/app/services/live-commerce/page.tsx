@@ -217,6 +217,7 @@ export default function LiveCommercePage() {
             <p className="text-xs text-brand-text-muted leading-relaxed text-center mt-6">
               费用参考：直播电商个体户的注册与代理记账，小规模纳税人一般 2000-4000 元/年（视开票量与业务复杂度浮动）；
               收入结构梳理、征收方式选择等专项咨询按服务范围评估，先免费沟通再确定方案与费用。
+              想先自己算算？试试 <Link href="/tools/income-tax" className="text-brand-gold hover:text-brand-navy underline underline-offset-2">经营所得个税计算器</Link>。
             </p>
           </div>
           <div className="text-center mt-8">

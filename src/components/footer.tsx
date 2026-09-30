@@ -26,6 +26,15 @@ const footerLinks = [
     ],
   },
   {
+    title: '实用工具',
+    links: [
+      { label: '增值税计算器', href: '/tools/vat' },
+      { label: '个税计算器', href: '/tools/income-tax' },
+      { label: '账务风险自查', href: '/self-check' },
+      { label: '服务交付标准', href: '/services/delivery' },
+    ],
+  },
+  {
     title: '关于我们',
     links: [
       { label: '公司简介', href: '/about' },
@@ -44,9 +53,9 @@ export function Footer() {
       <div className="h-[2px] bg-brand-gold" />
 
       <div className="container-brand section-padding !py-12 md:!py-16">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-12">
+        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-8 lg:gap-6">
           {/* 公司信息 */}
-          <div className="lg:col-span-2">
+          <div className="col-span-2 md:col-span-3 lg:col-span-2">
             <div className="flex items-center gap-3 mb-4">
               <div className="w-9 h-9 bg-brand-gold rounded-sm flex items-center justify-center">
                 <span className="text-white font-bold text-base">数</span>

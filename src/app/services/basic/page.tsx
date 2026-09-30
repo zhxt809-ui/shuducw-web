@@ -377,6 +377,12 @@ export default function BasicServicePage() {
                 查看常见问题
               </Link>
               <Link
+                href="/tools/vat"
+                className="inline-flex items-center gap-2 px-6 py-3 border border-brand-navy text-brand-navy rounded-sm hover:bg-brand-navy/5 transition-colors duration-200 text-sm"
+              >
+                增值税计算器
+              </Link>
+              <Link
                 href="/self-check"
                 className="inline-flex items-center gap-2 px-6 py-3 border border-brand-gold text-brand-gold rounded-sm hover:bg-brand-gold/5 transition-colors duration-200 text-sm"
               >

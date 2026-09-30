@@ -52,6 +52,8 @@ export async function GET() {
     { url: `${siteUrl}/services/consulting`, lastModified: now, changeFrequency: 'monthly', priority: 0.8 },
     { url: `${siteUrl}/services/live-commerce`, lastModified: now, changeFrequency: 'monthly', priority: 0.7 },
     { url: `${siteUrl}/services/delivery`, lastModified: now, changeFrequency: 'monthly', priority: 0.8 },
+    { url: `${siteUrl}/tools/vat`, lastModified: now, changeFrequency: 'monthly', priority: 0.8 },
+    { url: `${siteUrl}/tools/income-tax`, lastModified: now, changeFrequency: 'monthly', priority: 0.8 },
     ...districts.map((d) => ({
       url: `${siteUrl}/services/district/${d.slug}`,
       lastModified: now,

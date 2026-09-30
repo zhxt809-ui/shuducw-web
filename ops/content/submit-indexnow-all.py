@@ -14,6 +14,8 @@ all_urls = [
     'https://www.shuducw.com/services/consulting',
     'https://www.shuducw.com/services/live-commerce',
     'https://www.shuducw.com/services/delivery',
+    'https://www.shuducw.com/tools/vat',
+    'https://www.shuducw.com/tools/income-tax',
     # 区域落地页（数据驱动，新增区县后同步补充）
     'https://www.shuducw.com/services/district/gaoxin',
     'https://www.shuducw.com/services/district/weiyang',
