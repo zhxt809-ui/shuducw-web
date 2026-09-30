@@ -366,7 +366,7 @@ export default async function HomePage() {
               <ul className="text-sm text-brand-text-muted leading-relaxed space-y-2.5">
                 <li className="flex gap-2">
                   <CheckCircle2 size={15} className="text-brand-gold flex-shrink-0 mt-0.5" />
-                  二十余年财税咨询与企业服务实战经验（高校官网报道），2012 年创立西安数度财务咨询
+                  二十余年财税咨询与企业服务实战经验，2012 年创立西安数度财务咨询有限公司
                 </li>
                 <li className="flex gap-2">
                   <CheckCircle2 size={15} className="text-brand-gold flex-shrink-0 mt-0.5" />
