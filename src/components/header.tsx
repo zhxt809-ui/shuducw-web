@@ -5,34 +5,59 @@ import { usePathname } from 'next/navigation';
 import { useState } from 'react';
 import { Menu, X, ChevronDown, Phone } from 'lucide-react';
 
-const navItems = [
+type NavChild = { href: string; label: string };
+type NavItem = {
+  href: string;
+  label: string;
+  /** 判定高亮的路径前缀（默认用 href） */
+  activePrefixes?: string[];
+  /** 下拉菜单底部的"查看全部"链接 */
+  more?: NavChild;
+  children?: NavChild[];
+};
+
+const navItems: NavItem[] = [
   { href: '/', label: '首页' },
   { href: '/about', label: '关于我们' },
   {
     href: '/services',
     label: '财税服务',
+    activePrefixes: ['/services'],
+    more: { href: '/services', label: '查看全部业务范围' },
     children: [
       { href: '/services/basic', label: '基础财税服务' },
       { href: '/services/compliance', label: '高端合规内审' },
       { href: '/services/consulting', label: '财税咨询风控' },
       { href: '/services/live-commerce', label: '直播电商个体户财税咨询' },
+      { href: '/services/delivery', label: '服务交付标准' },
     ],
   },
   { href: '/news', label: '财税资讯' },
   { href: '/cases', label: '客户案例' },
+  {
+    href: '/tools/vat',
+    label: '在线工具',
+    activePrefixes: ['/tools', '/self-check'],
+    children: [
+      { href: '/tools/vat', label: '增值税计算器' },
+      { href: '/tools/income-tax', label: '个税计算器' },
+      { href: '/self-check', label: '账务风险自查' },
+    ],
+  },
   { href: '/faq', label: '常见问题' },
   { href: '/contact', label: '联系我们' },
 ];
 
+function isGroupActive(item: NavItem, pathname: string): boolean {
+  if (item.activePrefixes) return item.activePrefixes.some((p) => pathname.startsWith(p));
+  return pathname === item.href || pathname.startsWith(item.href + '/');
+}
+
 export function Header() {
   const pathname = usePathname();
   const [mobileOpen, setMobileOpen] = useState(false);
-  const [servicesOpen, setServicesOpen] = useState(false);
-
-  // 判断当前是否在服务子页面
-  const isServicesActive =
-    pathname === '/services' ||
-    pathname.startsWith('/services/');
+  // 当前展开的下拉菜单（以父项 href 标识）
+  const [openMenu, setOpenMenu] = useState<string | null>(null);
 
   return (
     <header className="sticky top-0 z-50 bg-white border-b border-brand-border">
@@ -49,28 +74,28 @@ export function Header() {
         </Link>
 
         {/* Desktop Nav */}
-        <nav className="hidden lg:flex items-center gap-6 xl:gap-8">
+        <nav className="hidden lg:flex items-center gap-4 xl:gap-8">
           {navItems.map((item) => {
-            const isActive = pathname === item.href;
+            const active = isGroupActive(item, pathname);
             if (item.children) {
               return (
                 <div
                   key={item.href}
                   className="relative group"
-                  onMouseEnter={() => setServicesOpen(true)}
-                  onMouseLeave={() => setServicesOpen(false)}
+                  onMouseEnter={() => setOpenMenu(item.href)}
+                  onMouseLeave={() => setOpenMenu(null)}
                 >
                   <Link
                     href={item.href}
                     className={`nav-link text-sm inline-flex items-center gap-1 ${
-                      isServicesActive ? 'nav-link-active' : ''
+                      active ? 'nav-link-active' : ''
                     }`}
                   >
                     {item.label}
                     <ChevronDown size={14} className="transition-transform group-hover:rotate-180" />
                   </Link>
                   {/* 下拉菜单 */}
-                  {servicesOpen && (
+                  {openMenu === item.href && (
                     <div className="absolute left-0 top-full pt-3">
                       <div className="bg-white border border-brand-border rounded-sm shadow-lg py-2 min-w-[180px]">
                         {item.children.map((child) => {
@@ -89,14 +114,16 @@ export function Header() {
                             </Link>
                           );
                         })}
-                        <div className="border-t border-brand-border mt-2 pt-2">
-                          <Link
-                            href="/services"
-                            className="flex items-center gap-2 px-5 py-2.5 text-sm text-brand-gold font-medium hover:bg-brand-bg transition-colors"
-                          >
-                            查看全部业务范围
-                          </Link>
-                        </div>
+                        {item.more && (
+                          <div className="border-t border-brand-border mt-2 pt-2">
+                            <Link
+                              href={item.more.href}
+                              className="flex items-center gap-2 px-5 py-2.5 text-sm text-brand-gold font-medium hover:bg-brand-bg transition-colors"
+                            >
+                              {item.more.label}
+                            </Link>
+                          </div>
+                        )}
                       </div>
                     </div>
                   )}
@@ -107,7 +134,7 @@ export function Header() {
               <Link
                 key={item.href}
                 href={item.href}
-                className={`nav-link text-sm ${isActive ? 'nav-link-active' : ''}`}
+                className={`nav-link text-sm ${pathname === item.href ? 'nav-link-active' : ''}`}
               >
                 {item.label}
               </Link>
@@ -137,7 +164,7 @@ export function Header() {
         <nav className="lg:hidden border-t border-brand-border bg-white">
           <div className="px-4 py-4 space-y-1">
             {navItems.map((item) => {
-              const isActive = pathname === item.href;
+              const active = isGroupActive(item, pathname);
               if (item.children) {
                 return (
                   <div key={item.href}>
@@ -145,7 +172,7 @@ export function Header() {
                       href={item.href}
                       onClick={() => setMobileOpen(false)}
                       className={`block py-2.5 px-3 text-sm rounded-md transition-colors ${
-                        isServicesActive
+                        active
                           ? 'bg-brand-navy/5 text-brand-navy font-medium'
                           : 'text-brand-text-muted hover:text-brand-navy hover:bg-gray-50'
                       }`}
@@ -173,7 +200,7 @@ export function Header() {
                   href={item.href}
                   onClick={() => setMobileOpen(false)}
                   className={`block py-2.5 px-3 text-sm rounded-md transition-colors ${
-                    isActive
+                    pathname === item.href
                       ? 'bg-brand-navy/5 text-brand-navy font-medium'
                       : 'text-brand-text-muted hover:text-brand-navy hover:bg-gray-50'
                   }`}
