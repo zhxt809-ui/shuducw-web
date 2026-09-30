@@ -2,8 +2,15 @@
 
 import { useRef, useState, type FormEvent } from 'react';
 import { MessageSquare, CheckCircle, Loader2, Shield, BookOpen } from 'lucide-react';
+import { trackEvent } from '@/lib/analytics';
 
-export default function ConsultationForm({ defaultContent = '' }: { defaultContent?: string }) {
+export default function ConsultationForm({
+  defaultContent = '',
+  source = '预约咨询表单',
+}: {
+  defaultContent?: string;
+  source?: string;
+}) {
   const [formData, setFormData] = useState({
     companyName: '',
     phone: '',
@@ -58,11 +65,14 @@ export default function ConsultationForm({ defaultContent = '' }: { defaultConte
       if (res.ok && result.success) {
         setIsSubmitted(true);
         setFormData({ companyName: '', phone: '', content: '' });
+        trackEvent('表单', '提交成功', source);
       } else {
         setErrorMsg(result.error || '提交失败，请直接拨打电话 029-84556877 / 13359182829 咨询');
+        trackEvent('表单', '提交失败', source);
       }
     } catch {
       setErrorMsg('网络异常，请直接拨打电话 029-84556877 / 13359182829 咨询');
+      trackEvent('表单', '提交失败', `${source}(网络异常)`);
     } finally {
       setIsSubmitting(false);
     }

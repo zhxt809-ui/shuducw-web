@@ -1,7 +1,8 @@
 'use client';
 
-import { useMemo, useState } from 'react';
+import { useEffect, useMemo, useRef, useState } from 'react';
 import { ArrowLeftRight, Copy, Check } from 'lucide-react';
+import { trackToolUse } from '@/lib/analytics';
 
 const DIGITS = '零壹贰叁肆伍陆柒捌玖';
 const SUB_UNITS = ['', '拾', '佰', '仟'];
@@ -72,6 +73,16 @@ const EXAMPLES = ['1680.32', '6007.14', '16409.02', '1409.50', '107000.53'];
 export function RmbUppercaseConverter() {
   const [raw, setRaw] = useState('');
   const [copied, setCopied] = useState(false);
+
+  // 埋点：首次填入金额即上报一次「工具使用」
+  const trackedUse = useRef(false);
+  useEffect(() => {
+    if (trackedUse.current) return;
+    if (raw) {
+      trackedUse.current = true;
+      trackToolUse('人民币大写转换器');
+    }
+  }, [raw]);
 
   const parsed = useMemo(() => {
     const cleaned = raw.replace(/[¥￥,\s]/g, '');

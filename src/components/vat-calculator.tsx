@@ -1,7 +1,8 @@
 'use client';
 
-import { useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { Calculator, Info } from 'lucide-react';
+import { trackToolUse } from '@/lib/analytics';
 
 type Mode = 'small' | 'general';
 
@@ -22,6 +23,16 @@ export function VatCalculator() {
   const [generalSales, setGeneralSales] = useState('');
   const [rate, setRate] = useState('0.13');
   const [inputVat, setInputVat] = useState('');
+
+  // 埋点：首次填入金额即上报一次「工具使用」，避免每次按键重复上报
+  const trackedUse = useRef(false);
+  useEffect(() => {
+    if (trackedUse.current) return;
+    if (smallSales || generalSales || inputVat) {
+      trackedUse.current = true;
+      trackToolUse('增值税计算器');
+    }
+  }, [smallSales, generalSales, inputVat]);
 
   const num = (v: string) => {
     const n = Number(v.replace(/,/g, ''));

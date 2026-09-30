@@ -1,9 +1,10 @@
 'use client';
 
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import Link from 'next/link';
 import { Phone, MessageSquare, QrCode, X, ChevronUp } from 'lucide-react';
 import { MiniConsultDialog } from '@/components/mini-consult-dialog';
+import { trackEvent, trackLeadClick } from '@/lib/analytics';
 
 /**
  * 全站浮动咨询按钮（移动端/桌面端通用）
@@ -15,6 +16,7 @@ export function FloatingConsultButton() {
   const [showMini, setShowMini] = useState(false);
 
   const toggleWecom = () => {
+    if (!showWecom) trackLeadClick('打开企微二维码');
     setShowWecom((v) => !v);
   };
 
@@ -22,7 +24,26 @@ export function FloatingConsultButton() {
     setOpen(false);
     setShowWecom(false);
     setShowMini(true);
+    trackEvent('线索', '打开留资弹窗', window.location.pathname);
   };
+
+  // 埋点：全站委托监听「电话」与「小红书」链接点击
+  // 覆盖页脚、百度地图弹窗、各页 CTA 等所有位置的 tel:/小红书 链接，无需逐处改造
+  useEffect(() => {
+    const handleClick = (event: MouseEvent) => {
+      const el = event.target as Element | null;
+      const anchor = el?.closest?.('a[href]') as HTMLAnchorElement | null;
+      if (!anchor) return;
+      const href = anchor.getAttribute('href') || '';
+      if (href.startsWith('tel:')) {
+        trackLeadClick('点击电话');
+      } else if (href.includes('xiaohongshu.com')) {
+        trackLeadClick('点击小红书');
+      }
+    };
+    document.addEventListener('click', handleClick, true);
+    return () => document.removeEventListener('click', handleClick, true);
+  }, []);
 
   return (
     <div className="fixed bottom-5 right-5 z-50 flex flex-col items-end gap-3">

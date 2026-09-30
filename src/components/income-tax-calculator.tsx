@@ -1,7 +1,8 @@
 'use client';
 
-import { useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { Calculator, Info } from 'lucide-react';
+import { trackToolUse } from '@/lib/analytics';
 
 type Mode = 'business' | 'salary';
 
@@ -51,6 +52,16 @@ export function IncomeTaxCalculator() {
   const [salaryIncome, setSalaryIncome] = useState('');
   const [salaryDeduction, setSalaryDeduction] = useState('');
   const [socialInsurance, setSocialInsurance] = useState('');
+
+  // 埋点：首次填入金额即上报一次「工具使用」，避免每次按键重复上报
+  const trackedUse = useRef(false);
+  useEffect(() => {
+    if (trackedUse.current) return;
+    if (bizIncome || bizCost || salaryIncome || salaryDeduction || socialInsurance) {
+      trackedUse.current = true;
+      trackToolUse('个税计算器');
+    }
+  }, [bizIncome, bizCost, salaryIncome, salaryDeduction, socialInsurance]);
 
   const num = (v: string) => {
     const n = Number(v.replace(/,/g, ''));

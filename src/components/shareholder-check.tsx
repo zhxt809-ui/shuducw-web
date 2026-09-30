@@ -4,6 +4,7 @@ import { useState } from 'react';
 import { Landmark, ArrowRight, RotateCcw, ShieldCheck, AlertTriangle } from 'lucide-react';
 import Link from 'next/link';
 import ConsultationForm from './consultation-form';
+import { trackEvent } from '@/lib/analytics';
 
 type Option = { label: string; score: number };
 type Question = { q: string; dimension: string; options: Option[] };
@@ -141,6 +142,8 @@ export default function ShareholderCheck() {
       setStep(step + 1);
     } else {
       setStep(6);
+      // 埋点：完成自查，value 为需关注事项数
+      trackEvent('工具', '完成自查', '股东往来自查', newAnswers.filter((s) => s >= 2).length);
     }
   };
 
@@ -177,7 +180,10 @@ export default function ShareholderCheck() {
             结果仅供参考，不构成专业意见。
           </p>
           <button
-            onClick={() => setStep(1)}
+            onClick={() => {
+              setStep(1);
+              trackEvent('工具', '开始自查', '股东往来自查');
+            }}
             className="inline-flex items-center gap-2 px-8 py-3 bg-brand-navy text-white font-medium rounded-sm hover:bg-brand-navy-light transition-colors"
           >
             开始自查 <ArrowRight size={16} />
@@ -306,7 +312,7 @@ export default function ShareholderCheck() {
                 预约专业财税诊断，获取详细的《股东往来规范建议》
               </p>
             </div>
-            <ConsultationForm defaultContent={prefillContent} />
+            <ConsultationForm defaultContent={prefillContent} source="股东往来自查结果页" />
           </div>
 
           <button

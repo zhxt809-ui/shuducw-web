@@ -159,7 +159,7 @@ export default function DistrictLandingPage({ district }: { district: DistrictCo
           <div className="max-w-2xl mx-auto bg-white border border-brand-border rounded-sm p-6 md:p-10">
             <h2 className="text-2xl font-bold text-brand-navy mb-2 text-center">{district.formTitle}</h2>
             <p className="text-sm text-brand-text-muted text-center mb-8">{district.formSub}</p>
-            <ConsultationForm />
+            <ConsultationForm source={`区域服务页表单-${district.name}`} />
           </div>
           <div className="flex items-center justify-center gap-4 mt-8">
             <Link

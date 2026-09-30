@@ -213,7 +213,7 @@ export default function LiveCommercePage() {
             <p className="text-sm text-brand-text-muted text-center mb-8">
               提交后 1 个工作日内联系您（法定节假日顺延），提供免费收入申报与合规方案建议
             </p>
-            <ConsultationForm />
+            <ConsultationForm source="直播电商服务页表单" />
             <p className="text-xs text-brand-text-muted leading-relaxed text-center mt-6">
               费用参考：直播电商个体户的注册与代理记账，小规模纳税人一般 2000-4000 元/年（视开票量与业务复杂度浮动）；
               收入结构梳理、征收方式选择等专项咨询按服务范围评估，先免费沟通再确定方案与费用。

@@ -2,6 +2,7 @@
 
 import { useState } from 'react';
 import { Loader2, CheckCircle, Shield, Phone } from 'lucide-react';
+import { trackEvent } from '@/lib/analytics';
 
 const BUSINESS_TYPES = ['个体户', '小微企业', '一般纳税人企业', '高新技术企业', '集团/多主体企业', '其他'];
 const QUESTION_TOPICS = ['代理记账报税', '税务异常处理', '乱账清理', '财税合规体检', '内部审计', '股权架构税务', '其他问题'];
@@ -43,11 +44,14 @@ export function InlineConsultForm() {
       const data = await res.json();
       if (res.ok && data.success) {
         setSubmitted(true);
+        trackEvent('表单', '提交成功', '首页内联表单');
       } else {
         setErrorMsg(data.error || '提交失败，请稍后再试');
+        trackEvent('表单', '提交失败', '首页内联表单');
       }
     } catch {
       setErrorMsg('网络异常，请稍后再试');
+      trackEvent('表单', '提交失败', '首页内联表单(网络异常)');
     } finally {
       setSubmitting(false);
     }

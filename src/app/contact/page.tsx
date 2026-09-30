@@ -178,7 +178,7 @@ export default function ContactPage() {
             </div>
 
             {/* 右侧：预约咨询表单 */}
-            <ConsultationForm />
+            <ConsultationForm source="联系页表单" />
           </div>
         </div>
       </section>
