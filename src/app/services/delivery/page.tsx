@@ -183,8 +183,79 @@ export default function DeliveryPage() {
         </div>
       </section>
 
-      {/* 责任边界 */}
+      {/* 专项服务交付流程 */}
       <section className="bg-brand-bg">
+        <div className="container-brand section-padding !py-12 md:!py-16">
+          <div className="text-center mb-10">
+            <h2 className="text-2xl md:text-3xl font-bold text-brand-navy mb-4">专项服务交付流程</h2>
+            <div className="w-16 h-[2px] bg-brand-gold mx-auto mb-6" />
+            <p className="text-brand-text-muted max-w-2xl mx-auto">
+              基础财税托管按上述 7 节点交付；财税风险排查、内部管理审计与常年财税顾问，
+              按以下专项流程推进，每个阶段同样有明确交付物
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 max-w-6xl mx-auto">
+            <div className="p-6 bg-white border border-brand-border rounded-sm">
+              <h3 className="font-bold text-brand-navy mb-4">财税风险排查交付</h3>
+              <ol className="space-y-2.5">
+                {['需求访谈', '资料收集', '风险分析', '诊断报告', '整改建议', '跟踪复核'].map((s, i) => (
+                  <li key={s} className="flex items-center gap-2.5 text-sm text-brand-text">
+                    <span className="w-6 h-6 rounded-full bg-brand-gold/10 text-brand-gold text-xs font-bold flex items-center justify-center flex-shrink-0">
+                      {i + 1}
+                    </span>
+                    {s}
+                  </li>
+                ))}
+              </ol>
+              <p className="mt-4 text-xs text-brand-text-muted leading-relaxed border-t border-brand-border pt-3">
+                交付物：风险诊断报告、问题清单、整改建议与跟踪复核记录
+              </p>
+            </div>
+
+            <div className="p-6 bg-white border border-brand-border rounded-sm">
+              <h3 className="font-bold text-brand-navy mb-4">内部管理审计交付</h3>
+              <ol className="space-y-2.5">
+                {['项目启动', '确定审计范围', '资料分析', '现场/专项核查', '问题清单', '整改建议', '复核确认'].map((s, i) => (
+                  <li key={s} className="flex items-center gap-2.5 text-sm text-brand-text">
+                    <span className="w-6 h-6 rounded-full bg-brand-gold/10 text-brand-gold text-xs font-bold flex items-center justify-center flex-shrink-0">
+                      {i + 1}
+                    </span>
+                    {s}
+                  </li>
+                ))}
+              </ol>
+              <p className="mt-4 text-xs text-brand-text-muted leading-relaxed border-t border-brand-border pt-3">
+                交付物：审计报告、问题与风险清单、整改建议书及复核结论
+              </p>
+            </div>
+
+            <div className="p-6 bg-white border border-brand-border rounded-sm">
+              <h3 className="font-bold text-brand-navy mb-4">常年财税顾问交付</h3>
+              <ol className="space-y-2.5">
+                {['月度咨询', '事项提醒', '专项分析', '政策解读', '年度复盘'].map((s, i) => (
+                  <li key={s} className="flex items-center gap-2.5 text-sm text-brand-text">
+                    <span className="w-6 h-6 rounded-full bg-brand-gold/10 text-brand-gold text-xs font-bold flex items-center justify-center flex-shrink-0">
+                      {i + 1}
+                    </span>
+                    {s}
+                  </li>
+                ))}
+              </ol>
+              <p className="mt-4 text-xs text-brand-text-muted leading-relaxed border-t border-brand-border pt-3">
+                交付物：日常咨询答复、涉税事项提醒、专项分析意见与年度财税复盘
+              </p>
+            </div>
+          </div>
+
+          <p className="mt-8 text-xs text-brand-text-muted text-center max-w-3xl mx-auto">
+            专项服务的具体范围、阶段与交付物，以项目启动前双方确认的服务方案为准。
+          </p>
+        </div>
+      </section>
+
+      {/* 责任边界 */}
+      <section className="bg-white">
         <div className="container-brand section-padding">
           <div className="text-center mb-12">
             <h2 className="text-2xl md:text-3xl font-bold text-brand-navy mb-4">责任边界</h2>

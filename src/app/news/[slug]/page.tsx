@@ -447,7 +447,7 @@ export default async function ArticlePage({
                 policies: {
                   href: '/services/consulting',
                   name: '财税咨询 · 风控落地',
-                  desc: '税务政策解读、税收优惠适用性评估、高端财税风控方案设计与落地',
+                  desc: '税务政策解读、税收优惠适用性评估、财税风控方案设计与落地',
                 },
               };
               const biz = bizMap[article.category];
@@ -478,7 +478,7 @@ export default async function ArticlePage({
                   <h2 className="text-xl font-bold mb-2">需要专业的财税服务？</h2>
                   <p className="text-white/80 text-sm leading-relaxed">
                     西安数度财务咨询 2012 年成立，首届西安市代理记账协会副会长单位，
-                    高级会计师、国际注册会计师、注册税务师团队为您提供工商财税托管、
+                    高级会计师、国际注册会计师、税务师团队为您提供工商财税托管、
                     财税合规、内部审计、财税风控一站式服务。
                   </p>
                   <div className="flex flex-wrap items-center gap-4 mt-4 text-sm text-white/80">

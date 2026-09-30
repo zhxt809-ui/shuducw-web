@@ -54,7 +54,7 @@ const consultingServices = [
   {
     icon: Scale,
     title: '股权架构搭建与企业架构服务',
-    desc: '围绕企业股权布局、投融资、并购重组等核心场景，提供定制化高端财税规划服务，从架构层面解决涉税问题。',
+    desc: '围绕企业股权布局、投融资、并购重组等核心场景，提供定制化财税规划服务，从架构层面解决涉税问题。',
     items: [
       '股权架构合规搭建',
       '股东分红合规计划',
@@ -89,12 +89,12 @@ export default function ConsultingPage() {
       url: 'https://www.shuducw.com',
     },
     description:
-      '西安数度财务咨询有限公司专业提供高端财税咨询与风控服务，包含常年财税顾问、税负合规计划、税务异常处理、稽查协助、股权架构搭建、投融资财税尽调、重大经营风险评估，全方位保障企业财税安全。',
+      '西安数度财务咨询有限公司专业提供财税咨询与风控服务，包含常年财税顾问、税负合规计划、税务异常处理、稽查协助、股权架构搭建、投融资财税尽调、重大经营风险评估，全方位保障企业财税安全。',
     areaServed: {
       '@type': 'City',
       name: '西安',
     },
-    serviceType: ['高端财税咨询', '税务风控', '股权架构搭建', '投融资财税尽调', '企业财税顾问'],
+    serviceType: ['财税顾问咨询', '税务风控', '股权架构搭建', '投融资财税尽调', '企业财税顾问'],
   };
 
   const faqList = [
@@ -133,11 +133,11 @@ export default function ConsultingPage() {
         <div className="container-brand section-padding !py-16 md:!py-20">
           <div className="max-w-3xl">
             <div className="inline-block px-4 py-1.5 bg-brand-gold/20 border border-brand-gold/40 text-brand-gold-light text-sm rounded-sm mb-6">
-              高端增值服务
+              财税顾问与专项咨询
             </div>
             <h1 className="text-3xl md:text-4xl font-bold mb-4">财税咨询与风控服务</h1>
             <p className="text-white/80 text-base md:text-lg leading-relaxed">
-              西安数度财务咨询有限公司专业提供高端财税咨询与风控服务，包含常年财税顾问、税负合规计划、
+              西安数度财务咨询有限公司专业提供财税咨询与风控服务，包含常年财税顾问、税负合规计划、
               税务异常处理、稽查协助、股权架构搭建、投融资财税尽调、重大经营风险评估，
               全方位保障企业财税安全。
             </p>
@@ -281,7 +281,7 @@ export default function ConsultingPage() {
           <div className="flex flex-col md:flex-row items-center justify-between gap-6 bg-white border border-brand-border rounded-sm p-6 md:p-8">
             <div>
               <h3 className="text-xl md:text-2xl font-bold text-brand-navy mb-2">需要专业的财税咨询或风控服务？</h3>
-              <p className="text-brand-text-muted text-sm md:text-base">高端持证团队为企业提供全方位财税安全保障，从咨询到落地一站式服务。</p>
+              <p className="text-brand-text-muted text-sm md:text-base">持证专业团队为企业提供全方位财税安全保障，从咨询到落地一站式服务。</p>
               <p className="text-xs text-brand-text-muted mt-2">
                 费用说明：合规体系搭建、内部审计、股权架构、常年财税顾问等按项目复杂度、服务范围与工作量评估报价，先免费初步沟通诊断，再确定方案与费用。
               </p>

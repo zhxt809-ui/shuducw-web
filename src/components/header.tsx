@@ -26,7 +26,7 @@ const navItems: NavItem[] = [
     more: { href: '/services', label: '查看全部业务范围' },
     children: [
       { href: '/services/basic', label: '基础财税服务' },
-      { href: '/services/compliance', label: '高端合规内审' },
+      { href: '/services/compliance', label: '财税合规与内审' },
       { href: '/services/consulting', label: '财税咨询风控' },
       { href: '/services/live-commerce', label: '直播电商个体户财税咨询' },
       { href: '/services/delivery', label: '服务交付标准' },

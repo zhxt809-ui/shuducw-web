@@ -12,7 +12,7 @@ export const revalidate = 60;
 export const metadata: Metadata = {
   title: '西安数度财务咨询_2012年老牌财税咨询_企业财税合规_内部管理审计服务',
   description:
-    '西安数度财务咨询有限公司2012年成立，首届西安市代理记账协会副会长单位，拥有高级会计师、国际注册会计师、注册税务师团队，专业提供工商财税托管、企业财税合规、内部管理审计、高端财税风控落地服务。',
+    '西安数度财务咨询有限公司2012年成立，首届西安市代理记账协会副会长单位，拥有高级会计师、国际注册会计师、税务师团队，专业提供工商财税托管、企业财税合规、内部管理审计、高端财税风控落地服务。',
   keywords: [
     '西安数度财务咨询',
     '西安财税公司',
@@ -76,7 +76,7 @@ const teamCredentials = [
   },
   {
     icon: BadgeCheck,
-    name: '注册税务师',
+    name: '税务师',
     focus: '税务合规 / 风险排查 / 税务事项处理',
   },
   {
@@ -347,9 +347,18 @@ export default async function HomePage() {
                   <p className="text-sm text-brand-text-muted">总经理 · 财务一线出身</p>
                 </div>
               </div>
-              <div className="flex flex-wrap gap-2 mb-5">
-                {['高级会计师', '高级财税合规师', '国际注册会计师', '中税网金牌讲师'].map((c) => (
+              <p className="text-xs text-brand-text-muted mb-2">专业资质</p>
+              <div className="flex flex-wrap gap-2 mb-3">
+                {['高级会计师', '高级财税合规师', '国际注册会计师'].map((c) => (
                   <span key={c} className="px-2.5 py-1 text-xs bg-brand-gold/10 text-brand-gold rounded-sm font-medium">
+                    {c}
+                  </span>
+                ))}
+              </div>
+              <p className="text-xs text-brand-text-muted mb-2">荣誉与社会任职</p>
+              <div className="flex flex-wrap gap-2 mb-5">
+                {['中税网金牌讲师', '西安财经大学校外硕士生导师', '西安外事学院商学院校外实习实训指导教师'].map((c) => (
+                  <span key={c} className="px-2.5 py-1 text-xs bg-brand-navy/5 text-brand-navy rounded-sm font-medium">
                     {c}
                   </span>
                 ))}

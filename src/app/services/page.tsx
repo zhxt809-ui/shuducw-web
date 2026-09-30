@@ -22,6 +22,7 @@ import {
   ShieldAlert,
   UserCheck,
   Archive,
+  Shield,
 } from 'lucide-react';
 import { districts } from '@/data/districts';
 
@@ -39,11 +40,13 @@ export const metadata: Metadata = {
   alternates: { canonical: '/services' },
 };
 
+// 核心业务：与首页一致的客户语言四层服务体系
 const businessAreas = [
   {
     icon: Building2,
-    tag: '基础刚需',
-    title: '基础一站式工商财税服务',
+    num: '01',
+    title: '基础财税托管',
+    scene: '初创、小微企业日常经营',
     desc: '整合工商全项服务与记账报税全套服务，为初创企业、小微企业提供标准化一站式财税托管，全程规范办理，解决企业开办、日常经营、年度公示等基础财税问题。',
     services: [
       '工商全项服务：公司注册、企业变更、公司注销、股权转让',
@@ -53,46 +56,47 @@ const businessAreas = [
     href: '/services/basic',
   },
   {
-    icon: Layers,
-    tag: '中端增值',
-    title: '中端增值财税服务',
-    desc: '针对企业经营中常见的账务混乱、税务异常、税负失衡、财务流程不规范等问题，提供专项整改与优化服务，修复历史财税遗留问题，规范日常财税流程。',
+    icon: FileCheck,
+    num: '02',
+    title: '财务规范与税务合规',
+    scene: '乱账、历史账、税务风险、财税合规',
+    desc: '针对账务混乱、税务异常、历史遗留问题与合规要求，提供专项梳理、整改与合规体系搭建服务，修复历史问题、规范日常流程、排查税务风险。',
     services: [
-      '账务优化服务：乱账清理、旧账梳理、账务规范整改',
-      '税务风控服务：税负测算、税务合规优化、税务异常解除、稽查协助',
-      '企业配套服务：稳岗补贴申报、简易财务制度搭建、财务辅导',
+      '账务规范：乱账清理、旧账梳理、账务规范整改',
+      '税务合规：税务风险排查、税负测算、税务异常解除、稽查协助',
+      '合规体系：财税合规体系搭建、简易财务制度搭建、财务辅导',
     ],
-    // 中端增值并入基础财税页对应板块，锚点直达
-    href: '/services/basic#mid-tier',
+    href: '/services/compliance',
   },
   {
-    icon: FileCheck,
-    tag: '品牌核心',
-    title: '高端合规 & 内部管控核心业务',
-    desc: '本公司深耕十余年的标杆高端业务。依托资深持证财税专家团队，专注服务成长型及中大型规范企业，聚焦企业财税合规落地、内部财务管控、全域风险排查与体系搭建。',
+    icon: Shield,
+    num: '03',
+    title: '内部管理与风险控制',
+    scene: '内部审计、财务制度、流程、资金风险',
+    desc: '面向已有财务团队或管理基础的企业，提供独立视角的内部管理审计与内控建设，覆盖费用、采购、销售、资金等关键环节，把风险控制嵌入日常管理。',
     services: [
-      '企业财税合规体系搭建',
-      '企业内部管理审计',
-      '高端财税咨询与企业架构服务',
-      '专项财税风控服务',
+      '内部管理审计：费用专项核查、资产费用核查、采购销售流程审计',
+      '内控建设：财务流程梳理、内控制度搭建、岗位分离设计',
+      '资金风险：往来款项核查、资金安全管理、管理报表体系',
     ],
     href: '/services/compliance',
   },
   {
     icon: TrendingUp,
-    tag: '高端增值',
-    title: '财税咨询与风控服务',
-    desc: '专业提供高端财税咨询与风控服务，常年企业财税顾问、税负合规计划、税务异常处理、稽查协助、股权架构搭建、投融资财税尽调，全方位保障企业财税安全。',
+    num: '04',
+    title: '财税顾问与专项咨询',
+    scene: '常年顾问、股权、融资、尽调、集团财税',
+    desc: '为成长期与集团化企业提供伴随式财税顾问与专项支持，围绕股权、融资、重大经营决策提供可落地的财税方案。',
     services: [
-      '常年专属财税顾问',
-      '股权架构合规搭建与股东分红合规计划',
-      '投融资财税风控与财务尽调',
-      '税务争议辅助处理与风险评估',
+      '常年财税顾问：日常咨询、事项提醒、政策解读、年度复盘',
+      '股权与分红：股权架构合规搭建、股东分红合规安排',
+      '投融资支持：投融资财税风控、财务尽调、税务争议辅助处理',
     ],
     href: '/services/consulting',
   },
 ];
 
+// 配套与专项服务（核心业务之外的配套支持）
 const extendedServices = [
   '高新技术企业认定辅助',
   '专精特新申报',
@@ -102,7 +106,7 @@ const extendedServices = [
   '企业全盘财务外包',
   '财务部门托管',
   '全员薪酬个税合规规划',
-  '各类企业专项财税补贴申报',
+  '稳岗补贴等各类企业补贴申报',
 ];
 
 // 服务交付标准（依据法定期限与行业通行惯例表述，不含编造的时效承诺）
@@ -191,7 +195,7 @@ export default function ServicesPage() {
           '@type': 'Offer',
           itemOffered: {
             '@type': 'Service',
-            name: '基础一站式工商财税服务',
+            name: '基础财税托管',
             description: '整合工商全项服务与记账报税全套服务，为初创企业、小微企业提供标准化一站式财税托管',
           },
         },
@@ -199,24 +203,24 @@ export default function ServicesPage() {
           '@type': 'Offer',
           itemOffered: {
             '@type': 'Service',
-            name: '中端增值财税服务',
-            description: '针对企业经营中常见的账务混乱、税务异常、税负失衡等问题，提供专项整改与优化服务',
+            name: '财务规范与税务合规',
+            description: '乱账清理、历史账务整改、税务风险排查与财税合规体系搭建',
           },
         },
         {
           '@type': 'Offer',
           itemOffered: {
             '@type': 'Service',
-            name: '高端合规与内部管控核心业务',
-            description: '专注企业财税合规落地、内部财务管控、全域风险排查与体系搭建',
+            name: '内部管理与风险控制',
+            description: '内部管理审计、内控制度建设、财务流程梳理与资金风险管理',
           },
         },
         {
           '@type': 'Offer',
           itemOffered: {
             '@type': 'Service',
-            name: '财税咨询与风控服务',
-            description: '常年企业财税顾问、税负合规计划、税务异常处理、稽查协助、股权架构搭建、投融资财税尽调',
+            name: '财税顾问与专项咨询',
+            description: '常年企业财税顾问、股权架构搭建、投融资财税尽调、税务争议辅助处理',
           },
         },
       ],
@@ -246,15 +250,15 @@ export default function ServicesPage() {
         </div>
       </section>
 
-      {/* 业务体系总览 */}
+      {/* 核心业务：四层服务体系 */}
       <section className="bg-white">
         <div className="container-brand section-padding">
           <div className="text-center mb-12">
-            <h2 className="text-2xl md:text-3xl font-bold text-brand-navy mb-4">业务体系总览</h2>
+            <h2 className="text-2xl md:text-3xl font-bold text-brand-navy mb-4">核心业务体系</h2>
             <div className="w-16 h-[2px] bg-brand-gold mx-auto mb-6" />
             <p className="text-brand-text-muted max-w-2xl mx-auto">
-              业务体系分层清晰、定位明确，分为基础工商财税服务、中端增值财税服务、高端合规内控核心业务三大板块，
-              兼顾刚需托管与高端风控落地。
+              四层核心业务覆盖企业不同发展阶段的财税需求——从日常记账报税，到财务规范、
+              内部管理与长期财税顾问，每层都有明确的服务清单与交付标准。
             </p>
           </div>
 
@@ -265,14 +269,15 @@ export default function ServicesPage() {
                 <div key={area.title} className="card-brand">
                   <div className="flex flex-col lg:flex-row gap-6">
                     <div className="flex-1">
-                      <div className="flex items-center gap-3 mb-4">
+                      <div className="flex items-center gap-3 mb-4 flex-wrap">
                         <div className="w-10 h-10 bg-brand-navy/5 rounded-sm flex items-center justify-center">
                           <Icon size={20} className="text-brand-navy" />
                         </div>
                         <span className="text-xs px-2 py-0.5 bg-brand-gold/10 text-brand-gold rounded-sm font-medium">
-                          {area.tag}
+                          {area.num}
                         </span>
                         <h3 className="text-lg font-bold text-brand-navy">{area.title}</h3>
+                        <span className="text-xs text-brand-text-muted">｜{area.scene}</span>
                       </div>
                       <p className="text-sm text-brand-text-muted leading-relaxed mb-4">{area.desc}</p>
                       <ul className="space-y-2">
@@ -300,14 +305,14 @@ export default function ServicesPage() {
         </div>
       </section>
 
-      {/* 增值延伸业务 */}
+      {/* 配套与专项服务 */}
       <section className="bg-brand-bg">
         <div className="container-brand section-padding">
           <div className="text-center mb-12">
-            <h2 className="text-2xl md:text-3xl font-bold text-brand-navy mb-4">增值延伸业务</h2>
+            <h2 className="text-2xl md:text-3xl font-bold text-brand-navy mb-4">配套与专项服务</h2>
             <div className="w-16 h-[2px] bg-brand-gold mx-auto mb-6" />
             <p className="text-brand-text-muted max-w-2xl mx-auto">
-              依托核心财税服务优势，为合作企业提供全链条配套增值服务，一站式覆盖企业经营全周期财税、资质、补贴、财务外包需求。
+              核心业务之外的配套支持——围绕资质、补贴、外包等专项需求，为合作企业提供全链条配套服务。
             </p>
           </div>
 
@@ -474,7 +479,7 @@ export default function ServicesPage() {
 
           <div className="mt-8 p-5 bg-white border border-brand-border rounded-sm">
             <p className="text-sm text-brand-text-muted leading-relaxed">
-              <strong className="text-brand-navy">高端合规与咨询类服务</strong>（财税合规体系搭建、内部管理审计、股权架构与常年财税顾问、
+              <strong className="text-brand-navy">合规与咨询类服务</strong>（财税合规体系搭建、内部管理审计、股权架构与常年财税顾问、
               专项财税风控）：这类服务需先了解企业实际经营与账务状况，按项目复杂度、服务范围与工作量评估报价，
               提供<strong className="text-brand-navy">免费初步诊断</strong>后再确定方案与费用。
             </p>

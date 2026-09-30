@@ -72,7 +72,7 @@ export default async function CasesPage() {
             <h2 className="text-2xl md:text-3xl font-bold text-brand-navy mb-4">服务实录案例</h2>
             <div className="w-16 h-[2px] bg-brand-gold mx-auto mb-6" />
             <p className="text-brand-text-muted max-w-2xl mx-auto">
-              从基础代理记账到高端财税咨询与合规体系搭建，见证企业不同发展阶段的财税需求
+              从基础代理记账到财税顾问与合规体系搭建，见证企业不同发展阶段的财税需求
             </p>
           </div>
 

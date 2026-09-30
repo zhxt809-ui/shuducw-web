@@ -3,9 +3,9 @@ import Link from 'next/link';
 import { ShieldCheck, Search, FileCheck, TrendingUp, AlertTriangle, ArrowRight, ClipboardList, FileSearch, Handshake, RefreshCcw, Phone } from 'lucide-react';
 
 export const metadata: Metadata = {
-  title: '高端合规内审服务_西安数度财务咨询_企业财税合规_内部管理审计_财务内控搭建',
+  title: '企业财税合规与内审服务_西安数度财务咨询_内部管理审计_财务内控搭建',
   description:
-    '西安高端企业财税合规内控机构，专注企业财税风险排查、历史账务整改、合规体系搭建、内部管理审计、资产费用专项核查，助力企业完善财务内控、规避涉税风险。',
+    '专注企业财税风险排查、历史账务整改、合规体系搭建、内部管理审计、资产费用专项核查，助力企业完善财务内控、规避涉税风险。',
   keywords: [
     '西安数度财务咨询',
     '西安企业财税合规',
@@ -52,8 +52,8 @@ const coreServices = [
   },
   {
     icon: TrendingUp,
-    title: '高端财税咨询与企业架构服务',
-    desc: '围绕企业长期经营、股权布局、投融资、并购重组等核心场景，提供定制化高端财税规划服务。',
+    title: '财税咨询与企业架构服务',
+    desc: '围绕企业长期经营、股权布局、投融资、并购重组等核心场景，提供定制化财税规划服务。',
     items: [
       '常年专属财税顾问',
       '股权架构合规搭建',
@@ -84,14 +84,14 @@ export default function CompliancePage() {
   const jsonLd = {
     '@context': 'https://schema.org',
     '@type': 'Service',
-    name: '高端合规内审服务',
+    name: '企业财税合规与内审服务',
     provider: {
       '@type': 'Organization',
       name: '西安数度财务咨询有限公司',
       url: 'https://www.shuducw.com',
     },
     description:
-      '西安高端企业财税合规内控机构，专注企业财税风险排查、历史账务整改、合规体系搭建、内部管理审计、资产费用专项核查与内审制度落地，解决企业财务不规范、内控薄弱、涉税风险等难题。',
+      '专注企业财税风险排查、历史账务整改、合规体系搭建、内部管理审计、资产费用专项核查与内审制度落地，解决企业财务不规范、内控薄弱、涉税风险等难题。',
     areaServed: {
       '@type': 'City',
       name: '西安',
@@ -139,11 +139,11 @@ export default function CompliancePage() {
         <div className="container-brand section-padding !py-16 md:!py-20">
           <div className="max-w-3xl">
             <div className="inline-block px-4 py-1.5 bg-brand-gold/20 border border-brand-gold/40 text-brand-gold-light text-sm rounded-sm mb-6">
-              品牌核心优势业务
+              财税规范与内部管控
             </div>
-            <h1 className="text-3xl md:text-4xl font-bold mb-4">高端合规 & 内审服务</h1>
+            <h1 className="text-3xl md:text-4xl font-bold mb-4">财税合规与内审服务</h1>
             <p className="text-white/80 text-base md:text-lg leading-relaxed">
-              西安数度财务咨询有限公司是西安高端企业财税合规内控机构，专注企业财税风险排查、
+              西安数度财务咨询有限公司专注企业财税风险排查、
               历史账务整改、合规体系搭建、内部管理审计、资产费用专项核查与内审制度落地，
               解决企业财务不规范、内控薄弱、涉税风险等难题。
             </p>
@@ -155,10 +155,10 @@ export default function CompliancePage() {
       <section className="bg-white">
         <div className="container-brand section-padding">
           <div className="max-w-3xl mx-auto text-center mb-12">
-            <h2 className="text-2xl md:text-3xl font-bold text-brand-navy mb-4">深耕十余年的标杆高端业务</h2>
+            <h2 className="text-2xl md:text-3xl font-bold text-brand-navy mb-4">深耕十余年的核心业务</h2>
             <div className="w-16 h-[2px] bg-brand-gold mx-auto mb-6" />
             <p className="text-brand-text-muted">
-              依托资深持证财税专家团队，专注服务成长型及中大型规范企业，聚焦企业财税合规落地、
+              依托持证财税专业团队，专注服务成长型及中大型规范企业，聚焦企业财税合规落地、
               内部财务管控、全域风险排查与体系搭建，从根源解决企业财务不规范、内控薄弱、涉税隐患等核心问题。
             </p>
           </div>
@@ -300,7 +300,7 @@ export default function CompliancePage() {
         <div className="container-brand section-padding !py-12 md:!py-16">
           <div className="flex flex-col md:flex-row items-center justify-between gap-6 bg-brand-bg border border-brand-border rounded-sm p-6 md:p-8">
             <div>
-              <h3 className="text-xl md:text-2xl font-bold text-brand-navy mb-2">需要高端合规或内审服务？</h3>
+              <h3 className="text-xl md:text-2xl font-bold text-brand-navy mb-2">需要财税合规或内审服务？</h3>
               <p className="text-brand-text-muted text-sm md:text-base">资深持证团队为您提供从风险排查到整改落地的全流程闭环服务。</p>
               <p className="text-xs text-brand-text-muted mt-2">
                 费用说明：合规体系搭建、内部管理审计按项目复杂度、服务范围与工作量评估报价，先免费初步诊断，再确定方案与费用。
