@@ -397,26 +397,29 @@ export default async function HomePage() {
             </div>
 
             {/* 专业团队（不实名，按持证类别展示） */}
-            <div className="lg:col-span-3 grid grid-cols-1 sm:grid-cols-3 gap-4">
-              {teamCredentials.map((t) => {
-                const Icon = t.icon;
-                return (
-                  <div key={t.name} className="p-6 bg-white border border-brand-border rounded-sm flex flex-col">
-                    <div className="w-10 h-10 bg-brand-navy/5 rounded-sm flex items-center justify-center mb-4">
-                      <Icon size={20} className="text-brand-navy" />
+            <div className="lg:col-span-3">
+              <p className="text-xs text-brand-text-muted mb-3 tracking-wide">专业团队持证类别（团队资质）</p>
+              <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
+                {teamCredentials.map((t) => {
+                  const Icon = t.icon;
+                  return (
+                    <div key={t.name} className="p-6 bg-white border border-brand-border rounded-sm flex flex-col">
+                      <div className="w-10 h-10 bg-brand-navy/5 rounded-sm flex items-center justify-center mb-4">
+                        <Icon size={20} className="text-brand-navy" />
+                      </div>
+                      <h3 className="text-base font-bold text-brand-navy mb-2">{t.name}</h3>
+                      <p className="text-xs text-brand-text-muted leading-relaxed flex-1">{t.focus}</p>
                     </div>
-                    <h3 className="text-base font-bold text-brand-navy mb-2">{t.name}</h3>
-                    <p className="text-xs text-brand-text-muted leading-relaxed flex-1">{t.focus}</p>
+                  );
+                })}
+                <div className="sm:col-span-3 p-5 bg-white border border-brand-border rounded-sm flex items-center gap-4">
+                  <div className="w-10 h-10 bg-brand-navy/5 rounded-sm flex items-center justify-center flex-shrink-0">
+                    <Users size={20} className="text-brand-navy" />
                   </div>
-                );
-              })}
-              <div className="sm:col-span-3 p-5 bg-white border border-brand-border rounded-sm flex items-center gap-4">
-                <div className="w-10 h-10 bg-brand-navy/5 rounded-sm flex items-center justify-center flex-shrink-0">
-                  <Users size={20} className="text-brand-navy" />
+                  <p className="text-sm text-brand-text-muted leading-relaxed">
+                    财税专业服务团队：记账报税、工商财税、日常财税服务，与持证专业人员协同完成企业全周期财税服务。
+                  </p>
                 </div>
-                <p className="text-sm text-brand-text-muted leading-relaxed">
-                  财税专业服务团队：记账报税、工商财税、日常财税服务，与持证专业人员协同完成企业全周期财税服务。
-                </p>
               </div>
             </div>
           </div>
