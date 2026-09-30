@@ -85,7 +85,7 @@ export default function ConsultationForm({
           <CheckCircle size={48} className="mx-auto text-green-500 mb-4" />
           <h3 className="text-xl font-bold text-brand-navy mb-2">提交成功</h3>
           <p className="text-brand-text-muted text-sm mb-1">
-            客服将在工作时段与您联系，由持有代理记账资质的会计一对一沟通
+            客服会尽快与您联系（工作时段响应更快），由持有代理记账资质的会计一对一沟通
           </p>
           <p className="text-brand-text-muted text-xs mb-6">
             也可以关注我们的小红书账号（6521552259），获取最新财税政策更新
@@ -226,7 +226,7 @@ export default function ConsultationForm({
             )}
           </button>
           <p className="text-xs text-brand-text-muted mt-2 text-center">
-            提交后我们将在 1 个工作日内与您联系（法定节假日顺延）
+            提交后顾问会尽快与您联系（工作时段响应更快）
           </p>
           <p className="text-xs text-brand-text-muted mt-1.5 text-center flex items-center justify-center gap-1.5">
             <Shield size={12} className="text-brand-gold flex-shrink-0" />
