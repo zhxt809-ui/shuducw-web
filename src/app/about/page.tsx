@@ -244,21 +244,25 @@ export default function AboutPage() {
               <h3 className="text-lg font-bold text-brand-navy mb-4">公开活动</h3>
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 <a href="/lecture-xaufe-2026.jpg" target="_blank" rel="noopener noreferrer" className="block group">
-                  <img
-                    src="/lecture-xaufe-2026.jpg"
-                    alt="陈文华受邀西安财经大学商学院开展财税专题讲座现场"
-                    className="w-full rounded-sm border border-brand-border group-hover:opacity-90 transition-opacity"
-                    loading="lazy"
-                  />
+                  <div className="aspect-[4/3] overflow-hidden rounded-sm border border-brand-border bg-brand-bg">
+                    <img
+                      src="/lecture-xaufe-2026.jpg"
+                      alt="陈文华受邀西安财经大学商学院开展财税专题讲座现场"
+                      className="w-full h-full object-cover object-center group-hover:opacity-90 transition-opacity"
+                      loading="lazy"
+                    />
+                  </div>
                   <p className="text-xs text-brand-text-muted mt-2">2026 年 4 月 · 西安财经大学商学院「财税计划与职业发展」专题讲座现场</p>
                 </a>
                 <a href="/activity-waishi.jpg" target="_blank" rel="noopener noreferrer" className="block group">
-                  <img
-                    src="/activity-waishi.jpg"
-                    alt="西安外事学院授牌仪式现场"
-                    className="w-full rounded-sm border border-brand-border group-hover:opacity-90 transition-opacity"
-                    loading="lazy"
-                  />
+                  <div className="aspect-[4/3] overflow-hidden rounded-sm border border-brand-border bg-brand-bg">
+                    <img
+                      src="/activity-waishi.jpg"
+                      alt="西安外事学院授牌仪式现场"
+                      className="w-full h-full object-cover object-center group-hover:opacity-90 transition-opacity"
+                      loading="lazy"
+                    />
+                  </div>
                   <p className="text-xs text-brand-text-muted mt-2">西安外事学院授牌仪式</p>
                 </a>
               </div>
@@ -268,36 +272,36 @@ export default function AboutPage() {
             {/* 负责人资质证书 */}
             <div className="mt-8">
               <h3 className="text-lg font-bold text-brand-navy mb-4">负责人资质证书</h3>
-              <div className="grid grid-cols-2 sm:grid-cols-3 gap-4">
-                <a href="/cert-acc-international.jpg" target="_blank" rel="noopener noreferrer" className="block group">
+              <div className="grid grid-cols-2 sm:grid-cols-3 gap-4 items-start">
+                <div className="block">
                   <img
                     src="/cert-acc-international.jpg"
                     alt="陈文华国际注册会计师证书"
-                    className="w-full rounded-sm border border-brand-border bg-white p-1.5 group-hover:opacity-90 transition-opacity"
+                    className="w-full max-w-[180px] mx-auto rounded-sm border border-brand-border bg-white p-1.5"
                     loading="lazy"
                   />
                   <p className="text-xs text-brand-text-muted mt-2 text-center">国际注册会计师</p>
-                </a>
-                <a href="/cert-xaufe.jpg" target="_blank" rel="noopener noreferrer" className="block group">
+                </div>
+                <div className="block">
                   <img
                     src="/cert-xaufe.jpg"
                     alt="陈文华西安财经大学校外硕士生导师聘书"
-                    className="w-full rounded-sm border border-brand-border bg-white p-1.5 group-hover:opacity-90 transition-opacity"
+                    className="w-full max-w-[180px] mx-auto rounded-sm border border-brand-border bg-white p-1.5"
                     loading="lazy"
                   />
                   <p className="text-xs text-brand-text-muted mt-2 text-center">西安财经大学校外硕士生导师聘书</p>
-                </a>
-                <a href="/cert-waishi.jpg" target="_blank" rel="noopener noreferrer" className="block group">
+                </div>
+                <div className="block">
                   <img
                     src="/cert-waishi.jpg"
                     alt="陈文华西安外事学院商学院校外实习实训指导教师聘书"
-                    className="w-full rounded-sm border border-brand-border bg-white p-1.5 group-hover:opacity-90 transition-opacity"
+                    className="w-full max-w-[180px] mx-auto rounded-sm border border-brand-border bg-white p-1.5"
                     loading="lazy"
                   />
                   <p className="text-xs text-brand-text-muted mt-2 text-center">西安外事学院商学院校外实习实训指导教师聘书</p>
-                </a>
+                </div>
               </div>
-              <p className="text-xs text-brand-text-muted mt-3">点击可查看大图 · 证书均为实拍</p>
+              <p className="text-xs text-brand-text-muted mt-3">证书实拍 · 缩略展示（不提供原图放大）</p>
             </div>
 
             {/* 办公环境与资质荣誉 */}
