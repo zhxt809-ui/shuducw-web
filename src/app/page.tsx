@@ -348,7 +348,7 @@ export default async function HomePage() {
                 </div>
               </div>
               <div className="flex flex-wrap gap-2 mb-5">
-                {['高级会计师', '高级财税合规师', '国际注册会计师'].map((c) => (
+                {['高级会计师', '高级财税合规师', '国际注册会计师', '中税网金牌讲师'].map((c) => (
                   <span key={c} className="px-2.5 py-1 text-xs bg-brand-gold/10 text-brand-gold rounded-sm font-medium">
                     {c}
                   </span>
@@ -366,7 +366,7 @@ export default async function HomePage() {
                 <li className="flex gap-2">
                   <CheckCircle2 size={15} className="text-brand-gold flex-shrink-0 mt-0.5" />
                   <span>
-                    2026 年 4 月受邀担任西安财经大学商学院「财税计划与职业发展」专题讲座主讲嘉宾（
+                    受聘西安财经大学校外硕士生导师，2026 年 4 月受邀担任商学院「财税计划与职业发展」专题讲座主讲嘉宾（
                     <a
                       href="https://sxy.xaufe.edu.cn/info/1061/10377.htm"
                       target="_blank"

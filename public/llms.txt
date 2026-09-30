@@ -85,7 +85,7 @@
 ## 网站页面
 
 - [首页](https://www.shuducw.com/): 品牌定位（企业财税问题不只是记账报税）、客户问题场景、四大服务板块、负责人与专业团队、服务实录、交付标准、财税工具、服务区域、免费诊断入口
-- [关于我们](https://www.shuducw.com/about): 公司详细介绍、核心资质、服务行业、六大核心优势
+- [关于我们](https://www.shuducw.com/about): 公司详细介绍、企业负责人（陈文华）与资质证书、公开活动、办公环境、核心优势、服务行业
 - [业务范围](https://www.shuducw.com/services): 四大业务板块总览 + 增值延伸业务
 - [基础财税服务](https://www.shuducw.com/services/basic): 工商全项、记账报税、基础配套 + 中端增值 + 服务流程
 - [高端合规内审](https://www.shuducw.com/services/compliance): 合规体系搭建、内部管理审计、高端财税咨询、专项风控 + 服务流程

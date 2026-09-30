@@ -18,8 +18,8 @@ export const metadata: Metadata = {
 const advantages = [
   {
     icon: Award,
-    title: '负责人财务出身，深耕行业十余年',
-    desc: '负责人出身财务一线，从业至今始终专注财税咨询行业，2012 年创立西安数度财务咨询，深耕西安财税市场十余年，专业积淀与行业经验深厚。',
+    title: '负责人财务出身，二十余年实战经验',
+    desc: '负责人出身财务一线，二十余年财税咨询与企业服务实战经验，2012 年创立西安数度财务咨询，深耕西安财税市场十余年，专业积淀与行业经验深厚。',
   },
   {
     icon: Users,
@@ -109,7 +109,7 @@ export default function AboutPage() {
                   聚焦企业财税风险防控、内部财务管控优化、业务涉税合规整改，为企业提供合规、安全、可落地的全生命周期财税解决方案。
                 </p>
                 <p>
-                  公司总经理陈文华（高级会计师、高级财税合规师、国际注册会计师）于 2026 年 4 月受邀担任西安财经大学商学院
+                  公司总经理陈文华（高级会计师、高级财税合规师、国际注册会计师，中税网金牌讲师）于 2026 年 4 月受邀担任西安财经大学商学院
                   「财税计划与职业发展」专题讲座主讲嘉宾，面向 MAud / MPAcc 专业研究生分享财税行业合规实践、业财税一体化
                   实操要点与职业发展规划。
                   <a
@@ -173,6 +173,15 @@ export default function AboutPage() {
                     />
                     <p className="text-xs text-brand-text-muted mt-2 text-center group-hover:text-brand-gold transition-colors">代理记账许可证</p>
                   </a>
+                  <a href="/honors-1.jpg" target="_blank" rel="noopener noreferrer" className="block group">
+                    <img
+                      src="/honors-1.jpg"
+                      alt="西安数度财务咨询有限公司资质荣誉实拍"
+                      className="w-full border border-brand-border rounded-sm bg-white p-1.5 group-hover:opacity-90 transition-opacity"
+                      loading="lazy"
+                    />
+                    <p className="text-xs text-brand-text-muted mt-2 text-center group-hover:text-brand-gold transition-colors">资质荣誉（实拍）</p>
+                  </a>
                 </div>
                 <p className="text-xs text-brand-text-muted mt-3">点击可查看大图 · 营业执照与代理记账许可证书均为实拍</p>
               </div>
@@ -203,7 +212,7 @@ export default function AboutPage() {
               </div>
               <div className="md:col-span-2 space-y-4 text-brand-text leading-relaxed">
                 <div className="flex flex-wrap gap-2">
-                  {['高级会计师', '高级财税合规师', '国际注册会计师'].map((c) => (
+                  {['高级会计师', '高级财税合规师', '国际注册会计师', '中税网金牌讲师'].map((c) => (
                     <span key={c} className="px-2.5 py-1 text-xs bg-brand-gold/10 text-brand-gold rounded-sm font-medium">
                       {c}
                     </span>
@@ -211,7 +220,8 @@ export default function AboutPage() {
                 </div>
                 <p>
                   陈文华，西安数度财务咨询有限公司总经理，财务一线出身，从业至今始终专注财税咨询行业，
-                  二十余年财税咨询与企业服务实战经验，2012 年创立西安数度财务咨询。
+                  二十余年财税咨询与企业服务实战经验，2012 年创立西安数度财务咨询，中税网金牌讲师，
+                  受聘西安财经大学校外硕士生导师、西安外事学院商学院校外实习实训指导教师。
                   专业方向：企业财税管理、税务合规、内部控制与财税咨询。
                 </p>
                 <p className="text-sm text-brand-text-muted">
@@ -245,11 +255,11 @@ export default function AboutPage() {
                 <a href="/activity-waishi.jpg" target="_blank" rel="noopener noreferrer" className="block group">
                   <img
                     src="/activity-waishi.jpg"
-                    alt="陈文华高校公开活动"
+                    alt="西安外事学院授牌仪式现场"
                     className="w-full h-56 object-cover rounded-sm border border-brand-border group-hover:opacity-90 transition-opacity"
                     loading="lazy"
                   />
-                  <p className="text-xs text-brand-text-muted mt-2">负责人高校公开活动</p>
+                  <p className="text-xs text-brand-text-muted mt-2">西安外事学院授牌仪式</p>
                 </a>
               </div>
               <p className="text-xs text-brand-text-muted mt-3">点击可查看大图</p>
@@ -271,23 +281,55 @@ export default function AboutPage() {
                 <a href="/cert-xaufe.jpg" target="_blank" rel="noopener noreferrer" className="block group">
                   <img
                     src="/cert-xaufe.jpg"
-                    alt="陈文华西安财经大学相关证书"
+                    alt="陈文华西安财经大学校外硕士生导师聘书"
                     className="w-full h-52 object-cover object-top rounded-sm border border-brand-border bg-white p-1.5 group-hover:opacity-90 transition-opacity"
                     loading="lazy"
                   />
-                  <p className="text-xs text-brand-text-muted mt-2 text-center">西安财经大学</p>
+                  <p className="text-xs text-brand-text-muted mt-2 text-center">西安财经大学校外硕士生导师聘书</p>
                 </a>
                 <a href="/cert-waishi.jpg" target="_blank" rel="noopener noreferrer" className="block group">
                   <img
                     src="/cert-waishi.jpg"
-                    alt="陈文华西安外事学院相关证书"
+                    alt="陈文华西安外事学院商学院校外实习实训指导教师聘书"
                     className="w-full h-52 object-cover object-top rounded-sm border border-brand-border bg-white p-1.5 group-hover:opacity-90 transition-opacity"
                     loading="lazy"
                   />
-                  <p className="text-xs text-brand-text-muted mt-2 text-center">西安外事学院</p>
+                  <p className="text-xs text-brand-text-muted mt-2 text-center">西安外事学院商学院校外实习实训指导教师聘书</p>
                 </a>
               </div>
               <p className="text-xs text-brand-text-muted mt-3">点击可查看大图 · 证书均为实拍</p>
+            </div>
+
+            {/* 办公环境 */}
+            <div className="mt-8">
+              <h3 className="text-lg font-bold text-brand-navy mb-4">办公环境</h3>
+              <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
+                <a href="/office-1.jpg" target="_blank" rel="noopener noreferrer" className="block group">
+                  <img
+                    src="/office-1.jpg"
+                    alt="西安数度财务咨询办公环境实拍一"
+                    className="w-full h-44 object-cover rounded-sm border border-brand-border group-hover:opacity-90 transition-opacity"
+                    loading="lazy"
+                  />
+                </a>
+                <a href="/office-2.jpg" target="_blank" rel="noopener noreferrer" className="block group">
+                  <img
+                    src="/office-2.jpg"
+                    alt="西安数度财务咨询办公环境实拍二"
+                    className="w-full h-44 object-cover rounded-sm border border-brand-border group-hover:opacity-90 transition-opacity"
+                    loading="lazy"
+                  />
+                </a>
+                <a href="/office-3.jpg" target="_blank" rel="noopener noreferrer" className="block group">
+                  <img
+                    src="/office-3.jpg"
+                    alt="西安数度财务咨询办公环境实拍三"
+                    className="w-full h-44 object-cover rounded-sm border border-brand-border group-hover:opacity-90 transition-opacity"
+                    loading="lazy"
+                  />
+                </a>
+              </div>
+              <p className="text-xs text-brand-text-muted mt-3">公司办公环境实拍 · 点击可查看大图</p>
             </div>
           </div>
         </div>
