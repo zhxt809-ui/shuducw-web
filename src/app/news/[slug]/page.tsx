@@ -340,6 +340,19 @@ export default async function ArticlePage({
               />
             )}
 
+            {/* 统一免责声明（专业可信度标准块） */}
+            <div className="mt-10 p-4 border border-brand-border rounded-sm bg-white">
+              <p className="text-xs text-brand-text-muted leading-relaxed">
+                说明：本文由西安数度财务咨询基于公开政策文件与实务经验整理，
+                {article.published_at ? `首发于 ${formatDate(article.published_at)}` : ''}
+                {article.updated_at && article.published_at && isUpdatedAfterPublish(article.published_at, article.updated_at)
+                  ? `，最近更新于 ${formatDate(article.updated_at)}`
+                  : ''}
+                。内容仅供一般性参考，不构成税务、法律意见；财税政策如有调整，以税务机关最新公布与主管税务机关核定为准。
+                具体事项建议结合企业实际情况咨询专业人士。
+              </p>
+            </div>
+
             {/* 公私域互导（小红书 + 企微顾问 + 免费测评） */}
             <div className="mt-10 p-6 md:p-8 bg-brand-bg border border-brand-border rounded-sm">
               <div className="flex flex-col sm:flex-row items-start sm:items-center gap-6">

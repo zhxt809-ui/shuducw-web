@@ -1,0 +1,35 @@
+#!/bin/bash
+B="https://www.shuducw.com"
+curl -s "$B/" > /tmp/h.html
+echo "===== 1. 首页新结构（方案§42顺序） ====="
+echo "  新首屏标题: $(grep -c '企业财税问题，' /tmp/h.html)"
+echo "  定位副标: $(grep -c '不只是记账报税' /tmp/h.html)"
+echo "  三按钮-免费咨询: $(grep -c '>免费咨询 <' /tmp/h.html)"
+echo "  三按钮-查看服务: $(grep -c '>查看服务</a>' /tmp/h.html)"
+echo "  三按钮-风险自查: $(grep -c '>账务风险自查</a>' /tmp/h.html)"
+echo "  客户问题区: $(grep -c '你可能正在面对这些问题' /tmp/h.html)  场景数: $(grep -oE '股东与公司之间长期存在资金往来|企业准备融资，财务数据需要规范|财务团队已经建立' /tmp/h.html | sort -u | wc -l)/3抽验"
+echo "  服务体系四板块: $(grep -oE '基础财税托管|财税规范与合规|内部管理与风险控制|财税顾问与专项咨询' /tmp/h.html | sort -u | wc -l)/4"
+echo "  负责人陈文华: $(grep -c '陈文华' /tmp/h.html)  资质chip: $(grep -c '高级财税合规师' /tmp/h.html)"
+echo "  团队资质3类: $(grep -oE '高级会计师</h3>|注册税务师</h3>|国际注册会计师</h3>' /tmp/h.html | sort -u | wc -l)/3"
+echo "  案例新标题: $(grep -c '我们实际解决过哪些企业财税问题' /tmp/h.html)"
+echo "  交付标准前置: $(grep -c '数度服务怎么交付' /tmp/h.html)"
+echo "  小红书区(新文案): $(grep -c '老板真正关心的财税问题，用简单的话讲清楚' /tmp/h.html)"
+echo "  财税工具区: $(grep -c '先自己算一算、查一查' /tmp/h.html)  4工具chip: $(grep -oE '金额大写转换</p>|增值税计算器</p>|个税计算器</p>' /tmp/h.html | sort -u | wc -l)/3+自查"
+echo "  旧'企业简介'已移除: $(grep -c '<h2 class=\"text-2xl md:text-3xl font-bold text-brand-navy mb-6\">企业简介' /tmp/h.html)（应0）"
+echo "  Schema founder: $(grep -c '\"founder\"' /tmp/h.html)  Person陈文华: $(grep -c '\"name\":\"陈文华\"' /tmp/h.html)"
+echo ""
+echo "===== 2. 导航/页脚改名 ====="
+echo "  导航'财税工具': $(grep -c '>财税工具<' /tmp/h.html)  旧'在线工具'应0: $(grep -c '在线工具' /tmp/h.html)"
+echo ""
+echo "===== 3. 文章页免责块 ====="
+art=$(curl -s "$B/news/2026-shuiwujicha-zhongdian")
+echo "  免责声明: $(echo "$art" | grep -c '不构成税务、法律意见')"
+echo "  首发+更新日期: $(echo "$art" | grep -c '最近更新于\|首发于')"
+echo ""
+echo "===== 4. 标题与健康 ====="
+t=$(grep -oE '<title>[^<]*</title>' /tmp/h.html | sed 's/<[^>]*>//g')
+echo "  首页标题: $t"
+echo "  品牌1次: $(echo "$t" | grep -o '西安数度财务咨询' | wc -l)次"
+for p in / /news/2026-shuiwujicha-zhongdian /services /cases /tools/vat /about /faq; do
+  echo "  $p -> $(curl -s -o /dev/null -w '%{http_code}' $B$p)"
+done

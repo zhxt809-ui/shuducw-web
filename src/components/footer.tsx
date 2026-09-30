@@ -26,7 +26,7 @@ const footerLinks = [
     ],
   },
   {
-    title: '实用工具',
+    title: '财税工具',
     links: [
       { label: '增值税计算器', href: '/tools/vat' },
       { label: '个税计算器', href: '/tools/income-tax' },

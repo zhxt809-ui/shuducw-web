@@ -1,6 +1,6 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
-import { Shield, Building2, FileCheck, TrendingUp, Award, Users, CheckCircle2, ArrowRight, HelpCircle, BadgeCheck, Newspaper } from 'lucide-react';
+import { Shield, Building2, FileCheck, TrendingUp, Award, Users, CheckCircle2, ArrowRight, HelpCircle, BadgeCheck, Newspaper, Calculator, ArrowLeftRight, CalendarCheck } from 'lucide-react';
 import { listArticles } from '@/lib/store';
 import { XiaohongshuIcon } from '@/components/xiaohongshu-icon';
 import { districts } from '@/data/districts';
@@ -23,51 +23,75 @@ export const metadata: Metadata = {
   alternates: { canonical: '/' },
 };
 
+// 客户问题场景（问题导向首页模块，每条直达对应解决方案页）
+const painPoints = [
+  { text: '公司刚成立，不知道财税怎么规范', href: '/services/basic' },
+  { text: '做了多年账，但历史账务越来越乱', href: '/services/compliance' },
+  { text: '股东与公司之间长期存在资金往来', href: '/services/consulting' },
+  { text: '企业被税务风险预警，不知道从哪里查', href: '/self-check' },
+  { text: '企业利润不错，却不清楚税务风险在哪里', href: '/services/consulting' },
+  { text: '企业准备融资，财务数据需要规范', href: '/cases' },
+  { text: '财务团队已经建立，但缺乏制度和内部控制', href: '/services/compliance' },
+  { text: '企业规模扩大，需要长期财税顾问', href: '/services/consulting' },
+];
+
+// 服务体系（客户语言四板块，替代原"基础/中端/高端"内部分层）
 const businessModules = [
   {
     icon: Building2,
-    title: '基础一站式工商财税服务',
-    desc: '整合工商全项与记账报税全套服务，为初创企业、小微企业提供标准化一站式财税托管。',
+    title: '基础财税托管',
+    flow: '日常经营 → 记账报税 → 工商财税',
+    desc: '公司注册、代理记账、纳税申报、汇算清缴、社保公积金、发票票据管理等日常财税托管。',
     href: '/services/basic',
-    tag: '企业刚需',
   },
   {
     icon: FileCheck,
-    title: '高端合规 & 内部管控核心业务',
-    desc: '依托资深持证财税专家团队，专注财税合规落地、内部财务管控、全域风险排查与体系搭建。',
+    title: '财税规范与合规',
+    flow: '发现问题 → 梳理整改 → 税务合规',
+    desc: '乱账清理、历史账务梳理、财务规范整改、税务风险排查与合规体系搭建。',
     href: '/services/compliance',
-    tag: '品牌核心',
-  },
-  {
-    icon: TrendingUp,
-    title: '财税咨询与风控服务',
-    desc: '专业提供高端财税咨询与风控服务，常年财税顾问、股权架构搭建、税负合规计划，保障企业财税安全。',
-    href: '/services/consulting',
-    tag: '高端增值',
-  },
-];
-
-const advantages = [
-  {
-    icon: Award,
-    title: '老牌本土品牌，行业公信力突出',
-    desc: '2012年成立，深耕西安十余年，首届西安市代理记账协会副会长单位，实战经验深厚。',
-  },
-  {
-    icon: Users,
-    title: '高端持证团队，专业能力硬核',
-    desc: '核心团队集结多名高级会计师、国际注册会计师、注册税务师，专业全覆盖。',
   },
   {
     icon: Shield,
-    title: '差异化高端定位，告别普通代账',
-    desc: '主打财税合规体系搭建、内部审计管控、高端架构筹划等高阶服务。',
+    title: '内部管理与风险控制',
+    flow: '规范流程 → 内部审计 → 风险控制',
+    desc: '内部管理审计、内控制度、财务流程梳理、资金风险与管理报表体系。',
+    href: '/services/compliance',
   },
   {
-    icon: CheckCircle2,
-    title: '落地式服务，方案闭环可执行',
-    desc: '所有合规方案、内审核查、财税优化均配套一对一辅导、整改跟进、定期巡检。',
+    icon: TrendingUp,
+    title: '财税顾问与专项咨询',
+    flow: '企业发展 → 股权/融资 → 专项支持',
+    desc: '常年财税顾问、股权架构、投融资财税支持、财务尽调、直播电商个体户专项咨询。',
+    href: '/services/consulting',
   },
+];
+
+// 专业团队资质（不实名，按持证类别展示，方向与 /about 团队描述一致）
+const teamCredentials = [
+  {
+    icon: Award,
+    name: '高级会计师',
+    focus: '财务管理 / 内部控制 / 企业财务规范',
+  },
+  {
+    icon: BadgeCheck,
+    name: '注册税务师',
+    focus: '税务合规 / 风险排查 / 税务事项处理',
+  },
+  {
+    icon: Users,
+    name: '国际注册会计师',
+    focus: '企业财务管理 / 财税咨询 / 经营分析',
+  },
+];
+
+// 财税工具入口
+const tools = [
+  { icon: Shield, name: '账务风险自查', href: '/self-check', desc: '3 道题快速自测' },
+  { icon: Calculator, name: '增值税计算器', href: '/tools/vat', desc: '小规模 / 一般纳税人' },
+  { icon: Calculator, name: '个税计算器', href: '/tools/income-tax', desc: '经营所得 / 工资薪金' },
+  { icon: ArrowLeftRight, name: '金额大写转换', href: '/tools/rmb-uppercase', desc: '票据规范口径' },
 ];
 
 export default async function HomePage() {
@@ -87,8 +111,18 @@ export default async function HomePage() {
             email: '309814531@qq.com',
             url: 'https://www.shuducw.com',
             description:
-              '西安数度财务咨询有限公司2012年成立，首届西安市代理记账协会副会长单位，专业提供工商财税托管、企业财税合规、内部管理审计、高端财税风控落地服务。',
+              '西安数度财务咨询有限公司2012年成立，首届西安市代理记账协会副会长单位，企业财税管理与合规服务机构，专业提供工商财税托管、企业财税合规、内部管理审计、财税风控落地服务。',
             foundingDate: '2012',
+            founder: {
+              '@type': 'Person',
+              name: '陈文华',
+              jobTitle: '总经理',
+              hasCredential: [
+                { '@type': 'EducationalOccupationalCredential', name: '高级会计师' },
+                { '@type': 'EducationalOccupationalCredential', name: '高级财税合规师' },
+                { '@type': 'EducationalOccupationalCredential', name: '国际注册会计师' },
+              ],
+            },
             hasCredential: {
               '@type': 'EducationalOccupationalCredential',
               name: '代理记账许可证书',
@@ -130,40 +164,46 @@ export default async function HomePage() {
                 { '@type': 'Offer', itemOffered: { '@type': 'Service', name: '代理记账' } },
                 { '@type': 'Offer', itemOffered: { '@type': 'Service', name: '企业财税合规' } },
                 { '@type': 'Offer', itemOffered: { '@type': 'Service', name: '内部管理审计' } },
-                { '@type': 'Offer', itemOffered: { '@type': 'Service', name: '高端财税咨询' } },
+                { '@type': 'Offer', itemOffered: { '@type': 'Service', name: '财税咨询' } },
               ],
             },
           }),
         }}
       />
 
-      {/* Hero 区 */}
+      {/* 01 首屏：品牌定位 */}
       <section className="bg-brand-navy text-white">
-        <div className="container-brand section-padding !py-20 md:!py-28 lg:!py-36">
+        <div className="container-brand section-padding !py-20 md:!py-28 lg:!py-32">
           <div className="max-w-3xl">
             <div className="inline-block px-4 py-1.5 bg-brand-gold/20 border border-brand-gold/40 text-brand-gold-light text-sm rounded-sm mb-6">
-              2012 年成立 · 协会副会长单位
+              西安数度财务咨询 · 2012 年成立 · 协会副会长单位
             </div>
-            <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold leading-tight mb-6">
-              西安数度财务咨询
-              <span className="text-brand-gold block mt-2">专业 · 合规 · 落地</span>
+            <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold leading-tight mb-5">
+              企业财税问题，
+              <span className="text-brand-gold">不只是记账报税</span>
             </h1>
             <p className="text-white/80 text-base md:text-lg leading-relaxed mb-8 max-w-2xl">
-              深耕西安财税行业十余年，拥有高级会计师、国际注册会计师、注册税务师团队，
-              专业提供工商财税托管、企业财税合规、内部管理审计、高端财税风控落地服务。
+              专注企业财税管理、财税合规、税务风险与内部管控。从基础财税托管，
+              到财税规范、内部审计与长期财税顾问，为企业提供贯穿不同发展阶段的专业财税服务。
             </p>
             <div className="flex flex-wrap gap-4">
               <Link
-                href="/services"
+                href="/contact"
                 className="inline-flex items-center gap-2 px-6 py-3 bg-brand-gold text-white font-medium rounded-sm hover:bg-brand-gold-light transition-colors duration-200"
               >
-                了解业务范围 <ArrowRight size={16} />
+                免费咨询 <ArrowRight size={16} />
               </Link>
               <Link
-                href="/contact"
+                href="/services"
                 className="inline-flex items-center gap-2 px-6 py-3 border border-white/30 text-white rounded-sm hover:bg-white/10 transition-colors duration-200"
               >
-                联系我们
+                查看服务
+              </Link>
+              <Link
+                href="/self-check"
+                className="inline-flex items-center gap-2 px-6 py-3 border border-brand-gold/50 text-brand-gold-light rounded-sm hover:bg-brand-gold/10 transition-colors duration-200"
+              >
+                账务风险自查
               </Link>
             </div>
           </div>
@@ -221,49 +261,57 @@ export default async function HomePage() {
         </div>
       </section>
 
-      {/* 企业简介 */}
-      <section className="bg-white">
+      {/* 02 客户问题：先讲客户的问题，再讲我们是谁 */}
+      <section className="bg-brand-bg">
         <div className="container-brand section-padding">
-          <div className="max-w-3xl mx-auto text-center">
-            <h2 className="text-2xl md:text-3xl font-bold text-brand-navy mb-6">企业简介</h2>
-            <div className="w-16 h-[2px] bg-brand-gold mx-auto mb-8" />
-            <p className="text-brand-text-muted leading-relaxed text-base md:text-lg">
-              西安数度财务咨询有限公司成立于2012年，深耕西安财税行业十余年，是首届西安市代理记账协会副会长单位。
-              公司核心团队由多名高级会计师、国际注册会计师、注册税务师组成，高端持证人才储备充足，
-              具备扎实的本土政策经验与落地服务能力。突破传统基础代账服务局限，专注为全行业中小微企业提供
-              一站式工商财税托管、账务税务规范、财税合规体系搭建、内部管理审计、高端财税咨询与风控落地服务。
+          <div className="text-center mb-10">
+            <h2 className="text-2xl md:text-3xl font-bold text-brand-navy mb-4">
+              企业经营过程中，你可能正在面对这些问题
+            </h2>
+            <div className="w-16 h-[2px] bg-brand-gold mx-auto mb-5" />
+            <p className="text-brand-text-muted max-w-2xl mx-auto text-sm md:text-base">
+              带着具体问题来，比带着问题找公司更快——点击你正面对的情况，直接看对应的解决思路
             </p>
+          </div>
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+            {painPoints.map((p) => (
+              <Link
+                key={p.text}
+                href={p.href}
+                className="group p-5 bg-white border border-brand-border rounded-sm hover:border-brand-navy transition-colors"
+              >
+                <p className="text-sm text-brand-navy font-medium leading-relaxed mb-3 min-h-[2.75rem]">{p.text}</p>
+                <span className="inline-flex items-center gap-1 text-xs text-brand-gold group-hover:text-brand-navy transition-colors">
+                  查看对应方案 <ArrowRight size={12} />
+                </span>
+              </Link>
+            ))}
           </div>
         </div>
       </section>
 
-      {/* 核心业务体系 */}
-      <section className="bg-brand-bg">
+      {/* 03 服务体系（客户语言四板块） */}
+      <section className="bg-white">
         <div className="container-brand section-padding">
           <div className="text-center mb-12">
-            <h2 className="text-2xl md:text-3xl font-bold text-brand-navy mb-4">核心业务体系</h2>
+            <h2 className="text-2xl md:text-3xl font-bold text-brand-navy mb-4">从日常记账，到企业财税管理</h2>
             <div className="w-16 h-[2px] bg-brand-gold mx-auto mb-6" />
             <p className="text-brand-text-muted max-w-2xl mx-auto">
-              业务体系分层清晰、定位明确，分为基础工商财税服务、中端增值财税服务、高端合规内控核心业务三大板块，
-              精准匹配不同规模、不同发展阶段企业的财税需求。
+              四大服务板块覆盖企业不同发展阶段的财税需求，每个板块都有明确的服务清单与交付标准。
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-6">
             {businessModules.map((item) => {
               const Icon = item.icon;
               return (
-                <Link key={item.href} href={item.href} className="card-brand group">
-                  <div className="flex items-center gap-3 mb-4">
-                    <div className="w-10 h-10 bg-brand-navy/5 rounded-sm flex items-center justify-center group-hover:bg-brand-gold/10 transition-colors duration-300">
-                      <Icon size={20} className="text-brand-navy group-hover:text-brand-gold transition-colors duration-300" />
-                    </div>
-                    <span className="text-xs px-2 py-0.5 bg-brand-gold/10 text-brand-gold rounded-sm font-medium">
-                      {item.tag}
-                    </span>
+                <Link key={item.title} href={item.href} className="card-brand group flex flex-col">
+                  <div className="w-10 h-10 bg-brand-navy/5 rounded-sm flex items-center justify-center mb-4 group-hover:bg-brand-gold/10 transition-colors duration-300">
+                    <Icon size={20} className="text-brand-navy group-hover:text-brand-gold transition-colors duration-300" />
                   </div>
-                  <h3 className="text-lg font-bold text-brand-navy mb-3">{item.title}</h3>
-                  <p className="text-sm text-brand-text-muted leading-relaxed mb-4">{item.desc}</p>
+                  <h3 className="text-lg font-bold text-brand-navy mb-2">{item.title}</h3>
+                  <p className="text-xs text-brand-gold font-medium mb-3">{item.flow}</p>
+                  <p className="text-sm text-brand-text-muted leading-relaxed mb-4 flex-1">{item.desc}</p>
                   <span className="inline-flex items-center gap-1 text-sm text-brand-navy font-medium group-hover:text-brand-gold transition-colors duration-200">
                     了解详情 <ArrowRight size={14} />
                   </span>
@@ -274,42 +322,105 @@ export default async function HomePage() {
         </div>
       </section>
 
-      {/* 核心优势 */}
-      <section className="bg-white">
+      {/* 04 负责人实名 + 专业团队 */}
+      <section className="bg-brand-bg">
         <div className="container-brand section-padding">
-          <div className="text-center mb-12">
-            <h2 className="text-2xl md:text-3xl font-bold text-brand-navy mb-4">核心优势</h2>
-            <div className="w-16 h-[2px] bg-brand-gold mx-auto" />
+          <div className="text-center mb-10">
+            <h2 className="text-2xl md:text-3xl font-bold text-brand-navy mb-4">负责人与专业团队</h2>
+            <div className="w-16 h-[2px] bg-brand-gold mx-auto mb-5" />
+            <p className="text-brand-text-muted max-w-2xl mx-auto text-sm md:text-base">
+              负责人实名公开、资质可查；团队由多类持证专业人员组成
+            </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8">
-            {advantages.map((item, idx) => {
-              const Icon = item.icon;
-              return (
-                <div key={idx} className="card-brand flex gap-5">
-                  <div className="w-12 h-12 bg-brand-navy/5 rounded-sm flex items-center justify-center flex-shrink-0">
-                    <Icon size={22} className="text-brand-navy" />
-                  </div>
-                  <div>
-                    <h3 className="font-bold text-brand-navy mb-2">{item.title}</h3>
-                    <p className="text-sm text-brand-text-muted leading-relaxed">{item.desc}</p>
-                  </div>
+          <div className="grid grid-cols-1 lg:grid-cols-5 gap-6">
+            {/* 负责人（实名，资质经 /about 页与高校官网来源核验） */}
+            <div className="lg:col-span-2 p-6 md:p-8 bg-white border border-brand-border rounded-sm">
+              <div className="flex items-center gap-4 mb-5">
+                <div className="w-14 h-14 bg-brand-navy rounded-sm flex items-center justify-center flex-shrink-0">
+                  <span className="text-white font-bold text-2xl">陈</span>
                 </div>
-              );
-            })}
+                <div>
+                  <h3 className="text-xl font-bold text-brand-navy">陈文华</h3>
+                  <p className="text-sm text-brand-text-muted">总经理 · 财务一线出身</p>
+                </div>
+              </div>
+              <div className="flex flex-wrap gap-2 mb-5">
+                {['高级会计师', '高级财税合规师', '国际注册会计师'].map((c) => (
+                  <span key={c} className="px-2.5 py-1 text-xs bg-brand-gold/10 text-brand-gold rounded-sm font-medium">
+                    {c}
+                  </span>
+                ))}
+              </div>
+              <ul className="text-sm text-brand-text-muted leading-relaxed space-y-2.5">
+                <li className="flex gap-2">
+                  <CheckCircle2 size={15} className="text-brand-gold flex-shrink-0 mt-0.5" />
+                  从业至今始终专注财税咨询行业，2012 年创立西安数度财务咨询
+                </li>
+                <li className="flex gap-2">
+                  <CheckCircle2 size={15} className="text-brand-gold flex-shrink-0 mt-0.5" />
+                  专业方向：企业财税管理、税务合规、内部控制与财税咨询
+                </li>
+                <li className="flex gap-2">
+                  <CheckCircle2 size={15} className="text-brand-gold flex-shrink-0 mt-0.5" />
+                  <span>
+                    2026 年 4 月受邀担任西安财经大学商学院「财税计划与职业发展」专题讲座主讲嘉宾（
+                    <a
+                      href="https://sxy.xaufe.edu.cn/info/1061/10377.htm"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-brand-gold hover:underline"
+                    >
+                      高校官网报道
+                    </a>
+                    ）
+                  </span>
+                </li>
+              </ul>
+              <Link
+                href="/about"
+                className="mt-5 inline-flex items-center gap-1.5 text-sm text-brand-navy font-medium hover:text-brand-gold transition-colors"
+              >
+                查看公司详细介绍 <ArrowRight size={14} />
+              </Link>
+            </div>
+
+            {/* 专业团队（不实名，按持证类别展示） */}
+            <div className="lg:col-span-3 grid grid-cols-1 sm:grid-cols-3 gap-4">
+              {teamCredentials.map((t) => {
+                const Icon = t.icon;
+                return (
+                  <div key={t.name} className="p-6 bg-white border border-brand-border rounded-sm flex flex-col">
+                    <div className="w-10 h-10 bg-brand-navy/5 rounded-sm flex items-center justify-center mb-4">
+                      <Icon size={20} className="text-brand-navy" />
+                    </div>
+                    <h3 className="text-base font-bold text-brand-navy mb-2">{t.name}</h3>
+                    <p className="text-xs text-brand-text-muted leading-relaxed flex-1">{t.focus}</p>
+                  </div>
+                );
+              })}
+              <div className="sm:col-span-3 p-5 bg-white border border-brand-border rounded-sm flex items-center gap-4">
+                <div className="w-10 h-10 bg-brand-navy/5 rounded-sm flex items-center justify-center flex-shrink-0">
+                  <Users size={20} className="text-brand-navy" />
+                </div>
+                <p className="text-sm text-brand-text-muted leading-relaxed">
+                  财税专业服务团队：记账报税、工商财税、日常财税服务，与持证专业人员协同完成企业全周期财税服务。
+                </p>
+              </div>
+            </div>
           </div>
         </div>
       </section>
 
-      {/* 客户服务实录 */}
-      <section className="bg-brand-bg">
+      {/* 05 客户案例：我们实际解决过哪些企业财税问题 */}
+      <section className="bg-white">
         <div className="container-brand section-padding">
           <div className="flex flex-col md:flex-row items-start md:items-end justify-between gap-4 mb-10">
             <div>
-              <h2 className="text-2xl md:text-3xl font-bold text-brand-navy mb-3">客户服务实录</h2>
+              <h2 className="text-2xl md:text-3xl font-bold text-brand-navy mb-3">我们实际解决过哪些企业财税问题</h2>
               <div className="w-16 h-[2px] bg-brand-gold mb-4" />
               <p className="text-brand-text-muted max-w-xl text-sm md:text-base">
-                西安数度财务咨询真实客户服务案例（已脱敏）——从基础代理记账到高端财税咨询与合规体系搭建，
+                真实客户服务实录（已脱敏）——从基础代理记账到财税顾问与合规体系搭建，
                 见证企业不同发展阶段的财税需求。
               </p>
             </div>
@@ -337,12 +448,38 @@ export default async function HomePage() {
                     <p className="text-sm text-brand-text-muted line-clamp-3 leading-relaxed flex-1">{article.summary}</p>
                   )}
                   <span className="mt-4 inline-flex items-center gap-1 text-sm text-brand-navy font-medium group-hover:text-brand-gold transition-colors">
-                    查看案例详情 <ArrowRight size={14} />
+                    查看完整案例 <ArrowRight size={14} />
                   </span>
                 </Link>
               ))}
             </div>
           ) : null}
+        </div>
+      </section>
+
+      {/* 06 服务交付（差异化内容前置） */}
+      <section className="bg-brand-bg">
+        <div className="container-brand section-padding !py-10 md:!py-14">
+          <div className="flex flex-col lg:flex-row items-start lg:items-center justify-between gap-6 bg-white border border-brand-border rounded-sm p-6 md:p-8">
+            <div className="flex items-start gap-4">
+              <div className="w-12 h-12 bg-brand-gold/10 rounded-sm flex items-center justify-center flex-shrink-0">
+                <CalendarCheck size={22} className="text-brand-gold" />
+              </div>
+              <div>
+                <h3 className="text-lg md:text-xl font-bold text-brand-navy mb-1.5">数度服务怎么交付？</h3>
+                <p className="text-sm text-brand-text-muted leading-relaxed max-w-2xl">
+                  每月账务处理与纳税申报按期完成、凭证报表按期交付，7 个交付节点全程可见，
+                  双方责任边界写进合同——服务过程公开透明。
+                </p>
+              </div>
+            </div>
+            <Link
+              href="/services/delivery"
+              className="flex-shrink-0 inline-flex items-center gap-2 px-6 py-3 bg-brand-navy text-white font-medium rounded-sm hover:bg-brand-navy-light transition-colors duration-200"
+            >
+              查看服务交付标准 <ArrowRight size={16} />
+            </Link>
+          </div>
         </div>
       </section>
 
@@ -361,15 +498,15 @@ export default async function HomePage() {
             </div>
             <p className="text-white/80 leading-relaxed text-base md:text-lg">
               西安数度财务咨询有限公司始终秉持&ldquo;合规为先、风控为本、落地为王&rdquo;的核心服务理念，
-              依托十余年行业实战经验与高端专业财税团队，助力企业规避财税风险、规范财务体系、
-              优化经营税负、完善内部管控。专注为企业提供安全、专业、靠谱的一站式全周期财税服务，
+              依托十余年行业实战经验与专业财税团队，助力企业规避财税风险、规范财务体系、
+              完善内部管控。专注为企业提供安全、专业、靠谱的一站式全周期财税服务，
               助力企业合规经营、稳健长效发展。
             </p>
           </div>
         </div>
       </section>
 
-      {/* 小红书关注 */}
+      {/* 07 小红书承接（主力获客渠道） */}
       <section className="bg-white">
         <div className="container-brand section-padding !py-10 md:!py-14">
           <div className="flex flex-col md:flex-row items-center justify-center gap-6 bg-gradient-to-r from-red-50 to-orange-50 border border-red-100 rounded-sm p-6 md:p-8">
@@ -378,14 +515,48 @@ export default async function HomePage() {
                 <XiaohongshuIcon size={36} />
               </div>
               <div>
-                <h3 className="text-lg md:text-xl font-bold text-brand-navy">关注小红书，获取更多财税知识</h3>
-                <p className="text-sm text-brand-text-muted mt-1">定期分享财税干货、政策解读与实务经验</p>
+                <h3 className="text-lg md:text-xl font-bold text-brand-navy">数度财税 · 小红书</h3>
+                <p className="text-sm text-brand-text-muted mt-1">老板真正关心的财税问题，用简单的话讲清楚</p>
               </div>
             </div>
-            <div className="flex items-center gap-3 px-5 py-3 bg-white border border-red-200 rounded-sm shadow-sm">
+            <a
+              href="https://www.xiaohongshu.com/user/profile/6521552259"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex items-center gap-3 px-5 py-3 bg-white border border-red-200 rounded-sm shadow-sm hover:border-red-400 transition-colors"
+            >
               <span className="text-sm text-brand-text-muted">小红书号</span>
               <span className="text-lg font-bold text-red-500 tracking-wider">6521552259</span>
-            </div>
+            </a>
+          </div>
+        </div>
+      </section>
+
+      {/* 08 财税工具 */}
+      <section className="bg-brand-bg">
+        <div className="container-brand section-padding !py-10 md:!py-14">
+          <div className="text-center mb-8">
+            <h2 className="text-xl md:text-2xl font-bold text-brand-navy mb-3">财税工具</h2>
+            <div className="w-16 h-[2px] bg-brand-gold mx-auto mb-4" />
+            <p className="text-sm text-brand-text-muted max-w-2xl mx-auto">免费财税工具，先自己算一算、查一查，再决定是否需要专业帮助</p>
+          </div>
+          <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
+            {tools.map((t) => {
+              const Icon = t.icon;
+              return (
+                <Link
+                  key={t.href}
+                  href={t.href}
+                  className="group p-5 bg-white border border-brand-border rounded-sm hover:border-brand-navy transition-colors text-center"
+                >
+                  <div className="w-10 h-10 bg-brand-navy/5 rounded-sm flex items-center justify-center mx-auto mb-3 group-hover:bg-brand-gold/10 transition-colors">
+                    <Icon size={18} className="text-brand-navy group-hover:text-brand-gold transition-colors" />
+                  </div>
+                  <p className="text-sm font-bold text-brand-navy">{t.name}</p>
+                  <p className="text-xs text-brand-text-muted mt-1">{t.desc}</p>
+                </Link>
+              );
+            })}
           </div>
         </div>
       </section>
@@ -448,29 +619,11 @@ export default async function HomePage() {
         </div>
       </section>
 
-      {/* 极简留资（首页直接转化入口：无需跳转联系页） */}
+      {/* 09 最终咨询：免费财税问题诊断 */}
       <section className="bg-white">
         <div className="container-brand section-padding !py-10 md:!py-14">
           <div className="max-w-3xl mx-auto border border-brand-border rounded-sm bg-brand-bg">
             <InlineConsultForm />
-          </div>
-        </div>
-      </section>
-
-      {/* CTA */}
-      <section className="bg-brand-bg">
-        <div className="container-brand section-padding !py-12 md:!py-16">
-          <div className="flex flex-col md:flex-row items-center justify-between gap-6 bg-white border border-brand-border rounded-sm p-6 md:p-8">
-            <div>
-              <h3 className="text-xl md:text-2xl font-bold text-brand-navy mb-2">需要专业的财税服务？</h3>
-              <p className="text-brand-text-muted text-sm md:text-base">十余年深耕本土，高端持证团队为您提供安全、专业、靠谱的全周期财税服务。</p>
-            </div>
-            <Link
-              href="/contact"
-              className="flex-shrink-0 inline-flex items-center gap-2 px-6 py-3 bg-brand-navy text-white font-medium rounded-sm hover:bg-brand-navy-light transition-colors duration-200"
-            >
-              立即咨询 <ArrowRight size={16} />
-            </Link>
           </div>
         </div>
       </section>

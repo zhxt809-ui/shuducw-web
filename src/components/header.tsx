@@ -36,7 +36,7 @@ const navItems: NavItem[] = [
   { href: '/cases', label: '客户案例' },
   {
     href: '/tools/vat',
-    label: '在线工具',
+    label: '财税工具',
     activePrefixes: ['/tools', '/self-check'],
     children: [
       { href: '/tools/vat', label: '增值税计算器' },
