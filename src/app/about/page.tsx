@@ -92,7 +92,7 @@ export default function AboutPage() {
 
       {/* 公司简介详情 */}
       <section className="bg-white">
-        <div className="container-brand section-padding !pb-10 md:!pb-14">
+        <div className="container-brand section-padding !pb-4 md:!pb-6">
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 lg:gap-12">
             <div className="lg:col-span-2">
               <h2 className="text-2xl font-bold text-brand-navy mb-6">公司简介</h2>
@@ -122,6 +122,20 @@ export default function AboutPage() {
                   </a>
                 </p>
               </div>
+
+              {/* 服务行业覆盖（置于左列正文之后：原在右栏会使卡片列过高，正文下方空出大片留白，
+                  并把「企业负责人」板块推到更下方） */}
+              <div className="bg-brand-bg p-6 rounded-sm border border-brand-border mt-8">
+                <h3 className="font-bold text-brand-navy mb-4">服务行业覆盖</h3>
+                <div className="flex flex-wrap gap-2">
+                  {serviceIndustries.map((item) => (
+                    <span key={item} className="px-3 py-1.5 bg-white border border-brand-border text-sm text-brand-text rounded-sm">
+                      {item}
+                    </span>
+                  ))}
+                </div>
+                <p className="text-sm text-brand-text-muted mt-3">适配初创、成长型、中小型企业全周期需求</p>
+              </div>
             </div>
             <div>
               <div className="bg-brand-bg p-6 rounded-sm border border-brand-border">
@@ -140,17 +154,6 @@ export default function AboutPage() {
                     </li>
                   ))}
                 </ul>
-              </div>
-              <div className="bg-brand-bg p-6 rounded-sm border border-brand-border mt-6">
-                <h3 className="font-bold text-brand-navy mb-4">服务行业覆盖</h3>
-                <div className="flex flex-wrap gap-2">
-                  {serviceIndustries.map((item) => (
-                    <span key={item} className="px-3 py-1.5 bg-white border border-brand-border text-sm text-brand-text rounded-sm">
-                      {item}
-                    </span>
-                  ))}
-                </div>
-                <p className="text-sm text-brand-text-muted mt-3">适配初创、成长型、中小型企业全周期需求</p>
               </div>
               <div className="bg-brand-bg p-6 rounded-sm border border-brand-border mt-6">
                 <h3 className="font-bold text-brand-navy mb-4">资质证照</h3>
@@ -183,7 +186,7 @@ export default function AboutPage() {
 
       {/* 企业负责人（实名板块：照片 + 资质 + 公开活动） */}
       <section className="bg-white border-t border-brand-border">
-        <div className="container-brand section-padding !pt-10 md:!pt-14">
+        <div className="container-brand section-padding !pt-6 md:!pt-8">
           <div className="text-center mb-10">
             <h2 className="text-2xl md:text-3xl font-bold text-brand-navy mb-4">企业负责人</h2>
             <div className="w-16 h-[2px] bg-brand-gold mx-auto mb-5" />
