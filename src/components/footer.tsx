@@ -30,6 +30,7 @@ const footerLinks = [
     links: [
       { label: '增值税计算器', href: '/tools/vat' },
       { label: '个税计算器', href: '/tools/income-tax' },
+      { label: '金额大写转换', href: '/tools/rmb-uppercase' },
       { label: '账务风险自查', href: '/self-check' },
       { label: '服务交付标准', href: '/services/delivery' },
     ],

@@ -41,6 +41,7 @@ const navItems: NavItem[] = [
     children: [
       { href: '/tools/vat', label: '增值税计算器' },
       { href: '/tools/income-tax', label: '个税计算器' },
+      { href: '/tools/rmb-uppercase', label: '金额大写转换' },
       { href: '/self-check', label: '账务风险自查' },
     ],
   },

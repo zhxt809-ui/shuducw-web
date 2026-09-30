@@ -16,6 +16,7 @@ all_urls = [
     'https://www.shuducw.com/services/delivery',
     'https://www.shuducw.com/tools/vat',
     'https://www.shuducw.com/tools/income-tax',
+    'https://www.shuducw.com/tools/rmb-uppercase',
     # 区域落地页（数据驱动，新增区县后同步补充）
     'https://www.shuducw.com/services/district/gaoxin',
     'https://www.shuducw.com/services/district/weiyang',

@@ -132,6 +132,12 @@ export default function VatCalculatorPage() {
               <Calculator size={14} /> 个税计算器
             </Link>
             <Link
+              href="/tools/rmb-uppercase"
+              className="inline-flex items-center gap-2 px-4 py-2 bg-brand-bg border border-brand-border rounded-sm text-sm text-brand-navy hover:border-brand-navy hover:text-brand-gold transition-colors"
+            >
+              金额大写转换
+            </Link>
+            <Link
               href="/self-check"
               className="inline-flex items-center gap-2 px-4 py-2 bg-brand-bg border border-brand-border rounded-sm text-sm text-brand-navy hover:border-brand-navy hover:text-brand-gold transition-colors"
             >
