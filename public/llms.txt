@@ -113,8 +113,9 @@
 - [财税案例](https://www.shuducw.com/news/cases): 公开税务稽查案例与行业事件解读，揭示合规红线与实务启示
 - [财税知识](https://www.shuducw.com/news/tips): 实用财税知识与操作技巧
 - [政策解读](https://www.shuducw.com/news/policies): 最新财税政策深度解读
-- [常见问题 FAQ](https://www.shuducw.com/faq): 代理记账多少钱、公司注册流程、小规模与一般纳税人区别、税务异常处理等 28 个高频财税问题解答
+- [常见问题 FAQ](https://www.shuducw.com/faq): 代理记账多少钱、公司注册流程、小规模与一般纳税人区别、税务异常处理、股东往来等 30 个高频财税问题解答
 - [账务风险自查](https://www.shuducw.com/self-check): 6 道题多维度自查（账务/资金/发票/申报/股东往来/内控），初步了解个体户/小微企业财税风险状况
+- [股东往来专题](https://www.shuducw.com/shareholder-loans): 股东从公司拿钱怎么合规——股东借款视同分红20%（财税〔2003〕158号）、公款垫付个人消费、公私账户混用、其他应收款长期挂账的风险与合规处理路径，含股东往来风险自查工具
 - [联系我们](https://www.shuducw.com/contact): 电话、邮箱、地址、小红书号、在线预约咨询、公司位置地图
 - [隐私政策](https://www.shuducw.com/privacy): 信息收集范围、使用目的、存储与保护、用户权利说明
 

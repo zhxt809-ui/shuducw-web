@@ -82,6 +82,15 @@ export default function SelfCheckPage() {
                 可预约我们的持证会计做一次账务梳理与税务风险排查。
               </p>
               <p>
+                <strong className="text-brand-navy">股东往来也要留意。</strong>{' '}
+                股东从公司借款长期不还、公款垫付个人消费等，可能涉及视同分红个税风险，
+                可进一步使用{' '}
+                <Link href="/shareholder-loans" className="text-brand-navy hover:text-brand-gold font-medium">
+                  股东往来自查
+                </Link>{' '}
+                专题工具。
+              </p>
+              <p>
                 <strong className="text-brand-navy">信息如何保护？</strong>{' '}
                 您的提交信息仅用于与您联系和提供服务，由持有代理记账资质的会计对接，信息严格保密，
                 详见{' '}

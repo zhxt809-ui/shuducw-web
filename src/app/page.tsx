@@ -27,7 +27,7 @@ export const metadata: Metadata = {
 const painPoints = [
   { text: '公司刚成立，不知道财税怎么规范', href: '/services/basic' },
   { text: '做了多年账，但历史账务越来越乱', href: '/services/compliance' },
-  { text: '股东与公司之间长期存在资金往来', href: '/services/consulting' },
+  { text: '股东与公司之间长期存在资金往来', href: '/shareholder-loans' },
   { text: '企业被税务风险预警，不知道从哪里查', href: '/self-check' },
   { text: '企业利润不错，却不清楚税务风险在哪里', href: '/self-check' },
   { text: '企业准备融资，财务数据需要规范', href: '/services/consulting' },
