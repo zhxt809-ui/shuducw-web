@@ -6,7 +6,7 @@ import RiskCheck from '@/components/risk-check';
 export const metadata: Metadata = {
   title: '账务风险自查_西安个体户小微企业财税风险测评_西安数度财务咨询',
   description:
-    '3 道题快速自查账务处理、资金流与申报习惯，初步了解企业财税风险状况。适合西安个体工商户、小微企业主。完成自查后可预约专业财税诊断，获取风险排查建议。',
+    '6 道题多维度自查账务规范、资金往来、发票管理、纳税申报、股东往来与内部管控，初步了解企业财税风险状况，适合西安个体工商户、小微企业主。完成自查后可预约专业财税诊断，获取风险排查建议。',
   keywords: [
     '账务风险自查',
     '财税风险测评',
@@ -29,7 +29,7 @@ export default function SelfCheckPage() {
             '@type': 'WebPage',
             name: '账务风险自查',
             description:
-              '3 道题快速自查账务处理、资金流与申报习惯，初步了解企业财税风险状况，适用于西安个体工商户与小微企业主。',
+              '6 道题多维度自查账务规范、资金往来、发票管理、纳税申报、股东往来与内部管控，初步了解企业财税风险状况，适用于西安个体工商户与小微企业主。',
             publisher: {
               '@type': 'Organization',
               name: '西安数度财务咨询有限公司',
@@ -43,13 +43,13 @@ export default function SelfCheckPage() {
         <div className="container-brand section-padding !py-16 md:!py-20">
           <div className="max-w-3xl">
             <div className="inline-block px-4 py-1.5 bg-brand-gold/20 border border-brand-gold/40 text-brand-gold-light text-sm rounded-sm mb-6">
-              1 分钟 · 3 道题 · 免费
+              2 分钟 · 6 道题 · 免费
             </div>
             <h1 className="text-3xl md:text-4xl font-bold mb-4">账务风险自查</h1>
             <p className="text-white/80 text-base md:text-lg leading-relaxed">
-              面向西安个体工商户与小微企业主：通过 3 道选择题，初步判断您在
-              <strong className="text-brand-gold-light"> 账务处理、资金流、申报习惯 </strong>
-              三方面的财税风险状况，并给出对应的自查建议。
+              面向西安个体工商户与小微企业主：通过 6 道选择题，从
+              <strong className="text-brand-gold-light"> 账务规范、资金往来、发票管理、纳税申报、股东往来、内部管控 </strong>
+              六个维度初步判断企业财税风险状况，并给出对应的自查建议。
             </p>
           </div>
         </div>
@@ -72,9 +72,9 @@ export default function SelfCheckPage() {
             <div className="space-y-4 text-sm md:text-base text-brand-text leading-relaxed">
               <p>
                 <strong className="text-brand-navy">为什么要自查？</strong>{' '}
-                个体户和小微企业的财税风险大多来自账务缺失、公私收款混用、逾期申报等习惯性细节，
-                在税务监管数据比对日益精细的今天，这些隐患可能被系统提前预警。提前发现、提前规范，
-                远比事后补救成本更低。
+                个体户和小微企业的财税风险大多来自账务缺失、公私收款混用、发票与申报不规范、
+                股东往来长期挂账等习惯性细节，在税务监管数据比对日益精细的今天，这些隐患可能被系统提前预警。
+                提前发现、提前规范，远比事后补救成本更低。
               </p>
               <p>
                 <strong className="text-brand-navy">自查结果能做什么？</strong>{' '}

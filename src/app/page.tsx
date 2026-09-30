@@ -29,8 +29,8 @@ const painPoints = [
   { text: '做了多年账，但历史账务越来越乱', href: '/services/compliance' },
   { text: '股东与公司之间长期存在资金往来', href: '/services/consulting' },
   { text: '企业被税务风险预警，不知道从哪里查', href: '/self-check' },
-  { text: '企业利润不错，却不清楚税务风险在哪里', href: '/services/consulting' },
-  { text: '企业准备融资，财务数据需要规范', href: '/cases' },
+  { text: '企业利润不错，却不清楚税务风险在哪里', href: '/self-check' },
+  { text: '企业准备融资，财务数据需要规范', href: '/services/consulting' },
   { text: '财务团队已经建立，但缺乏制度和内部控制', href: '/services/compliance' },
   { text: '企业规模扩大，需要长期财税顾问', href: '/services/consulting' },
 ];
@@ -88,7 +88,7 @@ const teamCredentials = [
 
 // 财税工具入口
 const tools = [
-  { icon: Shield, name: '账务风险自查', href: '/self-check', desc: '3 道题快速自测' },
+  { icon: Shield, name: '账务风险自查', href: '/self-check', desc: '6 道题多维自测' },
   { icon: Calculator, name: '增值税计算器', href: '/tools/vat', desc: '小规模 / 一般纳税人' },
   { icon: Calculator, name: '个税计算器', href: '/tools/income-tax', desc: '经营所得 / 工资薪金' },
   { icon: ArrowLeftRight, name: '金额大写转换', href: '/tools/rmb-uppercase', desc: '票据规范口径' },

@@ -87,7 +87,7 @@ export default function ContactPage() {
             <h1 className="text-3xl md:text-4xl font-bold mb-4">联系我们</h1>
             <p className="text-white/80 text-base md:text-lg leading-relaxed">
               欢迎联系西安数度财务咨询有限公司，我们为您提供专业的工商财税托管、
-              企业财税合规、内部管理审计、高端财税风控等各项财税服务咨询。
+              企业财税合规、内部管理审计、财税风控等各项财税服务咨询。
             </p>
           </div>
         </div>
