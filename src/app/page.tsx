@@ -543,7 +543,7 @@ export default async function HomePage() {
               <img
                 src="/qr-xiaohongshu.jpg"
                 alt="西安数度财务咨询小红书主页二维码"
-                className="w-24 h-24 rounded-sm border border-red-200 bg-white p-1 object-cover object-top"
+                className="w-28 h-36 rounded-sm border border-red-200 bg-white p-1 object-contain"
                 loading="lazy"
               />
               <p className="text-xs text-brand-text-muted mt-1.5">扫码关注小红书</p>
