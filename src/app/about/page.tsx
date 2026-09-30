@@ -181,6 +181,117 @@ export default function AboutPage() {
         </div>
       </section>
 
+      {/* 企业负责人（实名板块：照片 + 资质 + 公开活动） */}
+      <section className="bg-white border-t border-brand-border">
+        <div className="container-brand section-padding">
+          <div className="text-center mb-10">
+            <h2 className="text-2xl md:text-3xl font-bold text-brand-navy mb-4">企业负责人</h2>
+            <div className="w-16 h-[2px] bg-brand-gold mx-auto mb-5" />
+            <p className="text-brand-text-muted max-w-2xl mx-auto text-sm md:text-base">负责人实名公开，资质与公开活动可查可验</p>
+          </div>
+
+          <div className="max-w-4xl mx-auto">
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8 items-start">
+              <div className="md:col-span-1">
+                <img
+                  src="/leader-chenwenhua.jpg"
+                  alt="西安数度财务咨询总经理陈文华"
+                  className="w-full max-w-[240px] mx-auto rounded-sm border border-brand-border bg-white p-1.5"
+                  loading="lazy"
+                />
+                <p className="text-xs text-brand-text-muted mt-2 text-center">总经理 · 陈文华</p>
+              </div>
+              <div className="md:col-span-2 space-y-4 text-brand-text leading-relaxed">
+                <div className="flex flex-wrap gap-2">
+                  {['高级会计师', '高级财税合规师', '国际注册会计师'].map((c) => (
+                    <span key={c} className="px-2.5 py-1 text-xs bg-brand-gold/10 text-brand-gold rounded-sm font-medium">
+                      {c}
+                    </span>
+                  ))}
+                </div>
+                <p>
+                  陈文华，西安数度财务咨询有限公司总经理，财务一线出身，从业至今始终专注财税咨询行业，
+                  2012 年创立西安数度财务咨询。专业方向：企业财税管理、税务合规、内部控制与财税咨询。
+                </p>
+                <p className="text-sm text-brand-text-muted">
+                  2026 年 4 月受邀担任西安财经大学商学院「财税计划与职业发展」专题讲座主讲嘉宾，
+                  面向 MAud / MPAcc 专业研究生分享财税行业合规实践、业财税一体化实操要点与职业发展规划。
+                  <a
+                    href="https://sxy.xaufe.edu.cn/info/1061/10377.htm"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-brand-gold hover:underline ml-1"
+                  >
+                    媒体报道原文
+                  </a>
+                </p>
+              </div>
+            </div>
+
+            {/* 公开活动照片 */}
+            <div className="mt-8">
+              <h3 className="text-lg font-bold text-brand-navy mb-4">公开活动</h3>
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                <a href="/lecture-xaufe-2026.jpg" target="_blank" rel="noopener noreferrer" className="block group">
+                  <img
+                    src="/lecture-xaufe-2026.jpg"
+                    alt="陈文华受邀西安财经大学商学院开展财税专题讲座现场"
+                    className="w-full h-56 object-cover rounded-sm border border-brand-border group-hover:opacity-90 transition-opacity"
+                    loading="lazy"
+                  />
+                  <p className="text-xs text-brand-text-muted mt-2">2026 年 4 月 · 西安财经大学商学院「财税计划与职业发展」专题讲座现场</p>
+                </a>
+                <a href="/activity-waishi.jpg" target="_blank" rel="noopener noreferrer" className="block group">
+                  <img
+                    src="/activity-waishi.jpg"
+                    alt="陈文华高校公开活动"
+                    className="w-full h-56 object-cover rounded-sm border border-brand-border group-hover:opacity-90 transition-opacity"
+                    loading="lazy"
+                  />
+                  <p className="text-xs text-brand-text-muted mt-2">负责人高校公开活动</p>
+                </a>
+              </div>
+              <p className="text-xs text-brand-text-muted mt-3">点击可查看大图</p>
+            </div>
+
+            {/* 负责人资质证书 */}
+            <div className="mt-8">
+              <h3 className="text-lg font-bold text-brand-navy mb-4">负责人资质证书</h3>
+              <div className="grid grid-cols-2 sm:grid-cols-3 gap-4">
+                <a href="/cert-acc-international.jpg" target="_blank" rel="noopener noreferrer" className="block group">
+                  <img
+                    src="/cert-acc-international.jpg"
+                    alt="陈文华国际注册会计师证书"
+                    className="w-full h-52 object-cover object-top rounded-sm border border-brand-border bg-white p-1.5 group-hover:opacity-90 transition-opacity"
+                    loading="lazy"
+                  />
+                  <p className="text-xs text-brand-text-muted mt-2 text-center">国际注册会计师</p>
+                </a>
+                <a href="/cert-xaufe.jpg" target="_blank" rel="noopener noreferrer" className="block group">
+                  <img
+                    src="/cert-xaufe.jpg"
+                    alt="陈文华西安财经大学相关证书"
+                    className="w-full h-52 object-cover object-top rounded-sm border border-brand-border bg-white p-1.5 group-hover:opacity-90 transition-opacity"
+                    loading="lazy"
+                  />
+                  <p className="text-xs text-brand-text-muted mt-2 text-center">西安财经大学</p>
+                </a>
+                <a href="/cert-waishi.jpg" target="_blank" rel="noopener noreferrer" className="block group">
+                  <img
+                    src="/cert-waishi.jpg"
+                    alt="陈文华西安外事学院相关证书"
+                    className="w-full h-52 object-cover object-top rounded-sm border border-brand-border bg-white p-1.5 group-hover:opacity-90 transition-opacity"
+                    loading="lazy"
+                  />
+                  <p className="text-xs text-brand-text-muted mt-2 text-center">西安外事学院</p>
+                </a>
+              </div>
+              <p className="text-xs text-brand-text-muted mt-3">点击可查看大图 · 证书均为实拍</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* 核心优势 */}
       <section id="advantages" className="bg-brand-bg">
         <div className="container-brand section-padding">

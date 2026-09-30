@@ -337,9 +337,11 @@ export default async function HomePage() {
             {/* 负责人（实名，资质经 /about 页与高校官网来源核验） */}
             <div className="lg:col-span-2 p-6 md:p-8 bg-white border border-brand-border rounded-sm">
               <div className="flex items-center gap-4 mb-5">
-                <div className="w-14 h-14 bg-brand-navy rounded-sm flex items-center justify-center flex-shrink-0">
-                  <span className="text-white font-bold text-2xl">陈</span>
-                </div>
+                <img
+                  src="/leader-chenwenhua.jpg"
+                  alt="西安数度财务咨询总经理陈文华"
+                  className="w-14 h-14 rounded-sm object-cover border border-brand-border flex-shrink-0"
+                />
                 <div>
                   <h3 className="text-xl font-bold text-brand-navy">陈文华</h3>
                   <p className="text-sm text-brand-text-muted">总经理 · 财务一线出身</p>
@@ -383,6 +385,15 @@ export default async function HomePage() {
               >
                 查看公司详细介绍 <ArrowRight size={14} />
               </Link>
+              <div className="mt-5">
+                <img
+                  src="/lecture-xaufe-2026.jpg"
+                  alt="陈文华受邀西安财经大学商学院开展财税专题讲座现场"
+                  className="w-full h-36 object-cover rounded-sm border border-brand-border"
+                  loading="lazy"
+                />
+                <p className="text-xs text-brand-text-muted mt-2">2026 年 4 月 · 西安财经大学商学院专题讲座现场</p>
+              </div>
             </div>
 
             {/* 专业团队（不实名，按持证类别展示） */}
@@ -528,6 +539,15 @@ export default async function HomePage() {
               <span className="text-sm text-brand-text-muted">小红书号</span>
               <span className="text-lg font-bold text-red-500 tracking-wider">6521552259</span>
             </a>
+            <div className="flex-shrink-0 text-center">
+              <img
+                src="/qr-xiaohongshu.jpg"
+                alt="西安数度财务咨询小红书主页二维码"
+                className="w-24 h-24 rounded-sm border border-red-200 bg-white p-1 object-cover object-top"
+                loading="lazy"
+              />
+              <p className="text-xs text-brand-text-muted mt-1.5">扫码关注小红书</p>
+            </div>
           </div>
         </div>
       </section>
