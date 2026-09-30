@@ -92,7 +92,7 @@ export default function AboutPage() {
 
       {/* 公司简介详情 */}
       <section className="bg-white">
-        <div className="container-brand section-padding">
+        <div className="container-brand section-padding !pb-10 md:!pb-14">
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 lg:gap-12">
             <div className="lg:col-span-2">
               <h2 className="text-2xl font-bold text-brand-navy mb-6">公司简介</h2>
@@ -173,15 +173,6 @@ export default function AboutPage() {
                     />
                     <p className="text-xs text-brand-text-muted mt-2 text-center group-hover:text-brand-gold transition-colors">代理记账许可证</p>
                   </a>
-                  <a href="/honors-1.jpg" target="_blank" rel="noopener noreferrer" className="block group">
-                    <img
-                      src="/honors-1.jpg"
-                      alt="西安数度财务咨询有限公司资质荣誉实拍"
-                      className="w-full border border-brand-border rounded-sm bg-white p-1.5 group-hover:opacity-90 transition-opacity"
-                      loading="lazy"
-                    />
-                    <p className="text-xs text-brand-text-muted mt-2 text-center group-hover:text-brand-gold transition-colors">资质荣誉（实拍）</p>
-                  </a>
                 </div>
                 <p className="text-xs text-brand-text-muted mt-3">点击可查看大图 · 营业执照与代理记账许可证书均为实拍</p>
               </div>
@@ -192,7 +183,7 @@ export default function AboutPage() {
 
       {/* 企业负责人（实名板块：照片 + 资质 + 公开活动） */}
       <section className="bg-white border-t border-brand-border">
-        <div className="container-brand section-padding">
+        <div className="container-brand section-padding !pt-10 md:!pt-14">
           <div className="text-center mb-10">
             <h2 className="text-2xl md:text-3xl font-bold text-brand-navy mb-4">企业负责人</h2>
             <div className="w-16 h-[2px] bg-brand-gold mx-auto mb-5" />
@@ -256,7 +247,7 @@ export default function AboutPage() {
                   <img
                     src="/lecture-xaufe-2026.jpg"
                     alt="陈文华受邀西安财经大学商学院开展财税专题讲座现场"
-                    className="w-full h-56 object-cover rounded-sm border border-brand-border group-hover:opacity-90 transition-opacity"
+                    className="w-full rounded-sm border border-brand-border group-hover:opacity-90 transition-opacity"
                     loading="lazy"
                   />
                   <p className="text-xs text-brand-text-muted mt-2">2026 年 4 月 · 西安财经大学商学院「财税计划与职业发展」专题讲座现场</p>
@@ -265,7 +256,7 @@ export default function AboutPage() {
                   <img
                     src="/activity-waishi.jpg"
                     alt="西安外事学院授牌仪式现场"
-                    className="w-full h-56 object-cover rounded-sm border border-brand-border group-hover:opacity-90 transition-opacity"
+                    className="w-full rounded-sm border border-brand-border group-hover:opacity-90 transition-opacity"
                     loading="lazy"
                   />
                   <p className="text-xs text-brand-text-muted mt-2">西安外事学院授牌仪式</p>
@@ -282,7 +273,7 @@ export default function AboutPage() {
                   <img
                     src="/cert-acc-international.jpg"
                     alt="陈文华国际注册会计师证书"
-                    className="w-full h-52 object-cover object-top rounded-sm border border-brand-border bg-white p-1.5 group-hover:opacity-90 transition-opacity"
+                    className="w-full rounded-sm border border-brand-border bg-white p-1.5 group-hover:opacity-90 transition-opacity"
                     loading="lazy"
                   />
                   <p className="text-xs text-brand-text-muted mt-2 text-center">国际注册会计师</p>
@@ -291,7 +282,7 @@ export default function AboutPage() {
                   <img
                     src="/cert-xaufe.jpg"
                     alt="陈文华西安财经大学校外硕士生导师聘书"
-                    className="w-full h-52 object-cover object-top rounded-sm border border-brand-border bg-white p-1.5 group-hover:opacity-90 transition-opacity"
+                    className="w-full rounded-sm border border-brand-border bg-white p-1.5 group-hover:opacity-90 transition-opacity"
                     loading="lazy"
                   />
                   <p className="text-xs text-brand-text-muted mt-2 text-center">西安财经大学校外硕士生导师聘书</p>
@@ -300,7 +291,7 @@ export default function AboutPage() {
                   <img
                     src="/cert-waishi.jpg"
                     alt="陈文华西安外事学院商学院校外实习实训指导教师聘书"
-                    className="w-full h-52 object-cover object-top rounded-sm border border-brand-border bg-white p-1.5 group-hover:opacity-90 transition-opacity"
+                    className="w-full rounded-sm border border-brand-border bg-white p-1.5 group-hover:opacity-90 transition-opacity"
                     loading="lazy"
                   />
                   <p className="text-xs text-brand-text-muted mt-2 text-center">西安外事学院商学院校外实习实训指导教师聘书</p>
@@ -309,10 +300,10 @@ export default function AboutPage() {
               <p className="text-xs text-brand-text-muted mt-3">点击可查看大图 · 证书均为实拍</p>
             </div>
 
-            {/* 办公环境 */}
+            {/* 办公环境与资质荣誉 */}
             <div className="mt-8">
               <h3 className="text-lg font-bold text-brand-navy mb-4">办公环境</h3>
-              <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
+              <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
                 <a href="/office-1.jpg" target="_blank" rel="noopener noreferrer" className="block group">
                   <img
                     src="/office-1.jpg"
@@ -337,8 +328,17 @@ export default function AboutPage() {
                     loading="lazy"
                   />
                 </a>
+                <a href="/honors-1.jpg" target="_blank" rel="noopener noreferrer" className="block group">
+                  <img
+                    src="/honors-1.jpg"
+                    alt="西安数度财务咨询资质荣誉实拍"
+                    className="w-full h-44 object-cover object-top rounded-sm border border-brand-border group-hover:opacity-90 transition-opacity"
+                    loading="lazy"
+                  />
+                  <p className="text-xs text-brand-text-muted mt-2 text-center">资质荣誉（实拍）</p>
+                </a>
               </div>
-              <p className="text-xs text-brand-text-muted mt-3">公司办公环境实拍 · 点击可查看大图</p>
+              <p className="text-xs text-brand-text-muted mt-3">公司办公环境与资质荣誉实拍 · 点击可查看大图</p>
             </div>
           </div>
         </div>
