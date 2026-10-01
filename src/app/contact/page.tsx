@@ -150,6 +150,41 @@ export default function ContactPage() {
         </div>
       </section>
 
+      {/* 到店环境（办公环境实拍；遵循站内隐私规则，图片不提供点击放大） */}
+      <section className="bg-white">
+        <div className="container-brand section-padding !py-12 md:!py-16">
+          <div className="text-center mb-10">
+            <h2 className="text-2xl md:text-3xl font-bold text-brand-navy mb-4">到店环境</h2>
+            <div className="w-16 h-[2px] bg-brand-gold mx-auto mb-6" />
+            <p className="text-brand-text-muted max-w-xl mx-auto text-sm">
+              公司办公环境实拍。为避免到店后无人接待，建议先电话预约：029-84556877。
+            </p>
+          </div>
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-6">
+            {[
+              { src: '/office-1.jpg', alt: '西安数度财务咨询办公环境实拍一' },
+              { src: '/office-2.jpg', alt: '西安数度财务咨询办公环境实拍二' },
+              { src: '/office-3.jpg', alt: '西安数度财务咨询办公环境实拍三' },
+            ].map((item) => (
+              <div
+                key={item.src}
+                className="aspect-[4/3] overflow-hidden rounded-sm border border-brand-border bg-brand-bg"
+              >
+                <img
+                  src={item.src}
+                  alt={item.alt}
+                  width={720}
+                  height={405}
+                  className="w-full h-full object-cover object-center"
+                  loading="lazy"
+                  decoding="async"
+                />
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
       {/* 咨询表单区 */}
       <section className="bg-brand-bg">
         <div className="container-brand section-padding">
