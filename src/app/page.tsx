@@ -33,6 +33,10 @@ const painPoints = [
   { text: '企业准备融资，财务数据需要规范', href: '/services/consulting' },
   { text: '财务团队已经建立，但缺乏制度和内部控制', href: '/services/compliance' },
   { text: '企业规模扩大，需要长期财税顾问', href: '/services/consulting' },
+  { text: '取得的发票总觉得不太规范、不敢入账', href: '/invoice-compliance' },
+  { text: '社保按最低基数交了好几年，心里没底', href: '/social-insurance-iit' },
+  { text: '准备申报高新技术企业，不知道还差多少', href: '/high-tech-enterprise' },
+  { text: '公司不打算做了，想注销又怕留下麻烦', href: '/company-deregistration' },
 ];
 
 // 服务体系（客户语言四板块，替代原"基础/中端/高端"内部分层）

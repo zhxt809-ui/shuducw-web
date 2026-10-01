@@ -91,6 +91,26 @@ export default function SelfCheckPage() {
                 专题工具。
               </p>
               <p>
+                <strong className="text-brand-navy">自查后发现具体问题？</strong>{' '}
+                可以继续看对应专题：
+                <Link href="/invoice-compliance" className="text-brand-navy hover:text-brand-gold font-medium">
+                  发票合规
+                </Link>
+                、
+                <Link href="/social-insurance-iit" className="text-brand-navy hover:text-brand-gold font-medium">
+                  社保与个税
+                </Link>
+                、
+                <Link href="/high-tech-enterprise" className="text-brand-navy hover:text-brand-gold font-medium">
+                  高新技术企业认定
+                </Link>
+                、
+                <Link href="/company-deregistration" className="text-brand-navy hover:text-brand-gold font-medium">
+                  公司注销与清算
+                </Link>
+                ，每个专题都列明了政策依据与处理路径。
+              </p>
+              <p>
                 <strong className="text-brand-navy">信息如何保护？</strong>{' '}
                 您的提交信息仅用于与您联系和提供服务，由持有代理记账资质的会计对接，信息严格保密，
                 详见{' '}

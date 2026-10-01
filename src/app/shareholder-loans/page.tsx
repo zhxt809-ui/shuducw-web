@@ -288,8 +288,26 @@ export default function ShareholderLoansPage() {
         </div>
       </section>
 
-      {/* 延伸阅读 */}
+      {/* 常见问题（页面可见，与上方 FAQPage Schema 一一对应） */}
       <section className="bg-white">
+        <div className="container-brand section-padding">
+          <div className="text-center mb-12">
+            <h2 className="text-2xl md:text-3xl font-bold text-brand-navy mb-4">常见问题</h2>
+            <div className="w-16 h-[2px] bg-brand-gold mx-auto mb-6" />
+          </div>
+          <div className="space-y-5 max-w-4xl mx-auto">
+            {faqs.map((f) => (
+              <div key={f.q} className="bg-brand-bg border border-brand-border rounded-sm p-6">
+                <h3 className="font-bold text-brand-navy mb-3 leading-snug">{f.q}</h3>
+                <p className="text-sm text-brand-text leading-relaxed">{f.a}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* 延伸阅读 */}
+      <section className="bg-brand-bg">
         <div className="container-brand section-padding !py-12 md:!py-16">
           <h2 className="text-xl md:text-2xl font-bold text-brand-navy mb-6">延伸阅读</h2>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
