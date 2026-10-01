@@ -1,29 +1,28 @@
 import { NextResponse } from 'next/server';
 import {
   getSitemapEntries,
-  renderSitemapXml,
+  renderSitemapTxt,
   buildEtag,
   latestLastModified,
   isNotModified,
 } from '@/lib/sitemap-data';
 
 /**
- * 站点地图 XML
- * - 支持 ETag / Last-Modified 与 If-None-Match → 304：
- *   百度官方文档明确说明，支持 ETag 的 sitemap 会被更频繁地调度抓取，
- *   从而更快发现新增内容（否则抓取周期较长）。
- * - 静态页面 lastmod 取部署时间、文章取真实 updated_at，保证内容未变时 ETag 稳定。
+ * 站点地图纯文本格式（每行一个网址）
+ * 百度搜索资源平台的 sitemap 协议支持 txt 与 xml 两种格式，txt 常作为 XML 提交失败时的备选；
+ * 360、搜狗 同样支持该格式。内容与 /sitemap.xml 同源，不会漂移。
+ * 同样支持 ETag / 304，便于搜索引擎高效判断内容是否更新。
  */
 export const revalidate = 300;
 
 export async function GET(request: Request) {
   const entries = await getSitemapEntries();
-  const xml = renderSitemapXml(entries);
-  const etag = buildEtag(xml);
+  const txt = renderSitemapTxt(entries);
+  const etag = buildEtag(txt);
   const lastModified = latestLastModified(entries);
 
   const headers: Record<string, string> = {
-    'Content-Type': 'application/xml; charset=utf-8',
+    'Content-Type': 'text/plain; charset=utf-8',
     'Cache-Control': 'public, max-age=3600',
     ETag: etag,
     'Last-Modified': lastModified,
@@ -33,5 +32,5 @@ export async function GET(request: Request) {
     return new NextResponse(null, { status: 304, headers });
   }
 
-  return new NextResponse(xml, { status: 200, headers });
+  return new NextResponse(txt, { status: 200, headers });
 }

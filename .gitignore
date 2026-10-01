@@ -165,3 +165,8 @@ Desktop.ini
 *.tsbuildinfo
 # Misc
 .codegraph
+
+# 百度推送 token 与推送状态（含敏感凭据，禁止提交）
+ops/content/baidu-push.config.json
+ops/content/.push-state/
+ops/content/sogou-push.config.json
