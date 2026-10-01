@@ -162,8 +162,11 @@ export default function AboutPage() {
                     <img
                       src="/license-yingye.jpg"
                       alt="西安数度财务咨询有限公司营业执照"
-                      className="w-full border border-brand-border rounded-sm bg-white p-1.5 group-hover:opacity-90 transition-opacity"
+                      width={400}
+                      height={282}
+                      className="w-full h-auto border border-brand-border rounded-sm bg-white p-1.5 group-hover:opacity-90 transition-opacity"
                       loading="lazy"
+                      decoding="async"
                     />
                     <p className="text-xs text-brand-text-muted mt-2 text-center group-hover:text-brand-gold transition-colors">营业执照</p>
                   </a>
@@ -171,8 +174,11 @@ export default function AboutPage() {
                     <img
                       src="/license-daiji.jpg"
                       alt="西安数度财务咨询有限公司代理记账许可证书"
-                      className="w-full border border-brand-border rounded-sm bg-white p-1.5 group-hover:opacity-90 transition-opacity"
+                      width={400}
+                      height={278}
+                      className="w-full h-auto border border-brand-border rounded-sm bg-white p-1.5 group-hover:opacity-90 transition-opacity"
                       loading="lazy"
+                      decoding="async"
                     />
                     <p className="text-xs text-brand-text-muted mt-2 text-center group-hover:text-brand-gold transition-colors">代理记账许可证</p>
                   </a>
@@ -279,8 +285,11 @@ export default function AboutPage() {
                   <img
                     src="/cert-acc-international.jpg"
                     alt="陈文华国际注册会计师证书"
-                    className="w-full max-w-[180px] mx-auto rounded-sm border border-brand-border bg-white p-1.5"
+                    width={400}
+                    height={583}
+                    className="w-full h-auto max-w-[180px] mx-auto rounded-sm border border-brand-border bg-white p-1.5"
                     loading="lazy"
+                    decoding="async"
                   />
                   <p className="text-xs text-brand-text-muted mt-2 text-center">国际注册会计师</p>
                 </div>
@@ -288,8 +297,11 @@ export default function AboutPage() {
                   <img
                     src="/cert-xaufe.jpg"
                     alt="陈文华西安财经大学校外硕士生导师聘书"
-                    className="w-full max-w-[180px] mx-auto rounded-sm border border-brand-border bg-white p-1.5"
+                    width={400}
+                    height={296}
+                    className="w-full h-auto max-w-[180px] mx-auto rounded-sm border border-brand-border bg-white p-1.5"
                     loading="lazy"
+                    decoding="async"
                   />
                   <p className="text-xs text-brand-text-muted mt-2 text-center">西安财经大学校外硕士生导师聘书</p>
                 </div>
@@ -297,8 +309,11 @@ export default function AboutPage() {
                   <img
                     src="/cert-waishi.jpg"
                     alt="陈文华西安外事学院商学院校外实习实训指导教师聘书"
-                    className="w-full max-w-[180px] mx-auto rounded-sm border border-brand-border bg-white p-1.5"
+                    width={400}
+                    height={279}
+                    className="w-full h-auto max-w-[180px] mx-auto rounded-sm border border-brand-border bg-white p-1.5"
                     loading="lazy"
+                    decoding="async"
                   />
                   <p className="text-xs text-brand-text-muted mt-2 text-center">西安外事学院商学院校外实习实训指导教师聘书</p>
                 </div>
