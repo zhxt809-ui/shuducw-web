@@ -1,0 +1,32 @@
+#!/bin/sh
+# 提交前自检钩子（由 ops/selfcheck.py 提供检查逻辑）
+#
+# 安装方式（一次性；已写入 DEPLOY.md 与 AGENTS.md）：
+#   git config core.hooksPath ops/git-hooks
+#
+# 为什么需要它：2026-10-01 发生过两次"提交看起来成功、实际没提交"和"文件被写成乱码
+# 却继续往下走"的事故，根因都是缺少提交前的强制校验。此钩子只做快速离线检查，
+# 拦住的是会污染仓库的低级错误（编码损坏、禁用平台名、密钥泄漏）。
+#
+# 若本机找不到 Python，则打印提示并放行（不因环境缺失阻断提交）。
+
+PY=""
+for c in python python3 py; do
+  if command -v "$c" >/dev/null 2>&1; then PY="$c"; break; fi
+done
+
+if [ -z "$PY" ]; then
+  echo "[pre-commit] 未找到 python，跳过自检（请手动运行 python ops/selfcheck.py）" >&2
+  exit 0
+fi
+
+echo "[pre-commit] 运行提交前自检（仅暂存文件）..."
+"$PY" ops/selfcheck.py --staged-only
+code=$?
+if [ "$code" -ne 0 ]; then
+  echo "" >&2
+  echo "[pre-commit] 自检未通过，已阻止本次提交。修复后重新 git add 再提交。" >&2
+  echo "[pre-commit] 如需查看全量检查：python ops/selfcheck.py" >&2
+  exit 1
+fi
+exit 0

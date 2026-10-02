@@ -9,6 +9,7 @@
     "lint": "eslint",
     "lint:build": "eslint . --quiet",
     "ts-check": "tsc -p tsconfig.json",
+    "selfcheck": "python ops/selfcheck.py",
     "validate": "pnpm run --parallel '/^(ts-check|lint:build)$/'"
   },
   "dependencies": {
