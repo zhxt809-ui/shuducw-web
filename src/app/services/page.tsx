@@ -27,7 +27,7 @@ import {
 import { districts } from '@/data/districts';
 
 export const metadata: Metadata = {
-  title: '财税业务范围_西安数度财务咨询_工商财税托管_财税合规_内部审计_财税风控',
+  title: '财税业务范围-西安数度财务咨询-工商财税托管-财税合规-内部审计-财税风控',
   description:
     '提供全品类企业财税服务，涵盖西安工商记账报税一站式托管、乱账整改、税务优化、财税合规搭建、内部管理审计、股权架构搭建与专项财税风控，适配全行业企业财税需求。',
   keywords: [

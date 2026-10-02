@@ -3,7 +3,7 @@ import Link from 'next/link';
 import { Shield, ArrowRight } from 'lucide-react';
 
 export const metadata: Metadata = {
-  title: '隐私政策_西安数度财务咨询有限公司_信息保护与数据安全',
+  title: '隐私政策-西安数度财务咨询有限公司-信息保护与数据安全',
   description:
     '西安数度财务咨询有限公司隐私政策：说明网站信息收集范围、使用目的、存储与保护措施，以及用户查询、更正、删除个人信息的权利与联系方式。',
   keywords: ['西安数度财务咨询隐私政策', '信息保护', '数据安全'],

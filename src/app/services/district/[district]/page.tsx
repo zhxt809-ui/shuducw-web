@@ -15,7 +15,7 @@ export async function generateMetadata({
 }): Promise<Metadata> {
   const { district } = await params;
   const conf = districts.find((d) => d.slug === district);
-  if (!conf) return { title: '区域服务_西安数度财务咨询' };
+  if (!conf) return { title: '区域服务-西安数度财务咨询' };
   return {
     title: conf.metaTitle,
     description: conf.metaDescription,

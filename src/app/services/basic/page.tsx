@@ -3,7 +3,7 @@ import Link from 'next/link';
 import { Building2, FileText, ShieldCheck, Users, ArrowRight, ClipboardList, FileSearch, Handshake, RefreshCcw, Phone } from 'lucide-react';
 
 export const metadata: Metadata = {
-  title: '基础财税服务_西安数度财务咨询_公司注册注销_代理记账报税_工商托管',
+  title: '基础财税服务-西安数度财务咨询-公司注册注销-代理记账报税-工商托管',
   description:
     '西安正规基础财税服务商，专业办理公司注册、变更注销、股权转让、工商年报、代理记账报税、税控托管、汇算清缴、社保公积金托管，标准化合规服务。',
   keywords: [

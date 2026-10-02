@@ -3,7 +3,7 @@ import Link from 'next/link';
 import { ShieldCheck, Search, FileCheck, TrendingUp, AlertTriangle, ArrowRight, ClipboardList, FileSearch, Handshake, RefreshCcw, Phone } from 'lucide-react';
 
 export const metadata: Metadata = {
-  title: '企业财税合规与内审服务_西安数度财务咨询_内部管理审计_财务内控搭建',
+  title: '企业财税合规与内审服务-西安数度财务咨询-内部管理审计-财务内控搭建',
   description:
     '专注企业财税风险排查、历史账务整改、合规体系搭建、内部管理审计、资产费用专项核查，助力企业完善财务内控、规避涉税风险。',
   keywords: [

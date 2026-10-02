@@ -13,7 +13,7 @@ import {
 import ShareholderCheck from '@/components/shareholder-check';
 
 export const metadata: Metadata = {
-  title: '股东从公司拿钱怎么合规_股东借款视同分红20%_老板与公司资金往来_西安数度财务咨询',
+  title: '股东从公司拿钱怎么合规-股东借款视同分红20%-老板与公司资金往来-西安数度财务咨询',
   description:
     '股东从公司借款长期不还可能被视同分红按20%缴纳个税（财税〔2003〕158号）。本专题讲解股东借款、公款垫付个人消费、公私账户混用、其他应收款长期挂账的涉税风险与合规处理，并提供股东往来风险自查工具。',
   keywords: [

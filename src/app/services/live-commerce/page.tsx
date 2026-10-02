@@ -12,7 +12,7 @@ import {
 import ConsultationForm from '@/components/consultation-form';
 
 export const metadata: Metadata = {
-  title: '西安直播电商个体户财税咨询_主播报税_合规经营_西安数度财务咨询',
+  title: '西安直播电商个体户财税咨询-主播报税-合规经营-西安数度财务咨询',
   description:
     '西安直播电商个体户与主播财税咨询：直播收入怎么报税、个体户注册与核定征收、平台佣金发票、私户收款风险排查，帮助主播与电商经营者合规经营、安心赚钱。',
   keywords: [

@@ -6,7 +6,7 @@ import { InlineConsultForm } from '@/components/inline-consult-form';
 import { districts } from '@/data/districts';
 
 export const metadata: Metadata = {
-  title: '个税计算器_经营所得5%-35%_工资薪金个税计算_西安数度财务咨询',
+  title: '个税计算器-经营所得5%-35%-工资薪金个税计算-西安数度财务咨询',
   description:
     '免费在线个人所得税计算器：经营所得模式（个体户5%-35%五级超额累进，适合个体户、主播、个人工作室）与工资薪金模式（3%-45%七级，减除费用6万/年、专项附加扣除），现行税率表，西安数度财务咨询提供。',
   keywords: [

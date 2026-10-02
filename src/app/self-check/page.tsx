@@ -4,7 +4,7 @@ import { ArrowRight, ShieldCheck } from 'lucide-react';
 import RiskCheck from '@/components/risk-check';
 
 export const metadata: Metadata = {
-  title: '账务风险自查_西安个体户小微企业财税风险测评_西安数度财务咨询',
+  title: '账务风险自查-西安个体户小微企业财税风险测评-西安数度财务咨询',
   description:
     '6 道题多维度自查账务规范、资金往来、发票管理、纳税申报、股东往来与内部管控，初步了解企业财税风险状况，适合西安个体工商户、小微企业主。完成自查后可预约专业财税诊断，获取风险排查建议。',
   keywords: [

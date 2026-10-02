@@ -3,7 +3,7 @@ import Link from 'next/link';
 import { TrendingUp, UserCheck, Shield, Scale, ArrowRight, ClipboardList, FileSearch, Handshake, RefreshCcw, Phone } from 'lucide-react';
 
 export const metadata: Metadata = {
-  title: '财税咨询风控_西安数度财务咨询_财税顾问咨询_税负合规计划_股权架构搭建',
+  title: '财税咨询风控-西安数度财务咨询-财税顾问咨询-税负合规计划-股权架构搭建',
   description:
     '专业提供财税咨询与风控服务，常年企业财税顾问、股权架构搭建、税负合规计划、税务异常处理、稽查协助、投融资财税尽调，全方位保障企业财税安全。',
   keywords: [

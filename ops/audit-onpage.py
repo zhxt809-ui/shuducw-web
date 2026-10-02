@@ -29,14 +29,12 @@ CTX = ssl.create_default_context()
 
 
 def get(url, timeout=25):
-    req = urllib.request.Request(url, headers={'User-Agent': UA, 'Accept-Encoding': 'gzip'})
+    # 不要发 Accept-Encoding: gzip。曾因解码分支未生效而拿到压缩字节，
+    # 导致正文被当成乱码、误判"404 页无品牌化提示"（已纠正）。
+    req = urllib.request.Request(url, headers={'User-Agent': UA})
     try:
         with urllib.request.urlopen(req, timeout=timeout, context=CTX) as r:
-            raw = r.read()
-            if r.headers.get('Content-Encoding') == 'gzip':
-                import gzip
-                raw = gzip.decompress(raw)
-            return r.status, raw.decode('utf-8', 'replace'), dict(r.headers)
+            return r.status, r.read().decode('utf-8', 'replace'), dict(r.headers)
     except urllib.error.HTTPError as e:
         return e.code, e.read().decode('utf-8', 'replace'), dict(e.headers)
     except Exception as e:
@@ -54,7 +52,10 @@ for url in urls:
     title = re.search(r'<title[^>]*>(.*?)</title>', html, re.S)
     desc = re.search(r'<meta[^>]+name="description"[^>]+content="([^"]*)"', html, re.S)
     canon = re.search(r'<link[^>]+rel="canonical"[^>]+href="([^"]*)"', html, re.S)
-    h1 = len(re.findall(r'<h1[\s>]', html))
+    # H1 只能在剥离 script/style 后的可见 HTML 上计数：
+    # 否则会把 RSC 载荷里序列化的字符串也算成 H1（曾据此误报 5 个页面）
+    visible_html = re.sub(r'<(script|style)[^>]*>.*?</\1>', ' ', html, flags=re.S | re.I)
+    h1 = len(re.findall(r'<h1[\s>]', visible_html))
     ld_blocks = re.findall(r'<script[^>]+application/ld\+json[^>]*>(.*?)</script>', html, re.S)
     ld_bad = 0
     for b in ld_blocks:
@@ -113,10 +114,14 @@ for p in tlen_over[:8]:
 print('\n--- 不存在 URL 的行为（应为 404，软 404 会浪费抓取配额）---')
 for bad in ['/this-page-should-not-exist-9f3a', '/services/nonexistent-xyz']:
     st, html, _ = get(BASE + bad)
-    has_404 = ('404' in html[:3000]) or ('找不到' in html) or ('页面不存在' in html)
-    print(f'  {bad} → HTTP {st}  正文含 404 提示: {has_404}')
+    # 注意：必须搜完整正文。早先只搜前 3000 字符，而本站页面内联样式很长，
+    # 导致品牌化 404 页被误判为"无提示"（已纠正）。
+    has_404 = any(k in html for k in ('页面不存在', '404', '找不到'))
+    print(f'  {bad} → HTTP {st}  正文含 404 提示: {has_404}（正文 {len(html)} 字符）')
     if st == 200:
         issues.append(f'{bad}: 返回 200（软 404）')
+    if st == 404 and not has_404:
+        issues.append(f'{bad}: 返回 404 但无品牌化提示页')
 
 # ---- 9. 域名与斜杠规范化 ----
 print('\n--- 规范化跳转 ---')

@@ -3,7 +3,7 @@ import Link from 'next/link';
 import { Award, Users, Building2, Shield, CheckCircle2, ArrowRight, Target, Eye, Heart } from 'lucide-react';
 
 export const metadata: Metadata = {
-  title: '关于我们_西安数度财务咨询_协会副会长单位_专业财税团队',
+  title: '关于我们-西安数度财务咨询-协会副会长单位-专业财税团队',
   description:
     '西安数度财务咨询有限公司2012年成立，西安市代理记账协会首届副会长单位，深耕西安财税十余年，配备多名高级会计师、国际注册会计师、税务师，专注企业财税合规与内部财务管控落地服务。',
   keywords: [

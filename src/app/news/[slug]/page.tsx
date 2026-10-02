@@ -7,7 +7,8 @@ import { getArticleBySlug, listArticles } from '@/lib/store';
 import { marked } from 'marked';
 import { cache } from 'react';
 import ShareButton from '@/components/share-button';
-import { HtmlRenderer } from '@/components/html-renderer';
+import { ArticleScripts } from '@/components/article-scripts';
+import { prepareArticleHtml, demoteContentHeadings, HTML_CONTENT_MARK } from '@/lib/article-html';
 import NewsListPage from '@/components/news-list';
 import { XiaohongshuIcon } from '@/components/xiaohongshu-icon';
 
@@ -86,7 +87,7 @@ export async function generateMetadata({
   // 分类页
   if (CATEGORY_SLUGS.includes(slug)) {
     return {
-      title: `${categoryLabels[slug] || '财税资讯'}_财税案例_财税知识_政策解读_西安数度财务咨询`,
+      title: `${categoryLabels[slug] || '财税资讯'}-财税案例-财税知识-政策解读-西安数度财务咨询`,
       description: `西安数度财务咨询有限公司${categoryLabels[slug] || '财税资讯'}栏目，分享${categoryLabels[slug] || '财税资讯'}内容，助力企业合规经营、优化税负。`,
       keywords: ['西安数度财务咨询', categoryLabels[slug] || '财税资讯', '西安财税', '西安代理记账'],
       alternates: { canonical: `/news/${slug}` },
@@ -97,7 +98,7 @@ export async function generateMetadata({
 
   if (result.status === 'ok') {
     return {
-      title: `${result.article.title}_${categoryLabels[result.article.category] || '财税资讯'}_西安数度财务咨询`,
+      title: `${result.article.title}_${categoryLabels[result.article.category] || '财税资讯'}-西安数度财务咨询`,
       description: result.article.summary || result.article.title,
       keywords: [
         '西安数度财务咨询',
@@ -111,7 +112,7 @@ export async function generateMetadata({
   // 文章未找到 / 未发布：旧 slug 先尝试 301；并加 noindex，避免软 404 页面被搜索引擎收录
   redirectLegacySlug(slug);
 
-  return { title: '文章未找到_西安数度财务咨询', robots: { index: false, follow: false } };
+  return { title: '文章未找到-西安数度财务咨询', robots: { index: false, follow: false } };
 }
 
 marked.setOptions({
@@ -121,10 +122,11 @@ marked.setOptions({
 
 function renderMarkdown(content: string): string {
   // 检查是否是 HTML 内容（带有标记）
-  if (content.startsWith('<!-- html-content -->')) {
-    return content.replace('<!-- html-content -->\n', '');
+  if (content.startsWith(HTML_CONTENT_MARK)) {
+    return content.replace(`${HTML_CONTENT_MARK}\n`, '');
   }
-  return marked.parse(content) as string;
+  // markdown 里可能写了原生 <h1>，降级为 <h2>，避免与模板标题的 H1 重复
+  return demoteContentHeadings(marked.parse(content) as string);
 }
 
 export default async function ArticlePage({
@@ -219,6 +221,11 @@ export default async function ArticlePage({
 
   // 正常展示文章
   const article = result.article;
+  // HTML 正文在服务端预处理：正文成为服务端可见文本，脚本交给客户端执行，正文 h1 降级为 h2
+  const prepared =
+    article.content && article.content.startsWith(HTML_CONTENT_MARK)
+      ? prepareArticleHtml(article.content)
+      : null;
   const relatedArticles = await getRelatedArticles(article.category, article.slug);
 
   const formatDate = (dateStr: string | null) => {
@@ -328,11 +335,11 @@ export default async function ArticlePage({
       <section className="py-12 md:py-16 bg-white">
         <div className="container-brand px-4 md:px-8">
           <div className="max-w-3xl mx-auto">
-            {article.content.startsWith('<!-- html-content -->') ? (
-              <HtmlRenderer
-                html={article.content.replace('<!-- html-content -->', '').trim()}
-                className="prose-custom"
-              />
+            {prepared ? (
+              <>
+                <div className="prose-custom" dangerouslySetInnerHTML={{ __html: prepared.html }} />
+                <ArticleScripts code={prepared.scripts.join('\n;\n')} />
+              </>
             ) : (
               <article
                 className="prose-custom"

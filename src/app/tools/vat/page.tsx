@@ -6,7 +6,7 @@ import { InlineConsultForm } from '@/components/inline-consult-form';
 import { districts } from '@/data/districts';
 
 export const metadata: Metadata = {
-  title: '增值税计算器_小规模纳税人1%征收率_一般纳税人计算_西安数度财务咨询',
+  title: '增值税计算器-小规模纳税人1%征收率-一般纳税人计算-西安数度财务咨询',
   description:
     '免费在线增值税计算器：小规模纳税人模式（月销售额10万以下免征、3%减按1%征收率）与一般纳税人模式（销项减进项，13%/9%/6%），2026年增值税法及衔接公告现行口径，西安数度财务咨询提供。',
   keywords: [

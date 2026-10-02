@@ -6,7 +6,7 @@ import { InlineConsultForm } from '@/components/inline-consult-form';
 import { districts } from '@/data/districts';
 
 export const metadata: Metadata = {
-  title: '人民币大写转换器_金额大小写转换_数字转中文大写_西安数度财务咨询',
+  title: '人民币大写转换器-金额大小写转换-数字转中文大写-西安数度财务咨询',
   description:
     '免费在线人民币大写转换器：输入数字金额实时转为中文大写（壹贰叁…），支持角分与"零""整"规范处理，依据《支付结算办法》票据填写基本规定，合同、发票、支票填写参考，西安数度财务咨询提供。',
   keywords: [

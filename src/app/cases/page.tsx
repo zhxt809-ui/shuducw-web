@@ -6,7 +6,7 @@ import { listArticles } from '@/lib/store';
 export const revalidate = 60;
 
 export const metadata: Metadata = {
-  title: '客户服务实录_西安数度财务咨询_真实财税服务案例_服务成果',
+  title: '客户服务实录-西安数度财务咨询-真实财税服务案例-服务成果',
   description:
     '西安数度财务咨询有限公司真实客户服务案例（已脱敏）：食品企业业财税一体化、高新技术企业常年财税顾问、保险销售企业财税服务，展示公司十余年专业落地能力。',
   keywords: [

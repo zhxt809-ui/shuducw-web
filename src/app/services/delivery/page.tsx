@@ -16,7 +16,7 @@ import {
 import { districts } from '@/data/districts';
 
 export const metadata: Metadata = {
-  title: '服务交付标准_西安代理记账服务流程_交付物与责任边界_西安数度财务咨询',
+  title: '服务交付标准-西安代理记账服务流程-交付物与责任边界-西安数度财务咨询',
   description:
     '西安数度财务咨询代理记账与财税服务交付标准：从签约建账、每月做账、纳税申报、报表交付到年度汇算与资料归档的完整流程，明确交付物、时效节点与责任边界，服务过程可预期、可追溯。',
   keywords: [

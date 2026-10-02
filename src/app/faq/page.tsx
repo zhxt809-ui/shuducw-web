@@ -3,7 +3,7 @@ import Link from 'next/link';
 import { Phone, MessageSquare, ChevronDown, HelpCircle } from 'lucide-react';
 
 export const metadata: Metadata = {
-  title: '财税常见问题FAQ_西安代理记账_公司注册_税务筹划_西安数度财务咨询',
+  title: '财税常见问题FAQ-西安代理记账-公司注册-税务筹划-西安数度财务咨询',
   description:
     '西安数度财务咨询有限公司整理的企业财税高频问题解答：西安代理记账多少钱、公司注册需要什么材料、小规模纳税人和一般纳税人的区别、税务异常怎么处理、公司注销流程等常见问题。',
   keywords: [
