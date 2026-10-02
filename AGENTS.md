@@ -85,6 +85,10 @@ src/
 | Schema JSON-LD | 各页面 `metadata` 中的 `jsonLD` | 对应页面的标题、描述、服务内容、联系方式变更 |
 
 **执行原则**：
+- sitemap 的 `lastmod` 由 `scripts/gen-page-lastmod.mjs` 依据 git 提交历史按页生成，写入
+  `src/data/page-lastmod.json`，已串联到 build 前置步骤，构建时自动刷新，新增页面无需手工登记。
+  **禁止把 lastmod 写成部署时间**：Google 官方文档明确只在"一致且可验证准确"时才采用 `<lastmod>`，
+  按部署时间生成会让每次部署都把全部页面标成"当天修改"，导致该字段被忽略、并让爬虫反复重抓未变化的页面。
 - 修改页面文案后 → 同步更新该页 Schema + llms.txt（如涉及）
 - 新增页面后 → 同步更新 sitemap + llms.txt + 该页 Schema
 - 删除页面后 → 同步从 sitemap + llms.txt 中移除
