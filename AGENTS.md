@@ -93,6 +93,13 @@ src/
 - 新增页面后 → 同步更新 sitemap + llms.txt + 该页 Schema
 - 删除页面后 → 同步从 sitemap + llms.txt 中移除
 - 联系方式变更后 → 同步更新 llms.txt + 联系页 Schema + 页脚
+- **收录通知（IndexNow）必须单条流式提交，禁止全量批量推送**。依据《Bing Webmaster Guidelines》第 4 节原文：
+  "Avoid batch submissions when possible. Streaming submissions provide faster updates, reduce server load,
+  and improve indexing accuracy." 实现：`src/lib/indexnow.ts` 已接入文章发布/更新/删除接口
+  （`/api/articles`、`/api/articles/[id]`），发布即逐条提交该文章页与分类页；下架/改 slug 时同时通知旧地址。
+  手动提交用 `python ops/content/indexnow-submit-one.py <URL>`（或 `--changed`）。
+  `ops/content/submit-indexnow-from-sitemap.py`（全量批量）**仅在全站重建等极端情况使用**。
+  > 事故记录：2026-10-02 曾两次全量推送 55 条，与官方建议相反；已改为发布即单条提交。
 
 ## 交付自检规范（强制）
 

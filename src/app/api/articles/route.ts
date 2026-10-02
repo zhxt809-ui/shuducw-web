@@ -1,6 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { listArticles, countArticles, createArticle, slugExists } from '@/lib/store';
 import { isAdminAuthorized, unauthorized } from '@/lib/admin-auth';
+import { submitToIndexNow, articleUrl, categoryUrl } from '@/lib/indexnow';
 
 // GET /api/articles — 获取文章列表
 // 查询参数: category, is_published, limit, offset
@@ -70,6 +71,11 @@ export async function POST(request: NextRequest) {
       sort_order: typeof sort_order === 'number' ? sort_order : 0,
       published_at: is_published ? new Date().toISOString() : null,
     });
+
+    // 发布即通知 Bing/Yandex 系（单条流式提交，不阻塞响应；草稿不发）
+    if (article.is_published) {
+      void submitToIndexNow([articleUrl(article.slug), categoryUrl(article.category)]);
+    }
 
     return NextResponse.json({ data: article }, { status: 201 });
   } catch (err) {

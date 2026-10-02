@@ -1,6 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { getArticleById, updateArticle, deleteArticle, slugExists } from '@/lib/store';
 import { isAdminAuthorized, unauthorized } from '@/lib/admin-auth';
+import { submitToIndexNow, articleUrl, categoryUrl } from '@/lib/indexnow';
 
 // GET /api/articles/[id] — 获取单篇文章
 export async function GET(
@@ -57,18 +58,29 @@ export async function PUT(
       }
     }
 
+    // 更新前的快照：用于「首次发布时间」判定，以及 slug/分类变更时通知旧地址
+    const before = await getArticleById(numericId);
+    if (!before) {
+      return NextResponse.json({ error: '文章不存在' }, { status: 404 });
+    }
+
     // 首次发布时设置 published_at
-    if (body.is_published === true) {
-      const existing = await getArticleById(numericId);
-      if (existing && !existing.published_at) {
-        patch.published_at = new Date().toISOString();
-      }
+    if (body.is_published === true && !before.published_at) {
+      patch.published_at = new Date().toISOString();
     }
 
     const data = await updateArticle(numericId, patch);
     if (!data) {
       return NextResponse.json({ error: '文章不存在' }, { status: 404 });
     }
+
+    // 变更即通知 Bing/Yandex 系重新抓取（单条流式提交，不阻塞响应）
+    // 下架/改 slug 时，旧地址与旧分类列表页同样需要通知，否则 Bing 侧会保留过期内容
+    const notifyUrls = [articleUrl(data.slug)];
+    if (data.category) notifyUrls.push(categoryUrl(data.category));
+    if (before.slug && before.slug !== data.slug) notifyUrls.push(articleUrl(before.slug));
+    if (before.category && before.category !== data.category) notifyUrls.push(categoryUrl(before.category));
+    void submitToIndexNow(notifyUrls);
 
     return NextResponse.json({ data });
   } catch (err) {
@@ -93,9 +105,17 @@ export async function DELETE(
       return NextResponse.json({ error: '无效的文章 ID' }, { status: 400 });
     }
 
+    const before = await getArticleById(numericId);
     const ok = await deleteArticle(numericId);
     if (!ok) {
       return NextResponse.json({ error: '文章不存在' }, { status: 404 });
+    }
+
+    // 删除后通知（Bing 官方第 9 节：内容永久移除时用 IndexNow 更新被删/变更的 URL）
+    if (before) {
+      const notifyUrls = [articleUrl(before.slug)];
+      if (before.category) notifyUrls.push(categoryUrl(before.category));
+      void submitToIndexNow(notifyUrls);
     }
 
     return NextResponse.json({ success: true });
