@@ -83,6 +83,8 @@ src/
 | llms.txt | `public/llms.txt` | 业务内容、联系方式、服务描述、页面链接变更 |
 | robots.txt | `src/app/robots.ts` | 爬虫规则调整（如新增/屏蔽 AI 爬虫） |
 | Schema JSON-LD | 各页面 `metadata` 中的 `jsonLD` | 对应页面的标题、描述、服务内容、联系方式变更 |
+| 旧 URL 归位规则 | `src/proxy.ts` | 站点改版/路由重命名后，旧静态地址（`/xxx.html`）的 301 归位 |
+| nginx 站点配置 | 服务器 `/etc/nginx/sites-enabled/shuducw`（改动脚本存 `ops/nginx-add-index-redirect.py`） | 域名跳转、反扫描规则、缓存策略调整 |
 
 **执行原则**：
 - sitemap 的 `lastmod` 由 `scripts/gen-page-lastmod.mjs` 依据 git 提交历史按页生成，写入
@@ -92,7 +94,19 @@ src/
 - 修改页面文案后 → 同步更新该页 Schema + llms.txt（如涉及）
 - 新增页面后 → 同步更新 sitemap + llms.txt + 该页 Schema
 - 删除页面后 → 同步从 sitemap + llms.txt 中移除
-- 联系方式变更后 → 同步更新 llms.txt + 联系页 Schema + 页脚
+- 联系方式变更后 → 同步更新 llms.txt + 联系页 Schema + 页脚，并**全量替换**：仓库文本
+  （`python ops/change-phone.py` 带演练模式）+ 服务器 `data/articles.json` 正文/摘要
+  （`ops/change-phone-server.py`，改前自动备份）+ `ops/outreach/外链执行包.md` 标准信息块；
+  改完用 `python ops/verify-phone-live.py` 按 sitemap 枚举全站页面验收（旧号码必须为 0 处）。
+  > 注意：图片素材（名片/海报/二维码封面）里印刷的旧号码脚本改不了，需人工重新出图。
+- **旧静态地址一律 301 归位，不要放任 404**。规则在 `src/proxy.ts`：`/xxx.html` → 301 → `/xxx`，
+  `/index.html` → 301 → `/`，`.htm` 同理。原则性规则比逐个猜文件名可靠：
+  只要新版存在对应 clean URL 就能接住，新版不存在的路径仍正常 404（不造假页面、不制造软 404）。
+  **验证文件必须放行**（`ByteDanceVerify`、`baidu_verify_*`、`google*` 等 `.html`），否则已完成的站点验证会失效。
+  服务器侧另有一条 nginx 规则处理 `/index.html`（见下）。
+  > 事故记录：2026-10-06 nginx 反扫描规则 `location ~* ^/index { return 404; }` 把旧站入口
+  > `/index.html` 一起拦了（日志证据：360Spider 54 次、Googlebot 1 次请求全 404）。
+  > 修复脚本 `ops/nginx-add-index-redirect.py`（备份、`nginx -t` 校验、失败自动回滚）。
 - **收录通知（IndexNow）必须单条流式提交，禁止全量批量推送**。依据《Bing Webmaster Guidelines》第 4 节原文：
   "Avoid batch submissions when possible. Streaming submissions provide faster updates, reduce server load,
   and improve indexing accuracy." 实现：`src/lib/indexnow.ts` 已接入文章发布/更新/删除接口
@@ -113,6 +127,8 @@ src/
 | 3 | 每次提交后核对 `git log --oneline -1` 与 `git status`，确认提交真的产生了；恢复文件用 `git checkout HEAD -- <file>`（`git checkout -- <file>` 是从**索引**恢复，索引里可能正是坏版本） | 误以为已恢复 |
 | 4 | 任何结论（"已生效""为空""已修复"）都要用第二种独立方法复核；禁止只凭一条命令/管道的显示下结论——控制台编码本身会骗人 | 曾误报"crontab 是空的" |
 | 5 | 改 SEO/机制类实现前先查官方文档并引用原文；部署后必须跑对应验证脚本并给出真实输出，**没有测试输出就不下结论** | lastmod 曾被写成部署时间 |
+| 6 | 跳转类改动必须实测**落点 URL 本身**，不能只看状态码是 301。Next standalone 生成的绝对地址会带内部 host（`https://localhost:3000/...`），补 `X-Forwarded-Host` 也无效——必须用规范域名显式拼装落点 | 301 落点曾指向 localhost:3000，真实用户会失败 |
+| 7 | 改服务器配置（nginx 等）：备份**绝不能放在会被一并加载的目录**（`sites-enabled/` 放备份会被当作第二份配置 → `limit_req_zone` 重复定义 → `nginx -t` 失败）；必须 `nginx -t` 通过后再 reload，失败自动回滚 | 本次备份误放 sites-enabled，配置一度无效 |
 
 **自动化**：`pnpm selfcheck`（= `python ops/selfcheck.py`）检查编码/乱码、禁用平台名、绝对化用语、
 密钥泄漏、lastmod 数据、文章数据、git 卫生。提交前钩子已启用（`git config core.hooksPath ops/git-hooks`），
