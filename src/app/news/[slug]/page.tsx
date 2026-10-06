@@ -491,7 +491,7 @@ export default async function ArticlePage({
                   <div className="flex flex-wrap items-center gap-4 mt-4 text-sm text-white/80">
                     <span className="flex items-center gap-2">
                       <Phone size={14} className="text-brand-gold" />
-                      029-84556877 / 13359182829
+                      029-88456877 / 13359182829
                     </span>
                     <span className="flex items-center gap-2">
                       <MessageSquare size={14} className="text-brand-gold" />
@@ -507,7 +507,7 @@ export default async function ArticlePage({
                     免费咨询报价 <ArrowRight size={16} />
                   </Link>
                   <Link
-                    href="tel:02984556877"
+                    href="tel:02988456877"
                     className="inline-flex items-center justify-center gap-2 px-6 py-3 border border-white/30 text-white rounded-sm hover:bg-white/10 transition-colors text-sm"
                   >
                     <Phone size={14} /> 电话咨询

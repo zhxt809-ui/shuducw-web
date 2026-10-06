@@ -83,7 +83,7 @@ export default function BaiduMap() {
         const info = new BMap.InfoWindow(
           '<div style="font-size:13px;line-height:1.8">西安数度财务咨询有限公司<br/>' +
             '西安市高新区唐延路35号旺座现代城D座1006室<br/>' +
-            '<a href="tel:02984556877" style="color:#B8860B">029-84556877</a></div>',
+            '<a href="tel:02988456877" style="color:#B8860B">029-88456877</a></div>',
           { width: 240, title: '西安数度财务咨询有限公司' }
         );
         marker.addEventListener('click', () => map.openInfoWindow(info, poi.point));

@@ -54,7 +54,7 @@ const TEXT = HTML.replace(/<[^>]+>/g, m => m === '<hr/>' ? '\n\n---\n\n' : m ===
       tables: ed ? ed.querySelectorAll('table').length : -1,
       hasEmoji: /❌|👉|⚠️|📞|📍|🌐/.test(t),
       hasShuduPromo: /数度财务|副会长单位|全程代办/.test(t),
-      hasPhone: /84556877|13359182829/.test(t),
+      hasPhone: /88456877|13359182829/.test(t),
       hasSite: t.includes('shuducw.com'),
       hasPolicy: t.includes('政策依据'),
       hasIntro: t.includes('先说结论')

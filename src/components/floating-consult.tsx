@@ -62,7 +62,7 @@ export function FloatingConsultButton() {
           />
           <p className="mt-2 text-sm font-medium text-brand-text">扫码添加企微顾问</p>
           <p className="mt-1 text-xs text-brand-text-muted">长按识别 · 工作日在线</p>
-          <p className="mt-1 text-xs text-brand-text-muted">或致电 029-84556877</p>
+          <p className="mt-1 text-xs text-brand-text-muted">或致电 029-88456877</p>
         </div>
       )}
 
@@ -93,7 +93,7 @@ export function FloatingConsultButton() {
             <span className="ml-auto text-xs text-brand-text-muted">{showWecom ? '收起' : '扫码'}</span>
           </button>
           <a
-            href="tel:02984556877"
+            href="tel:02988456877"
             className="flex items-center gap-3 px-3 py-2.5 rounded-md hover:bg-brand-bg transition-colors"
           >
             <span className="w-9 h-9 rounded-full bg-brand-navy/5 flex items-center justify-center flex-shrink-0">
@@ -101,7 +101,7 @@ export function FloatingConsultButton() {
             </span>
             <span className="text-sm text-brand-text">
               <span className="block font-medium">电话咨询</span>
-              <span className="block text-xs text-brand-text-muted">029-84556877</span>
+              <span className="block text-xs text-brand-text-muted">029-88456877</span>
             </span>
           </a>
           <Link

@@ -41,8 +41,8 @@ export default function Error({
           </div>
           <div className="mt-8 text-brand-text-muted text-sm">
             或致电{' '}
-            <a href="tel:02984556877" className="text-brand-navy font-medium">
-              029-84556877
+            <a href="tel:02988456877" className="text-brand-navy font-medium">
+              029-88456877
             </a>
           </div>
         </div>

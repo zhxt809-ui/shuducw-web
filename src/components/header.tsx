@@ -142,11 +142,11 @@ export function Header() {
             );
           })}
           <a
-            href="tel:02984556877"
+            href="tel:02988456877"
             className="inline-flex items-center gap-2 px-4 py-2 bg-brand-gold text-white text-sm font-medium rounded-sm hover:bg-brand-gold-light transition-colors"
           >
             <Phone size={14} />
-            029-84556877
+            029-88456877
           </a>
         </nav>
 
@@ -211,11 +211,11 @@ export function Header() {
               );
             })}
             <a
-              href="tel:02984556877"
+              href="tel:02988456877"
               className="flex items-center gap-2 mt-2 px-3 py-2.5 bg-brand-gold text-white text-sm font-medium rounded-md"
             >
               <Phone size={14} />
-              电话咨询 029-84556877
+              电话咨询 029-88456877
             </a>
           </div>
         </nav>

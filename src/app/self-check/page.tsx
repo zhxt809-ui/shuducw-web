@@ -126,7 +126,7 @@ export default function SelfCheckPage() {
               <div className="flex-1 text-center sm:text-left">
                 <p className="text-sm font-semibold text-brand-navy">想直接找会计聊聊？</p>
                 <p className="text-xs text-brand-text-muted mt-1">
-                  电话 029-84556877 / 13359182829，或查看
+                  电话 029-88456877 / 13359182829，或查看
                   <Link href="/contact" className="text-brand-navy hover:text-brand-gold font-medium">
                     {' '}
                     联系我们

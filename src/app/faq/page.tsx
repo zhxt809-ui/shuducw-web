@@ -20,7 +20,7 @@ export const metadata: Metadata = {
 const faqs = [
   {
     q: '西安代理记账一年多少钱？',
-    a: '西安代理记账费用因企业类型、开票量、业务复杂度而异，一般小规模纳税人年费在 2000-4000 元左右，一般纳税人稍高。具体以企业实际经营情况为准，可联系西安数度财务咨询免费报价（电话 029-84556877 / 13359182829）。',
+    a: '西安代理记账费用因企业类型、开票量、业务复杂度而异，一般小规模纳税人年费在 2000-4000 元左右，一般纳税人稍高。具体以企业实际经营情况为准，可联系西安数度财务咨询免费报价（电话 029-88456877 / 13359182829）。',
   },
   {
     q: '西安注册公司需要准备什么材料？',
@@ -233,11 +233,11 @@ export default function FaqPage() {
                 在线免费咨询
               </Link>
               <a
-                href="tel:02984556877"
+                href="tel:02988456877"
                 className="inline-flex items-center gap-2 px-6 py-3 border border-brand-navy text-brand-navy rounded-sm hover:bg-brand-navy/5 transition-colors"
               >
                 <Phone size={16} />
-                029-84556877 / 13359182829
+                029-88456877 / 13359182829
               </a>
             </div>
           </div>

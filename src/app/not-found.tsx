@@ -27,8 +27,8 @@ export default function NotFound() {
           </div>
           <div className="mt-8 text-white/60 text-sm">
             有财税问题？致电{' '}
-            <a href="tel:02984556877" className="text-brand-gold font-medium">
-              029-84556877
+            <a href="tel:02988456877" className="text-brand-gold font-medium">
+              029-88456877
             </a>
           </div>
         </div>

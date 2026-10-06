@@ -85,7 +85,7 @@ const TEXT = HTML.replace(/<[^>]+>/g, m => m === '<hr/>' ? '\n\n---\n\n' : m ===
     const pasted = await editorPage.evaluate(() => {
       const ed = document.querySelector('.public-DraftEditor-content');
       const t = ed ? ed.innerText : '';
-      return { len: t.trim().length, tables: ed ? ed.querySelectorAll('table').length : -1, hasShudu: t.includes('数度财务'), hasPhone: /84556877|13359182829/.test(t), hasEmoji: /❌|👉|⚠️/.test(t), hasSite: t.includes('shuducw') };
+      return { len: t.trim().length, tables: ed ? ed.querySelectorAll('table').length : -1, hasShudu: t.includes('数度财务'), hasPhone: /88456877|13359182829/.test(t), hasEmoji: /❌|👉|⚠️/.test(t), hasSite: t.includes('shuducw') };
     });
     console.log('content check:', JSON.stringify(pasted));
   }

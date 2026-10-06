@@ -21,7 +21,7 @@ const contactInfo = [
   {
     icon: Phone,
     title: '电话咨询',
-    content: '029-84556877 / 13359182829',
+    content: '029-88456877 / 13359182829',
   },
   {
     icon: Mail,
@@ -67,7 +67,7 @@ export default function ContactPage() {
             '@context': 'https://schema.org',
             '@type': 'ProfessionalService',
             name: '西安数度财务咨询有限公司',
-            telephone: '029-84556877 / 13359182829',
+            telephone: '029-88456877 / 13359182829',
             email: '309814531@qq.com',
             address: {
               '@type': 'PostalAddress',
@@ -140,10 +140,10 @@ export default function ContactPage() {
                 在百度地图中查看 / 导航
               </a>
               <a
-                href="tel:02984556877"
+                href="tel:02988456877"
                 className="inline-flex items-center gap-2 px-6 py-3 border border-brand-navy text-brand-navy rounded-sm hover:bg-brand-navy/5 transition-colors"
               >
-                到店前电话预约：029-84556877
+                到店前电话预约：029-88456877
               </a>
             </div>
           </div>
@@ -157,7 +157,7 @@ export default function ContactPage() {
             <h2 className="text-2xl md:text-3xl font-bold text-brand-navy mb-4">到店环境</h2>
             <div className="w-16 h-[2px] bg-brand-gold mx-auto mb-6" />
             <p className="text-brand-text-muted max-w-xl mx-auto text-sm">
-              公司办公环境实拍。为避免到店后无人接待，建议先电话预约：029-84556877。
+              公司办公环境实拍。为避免到店后无人接待，建议先电话预约：029-88456877。
             </p>
           </div>
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-6">

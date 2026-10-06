@@ -67,11 +67,11 @@ export default function ConsultationForm({
         setFormData({ companyName: '', phone: '', content: '' });
         trackEvent('表单', '提交成功', source);
       } else {
-        setErrorMsg(result.error || '提交失败，请直接拨打电话 029-84556877 / 13359182829 咨询');
+        setErrorMsg(result.error || '提交失败，请直接拨打电话 029-88456877 / 13359182829 咨询');
         trackEvent('表单', '提交失败', source);
       }
     } catch {
-      setErrorMsg('网络异常，请直接拨打电话 029-84556877 / 13359182829 咨询');
+      setErrorMsg('网络异常，请直接拨打电话 029-88456877 / 13359182829 咨询');
       trackEvent('表单', '提交失败', `${source}(网络异常)`);
     } finally {
       setIsSubmitting(false);

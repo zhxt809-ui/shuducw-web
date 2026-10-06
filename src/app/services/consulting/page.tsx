@@ -288,7 +288,7 @@ export default function ConsultingPage() {
               <div className="flex flex-wrap items-center gap-4 mt-4 text-sm text-brand-text">
                 <span className="flex items-center gap-2">
                   <Phone size={14} className="text-brand-gold" />
-                  029-84556877 / 13359182829
+                  029-88456877 / 13359182829
                 </span>
               </div>
             </div>

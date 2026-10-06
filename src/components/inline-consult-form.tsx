@@ -64,7 +64,7 @@ export function InlineConsultForm() {
         <h3 className="text-lg font-bold text-brand-navy mb-2">已收到您的咨询</h3>
         <p className="text-sm text-brand-text-muted leading-relaxed">
           顾问将在工作日 9:00-18:00 尽快回电（法定节假日顺延）。
-          如需即时沟通，可拨打 <span className="text-brand-navy font-medium">029-84556877</span>
+          如需即时沟通，可拨打 <span className="text-brand-navy font-medium">029-88456877</span>
           或 <span className="text-brand-navy font-medium">13359182829</span>。
         </p>
       </div>

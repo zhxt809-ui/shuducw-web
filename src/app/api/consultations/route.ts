@@ -40,7 +40,7 @@ export async function POST(request: NextRequest) {
     }
     // 同 IP 每小时限 5 条
     if (hitLimit(`ip:${ip}`, LIMITS.perIpMax, LIMITS.perIpWindowMs, now)) {
-      return NextResponse.json({ error: '提交过于频繁，请稍后再试，或直接拨打 029-84556877 咨询' }, { status: 429 });
+      return NextResponse.json({ error: '提交过于频繁，请稍后再试，或直接拨打 029-88456877 咨询' }, { status: 429 });
     }
 
     if (!company_name || !phone || !content) {
@@ -63,7 +63,7 @@ export async function POST(request: NextRequest) {
 
     // 同电话每天限 3 条（在字段校验通过后再计数，避免垃圾数据占用额度）
     if (hitLimit(`phone:${phoneStr}`, LIMITS.perPhoneMax, LIMITS.perPhoneWindowMs, now)) {
-      return NextResponse.json({ error: '该电话今日提交次数已达上限，请直接拨打 029-84556877 咨询' }, { status: 429 });
+      return NextResponse.json({ error: '该电话今日提交次数已达上限，请直接拨打 029-88456877 咨询' }, { status: 429 });
     }
 
     await createConsultation({

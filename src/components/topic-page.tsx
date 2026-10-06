@@ -243,10 +243,10 @@ export default function TopicPage({ data }: { data: TopicData }) {
                 {data.ctaPrimaryText} <ArrowRight size={16} />
               </Link>
               <a
-                href="tel:02984556877"
+                href="tel:02988456877"
                 className="inline-flex items-center gap-2 px-6 py-3 border border-white/30 text-white rounded-sm hover:border-brand-gold/60 transition-colors"
               >
-                <PhoneCall size={16} /> 029-84556877 免费咨询
+                <PhoneCall size={16} /> 029-88456877 免费咨询
               </a>
             </div>
           </div>
