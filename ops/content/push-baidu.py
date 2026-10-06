@@ -11,7 +11,8 @@
     必须按配额分日推送。脚本默认每批 5 条、每批后检查 remain，配额耗尽即停。
   · 百度官方明确警告：重复提交已发布的旧链接会浪费配额，且"经常重复提交旧链接会下调您的配额"，
     因此本脚本默认只推送从未推送过的链接（状态记录在 .push-state/baidu.json）。
-  · https://data.zz.baidu.com 实测存在证书与主机名不匹配的问题，故优先 https、失败回退官方 http。
+  · https://data.zz.baidu.com 实测存在证书与主机名不匹配的问题（2026-10-02~06 稳定复现），
+    故**优先官方 http 接口**、https 作为回退。
 
 用法：
   python ops/content/push-baidu.py --save-token <16位token>   # 保存 token（文件已 gitignore）
@@ -36,7 +37,13 @@ STATE_DIR = os.environ.get('BAIDU_PUSH_STATE_DIR', os.path.join(HERE, '.push-sta
 STATE = os.path.join(STATE_DIR, 'baidu.json')
 SITEMAP = 'https://www.shuducw.com/sitemap.xml'
 SITE = 'www.shuducw.com'
-ENDPOINTS = ['https://data.zz.baidu.com/urls', 'http://data.zz.baidu.com/urls']
+# 2026-10-06 修正：把官方 http 接口放在**第一位**。
+# 依据：服务端 /var/log/baidu-push.log 连续 5 天（10-02 ~ 10-06）每天每条推送都记录
+#   "接口 https://data.zz.baidu.com/urls 连接失败：URLError: [SSL: CERTIFICATE_VERIFY_FAILED]
+#    certificate verify failed: Hostname mismatch"
+# 即百度的 https 证书与主机名不匹配是**稳定复现**的，不是偶发；先试 https 只会每天白丢一次尝试
+# （10-04 那次甚至因此整天空推：http 接口返回 HTTP 505 "please retry later" 后没有重试）。
+ENDPOINTS = ['http://data.zz.baidu.com/urls', 'https://data.zz.baidu.com/urls']
 BATCH = 2000  # 百度单次上限
 
 ERROR_HINTS = {
