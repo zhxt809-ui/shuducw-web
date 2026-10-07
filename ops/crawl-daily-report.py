@@ -204,6 +204,11 @@ def main():
         if cum[eng]:
             add(f'  {eng}: {len(cum[eng])} 个')
     add('')
+    add('  注：AI 类爬虫的 UA 存在大量伪造（实测 5 个 GCP IP 同时冒充 OpenAI/Anthropic/')
+    add('      Perplexity/Kimi/DeepSeek/Qwen/元宝 等 9 家，全部在探测 .env/.git 等密钥路径）。')
+    add('      验真方法：python3 verify-openai-crawler-ips.py（对官方 IP 段）、')
+    add('      python3 verify-petalbot-official.py（官方 DNS 三步法）。')
+    add('')
 
     # ---------- 首次被抓到的页面（最关键信号）----------
     first = defaultdict(list)
