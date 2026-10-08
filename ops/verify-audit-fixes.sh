@@ -3,7 +3,7 @@ B="https://www.shuducw.com"
 echo "===== 1. 残留修复验证 ====="
 b=$(curl -s "$B/services/basic")
 echo "  basic页'中端增值'残留: $(echo "$b" | grep -c '中端增值')（应0）"
-echo "  basic页'税务合规与优化服务'新标题: $(echo "$b" | grep -c '税务合规与优化服务')"
+echo "  basic页'税务合规与优化服务'板块已删除（应0）: $(echo "$b" | grep -c '税务合规与优化服务')"
 c=$(curl -s "$B/services/consulting")
 echo "  consulting TDK'高端'残留: $(echo "$c" | grep -cE '高端财税咨询')（应0）"
 h=$(curl -s "$B/")

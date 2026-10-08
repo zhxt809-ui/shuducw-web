@@ -1,6 +1,6 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
-import { Building2, FileText, ShieldCheck, Users, ArrowRight, ClipboardList, FileSearch, Handshake, RefreshCcw, Phone } from 'lucide-react';
+import { Building2, FileText, ShieldCheck, ArrowRight, ClipboardList, FileSearch, Handshake, RefreshCcw, Phone } from 'lucide-react';
 
 export const metadata: Metadata = {
   title: '基础财税服务-西安数度财务咨询-公司注册注销-代理记账报税-工商托管',
@@ -53,40 +53,6 @@ const businessServices = [
       '社保公积金开户与托管',
       '日常基础财税答疑',
       '企业简易票据管理',
-    ],
-  },
-];
-
-const optimizationServices = [
-  {
-    icon: FileText,
-    title: '账务优化服务',
-    items: [
-      '乱账清理',
-      '旧账梳理',
-      '账务规范整改',
-      '日常账务纠错调整',
-    ],
-  },
-  {
-    icon: ShieldCheck,
-    title: '税务风控服务',
-    items: [
-      '企业税负测算',
-      '日常税务合规优化',
-      '税务异常解除',
-      '欠税清理',
-      '税务稽查协助',
-      '跨区域涉税事项办理',
-    ],
-  },
-  {
-    icon: Users,
-    title: '企业配套服务',
-    items: [
-      '稳岗补贴及各类财税专项补贴申报',
-      '简易财务制度搭建',
-      '企业日常财务辅导',
     ],
   },
 ];
@@ -196,42 +162,6 @@ export default function BasicServicePage() {
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-8">
             {businessServices.map((group) => {
-              const Icon = group.icon;
-              return (
-                <div key={group.title} className="card-brand">
-                  <div className="w-10 h-10 bg-brand-navy/5 rounded-sm flex items-center justify-center mb-4">
-                    <Icon size={20} className="text-brand-navy" />
-                  </div>
-                  <h3 className="font-bold text-brand-navy text-lg mb-4">{group.title}</h3>
-                  <ul className="space-y-2.5">
-                    {group.items.map((item) => (
-                      <li key={item} className="flex items-start gap-2 text-sm text-brand-text">
-                        <span className="w-1.5 h-1.5 rounded-full bg-brand-gold mt-1.5 flex-shrink-0" />
-                        {item}
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-              );
-            })}
-          </div>
-        </div>
-      </section>
-
-      {/* 税务合规与优化服务（专项整改与优化，对应业务范围页 02 板块） */}
-      <section id="mid-tier" className="bg-brand-bg">
-        <div className="container-brand section-padding">
-          <div className="text-center mb-12">
-            <h2 className="text-2xl md:text-3xl font-bold text-brand-navy mb-4">税务合规与优化服务</h2>
-            <div className="w-16 h-[2px] bg-brand-gold mx-auto mb-6" />
-            <p className="text-brand-text-muted max-w-2xl mx-auto">
-              针对企业经营中常见的账务混乱、税务异常、税负失衡、财务流程不规范等问题，
-              提供专项整改与优化服务，修复历史财税遗留问题，规范日常财税流程，降低企业常规经营涉税风险。
-            </p>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-8">
-            {optimizationServices.map((group) => {
               const Icon = group.icon;
               return (
                 <div key={group.title} className="card-brand">
