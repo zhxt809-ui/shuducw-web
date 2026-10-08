@@ -645,7 +645,8 @@ export default async function HomePage() {
               <div>
                 <h3 className="text-lg md:text-xl font-bold text-brand-navy mb-1">老板关心的财税问题，这里都有答案</h3>
                 <p className="text-sm text-brand-text-muted">
-                  代理记账多少钱、公司注册材料、税务异常处理等 28 个高频问题解答
+                  代理记账多少钱、公司注册要哪些材料、税务异常怎么处理、股东借款有没有风险——
+                  老板最常问的问题，都在这里
                 </p>
               </div>
             </div>

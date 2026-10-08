@@ -150,7 +150,7 @@ export default function BasicServicePage() {
         <div className="container-brand section-padding !py-16 md:!py-20">
           <div className="max-w-3xl">
             <div className="inline-block px-4 py-1.5 bg-brand-gold/20 border border-brand-gold/40 text-brand-gold-light text-sm rounded-sm mb-6">
-              企业刚需引流业务
+              工商注册 · 代理记账 · 汇算清缴 · 社保托管
             </div>
             <h1 className="text-3xl md:text-4xl font-bold mb-4">基础财税服务</h1>
             <p className="text-white/80 text-base md:text-lg leading-relaxed">

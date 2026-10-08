@@ -79,7 +79,7 @@ export function InlineConsultForm() {
         </span>
         <div>
           <h3 className="font-bold text-brand-navy">30 秒留资，顾问回电</h3>
-          <p className="text-xs text-brand-text-muted">只需 3 项信息，不用注册、不留公司名</p>
+          <p className="text-xs text-brand-text-muted">只需 3 项信息，无需注册，顾问直接回电</p>
         </div>
       </div>
 
