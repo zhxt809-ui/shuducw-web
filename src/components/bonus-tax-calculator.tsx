@@ -161,19 +161,23 @@ export function BonusTaxCalculator() {
 
         {cmp && (
           <div className="p-5 bg-white border border-brand-border rounded-sm space-y-2">
-            <p className="text-sm font-bold text-brand-navy mb-1">两种计税方式对比</p>
-            <div className="flex justify-between text-sm">
-              <span className="text-brand-text-muted">
-                方式一：工资单独算 + 年终奖单独计税（工资部分 {fmt(cmp.salaryOnlyTax)} 元）
-              </span>
-              <span className="text-brand-navy font-medium">合计 {fmt(cmp.separateTotal)} 元</span>
+            <p className="text-sm font-bold text-brand-navy mb-1">两种计税方式对比（均为全年合计数额，口径一致）</p>
+            <div className="flex justify-between gap-4 text-sm">
+              <span className="text-brand-text-muted">方式一 · 年终奖单独计税</span>
+              <span className="text-brand-navy font-medium whitespace-nowrap">合计 {fmt(cmp.separateTotal)} 元</span>
             </div>
-            <div className="flex justify-between text-sm">
-              <span className="text-brand-text-muted">
-                方式二：并入综合所得（合并后应纳税所得额 {fmt(cmp.combinedTaxable)} 元）
-              </span>
-              <span className="text-brand-navy font-medium">合计 {fmt(cmp.combinedTotal)} 元</span>
+            <p className="text-xs text-brand-text-muted pl-3 leading-relaxed">
+              全年综合所得个税 {fmt(cmp.salaryOnlyTax)} 元（未含年终奖）＋ 年终奖单独计税 {fmt(bonusAloneTax(b).tax)} 元
+            </p>
+            <div className="flex justify-between gap-4 text-sm pt-1">
+              <span className="text-brand-text-muted">方式二 · 并入综合所得</span>
+              <span className="text-brand-navy font-medium whitespace-nowrap">合计 {fmt(cmp.combinedTotal)} 元</span>
             </div>
+            <p className="text-xs text-brand-text-muted pl-3 leading-relaxed">
+              并入后全年应纳税所得额 {fmt(cmp.combinedTaxable)} 元（＝工资 {fmt(Number.isFinite(s) ? s : 0)} 元 ＋ 年终奖 {fmt(b)} 元 − 减除费用及扣除），
+              全年个税 {fmt(cmp.combinedTotal)} 元；其中工资部分同为 {fmt(cmp.salaryOnlyTax)} 元，年终奖使税额增加{' '}
+              {fmt(cmp.combinedTotal - cmp.salaryOnlyTax)} 元
+            </p>
             <div className="flex justify-between items-center pt-1 border-t border-brand-border">
               <span className="text-brand-navy font-bold">结论</span>
               <span className="text-brand-gold font-bold">
@@ -185,8 +189,10 @@ export function BonusTaxCalculator() {
               </span>
             </div>
             <p className="text-xs text-brand-text-muted leading-relaxed">
-              提示：年终奖单独计税方式在一个纳税年度内只能使用一次；两种方式在年度汇算清缴时可以重新选择，
-              以最终汇算结果为准。本工具为简化估算，未考虑劳务报酬、稿酬、特许权使用费等综合所得项目。
+              提示：年终奖单独计税方式在一个纳税年度内只能使用一次。若发放时单位已按单独计税预扣预缴，而汇算时发现并入更划算，
+              可在办理个税年度汇算时，通过个人所得税 App 在申报表"工资薪金"项下的"奖金计税方式选择"中改为并入综合所得
+              （国家税务总局 12366 口径）。两种方式均以年度汇算清缴的最终结果为准。本工具为简化估算，
+              未考虑劳务报酬、稿酬、特许权使用费等其他综合所得项目，也未考虑大病医疗等据实扣除。
             </p>
           </div>
         )}

@@ -55,6 +55,11 @@ MUST = [
     ('问答5：执行到什么时候', '年终奖政策执行到什么时候？之后会怎样？'),
     ('问答6：拆分发放能否省税', '把年终奖拆成"工资+年终奖"发放，能省税吗？'),
     ('口径核验日期声明', '口径核验日期：2026 年 10 月'),
+    ('方式二：综合所得应纳税所得额构成', '全年应纳税所得额＝（工资等综合所得收入 ＋ 年终奖）− 6 万元减除费用 − 专项扣除（三险一金）− 专项附加扣除 − 其他扣除'),
+    ('方式二：广东税务公开口径', '当综合所得的应纳税所得额为负数时，全年一次性奖金和综合所得合并计算，一定是最优选择'),
+    ('方式二：对比口径无重复计税说明', '两者口径一致，不存在重复计税'),
+    ('方式二：验算示例 96000→7080', '96000×10%−2520＝'),
+    ('方式二：汇算改并入的操作路径', '奖金计税方式选择'),
     ('保留内嵌表单', '30 秒留资，顾问回电'),
     ('更多工具：个税计算器', '/tools/income-tax'),
     ('更多工具：增值税计算器', '/tools/vat'),
@@ -104,9 +109,34 @@ for name, ok in checks:
     print(f'  {"✅" if ok else "❌"} {name}')
 print(f'  ℹ️ sitemap 当前 URL 数: {sitemap_count}')
 
-all_ok = (not missing) and ok_schema and ok_canon and all(ok for _, ok in checks)
+print('\n===== 源码级检查（客户端组件内容不进入服务端 HTML，只能查源码）=====')
+try:
+    comp = open('src/components/bonus-tax-calculator.tsx', encoding='utf-8').read()
+    libsrc = open('src/lib/bonus-tax.ts', encoding='utf-8').read()
+except OSError as e:
+    print(f'  ❌ 读取源码失败: {e}')
+    comp = libsrc = ''
+SRC = [
+    ('组件：一年只能用一次提示', '在一个纳税年度内只能使用一次', comp),
+    ('组件：方式一标签对称化', '方式一 · 年终奖单独计税', comp),
+    ('组件：方式二标签对称化', '方式二 · 并入综合所得', comp),
+    ('组件：方式二列出奖金增量', '年终奖使税额增加', comp),
+    ('组件：对比区标注口径一致', '均为全年合计数额，口径一致', comp),
+    ('组件：汇算改并入操作路径', '奖金计税方式选择', comp),
+    ('库：按月换算表速算扣除数取值', 'quick: 2660', libsrc),
+    ('库：年度七级速算扣除数取值', 'quick: 31920', libsrc),
+    ('库：临界点右端按分四舍五入', 'Math.round(upper * 100) / 100', libsrc),
+]
+src_ok = True
+for name, s, src in SRC:
+    hit = s in src
+    src_ok = src_ok and hit
+    print(f'  {"✅" if hit else "❌"} {name}')
+
+all_ok = (not missing) and ok_schema and ok_canon and all(ok for _, ok in checks) and src_ok
 print(f'\n  结论: 内容 {"✅ 完整" if not missing else f"❌ 缺 {len(missing)} 项"}'
       f' / 结构化数据 {"✅" if ok_schema else "❌"}'
       f' / canonical {"✅" if ok_canon else "❌"}'
-      f' / 入口同步 {"✅" if all(ok for _, ok in checks) else "❌"}')
+      f' / 入口同步 {"✅" if all(ok for _, ok in checks) else "❌"}'
+      f' / 源码 {"✅" if src_ok else "❌"}')
 sys.exit(0 if all_ok else 1)

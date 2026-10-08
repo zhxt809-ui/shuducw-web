@@ -100,6 +100,45 @@ check('工资5万（未达减除费用）+奖金3.6万 → 并入更省 300', ((
 check('工资为 0（奖金未超 6 万减除费用）→ 并入后税额 0', (() => { const c = lib.compareBonusTax(36000, 0, 0); return { sep: r2(c.separateTotal), comb: r2(c.combinedTotal), cheaper: c.cheaper }; })(), { sep: 1080, comb: 0, cheaper: 'combined' });
 check('奖金为 0 时税额为 0', r2(lib.bonusAloneTax(0).tax), 0);
 
+console.log('\n===== 方式二（并入综合所得）外部口径交叉验证 =====\n');
+// 1) 公开举例核验：全年工资 120000、年终奖 48000、三险一金等扣除 12000
+//    并入后 (120000+48000-60000-12000)×10%-2520 = 7080 元
+check('公开举例：120000工资+48000奖金+12000扣除 → 并入后 7080 元', (() => {
+  const c = lib.compareBonusTax(48000, 120000, 12000);
+  return { combined: r2(c.combinedTotal), taxable: c.combinedTaxable };
+})(), { combined: 7080, taxable: 96000 });
+// 同例：单独计税 = 其他综合所得年度应纳税额 + 奖金单独应纳税额
+//   工资部分 120000-60000-12000=48000 → 48000×10%-2520=2280
+//   奖金部分 48000÷12=4000 → 10% 档 → 48000×10%-210=4590
+check('同例：单独计税合计 6870 元（2280+4590）', (() => {
+  const c = lib.compareBonusTax(48000, 120000, 12000);
+  return { separate: r2(c.separateTotal), salaryPart: r2(c.salaryOnlyTax), bonusPart: r2(lib.bonusAloneTax(48000).tax), cheaper: c.cheaper };
+})(), { separate: 6870, salaryPart: 2280, bonusPart: 4590, cheaper: 'separate' });
+
+// 2) 广东省税务局公开规则："当综合所得的应纳税所得额为负数时，全年一次性奖金和综合所得合并计算，一定是最优选择"
+//    即 工资 - 60000 - 扣除 < 0 时，并入的税负必须 <= 单独计税的税负（不可能更差）
+{
+  let violations = 0;
+  let cases = 0;
+  for (const salary of [0, 30000, 60000, 90000, 110000, 59000]) {
+    for (const ded of [0, 12000, 24000, 50000]) {
+      for (const bonus of [3000, 36000, 36001, 100000, 300000, 1000000]) {
+        if (salary - 60000 - ded >= 0) continue;
+        cases++;
+        const c = lib.compareBonusTax(bonus, salary, ded);
+        if (c.combinedTotal > c.separateTotal + 0.005 || c.cheaper === 'separate') violations++;
+      }
+    }
+  }
+  check(`官方规则：综合所得应纳税所得额为负 → 并入一定不差（${cases} 组用例）`, violations, 0);
+}
+
+// 3) 并入后"奖金部分"的增量税额口径一致性：合并税额 - 不并入时工资部分税额 = 奖金带来的税
+check('增量口径自洽：合并税额 - 工资部分税额 = 奖金增量', (() => {
+  const c = lib.compareBonusTax(48000, 120000, 12000);
+  return r2(c.combinedTotal - c.salaryOnlyTax);
+})(), 4800);
+
 console.log(`\n  结果: ${pass}/${pass + fails.length} 通过`);
 if (fails.length) {
   console.log('\n  不一致明细:');
