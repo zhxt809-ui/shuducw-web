@@ -69,7 +69,8 @@ check('F1 /services/basic 出现"企业刚需引流业务"', bool(m2),
 
 # G/H. 其他文案
 check('G1 首页 title 含"老牌"', '老牌' in home_raw[:4000], '首页 <title> 含"老牌"')
-check('H1 咨询页含"税负合规计划"', '税负合规计划' in consult, '咨询页出现该名称')
+check('H1 咨询页旧名"税负合规计划"已替换', '税负合规计划' not in consult and '税务合规与优化' in consult,
+      '已替换为"税务合规与优化"' if '税负合规计划' not in consult else '线上仍有旧名')
 check('H2 咨询页含"税务稽查全程协助"', '税务稽查全程协助' in consult, '咨询页出现该表述')
 check('H3 咨询页是否有"协助梳理资料/沟通材料"式表述',
       bool(re.search(r'梳理[^<]{0,10}(资料|材料)|沟通材料|说明材料', consult)),

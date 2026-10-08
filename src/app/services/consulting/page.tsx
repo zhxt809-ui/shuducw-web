@@ -30,7 +30,7 @@ const consultingServices = [
   },
   {
     icon: TrendingUp,
-    title: '税负合规计划',
+    title: '税务合规与优化',
     desc: '基于企业实际经营情况与行业特性，合理规划税务策略，确保合法合规前提下让企业应享尽享税收优惠政策。',
     items: [
       '企业整体税负测算与诊断',
@@ -193,7 +193,7 @@ export default function ConsultingPage() {
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
             {[
               { icon: FileSearch, step: '01', title: '财税诊断', desc: '了解企业经营与财务现状，开展税负测算与风险研判' },
-              { icon: ClipboardList, step: '02', title: '方案规划', desc: '定制税负合规计划、股权架构与风险应对方案' },
+              { icon: ClipboardList, step: '02', title: '方案规划', desc: '定制税务合规与优化方案、股权架构与风险应对方案' },
               { icon: Handshake, step: '03', title: '顾问落地', desc: '专属顾问全年支持，重大事项提前预评估与辅导' },
               { icon: RefreshCcw, step: '04', title: '定期复盘', desc: '定期财税健康检查，跟踪政策变化动态调整策略' },
             ].map((item, idx) => {
