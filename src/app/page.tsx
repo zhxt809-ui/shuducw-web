@@ -334,10 +334,7 @@ export default async function HomePage() {
         <div className="container-brand section-padding">
           <div className="text-center mb-10">
             <h2 className="text-2xl md:text-3xl font-bold text-brand-navy mb-4">负责人与专业团队</h2>
-            <div className="w-16 h-[2px] bg-brand-gold mx-auto mb-5" />
-            <p className="text-brand-text-muted max-w-2xl mx-auto text-sm md:text-base">
-              负责人实名公开、资质可查；团队由多类持证专业人员组成
-            </p>
+            <div className="w-16 h-[2px] bg-brand-gold mx-auto" />
           </div>
 
           {/* 两栏等高：左=负责人（精简为身份+资质），右=团队持证类别（4 格铺满） */}
@@ -371,6 +368,31 @@ export default async function HomePage() {
                   </span>
                 ))}
               </div>
+              <ul className="mt-5 text-sm text-brand-text-muted leading-relaxed space-y-2.5">
+                <li className="flex gap-2">
+                  <CheckCircle2 size={15} className="text-brand-gold flex-shrink-0 mt-0.5" />
+                  二十余年财税咨询与企业服务实战经验，2012 年创立西安数度财务咨询有限公司
+                </li>
+                <li className="flex gap-2">
+                  <CheckCircle2 size={15} className="text-brand-gold flex-shrink-0 mt-0.5" />
+                  专业方向：企业财税管理、税务合规、内部控制与财税咨询
+                </li>
+                <li className="flex gap-2">
+                  <CheckCircle2 size={15} className="text-brand-gold flex-shrink-0 mt-0.5" />
+                  <span>
+                    受聘西安财经大学校外硕士生导师，2026 年 4 月受邀担任商学院「财税计划与职业发展」专题讲座主讲嘉宾（
+                    <a
+                      href="https://sxy.xaufe.edu.cn/info/1061/10377.htm"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-brand-gold hover:underline"
+                    >
+                      高校官网报道
+                    </a>
+                    ）
+                  </span>
+                </li>
+              </ul>
               <Link
                 href="/about"
                 className="mt-auto pt-6 inline-flex items-center gap-1.5 text-sm text-brand-navy font-medium hover:text-brand-gold transition-colors"
@@ -381,7 +403,12 @@ export default async function HomePage() {
 
             {/* 专业团队（不实名，按持证类别展示） */}
             <div className="p-6 md:p-8 bg-white border border-brand-border rounded-sm flex flex-col">
-              <p className="text-xs text-brand-text-muted mb-4 tracking-wide">专业团队持证类别（团队资质）</p>
+              <div className="mb-4">
+                <div className="w-12 h-[2px] bg-brand-gold mb-3" />
+                <p className="text-sm md:text-base font-bold text-brand-navy tracking-wide">
+                  专业团队持证类别（团队资质）
+                </p>
+              </div>
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 flex-1">
                 {teamCredentials.map((t) => {
                   const Icon = t.icon;
@@ -406,44 +433,6 @@ export default async function HomePage() {
                 </div>
               </div>
             </div>
-          </div>
-
-          {/* 经历与活动（通栏：照片与经历说明并排，避免左栏被拉长） */}
-          <div className="mt-6 grid grid-cols-1 lg:grid-cols-3 gap-6">
-            <div className="lg:col-span-1">
-              <img
-                src="/lecture-xaufe-2026.jpg"
-                alt="陈文华受邀西安财经大学商学院开展财税专题讲座现场"
-                className="w-full h-44 object-cover rounded-sm border border-brand-border"
-                loading="lazy"
-              />
-              <p className="text-xs text-brand-text-muted mt-2">2026 年 4 月 · 西安财经大学商学院专题讲座现场</p>
-            </div>
-            <ul className="lg:col-span-2 self-center text-sm text-brand-text-muted leading-relaxed space-y-3">
-              <li className="flex gap-2">
-                <CheckCircle2 size={15} className="text-brand-gold flex-shrink-0 mt-0.5" />
-                二十余年财税咨询与企业服务实战经验，2012 年创立西安数度财务咨询有限公司
-              </li>
-              <li className="flex gap-2">
-                <CheckCircle2 size={15} className="text-brand-gold flex-shrink-0 mt-0.5" />
-                专业方向：企业财税管理、税务合规、内部控制与财税咨询
-              </li>
-              <li className="flex gap-2">
-                <CheckCircle2 size={15} className="text-brand-gold flex-shrink-0 mt-0.5" />
-                <span>
-                  受聘西安财经大学校外硕士生导师，2026 年 4 月受邀担任商学院「财税计划与职业发展」专题讲座主讲嘉宾（
-                  <a
-                    href="https://sxy.xaufe.edu.cn/info/1061/10377.htm"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="text-brand-gold hover:underline"
-                  >
-                    高校官网报道
-                  </a>
-                  ）
-                </span>
-              </li>
-            </ul>
           </div>
         </div>
       </section>
