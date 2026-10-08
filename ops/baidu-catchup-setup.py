@@ -14,6 +14,11 @@ URLS = [
     'https://www.shuducw.com/tools/bonus-tax',
     'https://www.shuducw.com/tools/income-tax',
     'https://www.shuducw.com/tools/rmb-uppercase',
+    'https://www.shuducw.com/services/industry/tech',
+    'https://www.shuducw.com/services/industry/trade',
+    'https://www.shuducw.com/services/industry/construction',
+    'https://www.shuducw.com/services/industry/ecommerce',
+    'https://www.shuducw.com/services/industry/group',
 ]
 # 次日 08:30 执行（早于每日 09:00 常规推送，确保不与其抢配额）；执行后把自己从 crontab 删掉
 # 注意：必须用 /usr/bin/python3 绝对路径——cron 的 PATH 很干净，裸 python3 可能找不到

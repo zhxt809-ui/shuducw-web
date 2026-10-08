@@ -1,6 +1,7 @@
 import { createHash } from 'node:crypto';
 import { listArticles } from '@/lib/store';
 import { districts } from '@/data/districts';
+import { industries } from '@/data/industries';
 import pageLastmod from '@/data/page-lastmod.json';
 
 /**
@@ -148,7 +149,17 @@ export async function getSitemapEntries(): Promise<SitemapEntry[]> {
     };
   });
 
-  return [...staticPages, ...districtPages, ...articlePages];
+  const industryPages: SitemapEntry[] = industries.map((i) => {
+    const path = `/services/industry/${i.slug}`;
+    return {
+      url: `${siteUrl}${path}`,
+      lastModified: pageDate(path),
+      changeFrequency: 'monthly',
+      priority: 0.8,
+    };
+  });
+
+  return [...staticPages, ...industryPages, ...districtPages, ...articlePages];
 }
 
 export function renderSitemapXml(entries: SitemapEntry[]): string {

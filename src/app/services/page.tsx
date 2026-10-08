@@ -25,6 +25,7 @@ import {
   Shield,
 } from 'lucide-react';
 import { districts } from '@/data/districts';
+import { industries } from '@/data/industries';
 
 export const metadata: Metadata = {
   title: '财税业务范围-西安数度财务咨询-工商财税托管-财税合规-内部审计-财税风控',
@@ -408,6 +409,22 @@ export default function ServicesPage() {
                 </div>
               );
             })}
+          </div>
+
+          {/* 行业专项方案页入口（可点击进入行业页） */}
+          <div className="mt-8 text-center">
+            <p className="text-sm font-bold text-brand-navy mb-4">行业专项财税方案</p>
+            <div className="flex flex-wrap justify-center gap-3">
+              {industries.map((i) => (
+                <Link
+                  key={i.slug}
+                  href={`/services/industry/${i.slug}`}
+                  className="px-4 py-2 bg-white border border-brand-border rounded-sm text-sm text-brand-navy hover:border-brand-navy hover:text-brand-gold transition-colors"
+                >
+                  {i.name}{i.keyword}
+                </Link>
+              ))}
+            </div>
           </div>
         </div>
       </section>
