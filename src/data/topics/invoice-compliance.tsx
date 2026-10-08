@@ -125,7 +125,7 @@ export const invoiceCompliance: TopicData = {
 
   links: [
     { href: '/self-check', title: '账务风险自查（6 道题）', note: '含发票管理、纳税申报、资金往来等维度，几分钟得到初步判断' },
-    { href: '/services/compliance', title: '财税规范与合规服务', note: '历史账务梳理、税务风险排查、合规体系搭建与整改' },
+    { href: '/services/compliance', title: '财税合规与内审', note: '历史账务梳理、税务风险排查、合规体系搭建与整改' },
     { href: '/shareholder-loans', title: '股东往来专题', note: '股东借款视同分红、公款垫付个人消费等资金往来风险与处理' },
   ],
 

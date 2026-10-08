@@ -3,7 +3,7 @@ B="https://www.shuducw.com"
 echo "===== 1. 业务范围页：四层客户语言 ====="
 srv=$(curl -s "$B/services")
 echo "  核心业务体系标题: $(echo "$srv" | grep -c '核心业务体系')"
-echo "  四层模块: $(echo "$srv" | grep -oE '基础财税服务|财务规范与税务合规|内部管理与风险控制|财税顾问与专项咨询' | sort -u | wc -l)/4"
+echo "  四层模块: $(echo "$srv" | grep -oE '基础财税服务|财税合规与内审|内部管理与风险控制|财税顾问与专项咨询' | sort -u | wc -l)/4"
 echo "  配套与专项服务: $(echo "$srv" | grep -c '配套与专项服务')"
 echo "  旧'中端增值/高端增值/品牌核心'残留: $(echo "$srv" | grep -oE '中端增值|高端增值|品牌核心' | sort -u | wc -l)（应0）"
 echo "  旧'高端'残留: $(echo "$srv" | grep -o '高端' | wc -l)"

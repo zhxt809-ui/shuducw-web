@@ -52,7 +52,7 @@ const businessModules = [
   },
   {
     icon: FileCheck,
-    title: '财税规范与合规',
+    title: '财税合规与内审',
     flow: '发现问题 → 梳理整改 → 税务合规',
     desc: '乱账清理、历史账务梳理、财务规范整改、税务风险排查与合规体系搭建。',
     href: '/services/compliance',

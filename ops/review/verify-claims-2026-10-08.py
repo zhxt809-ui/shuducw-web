@@ -92,7 +92,7 @@ check('I1 「基础财税」叫法已统一为「基础财税服务」',
       '；'.join(f'{k} {v} 次' for k, v in names.items()) + ' | ' + ', '.join(detail))
 
 # J. 四层服务体系
-four = ['基础财税服务', '财务规范与税务合规', '内部管理与风险控制', '财税顾问与专项咨询']
+four = ['基础财税服务', '财税合规与内审', '内部管理与风险控制', '财税顾问与专项咨询']
 hit = [f for f in four if f in svc]
 check('J1 服务页四层体系命名', len(hit) == 4, f'命中 {len(hit)}/4：' + '、'.join(hit))
 

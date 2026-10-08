@@ -50,7 +50,7 @@ const businessAreas = [
   {
     icon: FileCheck,
     num: '02',
-    title: '财务规范与税务合规',
+    title: '财税合规与内审',
     scene: '乱账、历史账、税务风险、财税合规',
     desc: '针对账务混乱、税务异常、历史遗留问题与合规要求，提供专项梳理、整改与合规体系搭建服务，修复历史问题、规范日常流程、排查税务风险。',
     services: [
@@ -181,7 +181,7 @@ export default function ServicesPage() {
           '@type': 'Offer',
           itemOffered: {
             '@type': 'Service',
-            name: '财务规范与税务合规',
+            name: '财税合规与内审',
             description: '乱账清理、历史账务整改、税务风险排查与财税合规体系搭建',
           },
         },

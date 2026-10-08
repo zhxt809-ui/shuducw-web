@@ -74,21 +74,21 @@ const DIMENSION_GUIDE: Record<
     advice:
       '公司为股东或家人支付与企业生产经营无关的个人消费，可能被视同向股东分配，需依法处理。建议规范列支，严格区分公司与个人开支。',
     href: '/services/compliance',
-    service: '财务规范与税务合规',
+    service: '财税合规与内审',
   },
   公私混用: {
     direction: '个人账户走公司账，收入完整性有风险',
     advice:
       '长期用个人账户收付公司经营款项，收入难以完整入账，易被认定为隐匿收入。建议尽快规范对公收付，逐笔归账。',
     href: '/services/compliance',
-    service: '财务规范与税务合规',
+    service: '财税合规与内审',
   },
   往来挂账: {
     direction: '往来长期挂账，汇算清缴易被纳税调整',
     advice:
       '其他应收款中股东款项长期挂账，汇算清缴时可能被要求说明用途并做纳税调整；长期无法收回的损失如无税前扣除依据，不能自行扣除。建议定期清理往来。',
     href: '/services/compliance',
-    service: '财务规范与税务合规',
+    service: '财税合规与内审',
   },
   协议与期限: {
     direction: '借款关系不清晰、归还期限不明',
