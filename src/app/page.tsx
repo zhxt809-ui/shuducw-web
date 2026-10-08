@@ -605,6 +605,12 @@ export default async function HomePage() {
             <h2 className="text-xl md:text-2xl font-bold text-brand-navy mb-3">财税工具</h2>
             <div className="w-16 h-[2px] bg-brand-gold mx-auto mb-4" />
             <p className="text-sm text-brand-text-muted max-w-2xl mx-auto">免费财税工具，先自己算一算、查一查，再决定是否需要专业帮助</p>
+            <Link
+              href="/tools"
+              className="inline-flex items-center gap-1.5 mt-4 text-sm text-brand-gold hover:text-brand-navy transition-colors"
+            >
+              查看全部财税工具 <ArrowRight size={14} />
+            </Link>
           </div>
           <div className="grid grid-cols-2 lg:grid-cols-5 gap-4">
             {tools.map((t) => {

@@ -35,10 +35,11 @@ const navItems: NavItem[] = [
   { href: '/news', label: '财税资讯' },
   { href: '/cases', label: '客户案例' },
   {
-    href: '/tools/vat',
+    href: '/tools',
     label: '财税工具',
     activePrefixes: ['/tools', '/self-check'],
     children: [
+      { href: '/tools', label: '工具中心' },
       { href: '/tools/vat', label: '增值税计算器' },
       { href: '/tools/income-tax', label: '个税计算器' },
       { href: '/tools/bonus-tax', label: '年终奖试算' },

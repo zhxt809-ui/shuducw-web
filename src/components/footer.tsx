@@ -28,6 +28,7 @@ const footerLinks = [
   {
     title: '财税工具',
     links: [
+      { label: '财税工具中心', href: '/tools' },
       { label: '增值税计算器', href: '/tools/vat' },
       { label: '个税计算器', href: '/tools/income-tax' },
       { label: '年终奖试算', href: '/tools/bonus-tax' },

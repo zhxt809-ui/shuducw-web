@@ -305,6 +305,12 @@ export default function RmbUppercasePage() {
           <h2 className="text-lg font-bold text-brand-navy mb-5 text-center">更多免费工具与服务</h2>
           <div className="flex flex-wrap justify-center gap-3">
             <Link
+              href="/tools"
+              className="inline-flex items-center gap-2 px-4 py-2 bg-brand-navy text-white rounded-sm text-sm hover:bg-brand-gold transition-colors"
+            >
+              财税工具中心
+            </Link>
+            <Link
               href="/tools/vat"
               className="inline-flex items-center gap-2 px-4 py-2 bg-brand-bg border border-brand-border rounded-sm text-sm text-brand-navy hover:border-brand-navy hover:text-brand-gold transition-colors"
             >
