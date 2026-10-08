@@ -54,6 +54,15 @@ BOTS = [
 ]
 
 
+SCAN_PAT = re.compile(
+    r'\.(env|git|svn|ssh|aws|key|pem|sql|bak|zip|rar|7z|log|ini|conf|yml|yaml|json|py|lock|swp|swo|old|orig|map)(/|$|\?)|'
+    r'/(wp-|wordpress|phpmyadmin|admin|administrator|xmlrpc|vendor/|\.git|\.env|\.aws|'
+    r'cgi-bin|actuator|config|backup|db\.|docker|jenkins|solr|hudson|console|manager|'
+    r'shell|eval|boaform|HNAP1|GponForm|setup\.cgi|login\.cgi|owa/|autodiscover|'
+    r'@fs/|appsettings|service-account|composer|package\.json|settings\.|auth\.json)', re.I
+)
+
+
 def classify(ua):
     low = (ua or '').lower()
     for key, label in BOTS:
@@ -96,14 +105,32 @@ print(f'  总请求 {tot} 次 / 独立 IP {len(ips)} 个 / 爬虫 {len(bot_rows)
 
 # ---------- 3. 爬虫明细 ----------
 by_bot = collections.Counter(classify(r['ua']) for r in bot_rows)
-print('\n【3】今日搜索引擎与 AI 爬虫明细')
+print('\n【3】今日搜索引擎与 AI 爬虫明细（含 IP 维度：凡是集中在极少数云 IP、'
+      '且大量探测 .env / dev-server 路径的，基本都是伪造 UA 的扫描器，不代表真实抓取）')
 if by_bot:
+    # 同一 IP 同时以多个爬虫身份出现 = 伪装扫描器的铁证
+    ip_ids = collections.defaultdict(set)
+    for r in bot_rows:
+        ip_ids[r['ip']].add(classify(r['ua']))
+    fake_ips = {ip for ip, ids in ip_ids.items() if len(ids) >= 2}
     for name, n in by_bot.most_common():
         sub = [r for r in bot_rows if classify(r['ua']) == name]
         ok = sum(1 for r in sub if r['status'] == '200')
         bad = collections.Counter(r['status'] for r in sub if r['status'] != '200')
         badstr = ('  异常状态: ' + ' '.join(f'{k}×{v}' for k, v in bad.most_common(4))) if bad else ''
-        print(f'  {name:<22} {n:>5} 次   200: {ok:<5}{badstr}')
+        scan = sum(1 for r in sub if SCAN_PAT.search(r['path'] or ''))
+        multi = sum(1 for r in sub if r['ip'] in fake_ips)
+        spoof = scan >= 2 or multi >= 1 or (n >= 3 and ok == 0)
+        if multi >= 1:
+            why = f'{multi} 次来自伪装扫描器 IP（该 IP 同时冒充 {max(len(ip_ids[r["ip"]]) for r in sub if r["ip"] in fake_ips)} 种爬虫身份），其余为真实抓取'
+        elif scan >= 2:
+            why = '探测 .env / dev-server 等敏感路径'
+        else:
+            why = '多次请求且无一次 200'
+        print(f'  {name:<22} {n:>5} 次   200: {ok:<5}{badstr}'
+              + (f'   ⚠️ 混有伪造流量（{why}）' if spoof else '   ✅ 全部为真实抓取'))
+        top_ips = collections.Counter(r['ip'] for r in sub).most_common(3)
+        print('        IP: ' + ', '.join(f'{ip}×{c}' for ip, c in top_ips) + f'   （独立 IP {len({r["ip"] for r in sub})} 个）')
     uas = collections.Counter(r['ua'][:80] for r in bot_rows)
     print('  —— 爬虫 UA 原样（前 6 个，用于识别伪造）——')
     for ua, n in uas.most_common(6):
@@ -127,11 +154,14 @@ NEW = ['/tools', '/tools/bonus-tax', '/tools/vat', '/tools/income-tax', '/tools/
        '/services/industry/', '/services/live-commerce']
 hit_any = False
 for p in NEW:
-    n = sum(1 for r in bot_rows if r['path'].startswith(p))
+    hits = [r for r in bot_rows if r['path'].startswith(p)]
+    n = len(hits)
     if n:
         hit_any = True
-        bots = collections.Counter(classify(r['ua']) for r in bot_rows if r['path'].startswith(p))
-        print(f'  {p:<26} {n:>4} 次  ' + ' '.join(f'{k}×{v}' for k, v in bots.most_common(3)))
+        print(f'  {p}（{n} 次）')
+        for (ip, who, st), c in collections.Counter(
+                (r['ip'], classify(r['ua']), r['status']) for r in hits).most_common(6):
+            print(f'      {c:>3} × {st}  {ip:<18} {who}')
 if not hit_any:
     print('  今日爬虫未抓取上述新页面（IndexNow 已提交，抓取通常有延迟）')
 
@@ -150,13 +180,6 @@ if bad404:
         print(f'    {n:>5} × {p[:96]}')
 
 print('\n【7】非爬虫访问的真实构成（区分浏览器 / 扫描器 / 脚本）')
-SCAN_PAT = re.compile(
-    r'\.(env|git|svn|ssh|aws|key|pem|sql|bak|zip|rar|7z|log|ini|conf|yml|yaml|json|py|lock|swp|swo|old|orig|map|txt~)(/|$|\?)|'
-    r'/(wp-|wordpress|phpmyadmin|admin|administrator|xmlrpc|vendor/|\.git|\.env|\.aws|'
-    r'cgi-bin|actuator|config|backup|db\.|docker|jenkins|solr|hudson|console|manager|'
-    r'shell|eval|boaform|HNAP1|GponForm|setup\.cgi|login\.cgi|owa/|autodiscover|'
-    r'appsettings|service-account|composer|package\.json|settings\.|auth\.json)', re.I
-)
 BROWSER_UA = re.compile(r'Mozilla/5\.0.*(Chrome|Firefox|Safari|Edg|MicroMessenger|UCBrowser|Quark|HuaweiBrowser|MiuiBrowser|OPR)', re.I)
 
 
