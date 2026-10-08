@@ -178,6 +178,30 @@ export function IndustryLandingPage({ industry }: { industry: IndustryConfig }) 
         </div>
       </section>
 
+      {/* 相关专项服务：写清与站内既有专项页的分工，避免两页抢同一批关键词 */}
+      {industry.relatedServices && industry.relatedServices.length > 0 && (
+        <section className="bg-white">
+          <div className="container-brand section-padding !py-10 md:!py-12">
+            <div className="max-w-3xl mx-auto">
+              <h2 className="text-lg font-bold text-brand-navy mb-4">相关专项服务（与本页的分工）</h2>
+              <div className="space-y-3">
+                {industry.relatedServices.map((r) => (
+                  <div key={r.href} className="p-5 bg-brand-bg border border-brand-border rounded-sm">
+                    <Link
+                      href={r.href}
+                      className="text-sm font-bold text-brand-navy hover:text-brand-gold transition-colors"
+                    >
+                      {r.label} →
+                    </Link>
+                    <p className="text-xs text-brand-text-muted leading-relaxed mt-2">{r.note}</p>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+        </section>
+      )}
+
       {/* 交叉链接 */}
       <section className="bg-white">
         <div className="container-brand section-padding !py-10 md:!py-12">

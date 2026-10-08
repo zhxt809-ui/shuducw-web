@@ -165,12 +165,34 @@ checks.append(('首页正文含"行业专项财税方案"入口与 5 条链接',
                '行业专项财税方案' in body and all(f'/services/industry/{s}' in body for s in PAGES)))
 checks.append(('页脚"行业方案"分组含 5 条链接',
                '行业方案' in foot and all(f'/services/industry/{s}' in foot for s in PAGES)))
-checks.append(('导航含"行业专项财税方案"入口（指向 /services#industries）', '/services#industries' in home))
+# 导航下拉项由客户端组件在交互后渲染，不进入服务端 HTML（实测 /services/live-commerce 在首页 HTML 中
+# 出现 0 次，而首页正文的 /services/basic 等是正文链接），因此导航项一律用源码级校验，
+# 否则会出现"首页正文链接顶出来的假通过"与"导航项不存在于 HTML 的假失败"。
+with open('src/components/header.tsx', encoding='utf-8') as f:
+    hdr = f.read()
+checks.append(('导航含"行业专项财税方案"入口 → /services#industries（源码级）',
+               "'/services#industries'" in hdr and '行业专项财税方案' in hdr))
+checks.append(('导航保留"直播电商个体户财税咨询"（源码级，主体形式专项，与行业页不重复）',
+               "'/services/live-commerce'" in hdr and '直播电商个体户财税咨询' in hdr))
 checks.append(('/services 行业区带锚点 id="industries"', 'id="industries"' in svc))
 checks.append(('services 页已移除 11 个装饰性行业图标块（不可点击，信息由上文承载）',
                'grid-cols-2 sm:grid-cols-3 lg:grid-cols-6' not in svc))
 checks.append(('services 上文仍完整说明行业覆盖范围',
                all(k in svc for k in ['零售', '物流', '建筑工程', '老年公寓', '跨境贸易'])))
+
+# 与站内既有专项页的分工互链（避免同主题页面抢同一批关键词）
+PAIR = {
+    'tech': '/high-tech-enterprise',
+    'trade': '/invoice-compliance',
+    'ecommerce': '/services/live-commerce',
+    'group': '/shareholder-loans',
+}
+for slug, target in PAIR.items():
+    checks.append((f'{slug} 行业页互链到 {target}', target in pages_html[slug][1]))
+lc = urllib.request.urlopen(urllib.request.Request(f'{BASE}/services/live-commerce', headers=UA), timeout=25).read().decode('utf-8', 'replace')
+lc = re.sub(r'<!--.*?-->', '', html_entities.unescape(lc), flags=re.S)
+checks.append(('直播电商服务页回链电商行业页并写明分工',
+               '/services/industry/ecommerce' in lc and '公司主体' in lc))
 for name, ok in checks:
     print(f'  {"✅" if ok else "❌"} {name}')
 print(f'  ℹ️ sitemap URL 数: {sitemap.count("<url>")}（新增 5 个行业页）')

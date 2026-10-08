@@ -205,6 +205,27 @@ export default function LiveCommercePage() {
         </div>
       </section>
 
+      {/* 分工说明：本页与电商行业页各管一段，互相指路 */}
+      <section className="bg-white">
+        <div className="container-brand section-padding !pt-0">
+          <div className="max-w-3xl mx-auto p-5 bg-brand-bg border border-brand-border rounded-sm">
+            <p className="text-sm text-brand-text-muted leading-relaxed">
+              本页面向<strong className="text-brand-navy">主播、个体户与个人经营者</strong>，侧重
+              个体工商户注册与核定、主播收入申报、私户收款风险排查。如果你经营的是
+              <strong className="text-brand-navy">公司主体</strong>，需要的是日常记账报税、
+              平台流水与申报收入对账、推广费与达人佣金凭证、多店铺主体安排，请看
+              <Link
+                href="/services/industry/ecommerce"
+                className="text-brand-gold hover:text-brand-navy underline underline-offset-2 mx-1"
+              >
+                电商与直播带货企业行业专项服务
+              </Link>
+              。
+            </p>
+          </div>
+        </div>
+      </section>
+
       {/* 咨询表单 */}
       <section className="bg-brand-bg">
         <div className="container-brand section-padding">

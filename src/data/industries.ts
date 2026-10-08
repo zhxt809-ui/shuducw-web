@@ -23,6 +23,12 @@ export interface IndustryPolicy {
   detail: string;
 }
 
+export interface RelatedService {
+  href: string;
+  label: string;
+  note: string;
+}
+
 export interface IndustryConfig {
   slug: string;
   name: string; // 用于 H1 与标题
@@ -38,6 +44,7 @@ export interface IndustryConfig {
   policies: IndustryPolicy[];
   faq: IndustryFaq[];
   related: string[]; // 相关行业 slug，用于交叉链接
+  relatedServices?: RelatedService[]; // 站内已有的专项页（分工互补，避免与行业页抢同一批关键词）
 }
 
 export const industries: IndustryConfig[] = [
@@ -119,6 +126,13 @@ export const industries: IndustryConfig[] = [
       },
     ],
     related: ['ecommerce', 'group'],
+    relatedServices: [
+      {
+        href: '/high-tech-enterprise',
+        label: '高新技术企业认定辅助',
+        note: '本页讲科技企业的日常账务与研发费用归集；如果你的目标是申请高新技术企业认定，认定条件、材料与时间安排见该专项页。',
+      },
+    ],
   },
   {
     slug: 'trade',
@@ -198,6 +212,13 @@ export const industries: IndustryConfig[] = [
       },
     ],
     related: ['ecommerce', 'construction'],
+    relatedServices: [
+      {
+        href: '/invoice-compliance',
+        label: '发票合规与风险排查',
+        note: '本页讲商贸企业的进销存、成本核算与身份选择；如果你的问题是进项发票异常、开票与实物不符、被提示发票风险，先看该专项页。',
+      },
+    ],
   },
   {
     slug: 'construction',
@@ -289,7 +310,7 @@ export const industries: IndustryConfig[] = [
     keywords: [
       '西安电商公司代理记账',
       '电商平台流水对账',
-      '直播带货财税',
+      '电商企业建账报税',
       '电商多主体设置',
       '西安代理记账',
     ],
@@ -356,6 +377,13 @@ export const industries: IndustryConfig[] = [
       },
     ],
     related: ['trade', 'tech'],
+    relatedServices: [
+      {
+        href: '/services/live-commerce',
+        label: '直播电商个体户与主播财税',
+        note: '本页讲电商公司的日常账务（平台流水对账、推广费凭证、多店铺主体）；如果你或主播是自然人、准备注册个体工商户，涉及主播报税、核定征收与私户收款风险，见该服务页。',
+      },
+    ],
   },
   {
     slug: 'group',
@@ -435,6 +463,13 @@ export const industries: IndustryConfig[] = [
       },
     ],
     related: ['tech', 'trade'],
+    relatedServices: [
+      {
+        href: '/shareholder-loans',
+        label: '股东借款与资金往来规范',
+        note: '本页讲多主体的账务体系与合并报表；如果具体问题是股东长期借款不还、公司与个人资金混同，处理路径与风险见该专项页。',
+      },
+    ],
   },
 ];
 
