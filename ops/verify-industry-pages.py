@@ -155,6 +155,22 @@ svc = urllib.request.urlopen(urllib.request.Request(f'{BASE}/services', headers=
 svc = re.sub(r'<!--.*?-->', '', html_entities.unescape(svc), flags=re.S)
 checks.append(('services 页含行业方案入口', '行业专项财税方案' in svc and all(f'/services/industry/{s}' in svc for s in PAGES)))
 checks.append(('sitemap 仍含工具中心与区县页', f'{BASE}/tools</loc>' in sitemap and '/services/district/' in sitemap))
+
+# 站内入口：首页正文、页脚、导航、/services 锚点（行业页必须能从常用路径点到）
+home_raw = urllib.request.urlopen(urllib.request.Request(f'{BASE}/', headers=UA), timeout=25).read().decode('utf-8', 'replace')
+home = re.sub(r'<!--.*?-->', '', html_entities.unescape(home_raw), flags=re.S)
+cut = home.rfind('<footer')
+body, foot = (home[:cut], home[cut:]) if cut > 0 else (home, '')
+checks.append(('首页正文含"行业专项财税方案"入口与 5 条链接',
+               '行业专项财税方案' in body and all(f'/services/industry/{s}' in body for s in PAGES)))
+checks.append(('页脚"行业方案"分组含 5 条链接',
+               '行业方案' in foot and all(f'/services/industry/{s}' in foot for s in PAGES)))
+checks.append(('导航含"行业专项财税方案"入口（指向 /services#industries）', '/services#industries' in home))
+checks.append(('/services 行业区带锚点 id="industries"', 'id="industries"' in svc))
+checks.append(('services 页已移除 11 个装饰性行业图标块（不可点击，信息由上文承载）',
+               'grid-cols-2 sm:grid-cols-3 lg:grid-cols-6' not in svc))
+checks.append(('services 上文仍完整说明行业覆盖范围',
+               all(k in svc for k in ['零售', '物流', '建筑工程', '老年公寓', '跨境贸易'])))
 for name, ok in checks:
     print(f'  {"✅" if ok else "❌"} {name}')
 print(f'  ℹ️ sitemap URL 数: {sitemap.count("<url>")}（新增 5 个行业页）')

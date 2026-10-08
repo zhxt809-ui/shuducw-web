@@ -38,6 +38,16 @@ const footerLinks = [
     ],
   },
   {
+    title: '行业方案',
+    links: [
+      { label: '科技与软件企业', href: '/services/industry/tech' },
+      { label: '商贸流通企业', href: '/services/industry/trade' },
+      { label: '建筑安装企业', href: '/services/industry/construction' },
+      { label: '电商与直播企业', href: '/services/industry/ecommerce' },
+      { label: '集团与多主体', href: '/services/industry/group' },
+    ],
+  },
+  {
     title: '关于我们',
     links: [
       { label: '公司简介', href: '/about' },

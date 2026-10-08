@@ -7,15 +7,6 @@ import {
   ArrowRight,
   Briefcase,
   Layers,
-  Store,
-  Truck,
-  Cpu,
-  Hotel,
-  Home,
-  ShoppingBag,
-  ShoppingCart,
-  Users,
-  Globe,
   FileText,
   CalendarCheck,
   CalendarDays,
@@ -161,20 +152,6 @@ const feeReference = [
     range: '高于小规模（按票据量核算）',
     desc: '涉及进项销项认证抵扣、月度申报与更复杂的账务处理，费用高于小规模档位，具体按开票量与业务复杂度评估。',
   },
-];
-
-const industryAreas = [
-  { icon: Store, name: '零售' },
-  { icon: Truck, name: '物流' },
-  { icon: Building2, name: '建筑工程' },
-  { icon: Cpu, name: '科技' },
-  { icon: Hotel, name: '酒店' },
-  { icon: Home, name: '老年公寓' },
-  { icon: Briefcase, name: '管理咨询' },
-  { icon: ShoppingBag, name: '商贸' },
-  { icon: ShoppingCart, name: '电商' },
-  { icon: Users, name: '劳务' },
-  { icon: Globe, name: '跨境贸易' },
 ];
 
 export default function ServicesPage() {
@@ -385,34 +362,20 @@ export default function ServicesPage() {
       </section>
 
       {/* 服务行业 */}
-      <section className="bg-brand-bg">
+      <section id="industries" className="bg-brand-bg scroll-mt-24">
         <div className="container-brand section-padding">
           <div className="text-center mb-12">
             <h2 className="text-2xl md:text-3xl font-bold text-brand-navy mb-4">服务行业</h2>
             <div className="w-16 h-[2px] bg-brand-gold mx-auto mb-6" />
             <p className="text-brand-text-muted max-w-2xl mx-auto">
               深耕西安十余年，服务覆盖零售、物流、建筑工程、科技、酒店、老年公寓、管理咨询、
-              商贸、电商、劳务、跨境贸易等行业，为各行业企业提供适配其经营特点的财税服务
+              商贸、电商、劳务、跨境贸易等行业，为各行业企业提供适配其经营特点的财税服务。
+              其中科技与软件、商贸流通、建筑安装、电商与直播、集团与多主体五类企业另有专项方案，见下方入口。
             </p>
           </div>
 
-          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-4">
-            {industryAreas.map((ind) => {
-              const Icon = ind.icon;
-              return (
-                <div
-                  key={ind.name}
-                  className="flex flex-col items-center justify-center gap-3 p-6 bg-white border border-brand-border rounded-sm hover:border-brand-navy hover:shadow-sm transition-all text-center"
-                >
-                  <Icon size={24} className="text-brand-gold" />
-                  <span className="text-sm font-medium text-brand-navy">{ind.name}</span>
-                </div>
-              );
-            })}
-          </div>
-
           {/* 行业专项方案页入口（可点击进入行业页） */}
-          <div className="mt-8 text-center">
+          <div className="text-center">
             <p className="text-sm font-bold text-brand-navy mb-4">行业专项财税方案</p>
             <div className="flex flex-wrap justify-center gap-3">
               {industries.map((i) => (

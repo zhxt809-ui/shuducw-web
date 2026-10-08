@@ -29,6 +29,7 @@ const navItems: NavItem[] = [
       { href: '/services/compliance', label: '财税合规与内审' },
       { href: '/services/consulting', label: '财税咨询风控' },
       { href: '/services/live-commerce', label: '直播电商个体户财税咨询' },
+      { href: '/services#industries', label: '行业专项财税方案' },
       { href: '/services/delivery', label: '服务交付标准' },
     ],
   },

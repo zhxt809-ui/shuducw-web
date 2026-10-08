@@ -5,6 +5,7 @@ import { listArticles } from '@/lib/store';
 import { getXiaohongshuNotes } from '@/lib/xiaohongshu-notes';
 import { XiaohongshuIcon } from '@/components/xiaohongshu-icon';
 import { districts } from '@/data/districts';
+import { industries } from '@/data/industries';
 import { InlineConsultForm } from '@/components/inline-consult-form';
 
 // 首页含服务实录动态数据，ISR 定期刷新
@@ -686,6 +687,40 @@ export default async function HomePage() {
               className="inline-flex items-center gap-1.5 text-sm text-brand-gold hover:text-brand-navy transition-colors"
             >
               查看区域专项服务详情 <ArrowRight size={14} />
+            </Link>
+          </div>
+        </div>
+      </section>
+
+      {/* 08.5 行业专项财税方案（行业页入口） */}
+      <section className="bg-white">
+        <div className="container-brand section-padding !py-10 md:!py-14">
+          <div className="text-center mb-8">
+            <h2 className="text-xl md:text-2xl font-bold text-brand-navy mb-3">行业专项财税方案</h2>
+            <div className="w-16 h-[2px] bg-brand-gold mx-auto mb-4" />
+            <p className="text-sm text-brand-text-muted max-w-2xl mx-auto">
+              不同行业的账不一样：科技企业看研发费用归集，商贸企业看进销存与进项匹配，
+              建筑企业看异地预缴与成本凭证，电商企业看平台流水对账，集团企业看多主体与合并报表
+            </p>
+          </div>
+          <div className="flex flex-wrap justify-center gap-3">
+            {industries.map((i) => (
+              <Link
+                key={i.slug}
+                href={`/services/industry/${i.slug}`}
+                className="px-4 py-2 bg-brand-bg border border-brand-border rounded-sm text-sm text-brand-navy hover:border-brand-navy hover:text-brand-gold transition-colors"
+              >
+                {i.name}
+                {i.keyword}
+              </Link>
+            ))}
+          </div>
+          <div className="text-center mt-6">
+            <Link
+              href="/services#industries"
+              className="inline-flex items-center gap-1.5 text-sm text-brand-gold hover:text-brand-navy transition-colors"
+            >
+              查看全部行业与区域专项服务 <ArrowRight size={14} />
             </Link>
           </div>
         </div>
