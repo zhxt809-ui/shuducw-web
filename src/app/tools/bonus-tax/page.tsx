@@ -46,6 +46,16 @@ const FAQ = [
       '在一个纳税年度内，对每一个纳税人，全年一次性奖金单独计税的办法只允许采用一次。也就是说一年内发放多笔"年终奖"的，只有其中一笔可以按全年一次性奖金单独计税，其余应并入当月工资薪金或综合所得计税。具体以单位为个人办理扣缴申报的口径为准。',
   },
   {
+    q: '年终奖和十三薪、年底双薪有什么区别？十三薪能按年终奖单独计税吗？',
+    a:
+      '按《国家税务总局关于调整个人取得全年一次性奖金等计算征收个人所得税方法问题的通知》（国税发〔2005〕9 号）第一条，全年一次性奖金是指扣缴义务人根据其全年经济效益和对雇员全年工作业绩的综合考核情况向雇员发放的一次性奖金，该条同时明确"上述一次性奖金也包括年终加薪、实行年薪制和绩效工资办法的单位根据考核情况兑现的年薪和绩效工资"。也就是说，属于年终加薪性质的十三薪、年底双薪，在一次性发放的情况下可以按全年一次性奖金单独计税，同样受"一个纳税年度内只允许采用一次"的限制；实务中也有单位把十三薪并入发放当月的工资薪金、按累计预扣法计税，两种做法都常见，具体以扣缴单位的申报口径和主管税务机关口径为准。',
+  },
+  {
+    q: '年终奖可以分两次发吗？分两次发税会更多吗？',
+    a:
+      '可以分两次发，但计税上要注意：按国税发〔2005〕9 号第三条，"在一个纳税年度内，对每一个纳税人，该计税办法只允许采用一次"。因此同一年度内分两次发放的，只能选择其中一笔按全年一次性奖金单独计税，其余部分应并入发放当月的工资薪金计税（或并入当年综合所得）。分两次发是否更省税，取决于两笔金额、发放月份的工资水平与全年扣除情况，也可能触发不同的临界点区间，建议用本工具分别试算后再定；仅从税负角度拆分并不必然省钱。',
+  },
+  {
     q: '年终奖政策执行到什么时候？之后会怎样？',
     a:
       '财政部 税务总局公告 2023 年第 30 号明确：本公告执行至 2027 年 12 月 31 日。也就是说 2023 年至 2027 年发放的全年一次性奖金，可以选择单独计税或并入综合所得。2028 年及以后的政策尚未明确，届时应以最新公布的税收政策为准。',
@@ -137,6 +147,7 @@ export default function BonusTaxPage() {
                     <th className="text-left px-4 py-3 font-bold border-b border-brand-border whitespace-nowrap">临界点（建议发放）</th>
                     <th className="text-left px-4 py-3 font-bold border-b border-brand-border whitespace-nowrap">多发不如少发区间</th>
                     <th className="text-left px-4 py-3 font-bold border-b border-brand-border whitespace-nowrap">多 1 元多缴</th>
+                    <th className="text-left px-4 py-3 font-bold border-b border-brand-border whitespace-nowrap">区间上端时多缴</th>
                     <th className="text-left px-4 py-3 font-bold border-b border-brand-border whitespace-nowrap">临界点应纳税额</th>
                     <th className="text-left px-4 py-3 font-bold border-b border-brand-border whitespace-nowrap">临界点税后到手</th>
                   </tr>
@@ -152,6 +163,9 @@ export default function BonusTaxPage() {
                       </td>
                       <td className="px-4 py-3 whitespace-nowrap text-red-600 font-medium">
                         {s.jumpPerYuan.toLocaleString('zh-CN', { minimumFractionDigits: 2 })} 元
+                      </td>
+                      <td className="px-4 py-3 whitespace-nowrap">
+                        {(s.upper - s.boundary).toLocaleString('zh-CN', { minimumFractionDigits: 2 })} 元
                       </td>
                       <td className="px-4 py-3 whitespace-nowrap">
                         {(s.boundary - s.netAtBoundary).toLocaleString('zh-CN', { minimumFractionDigits: 2 })} 元

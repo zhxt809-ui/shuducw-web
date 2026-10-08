@@ -240,6 +240,40 @@ def check_git_hygiene(all_files):
     record('G git 卫生', not fails, fails, [], f'共 {len(all_files)} 个受控文件')
 
 
+def check_policy_ledger():
+    """H. 政策更新台账：涉及页面是否存在 + 政策是否临近到期/已过期
+
+    站内工具页与 llms.txt 直接写着政策口径，其中多条带明确执行到期日
+    （增值税优惠衔接、个体户减半、年终奖单独计税均为 2027-12-31）。
+    政策到期而页面未更新 = 对外发布失效口径，故在自检里做成告警。
+    详细报告与按日期模拟用 ops/policy-ledger-check.py。
+    """
+    path = os.path.join(ROOT, 'ops', 'policy-ledger.json')
+    try:
+        with open(path, encoding='utf-8') as f:
+            ledger = json.load(f)
+    except (OSError, ValueError) as e:
+        record('H 政策更新台账', False, [f'台账读取失败: {e}'], [])
+        return
+    window = int(ledger.get('_预警窗口天数', 180))
+    policies = ledger.get('policies', [])
+    today = date.today()
+    fails, warns = [], []
+    for p in policies:
+        pid = p.get('id', '?')
+        for rel in p.get('涉及页面', []):
+            if not os.path.exists(os.path.join(ROOT, rel)):
+                fails.append(f'{pid}: 涉及页面不存在 {rel}（页面已改名或删除，需同步台账）')
+        expiry = p.get('执行到期日')
+        if expiry:
+            days = (date.fromisoformat(expiry) - today).days
+            if days < 0:
+                fails.append(f'{pid}: 政策已于 {expiry} 到期（{-days} 天前），必须复核是否延续并更新页面与 llms.txt')
+            elif days <= window:
+                warns.append(f'{pid}: 将于 {expiry} 到期（还有 {days} 天），需复核政策是否延续')
+    record('H 政策更新台账', not fails, fails, warns, f'{len(policies)} 条政策，预警窗口 {window} 天')
+
+
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument('--staged-only', action='store_true', help='只检查本次暂存的文件')
@@ -261,6 +295,7 @@ def main():
         check_lastmod_data()
         check_articles_data()
         check_git_hygiene(all_files)
+        check_policy_ledger()
 
     failed = 0
     for r in results:
