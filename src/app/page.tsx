@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import Link from 'next/link';
 import { Shield, Building2, FileCheck, TrendingUp, Award, Users, CheckCircle2, ArrowRight, HelpCircle, BadgeCheck, Newspaper, Calculator, ArrowLeftRight, CalendarCheck } from 'lucide-react';
 import { listArticles } from '@/lib/store';
+import { getXiaohongshuNotes } from '@/lib/xiaohongshu-notes';
 import { XiaohongshuIcon } from '@/components/xiaohongshu-icon';
 import { districts } from '@/data/districts';
 import { InlineConsultForm } from '@/components/inline-consult-form';
@@ -101,6 +102,8 @@ const tools = [
 export default async function HomePage() {
   // 首页"客户服务实录"区块：仅展示自有服务案例（category=shilu）
   const shiluArticles = await listArticles({ category: 'shilu', publishedOnly: true, limit: 3 });
+  // 小红书近期笔记（读服务器 data/xiaohongshu-notes.json；无数据时模块自动隐藏）
+  const xiaohongshuNotes = await getXiaohongshuNotes(3);
   return (
     <>
       {/* JSON-LD 结构化数据 */}
@@ -536,34 +539,65 @@ export default async function HomePage() {
       {/* 07 小红书承接（主力获客渠道） */}
       <section className="bg-white">
         <div className="container-brand section-padding !py-10 md:!py-14">
-          <div className="flex flex-col md:flex-row items-center justify-center gap-6 bg-gradient-to-r from-red-50 to-orange-50 border border-red-100 rounded-sm p-6 md:p-8">
-            <div className="flex items-center gap-4">
-              <div className="flex-shrink-0">
-                <XiaohongshuIcon size={36} />
+          <div className="bg-gradient-to-r from-red-50 to-orange-50 border border-red-100 rounded-sm p-6 md:p-8">
+            <div className="flex flex-col md:flex-row items-center justify-center gap-6">
+              <div className="flex items-center gap-4">
+                <div className="flex-shrink-0">
+                  <XiaohongshuIcon size={36} />
+                </div>
+                <div>
+                  <h3 className="text-lg md:text-xl font-bold text-brand-navy">数度财税 · 小红书</h3>
+                  <p className="text-sm text-brand-text-muted mt-1">老板真正关心的财税问题，用简单的话讲清楚</p>
+                </div>
               </div>
-              <div>
-                <h3 className="text-lg md:text-xl font-bold text-brand-navy">数度财税 · 小红书</h3>
-                <p className="text-sm text-brand-text-muted mt-1">老板真正关心的财税问题，用简单的话讲清楚</p>
+              <a
+                href="https://www.xiaohongshu.com/user/profile/6521552259"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center gap-3 px-5 py-3 bg-white border border-red-200 rounded-sm shadow-sm hover:border-red-400 transition-colors"
+              >
+                <span className="text-sm text-brand-text-muted">小红书号</span>
+                <span className="text-lg font-bold text-red-500 tracking-wider">6521552259</span>
+              </a>
+              <div className="flex-shrink-0 text-center">
+                <img
+                  src="/qr-xiaohongshu.jpg"
+                  alt="西安数度财务咨询小红书主页二维码"
+                  className="w-28 h-36 rounded-sm border border-red-200 bg-white p-1 object-contain"
+                  loading="lazy"
+                />
+                <p className="text-xs text-brand-text-muted mt-1.5">扫码关注小红书</p>
               </div>
             </div>
-            <a
-              href="https://www.xiaohongshu.com/user/profile/6521552259"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="flex items-center gap-3 px-5 py-3 bg-white border border-red-200 rounded-sm shadow-sm hover:border-red-400 transition-colors"
-            >
-              <span className="text-sm text-brand-text-muted">小红书号</span>
-              <span className="text-lg font-bold text-red-500 tracking-wider">6521552259</span>
-            </a>
-            <div className="flex-shrink-0 text-center">
-              <img
-                src="/qr-xiaohongshu.jpg"
-                alt="西安数度财务咨询小红书主页二维码"
-                className="w-28 h-36 rounded-sm border border-red-200 bg-white p-1 object-contain"
-                loading="lazy"
-              />
-              <p className="text-xs text-brand-text-muted mt-1.5">扫码关注小红书</p>
-            </div>
+
+            {/* 近期笔记：内容来自服务器数据文件，改文件即更新，无需重新部署 */}
+            {xiaohongshuNotes.length > 0 && (
+              <div className="mt-6 pt-5 border-t border-red-100 max-w-2xl mx-auto">
+                <p className="text-xs text-brand-text-muted mb-3 text-center">
+                  近期笔记 · 点标题看原文（手机端建议在 App 内打开）
+                </p>
+                <ul className="space-y-2">
+                  {xiaohongshuNotes.map((note) => (
+                    <li key={note.url}>
+                      <a
+                        href={note.url}
+                        target="_blank"
+                        rel="nofollow noopener noreferrer"
+                        className="flex items-start gap-2 text-sm text-brand-navy hover:text-red-500 transition-colors"
+                      >
+                        <span className="text-brand-gold mt-0.5 flex-shrink-0">·</span>
+                        <span>{note.title}</span>
+                        {note.date && (
+                          <span className="text-xs text-brand-text-muted ml-auto flex-shrink-0 pt-0.5">
+                            {note.date}
+                          </span>
+                        )}
+                      </a>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            )}
           </div>
         </div>
       </section>

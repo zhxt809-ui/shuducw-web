@@ -129,6 +129,8 @@ src/
 | 5 | 改 SEO/机制类实现前先查官方文档并引用原文；部署后必须跑对应验证脚本并给出真实输出，**没有测试输出就不下结论** | lastmod 曾被写成部署时间 |
 | 6 | 跳转类改动必须实测**落点 URL 本身**，不能只看状态码是 301。Next standalone 生成的绝对地址会带内部 host（`https://localhost:3000/...`），补 `X-Forwarded-Host` 也无效——必须用规范域名显式拼装落点 | 301 落点曾指向 localhost:3000，真实用户会失败 |
 | 7 | 改服务器配置（nginx 等）：备份**绝不能放在会被一并加载的目录**（`sites-enabled/` 放备份会被当作第二份配置 → `limit_req_zone` 重复定义 → `nginx -t` 失败）；必须 `nginx -t` 通过后再 reload，失败自动回滚 | 本次备份误放 sites-enabled，配置一度无效 |
+| 8 | **生成要上传到服务器的脚本时禁止 `Out-File -Encoding ascii`**：中文会静默变成 `?`（不只是显示乱码，是写进服务器文件里的真乱码）。脚本用文件工具以 UTF-8 写入后再 sftp 上传；数据文件（JSON 等）一律本地用文件工具直写、直传，不经过 shell 变量与 here-string | 小红书笔记标题一度被写成 `?????`（`ops/xiaohongshu-notes.json` 已用直传修正） |
+| 9 | 外链内容的"链接形态"必须实测：小红书笔记去掉分享链接里的 `xsec_token`、或改成 `/explore/<id>` 形态，实测均被重定向到 `/404/sec_xxx`，访客打不开——**必须原样保留分享原始链接** | 曾计划"清理成干净短链"，实测后推翻 |
 
 **自动化**：`pnpm selfcheck`（= `python ops/selfcheck.py`）检查编码/乱码、禁用平台名、绝对化用语、
 密钥泄漏、lastmod 数据、文章数据、git 卫生。提交前钩子已启用（`git config core.hooksPath ops/git-hooks`），
