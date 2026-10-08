@@ -52,7 +52,7 @@ const FAQ = [
   {
     q: '年终奖怎么算个税更划算？',
     a:
-      '按财政部 税务总局关于延续实施全年一次性奖金个人所得税政策的公告，居民个人取得全年一次性奖金，可以选择不并入当年综合所得、单独计税（按按月换算后的综合所得税率表确定税率和速算扣除数），也可以选择并入当年综合所得计算纳税，该政策执行至 2027 年 12 月 31 日。两种方式税负可能不同，且年终奖在部分区间存在"多拿一元、多缴较多税"的临界问题，可分别试算后再选择，本工具暂未包含年终奖单独计税模块。',
+      '按财政部 税务总局关于延续实施全年一次性奖金个人所得税政策的公告（2023 年第 30 号），居民个人取得全年一次性奖金，可以选择不并入当年综合所得、单独计税（按奖金÷12 查按月换算后的综合所得税率表确定税率和速算扣除数），也可以选择并入当年综合所得计算纳税，该政策执行至 2027 年 12 月 31 日。两种方式税负可能不同，且年终奖在 36000、144000、300000、420000、660000、960000 元等临界点之后存在"多发一元、多缴几千"的区间，建议用我们的年终奖个税计算器分别试算后再选择。',
   },
 ];
 
@@ -217,6 +217,12 @@ export default function IncomeTaxCalculatorPage() {
         <div className="container-brand section-padding !py-10 md:!py-12">
           <h2 className="text-lg font-bold text-brand-navy mb-5 text-center">更多免费工具与服务</h2>
           <div className="flex flex-wrap justify-center gap-3">
+            <Link
+              href="/tools/bonus-tax"
+              className="inline-flex items-center gap-2 px-4 py-2 bg-brand-bg border border-brand-border rounded-sm text-sm text-brand-navy hover:border-brand-navy hover:text-brand-gold transition-colors"
+            >
+              <Calculator size={14} /> 年终奖试算
+            </Link>
             <Link
               href="/tools/vat"
               className="inline-flex items-center gap-2 px-4 py-2 bg-brand-bg border border-brand-border rounded-sm text-sm text-brand-navy hover:border-brand-navy hover:text-brand-gold transition-colors"

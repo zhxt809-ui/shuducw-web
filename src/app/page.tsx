@@ -96,6 +96,7 @@ const tools = [
   { icon: Shield, name: '账务风险自查', href: '/self-check', desc: '6 道题多维自测' },
   { icon: Calculator, name: '增值税计算器', href: '/tools/vat', desc: '小规模 / 一般纳税人' },
   { icon: Calculator, name: '个税计算器', href: '/tools/income-tax', desc: '经营所得 / 工资薪金' },
+  { icon: Calculator, name: '年终奖试算', href: '/tools/bonus-tax', desc: '两种计税对比 / 临界点' },
   { icon: ArrowLeftRight, name: '金额大写转换', href: '/tools/rmb-uppercase', desc: '票据规范口径' },
 ];
 
@@ -605,7 +606,7 @@ export default async function HomePage() {
             <div className="w-16 h-[2px] bg-brand-gold mx-auto mb-4" />
             <p className="text-sm text-brand-text-muted max-w-2xl mx-auto">免费财税工具，先自己算一算、查一查，再决定是否需要专业帮助</p>
           </div>
-          <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
+          <div className="grid grid-cols-2 lg:grid-cols-5 gap-4">
             {tools.map((t) => {
               const Icon = t.icon;
               return (

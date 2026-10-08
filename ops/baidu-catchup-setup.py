@@ -10,6 +10,7 @@ import sys
 
 MARK = 'baidu-catchup-once'
 URLS = [
+    'https://www.shuducw.com/tools/bonus-tax',
     'https://www.shuducw.com/tools/income-tax',
     'https://www.shuducw.com/tools/rmb-uppercase',
 ]

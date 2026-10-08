@@ -77,6 +77,7 @@ const STATIC_PAGES: { path: string; changeFrequency: string; priority: number }[
   { path: '/services/delivery', changeFrequency: 'monthly', priority: 0.8 },
   { path: '/tools/vat', changeFrequency: 'monthly', priority: 0.8 },
   { path: '/tools/income-tax', changeFrequency: 'monthly', priority: 0.8 },
+  { path: '/tools/bonus-tax', changeFrequency: 'monthly', priority: 0.8 },
   { path: '/tools/rmb-uppercase', changeFrequency: 'monthly', priority: 0.8 },
   { path: '/contact', changeFrequency: 'monthly', priority: 0.7 },
   { path: '/faq', changeFrequency: 'monthly', priority: 0.8 },

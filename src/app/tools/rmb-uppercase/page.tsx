@@ -317,6 +317,12 @@ export default function RmbUppercasePage() {
               <Calculator size={14} /> 个税计算器
             </Link>
             <Link
+              href="/tools/bonus-tax"
+              className="inline-flex items-center gap-2 px-4 py-2 bg-brand-bg border border-brand-border rounded-sm text-sm text-brand-navy hover:border-brand-navy hover:text-brand-gold transition-colors"
+            >
+              <Calculator size={14} /> 年终奖试算
+            </Link>
+            <Link
               href="/services/delivery"
               className="inline-flex items-center gap-2 px-4 py-2 bg-brand-bg border border-brand-border rounded-sm text-sm text-brand-navy hover:border-brand-navy hover:text-brand-gold transition-colors"
             >
