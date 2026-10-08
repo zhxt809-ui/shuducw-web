@@ -6,9 +6,11 @@ const footerLinks = [
   {
     title: '核心业务',
     links: [
-      { label: '基础财税服务', href: '/services/basic' },
-      { label: '财税合规与内审', href: '/services/compliance' },
-      { label: '财税咨询风控', href: '/services/consulting' },
+      { label: '基础财税服务', href: '/services#layer-01' },
+      { label: '税务合规与优化服务', href: '/services#layer-02' },
+      { label: '财务内控管理服务', href: '/services#layer-03' },
+      { label: '股权与投融资财税服务', href: '/services#layer-04' },
+      { label: '企业专项定制服务', href: '/services#layer-05' },
       { label: '业务范围总览', href: '/services' },
       { label: '服务交付标准', href: '/services/delivery' },
     ],

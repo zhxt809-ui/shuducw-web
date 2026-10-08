@@ -3,7 +3,7 @@ import Link from 'next/link';
 import { ShieldCheck, Search, FileCheck, TrendingUp, AlertTriangle, ArrowRight, ClipboardList, FileSearch, Handshake, RefreshCcw, Phone } from 'lucide-react';
 
 export const metadata: Metadata = {
-  title: '企业财税合规与内审服务-西安数度财务咨询-内部管理审计-财务内控搭建',
+  title: '税务合规与优化服务-西安数度财务咨询-税务风险排查-合规体系搭建-财务内控',
   description:
     '专注企业财税风险排查、历史账务整改、合规体系搭建、内部管理审计、资产费用专项核查，助力企业完善财务内控、规避涉税风险。',
   keywords: [
@@ -84,7 +84,7 @@ export default function CompliancePage() {
   const jsonLd = {
     '@context': 'https://schema.org',
     '@type': 'Service',
-    name: '企业财税合规与内审服务',
+    name: '税务合规与优化服务',
     provider: {
       '@type': 'Organization',
       name: '西安数度财务咨询有限公司',
@@ -141,7 +141,7 @@ export default function CompliancePage() {
             <div className="inline-block px-4 py-1.5 bg-brand-gold/20 border border-brand-gold/40 text-brand-gold-light text-sm rounded-sm mb-6">
               财税规范与内部管控
             </div>
-            <h1 className="text-3xl md:text-4xl font-bold mb-4">财税合规与内审服务</h1>
+            <h1 className="text-3xl md:text-4xl font-bold mb-4">税务合规与优化服务</h1>
             <p className="text-white/80 text-base md:text-lg leading-relaxed">
               西安数度财务咨询有限公司专注企业财税风险排查、
               历史账务整改、合规体系搭建、内部管理审计、资产费用专项核查与内审制度落地，

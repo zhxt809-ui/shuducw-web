@@ -37,7 +37,7 @@ export const metadata: Metadata = {
         url: 'https://www.shuducw.com/og.png',
         width: 1200,
         height: 630,
-        alt: '西安数度财务咨询 - 企业财税合规 · 内部管理审计 · 财税咨询风控',
+        alt: '西安数度财务咨询 - 企业财税合规 · 财务内控管理 · 股权与投融资财税',
       },
     ],
   },

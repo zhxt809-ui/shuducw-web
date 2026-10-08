@@ -218,11 +218,11 @@ export default function BasicServicePage() {
         </div>
       </section>
 
-      {/* 财税合规与内审（专项整改与优化，对应业务范围页 02 板块） */}
+      {/* 税务合规与优化服务（专项整改与优化，对应业务范围页 02 板块） */}
       <section id="mid-tier" className="bg-brand-bg">
         <div className="container-brand section-padding">
           <div className="text-center mb-12">
-            <h2 className="text-2xl md:text-3xl font-bold text-brand-navy mb-4">财税合规与内审</h2>
+            <h2 className="text-2xl md:text-3xl font-bold text-brand-navy mb-4">税务合规与优化服务</h2>
             <div className="w-16 h-[2px] bg-brand-gold mx-auto mb-6" />
             <p className="text-brand-text-muted max-w-2xl mx-auto">
               针对企业经营中常见的账务混乱、税务异常、税负失衡、财务流程不规范等问题，

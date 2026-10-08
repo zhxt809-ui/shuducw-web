@@ -3,9 +3,9 @@ import Link from 'next/link';
 import { TrendingUp, UserCheck, Shield, Scale, ArrowRight, ClipboardList, FileSearch, Handshake, RefreshCcw, Phone } from 'lucide-react';
 
 export const metadata: Metadata = {
-  title: '财税咨询风控-西安数度财务咨询-财税顾问咨询-税负合规计划-股权架构搭建',
+  title: '股权与投融资财税服务-西安数度财务咨询-股权架构设计-增资扩股-融资财务顾问',
   description:
-    '专业提供财税咨询与风控服务，常年企业财税顾问、股权架构搭建、税负合规计划、税务异常处理、稽查协助、投融资财税尽调，全方位保障企业财税安全。',
+    '为企业提供股权与投融资财税服务：股权架构设计、股权转让涉税规划、增资扩股财税咨询、融资财务顾问、投融资尽调，并提供常年财税顾问支持。',
   keywords: [
     '西安数度财务咨询',
     '西安财税咨询',
@@ -82,14 +82,14 @@ export default function ConsultingPage() {
   const jsonLd = {
     '@context': 'https://schema.org',
     '@type': 'Service',
-    name: '财税咨询与风控服务',
+    name: '股权与投融资财税服务',
     provider: {
       '@type': 'Organization',
       name: '西安数度财务咨询有限公司',
       url: 'https://www.shuducw.com',
     },
     description:
-      '西安数度财务咨询有限公司专业提供财税咨询与风控服务，包含常年财税顾问、税负合规计划、税务异常处理、稽查协助、股权架构搭建、投融资财税尽调、重大经营风险评估，全方位保障企业财税安全。',
+      '西安数度财务咨询有限公司提供股权与投融资财税服务，包含股权架构设计、股权转让涉税规划、增资扩股财税咨询、融资财务顾问、投融资尽调、财务尽调与重大经营事项财税支持。',
     areaServed: {
       '@type': 'City',
       name: '西安',
@@ -133,11 +133,11 @@ export default function ConsultingPage() {
         <div className="container-brand section-padding !py-16 md:!py-20">
           <div className="max-w-3xl">
             <div className="inline-block px-4 py-1.5 bg-brand-gold/20 border border-brand-gold/40 text-brand-gold-light text-sm rounded-sm mb-6">
-              财税顾问与专项咨询
+              股权与投融资财税服务
             </div>
-            <h1 className="text-3xl md:text-4xl font-bold mb-4">财税咨询与风控服务</h1>
+            <h1 className="text-3xl md:text-4xl font-bold mb-4">股权与投融资财税服务</h1>
             <p className="text-white/80 text-base md:text-lg leading-relaxed">
-              西安数度财务咨询有限公司专业提供财税咨询与风控服务，包含常年财税顾问、税负合规计划、
+              西安数度财务咨询有限公司提供股权与投融资财税服务，包含股权架构设计、股权转让涉税规划、
               税务异常处理、稽查协助、股权架构搭建、投融资财税尽调、重大经营风险评估，
               全方位保障企业财税安全。
             </p>

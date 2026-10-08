@@ -325,7 +325,7 @@ export default function ShareholderLoansPage() {
             </Link>
             <Link href="/services/consulting" className="card-brand block hover:border-brand-gold/60 transition-colors">
               <p className="text-sm font-semibold text-brand-navy leading-snug">
-                财税顾问与专项咨询
+                股权与投融资财税服务
               </p>
               <p className="text-xs text-brand-text-muted mt-2">常年财税顾问、股权架构、分红与借款合规方案</p>
             </Link>

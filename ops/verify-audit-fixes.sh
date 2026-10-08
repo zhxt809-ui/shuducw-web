@@ -3,12 +3,12 @@ B="https://www.shuducw.com"
 echo "===== 1. 残留修复验证 ====="
 b=$(curl -s "$B/services/basic")
 echo "  basic页'中端增值'残留: $(echo "$b" | grep -c '中端增值')（应0）"
-echo "  basic页'财税合规与内审'新标题: $(echo "$b" | grep -c '财税合规与内审')"
+echo "  basic页'税务合规与优化服务'新标题: $(echo "$b" | grep -c '税务合规与优化服务')"
 c=$(curl -s "$B/services/consulting")
 echo "  consulting TDK'高端'残留: $(echo "$c" | grep -cE '高端财税咨询')（应0）"
 h=$(curl -s "$B/")
 echo "  首页desc'高端财税风控'残留: $(echo "$h" | grep -c '高端财税风控')（应0）"
-echo "  首页四层'财税合规与内审': $(echo "$h" | grep -c '财税合规与内审')"
+echo "  首页五类'税务合规与优化服务': $(echo "$h" | grep -c '税务合规与优化服务')"
 echo ""
 echo "===== 2. 隐私政策 ====="
 p=$(curl -s "$B/privacy")

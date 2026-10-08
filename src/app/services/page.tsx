@@ -19,87 +19,97 @@ import { districts } from '@/data/districts';
 import { industries } from '@/data/industries';
 
 export const metadata: Metadata = {
-  title: '财税业务范围-西安数度财务咨询-工商财税托管-财税合规-内部审计-财税风控',
+  title: '财税业务范围-西安数度财务咨询-五类财税服务-税务合规与优化-财务内控管理-股权投融资',
   description:
-    '提供全品类企业财税服务，涵盖西安工商记账报税一站式托管、乱账整改、税务优化、财税合规搭建、内部管理审计、股权架构搭建与专项财税风控，适配全行业企业财税需求。',
+    '五类企业财税服务：基础财税服务（工商注册、代理记账、汇算清缴）、税务合规与优化、财务内控管理、股权与投融资财税、企业专项定制，覆盖西安及周边企业的日常经营与专项财税需求。',
   keywords: [
     '西安数度财务咨询业务',
     '西安工商财税服务',
-    '西安财税合规服务',
+    '西安代理记账',
+    '西安税务合规与优化',
+    '西安财务内控管理',
     '西安企业内部审计',
-    '西安财税风控咨询',
+    '西安股权架构设计',
+    '西安投融资财税',
+    '西安企业专项财税服务',
   ],
   alternates: { canonical: '/services' },
 };
 
-// 核心业务：与首页一致的客户语言四层服务体系
+// 核心业务：五类服务体系（2026-10-08 按公司服务清单重整；首页、导航、页脚、llms.txt 与 Schema 同口径）
 const businessAreas = [
   {
     icon: Building2,
     num: '01',
     title: '基础财税服务',
-    scene: '初创、小微企业日常经营',
-    desc: '整合工商全项服务与记账报税全套服务，为初创企业、小微企业提供标准化一站式财税托管，全程规范办理，解决企业开办、日常经营、年度公示等基础财税问题。',
+    scene: '初创、小微企业与个体户日常经营',
+    desc: '整合工商全项与记账报税全套服务，为初创企业、小微企业提供标准化一站式财税托管，覆盖企业开办、日常经营、年度公示等基础财税事项，全程规范办理、资料完整归档。',
     services: [
-      '工商全项服务：公司注册、企业变更、公司注销、股权转让',
-      '记账报税全项：代理记账、全税种申报、汇算清缴、税控托管',
-      '基础配套服务：社保公积金托管、日常财税答疑、票据管理',
+      '工商全项：公司注册、工商变更、公司注销',
+      '记账报税：代理记账、全税种纳税申报、汇算清缴、发票票据管理、税务异常解除',
+      '日常经营：工商年报、乱账旧账整理、经营账、社保公积金开户及申报托管',
+      '外包托管：企业全盘财务外包、财务部门托管',
     ],
     href: '/services/basic',
   },
   {
     icon: FileCheck,
     num: '02',
-    title: '财税合规与内审',
-    scene: '乱账、历史账、税务风险、财税合规',
-    desc: '针对账务混乱、税务异常、历史遗留问题与合规要求，提供专项梳理、整改与合规体系搭建服务，修复历史问题、规范日常流程、排查税务风险。',
+    title: '税务合规与优化服务',
+    scene: '税负优化、政策适用、涉税应对、常年陪伴',
+    desc: '在合法合规前提下梳理企业税务安排、适用园区与行业财税政策、协助处理涉税争议与稽查应对，并以常年顾问方式陪伴企业完成年度财税合规工作。',
     services: [
-      '账务规范：乱账清理、旧账梳理、账务规范整改',
-      '税务合规：税务风险排查、税负测算、税务异常解除、稽查协助',
-      '合规体系：财税合规体系搭建、简易财务制度搭建、财务辅导',
+      '税务优化：企业税务优化、税负风险排查、个人所得税合规规划、全员薪酬个税合规规划',
+      '政策适用：园区财税政策落地、跨境财税（BVI / 香港公司架构与做账年审）',
+      '涉税应对：涉税争议协助、税务稽查应对支持',
+      '常年陪伴：常年财税顾问（年度财税合规陪伴）、财务人员代培、财务团队搭建与辅导、合规风控内训、业财一体化搭建',
     ],
     href: '/services/compliance',
   },
   {
     icon: Shield,
     num: '03',
-    title: '内部管理与风险控制',
-    scene: '内部审计、财务制度、流程、资金风险',
-    desc: '面向已有财务团队或管理基础的企业，提供独立视角的内部管理审计与内控建设，覆盖费用、采购、销售、资金等关键环节，把风险控制嵌入日常管理。',
+    title: '财务内控管理服务',
+    scene: '内部审计、制度流程、成本费用、经营分析',
+    desc: '面向已有财务团队或管理基础的企业，从制度、流程、成本与数据四个方向搭建财务内控，把风险控制嵌入日常经营，并让经营数据真正可用。',
     services: [
-      '内部管理审计：费用专项核查、资产费用核查、采购销售流程审计',
-      '内控建设：财务流程梳理、内控制度搭建、岗位分离设计',
-      '资金风险：往来款项核查、资金安全管理、管理报表体系',
+      '制度与流程：财务制度搭建、财务流程优化、岗位分离设计',
+      '内部核查：企业内部管理审计、往来款项核查、资产与费用专项核查',
+      '成本与风控：成本费用管控、企业内部风控、资金安全管理',
+      '经营分析：经营财务数据分析、管理报表体系',
     ],
     href: '/services/compliance',
   },
   {
     icon: TrendingUp,
     num: '04',
-    title: '财税顾问与专项咨询',
-    scene: '常年顾问、股权、融资、尽调、集团财税',
-    desc: '为成长期与集团化企业提供伴随式财税顾问与专项支持，围绕股权、融资、重大经营决策提供可落地的财税方案。',
+    title: '股权与投融资财税服务',
+    scene: '股权架构、股权转让、增资扩股、融资与尽调',
+    desc: '为成长期与集团化企业提供股权安排、融资支持与价值定价的财税方案，围绕重大经营决策出具可落地的处理路径。',
     services: [
-      '常年财税顾问：日常咨询、事项提醒、政策解读、年度复盘',
-      '股权与分红：股权架构合规搭建、股东分红合规安排',
-      '投融资支持：投融资财税风控、财务尽调、税务争议辅助处理',
+      '股权安排：股权架构设计、股权转让涉税规划、股东分红合规安排',
+      '融资支持：增资扩股财税咨询、融资财务顾问、投融资尽调',
+      '价值与定价：估值测算与融资定价支持',
     ],
     href: '/services/consulting',
   },
+  {
+    icon: Briefcase,
+    num: '05',
+    title: '企业专项定制服务',
+    scene: '高新、并购重组、行业专属、审计评估协助',
+    desc: '面向有特定资质、特定交易或特定行业需求的企业，按事项定制方案并落地执行，涉及需专业资质出具报告的环节，由我们协助对接相应机构。',
+    services: [
+      '专项合规：公转私合规规划',
+      '资质与补贴：高新技术企业财务辅导、专精特新申报、研发费用辅助账搭建、稳岗补贴及各类财税补贴申报、出口退税代办',
+      '交易与专项：并购重组、审计评估协助（对接会计师事务所）',
+      '行业专属：行业专属财税方案（科技软件、商贸流通、建筑安装、电商直播、集团多主体）',
+    ],
+    href: '/services#industries',
+  },
 ];
 
-// 配套与专项服务（核心业务之外的配套支持）
-const extendedServices = [
-  '高新技术企业认定辅助',
-  '专精特新申报',
-  '研发费用辅助账搭建',
-  '出口退税代办',
-  '跨境基础财税处理',
-  '企业全盘财务外包',
-  '财务部门托管',
-  '全员薪酬个税合规规划',
-  '稳岗补贴等各类企业补贴申报',
-];
+// 原「配套与专项服务」清单已折进上面五类（高新、补贴、外包、跨境、个税等各自归位），不再单列，避免同一服务两种叫法
 
 // 服务交付标准（依据法定期限与行业通行惯例表述，不含编造的时效承诺）
 const deliveryStandards = [
@@ -181,24 +191,32 @@ export default function ServicesPage() {
           '@type': 'Offer',
           itemOffered: {
             '@type': 'Service',
-            name: '财税合规与内审',
-            description: '乱账清理、历史账务整改、税务风险排查与财税合规体系搭建',
+            name: '税务合规与优化服务',
+            description: '企业税务优化、税负风险排查、个人所得税合规规划、园区财税政策落地、涉税争议协助与常年财税顾问',
           },
         },
         {
           '@type': 'Offer',
           itemOffered: {
             '@type': 'Service',
-            name: '内部管理与风险控制',
-            description: '内部管理审计、内控制度建设、财务流程梳理与资金风险管理',
+            name: '财务内控管理服务',
+            description: '财务制度搭建、成本费用管控、财务流程优化、企业内部风控与经营财务数据分析',
           },
         },
         {
           '@type': 'Offer',
           itemOffered: {
             '@type': 'Service',
-            name: '财税顾问与专项咨询',
-            description: '常年企业财税顾问、股权架构搭建、投融资财税尽调、税务争议辅助处理',
+            name: '股权与投融资财税服务',
+            description: '股权架构设计、股权转让涉税规划、增资扩股财税咨询、融资财务顾问、估值测算与投融资尽调',
+          },
+        },
+        {
+          '@type': 'Offer',
+          itemOffered: {
+            '@type': 'Service',
+            name: '企业专项定制服务',
+            description: '公转私合规规划、高新技术企业财务辅导、并购重组、行业专属财税方案、审计评估协助（对接会计师事务所）',
           },
         },
       ],
@@ -244,7 +262,7 @@ export default function ServicesPage() {
             {businessAreas.map((area) => {
               const Icon = area.icon;
               return (
-                <div key={area.title} className="card-brand">
+                <div key={area.title} id={`layer-${area.num}`} className="card-brand scroll-mt-24">
                   <div className="flex flex-col lg:flex-row gap-6">
                     <div className="flex-1">
                       <div className="flex items-center gap-3 mb-4 flex-wrap">
@@ -279,28 +297,6 @@ export default function ServicesPage() {
                 </div>
               );
             })}
-          </div>
-        </div>
-      </section>
-
-      {/* 配套与专项服务 */}
-      <section className="bg-brand-bg">
-        <div className="container-brand section-padding">
-          <div className="text-center mb-12">
-            <h2 className="text-2xl md:text-3xl font-bold text-brand-navy mb-4">配套与专项服务</h2>
-            <div className="w-16 h-[2px] bg-brand-gold mx-auto mb-6" />
-            <p className="text-brand-text-muted max-w-2xl mx-auto">
-              核心业务之外的配套支持——围绕资质、补贴、外包等专项需求，为合作企业提供全链条配套服务。
-            </p>
-          </div>
-
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
-            {extendedServices.map((service) => (
-              <div key={service} className="flex items-center gap-3 p-4 bg-white border border-brand-border rounded-sm">
-                <Briefcase size={16} className="text-brand-gold flex-shrink-0" />
-                <span className="text-sm text-brand-text">{service}</span>
-              </div>
-            ))}
           </div>
         </div>
       </section>

@@ -30,11 +30,13 @@ src/
 │   ├── robots.ts               # 搜索引擎爬虫规则（含国内 AI 爬虫）
 │   ├── sitemap.xml/route.ts    # 站点地图（含文章/分类/FAQ）
 │   ├── about/page.tsx          # 关于我们
-│   ├── services/
-│   │   ├── page.tsx            # 业务范围总览
+│   ├── services/                # 五类服务体系（2026-10-08 起全站统一口径：
+│   │   │                        #   基础财税服务 / 税务合规与优化服务 / 财务内控管理服务 /
+│   │   │                        #   股权与投融资财税服务 / 企业专项定制服务；验收 ops/verify-naming-live.py）
+│   │   ├── page.tsx            # 业务范围总览（五类目录，各类带 #layer-0N 锚点）
 │   │   ├── basic/page.tsx      # 基础财税服务
-│   │   ├── compliance/page.tsx # 高端合规内审
-│   │   └── consulting/page.tsx # 财税咨询风控
+│   │   ├── compliance/page.tsx # 税务合规与优化服务（含财务内控管理内容）
+│   │   └── consulting/page.tsx # 股权与投融资财税服务
 │   ├── news/
 │   │   ├── page.tsx            # 财税资讯列表（复用 news-list 组件）
 │   │   └── [slug]/page.tsx     # 文章详情 / 分类页(cases|tips|policies)

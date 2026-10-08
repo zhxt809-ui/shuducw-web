@@ -91,10 +91,10 @@ check('I1 「基础财税」叫法已统一为「基础财税服务」',
       names['基础财税托管'] == 0 and names['基础工商财税服务'] == 0 and names['基础财税服务'] > 0,
       '；'.join(f'{k} {v} 次' for k, v in names.items()) + ' | ' + ', '.join(detail))
 
-# J. 四层服务体系
-four = ['基础财税服务', '财税合规与内审', '内部管理与风险控制', '财税顾问与专项咨询']
-hit = [f for f in four if f in svc]
-check('J1 服务页四层体系命名', len(hit) == 4, f'命中 {len(hit)}/4：' + '、'.join(hit))
+# J. 五类服务体系（2026-10-08 按公司服务清单重整）
+five = ['基础财税服务', '税务合规与优化服务', '财务内控管理服务', '股权与投融资财税服务', '企业专项定制服务']
+hit = [f for f in five if f in svc]
+check('J1 服务页五类体系命名', len(hit) == 5, f'命中 {len(hit)}/5：' + '、'.join(hit))
 
 print('=' * 72)
 print('  外部评审说法逐条核验（以当前线上页面为准，不依赖搜索缓存）')

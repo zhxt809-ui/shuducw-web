@@ -82,37 +82,37 @@ const DIMENSION_GUIDE: Record<
     direction: '账务核算不完整',
     advice: '建议尽快补齐账务或委托专业机构系统梳理，确保收入、成本可核算、账实相符。',
     href: '/services/compliance',
-    service: '财税合规与内审',
+    service: '税务合规与优化服务',
   },
   资金往来: {
     direction: '经营收款公私混用',
     advice: '建议规范对公收付，逐步减少个人账户收款，避免经营收入难以完整入账。',
     href: '/services/compliance',
-    service: '财税合规与内审',
+    service: '税务合规与优化服务',
   },
   发票管理: {
     direction: '发票开具与取得不规范',
     advice: '建议规范开票与进项凭证管理，避免因发票问题影响抵扣或引发涉税风险。',
     href: '/services/compliance',
-    service: '财税合规与内审',
+    service: '税务合规与优化服务',
   },
   纳税申报: {
     direction: '存在逾期申报或异常记录',
     advice: '建议尽快查明原因、补办申报并处理异常状态，避免影响企业信用。',
     href: '/services/compliance',
-    service: '财税合规与内审',
+    service: '税务合规与优化服务',
   },
   股东往来: {
     direction: '股东与公司资金往来长期未处理',
     advice: '建议梳理股东借款与公司往来，按借款或分红依法处理并完善凭证。',
     href: '/services/consulting',
-    service: '财税顾问与专项咨询',
+    service: '股权与投融资财税服务',
   },
   内部管控: {
     direction: '财务岗位与核对机制薄弱',
     advice: '建议落实出纳会计分岗、按月核对银行余额，完善基础内控。',
     href: '/services/compliance',
-    service: '内部管理与风险控制',
+    service: '财务内控管理服务',
   },
 };
 

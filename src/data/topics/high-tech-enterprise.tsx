@@ -134,7 +134,7 @@ export const highTechEnterprise: TopicData = {
   links: [
     { href: '/services/district/gaoxin', title: '西安高新区代理记账与高新辅导', note: '高新区科技型企业的记账报税与高企财税辅导' },
     { href: '/news/xian-gaoxin-jishu-qiye-caiwu-guwen-anli', title: '高企常年财税顾问服务实录', note: '高新技术企业资质维护、研发费用加计扣除辅导的实际做法（已脱敏）' },
-    { href: '/services/consulting', title: '财税顾问与专项咨询', note: '常年顾问、股权架构、投融资财税支持' },
+    { href: '/services/consulting', title: '股权与投融资财税服务', note: '常年顾问、股权架构、投融资财税支持' },
   ],
 
   ctaTitle: '研发费用台账，是从现在开始建的',
