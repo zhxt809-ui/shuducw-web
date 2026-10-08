@@ -340,9 +340,10 @@ export default async function HomePage() {
             </p>
           </div>
 
-          <div className="grid grid-cols-1 lg:grid-cols-5 gap-6">
+          {/* 两栏等高：左=负责人（精简为身份+资质），右=团队持证类别（4 格铺满） */}
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
             {/* 负责人（实名，资质经 /about 页与高校官网来源核验） */}
-            <div className="lg:col-span-2 p-6 md:p-8 bg-white border border-brand-border rounded-sm">
+            <div className="p-6 md:p-8 bg-white border border-brand-border rounded-sm flex flex-col">
               <div className="flex items-center gap-4 mb-5">
                 <img
                   src="/leader-chenwenhua.jpg"
@@ -355,7 +356,7 @@ export default async function HomePage() {
                 </div>
               </div>
               <p className="text-xs text-brand-text-muted mb-2">专业资质</p>
-              <div className="flex flex-wrap gap-2 mb-3">
+              <div className="flex flex-wrap gap-2 mb-4">
                 {['高级会计师', '高级财税合规师', '国际注册会计师'].map((c) => (
                   <span key={c} className="px-2.5 py-1 text-xs bg-brand-gold/10 text-brand-gold rounded-sm font-medium">
                     {c}
@@ -363,64 +364,30 @@ export default async function HomePage() {
                 ))}
               </div>
               <p className="text-xs text-brand-text-muted mb-2">荣誉与社会任职</p>
-              <div className="flex flex-wrap gap-2 mb-5">
+              <div className="flex flex-wrap gap-2">
                 {['中税网金牌讲师', '西安财经大学校外硕士生导师', '西安外事学院商学院校外实习实训指导教师'].map((c) => (
                   <span key={c} className="px-2.5 py-1 text-xs bg-brand-navy/5 text-brand-navy rounded-sm font-medium">
                     {c}
                   </span>
                 ))}
               </div>
-              <ul className="text-sm text-brand-text-muted leading-relaxed space-y-2.5">
-                <li className="flex gap-2">
-                  <CheckCircle2 size={15} className="text-brand-gold flex-shrink-0 mt-0.5" />
-                  二十余年财税咨询与企业服务实战经验，2012 年创立西安数度财务咨询有限公司
-                </li>
-                <li className="flex gap-2">
-                  <CheckCircle2 size={15} className="text-brand-gold flex-shrink-0 mt-0.5" />
-                  专业方向：企业财税管理、税务合规、内部控制与财税咨询
-                </li>
-                <li className="flex gap-2">
-                  <CheckCircle2 size={15} className="text-brand-gold flex-shrink-0 mt-0.5" />
-                  <span>
-                    受聘西安财经大学校外硕士生导师，2026 年 4 月受邀担任商学院「财税计划与职业发展」专题讲座主讲嘉宾（
-                    <a
-                      href="https://sxy.xaufe.edu.cn/info/1061/10377.htm"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="text-brand-gold hover:underline"
-                    >
-                      高校官网报道
-                    </a>
-                    ）
-                  </span>
-                </li>
-              </ul>
               <Link
                 href="/about"
-                className="mt-5 inline-flex items-center gap-1.5 text-sm text-brand-navy font-medium hover:text-brand-gold transition-colors"
+                className="mt-auto pt-6 inline-flex items-center gap-1.5 text-sm text-brand-navy font-medium hover:text-brand-gold transition-colors"
               >
                 查看公司详细介绍 <ArrowRight size={14} />
               </Link>
-              <div className="mt-5">
-                <img
-                  src="/lecture-xaufe-2026.jpg"
-                  alt="陈文华受邀西安财经大学商学院开展财税专题讲座现场"
-                  className="w-full h-36 object-cover rounded-sm border border-brand-border"
-                  loading="lazy"
-                />
-                <p className="text-xs text-brand-text-muted mt-2">2026 年 4 月 · 西安财经大学商学院专题讲座现场</p>
-              </div>
             </div>
 
             {/* 专业团队（不实名，按持证类别展示） */}
-            <div className="lg:col-span-3">
-              <p className="text-xs text-brand-text-muted mb-3 tracking-wide">专业团队持证类别（团队资质）</p>
-              <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
+            <div className="p-6 md:p-8 bg-white border border-brand-border rounded-sm flex flex-col">
+              <p className="text-xs text-brand-text-muted mb-4 tracking-wide">专业团队持证类别（团队资质）</p>
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 flex-1">
                 {teamCredentials.map((t) => {
                   const Icon = t.icon;
                   return (
-                    <div key={t.name} className="p-6 bg-white border border-brand-border rounded-sm flex flex-col">
-                      <div className="w-10 h-10 bg-brand-navy/5 rounded-sm flex items-center justify-center mb-4">
+                    <div key={t.name} className="p-5 bg-brand-bg border border-brand-border rounded-sm flex flex-col">
+                      <div className="w-10 h-10 bg-brand-navy/5 rounded-sm flex items-center justify-center mb-3">
                         <Icon size={20} className="text-brand-navy" />
                       </div>
                       <h3 className="text-base font-bold text-brand-navy mb-2">{t.name}</h3>
@@ -428,16 +395,55 @@ export default async function HomePage() {
                     </div>
                   );
                 })}
-                <div className="sm:col-span-3 p-5 bg-white border border-brand-border rounded-sm flex items-center gap-4">
-                  <div className="w-10 h-10 bg-brand-navy/5 rounded-sm flex items-center justify-center flex-shrink-0">
+                <div className="p-5 bg-brand-bg border border-brand-border rounded-sm flex flex-col">
+                  <div className="w-10 h-10 bg-brand-navy/5 rounded-sm flex items-center justify-center mb-3">
                     <Users size={20} className="text-brand-navy" />
                   </div>
-                  <p className="text-sm text-brand-text-muted leading-relaxed">
-                    财税专业服务团队：记账报税、工商财税、日常财税服务，与持证专业人员协同完成企业全周期财税服务。
+                  <h3 className="text-base font-bold text-brand-navy mb-2">财税专业服务团队</h3>
+                  <p className="text-xs text-brand-text-muted leading-relaxed flex-1">
+                    记账报税、工商财税、日常财税服务，与持证专业人员协同完成企业全周期财税服务。
                   </p>
                 </div>
               </div>
             </div>
+          </div>
+
+          {/* 经历与活动（通栏：照片与经历说明并排，避免左栏被拉长） */}
+          <div className="mt-6 grid grid-cols-1 lg:grid-cols-3 gap-6">
+            <div className="lg:col-span-1">
+              <img
+                src="/lecture-xaufe-2026.jpg"
+                alt="陈文华受邀西安财经大学商学院开展财税专题讲座现场"
+                className="w-full h-44 object-cover rounded-sm border border-brand-border"
+                loading="lazy"
+              />
+              <p className="text-xs text-brand-text-muted mt-2">2026 年 4 月 · 西安财经大学商学院专题讲座现场</p>
+            </div>
+            <ul className="lg:col-span-2 self-center text-sm text-brand-text-muted leading-relaxed space-y-3">
+              <li className="flex gap-2">
+                <CheckCircle2 size={15} className="text-brand-gold flex-shrink-0 mt-0.5" />
+                二十余年财税咨询与企业服务实战经验，2012 年创立西安数度财务咨询有限公司
+              </li>
+              <li className="flex gap-2">
+                <CheckCircle2 size={15} className="text-brand-gold flex-shrink-0 mt-0.5" />
+                专业方向：企业财税管理、税务合规、内部控制与财税咨询
+              </li>
+              <li className="flex gap-2">
+                <CheckCircle2 size={15} className="text-brand-gold flex-shrink-0 mt-0.5" />
+                <span>
+                  受聘西安财经大学校外硕士生导师，2026 年 4 月受邀担任商学院「财税计划与职业发展」专题讲座主讲嘉宾（
+                  <a
+                    href="https://sxy.xaufe.edu.cn/info/1061/10377.htm"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-brand-gold hover:underline"
+                  >
+                    高校官网报道
+                  </a>
+                  ）
+                </span>
+              </li>
+            </ul>
           </div>
         </div>
       </section>
