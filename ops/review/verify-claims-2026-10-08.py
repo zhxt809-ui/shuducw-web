@@ -75,9 +75,9 @@ check('H3 咨询页是否有"协助梳理资料/沟通材料"式表述',
       bool(re.search(r'梳理[^<]{0,10}(资料|材料)|沟通材料|说明材料', consult)),
       '已有限定式表述' if re.search(r'梳理[^<]{0,10}(资料|材料)|沟通材料|说明材料', consult) else '目前只有"全程协助"式表述')
 
-# I. 名称一致性（统计线上各主要页面的写法）
+# I. 名称统一性（2026-10-08 决定：全站统一用「基础财税服务」）
 names = {
-    '基础财税托管': 0, '基础财税服务': 0, '基础工商财税服务': 0,
+    '基础财税服务': 0, '基础财税托管': 0, '基础工商财税服务': 0,
 }
 pages = {'首页': home, '服务页': svc, '基础财税页': basic, '联系页': contact}
 detail = []
@@ -87,11 +87,12 @@ for n in names:
         names[n] += c
         if c:
             detail.append(f'{pname}×{c}')
-check('I1 "基础财税"三种叫法并存', sum(1 for v in names.values() if v) >= 2,
-      '；'.join(f'{k} {v} 次' for k, v in names.items() if v) + ' | ' + ', '.join(detail))
+check('I1 「基础财税」叫法已统一为「基础财税服务」',
+      names['基础财税托管'] == 0 and names['基础工商财税服务'] == 0 and names['基础财税服务'] > 0,
+      '；'.join(f'{k} {v} 次' for k, v in names.items()) + ' | ' + ', '.join(detail))
 
 # J. 四层服务体系
-four = ['基础财税托管', '财税规范与合规', '内部管理与风险控制', '财税顾问与专项咨询']
+four = ['基础财税服务', '财务规范与税务合规', '内部管理与风险控制', '财税顾问与专项咨询']
 hit = [f for f in four if f in svc]
 check('J1 服务页四层体系命名', len(hit) == 4, f'命中 {len(hit)}/4：' + '、'.join(hit))
 

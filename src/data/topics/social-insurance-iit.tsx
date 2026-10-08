@@ -131,7 +131,7 @@ export const socialInsuranceIit: TopicData = {
   ],
 
   links: [
-    { href: '/services/basic', title: '基础财税托管', note: '含社保公积金、个税申报、工资表与申报数据核对' },
+    { href: '/services/basic', title: '基础财税服务', note: '含社保公积金、个税申报、工资表与申报数据核对' },
     { href: '/shareholder-loans', title: '股东往来专题', note: '股东借款、公款垫付个人消费、公私账户混用的风险与处理' },
     { href: '/faq', title: '常见问题 FAQ', note: '代理记账、个税申报、社保等高频问题解答' },
   ],

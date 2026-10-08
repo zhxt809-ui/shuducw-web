@@ -190,7 +190,7 @@ export default function DeliveryPage() {
             <h2 className="text-2xl md:text-3xl font-bold text-brand-navy mb-4">专项服务交付流程</h2>
             <div className="w-16 h-[2px] bg-brand-gold mx-auto mb-6" />
             <p className="text-brand-text-muted max-w-2xl mx-auto">
-              基础财税托管按上述 7 节点交付；财税风险排查、内部管理审计与常年财税顾问，
+              基础财税服务按上述 7 节点交付；财税风险排查、内部管理审计与常年财税顾问，
               按以下专项流程推进，每个阶段同样有明确交付物
             </p>
           </div>

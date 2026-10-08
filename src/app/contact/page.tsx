@@ -46,7 +46,7 @@ const MAP_URL =
   encodeURIComponent('西安市高新区唐延路35号旺座现代城');
 
 const serviceInquiry = [
-  '基础工商财税服务',
+  '基础财税服务',
   '财务规范与税务合规',
   '企业财税合规体系搭建',
   '企业内部管理审计',

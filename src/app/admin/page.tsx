@@ -267,6 +267,46 @@ export default function AdminPage() {
     }
   };
 
+  const handleDeleteConsultation = async (id: number) => {
+    if (!confirm('确定要删除这条咨询记录吗？删除后不可恢复。')) return;
+    try {
+      const res = await fetch(`/api/consultations/${id}`, {
+        method: 'DELETE',
+        headers: { 'x-admin-token': tokenRef.current },
+      });
+      if (res.status === 401) {
+        setAuthed(false);
+        setError('登录已失效，请重新登录');
+        return;
+      }
+      const json = await res.json();
+      if (!res.ok) throw new Error(json.error || '删除失败');
+      fetchConsultations();
+    } catch (err: unknown) {
+      setError(err instanceof Error ? err.message : '删除失败');
+    }
+  };
+
+  const handleConsultationStatus = async (id: number, status: string) => {
+    try {
+      const res = await fetch(`/api/consultations/${id}`, {
+        method: 'PATCH',
+        headers: { 'Content-Type': 'application/json', 'x-admin-token': tokenRef.current },
+        body: JSON.stringify({ status }),
+      });
+      if (res.status === 401) {
+        setAuthed(false);
+        setError('登录已失效，请重新登录');
+        return;
+      }
+      const json = await res.json();
+      if (!res.ok) throw new Error(json.error || '状态更新失败');
+      fetchConsultations();
+    } catch (err: unknown) {
+      setError(err instanceof Error ? err.message : '状态更新失败');
+    }
+  };
+
   const generateSlug = (title: string) => {
     const timestamp = Date.now();
     // 提取标题中的英文/数字部分作为 slug 前缀，中文部分跳过
@@ -722,18 +762,19 @@ export default function AdminPage() {
                     <th className="text-left px-4 py-3 text-xs font-semibold text-brand-text-muted uppercase hidden md:table-cell">咨询内容</th>
                     <th className="text-left px-4 py-3 text-xs font-semibold text-brand-text-muted uppercase hidden lg:table-cell">提交时间</th>
                     <th className="text-center px-4 py-3 text-xs font-semibold text-brand-text-muted uppercase">状态</th>
+                    <th className="text-center px-4 py-3 text-xs font-semibold text-brand-text-muted uppercase">操作</th>
                   </tr>
                 </thead>
                 <tbody>
                   {consultLoading ? (
                     <tr>
-                      <td colSpan={5} className="px-4 py-12 text-center text-brand-text-muted text-sm">
+                      <td colSpan={6} className="px-4 py-12 text-center text-brand-text-muted text-sm">
                         加载中...
                       </td>
                     </tr>
                   ) : consultations.length === 0 ? (
                     <tr>
-                      <td colSpan={5} className="px-4 py-12 text-center text-brand-text-muted text-sm">
+                      <td colSpan={6} className="px-4 py-12 text-center text-brand-text-muted text-sm">
                         暂无咨询记录
                       </td>
                     </tr>
@@ -747,13 +788,29 @@ export default function AdminPage() {
                           {new Date(c.created_at).toLocaleDateString('zh-CN')}
                         </td>
                         <td className="px-4 py-3 text-center">
-                          <span className={`inline-flex items-center text-xs px-2 py-0.5 rounded ${
-                            c.status === 'pending' ? 'text-yellow-700 bg-yellow-50' :
-                            c.status === 'contacted' ? 'text-green-700 bg-green-50' :
-                            'text-gray-700 bg-gray-50'
-                          }`}>
-                            {c.status === 'pending' ? '待跟进' : c.status === 'contacted' ? '已联系' : '已关闭'}
-                          </span>
+                          <select
+                            value={c.status}
+                            onChange={(e) => handleConsultationStatus(c.id, e.target.value)}
+                            className={`text-xs px-2 py-1 rounded border cursor-pointer ${
+                              c.status === 'pending' ? 'text-yellow-700 bg-yellow-50 border-yellow-200' :
+                              c.status === 'contacted' ? 'text-green-700 bg-green-50 border-green-200' :
+                              'text-gray-700 bg-gray-50 border-gray-200'
+                            }`}
+                            title="修改跟进状态"
+                          >
+                            <option value="pending">待跟进</option>
+                            <option value="contacted">已联系</option>
+                            <option value="closed">已关闭</option>
+                          </select>
+                        </td>
+                        <td className="px-4 py-3 text-center">
+                          <button
+                            onClick={() => handleDeleteConsultation(c.id)}
+                            className="p-1.5 text-brand-text-muted hover:text-red-600 transition-colors"
+                            title="删除"
+                          >
+                            <Trash2 size={16} />
+                          </button>
                         </td>
                       </tr>
                     ))

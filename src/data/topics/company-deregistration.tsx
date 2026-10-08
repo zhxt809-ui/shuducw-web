@@ -131,7 +131,7 @@ export const companyDeregistration: TopicData = {
   ],
 
   links: [
-    { href: '/services/basic', title: '基础财税托管（含注销办理）', note: '工商全项、税务注销、清税文书与注销材料协助' },
+    { href: '/services/basic', title: '基础财税服务（含注销办理）', note: '工商全项、税务注销、清税文书与注销材料协助' },
     { href: '/shareholder-loans', title: '股东往来专题', note: '注销前必须处理的股东借款、往来挂账与视同分红问题' },
     { href: '/services/delivery', title: '服务交付标准', note: '7 个交付节点、每节点交付物与双方责任边界' },
   ],

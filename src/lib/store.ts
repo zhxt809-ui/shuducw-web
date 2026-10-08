@@ -254,8 +254,35 @@ export async function createConsultation(data: {
   });
 }
 
-/* ==================== 健康检查 ==================== */
+export async function updateConsultationStatus(
+  id: number,
+  status: Consultation['status']
+): Promise<Consultation | null> {
+  return enqueueWrite(async () => {
+    const file = getConsultationsFile();
+    await ensureFile(file, []);
+    const items = await readJson<Consultation[]>(file, []);
+    const item = items.find((c) => c.id === id);
+    if (!item) return null;
+    item.status = status;
+    await writeJson(file, items);
+    return item;
+  });
+}
 
+export async function deleteConsultation(id: number): Promise<boolean> {
+  return enqueueWrite(async () => {
+    const file = getConsultationsFile();
+    await ensureFile(file, []);
+    const items = await readJson<Consultation[]>(file, []);
+    const next = items.filter((c) => c.id !== id);
+    if (next.length === items.length) return false;
+    await writeJson(file, next);
+    return true;
+  });
+}
+
+/* ==================== 健康检查 ==================== */
 export async function healthCheck(): Promise<{
   status: 'ok' | 'degraded';
   backend: 'file';

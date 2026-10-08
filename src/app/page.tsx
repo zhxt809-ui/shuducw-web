@@ -45,7 +45,7 @@ const painPoints = [
 const businessModules = [
   {
     icon: Building2,
-    title: '基础财税托管',
+    title: '基础财税服务',
     flow: '日常经营 → 记账报税 → 工商财税',
     desc: '公司注册、代理记账、纳税申报、汇算清缴、社保公积金、发票票据管理等日常财税托管。',
     href: '/services/basic',
@@ -192,7 +192,7 @@ export default async function HomePage() {
               <span className="text-brand-gold">不只是记账报税</span>
             </h1>
             <p className="text-white/80 text-base md:text-lg leading-relaxed mb-8 max-w-2xl">
-              专注企业财税管理、财税合规、税务风险与内部管控。从基础财税托管，
+              专注企业财税管理、财税合规、税务风险与内部管控。从基础财税服务，
               到财税规范、内部审计与长期财税顾问，为企业提供贯穿不同发展阶段的专业财税服务。
             </p>
             <div className="flex flex-wrap gap-4">

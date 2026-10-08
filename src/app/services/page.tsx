@@ -37,7 +37,7 @@ const businessAreas = [
   {
     icon: Building2,
     num: '01',
-    title: '基础财税托管',
+    title: '基础财税服务',
     scene: '初创、小微企业日常经营',
     desc: '整合工商全项服务与记账报税全套服务，为初创企业、小微企业提供标准化一站式财税托管，全程规范办理，解决企业开办、日常经营、年度公示等基础财税问题。',
     services: [
@@ -173,7 +173,7 @@ export default function ServicesPage() {
           '@type': 'Offer',
           itemOffered: {
             '@type': 'Service',
-            name: '基础财税托管',
+            name: '基础财税服务',
             description: '整合工商全项服务与记账报税全套服务，为初创企业、小微企业提供标准化一站式财税托管',
           },
         },
