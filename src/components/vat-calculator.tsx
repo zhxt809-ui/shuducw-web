@@ -7,11 +7,16 @@ import { trackToolUse } from '@/lib/analytics';
 type Mode = 'small' | 'general';
 
 /**
- * 增值税计算器（2026-09 上线）
+ * 增值税计算器（2026-09 上线，2026-10 校准边界口径）
  * 口径依据（现行有效）：
- * - 《增值税法》2026-01-01 施行；财政部 税务总局衔接公告：2026-01-01 至 2027-12-31，
- *   小规模纳税人起征点为月销售额 10 万元（按月计税期间）；适用 3% 征收率的减按 1% 征收。
- * - 一般纳税人按"销项 − 进项"计算，税率 13% / 9% / 6%。
+ * - 《增值税法》2026-01-01 施行，第九条：小规模纳税人标准为年应征增值税销售额未超过 500 万元；
+ *   第二十三条：销售额未达到起征点的免征增值税，达到起征点的全额计算缴纳。
+ * - 财政部 税务总局衔接公告（2026 年第 10 号）：2026-01-01 至 2027-12-31 起征点为月销售额 10 万元
+ *   （按季 30 万元、按次/日 1000 元）；小规模纳税人发生除销售、出租不动产或转让土地使用权之外的
+ *   应税交易，依照 3% 征收率减按 1% 征收。
+ * - 销售额换算：含税销售额 ÷（1 + 规定征收率），减按 1% 时除以 1.01。
+ * 重要边界：起征点为"未达到免征、达到全额计税"，故销售额【刚好等于】10 万元时按新法口径应计税，
+ *   与 2026 年之前"10 万元以下（含本数）免征"不同；此临界情形界面会显式提示。
  * 结果为简化估算，实际以主管税务机关核定为准。
  */
 export function VatCalculator() {
@@ -46,7 +51,9 @@ export function VatCalculator() {
   const s = num(smallSales);
   const smallHasInput = Number.isFinite(s) && s >= 0;
   const monthlyExclTax = taxInclusive ? s / 1.01 : s;
-  const smallFree = smallHasInput && monthlyExclTax <= 100000;
+  // 起征点：未达到（<10 万）免征；达到（≥10 万）全额计税 —— 《增值税法》第二十三条
+  const smallFree = smallHasInput && monthlyExclTax < 100000;
+  const atThreshold = smallHasInput && Math.abs(monthlyExclTax - 100000) < 0.005;
   const smallTax = smallFree ? 0 : monthlyExclTax * 0.01;
 
   // 一般纳税人计算
@@ -125,14 +132,21 @@ export function VatCalculator() {
               </div>
               {smallFree ? (
                 <div className="pt-1">
-                  <p className="text-green-600 font-bold">未达起征点，免征增值税</p>
+                  <p className="text-green-600 font-bold">未达到起征点，免征增值税</p>
                   <p className="text-xs text-brand-text-muted mt-1 leading-relaxed">
-                    月销售额未超过 10 万元（2026-01-01 至 2027-12-31 起征点标准），免征增值税；
-                    按季申报的，季度销售额未超过 30 万元同样适用。
+                    月销售额未达到 10 万元（2026-01-01 至 2027-12-31 起征点标准），免征增值税；
+                    按季申报的，按季度销售额未达到 30 万元判断；按次纳税的，按每次（日）未达到 1000 元判断。
                   </p>
                 </div>
               ) : (
                 <>
+                  {atThreshold && (
+                    <p className="text-xs text-red-600 leading-relaxed pb-1">
+                      ⚠️ 销售额恰好等于 10 万元起征点：《增值税法》第二十三条规定"销售额未达到起征点的免征，
+                      达到起征点的全额计算缴纳"，据此此处按应全额计税计算，与 2026 年之前"10 万元以下（含本数）免征"
+                      的口径不同。临界情形建议与主管税务机关确认后再申报。
+                    </p>
+                  )}
                   <div className="flex justify-between text-sm">
                     <span className="text-brand-text-muted">适用征收率</span>
                     <span className="text-brand-navy font-medium">3% 减按 1%</span>
@@ -143,6 +157,10 @@ export function VatCalculator() {
                   </div>
                   <p className="text-xs text-brand-text-muted">
                     年化参考：约 {fmt(smallTax * 12)} 元（不含城建税及附加）
+                  </p>
+                  <p className="text-xs text-brand-text-muted leading-relaxed">
+                    注意：1% 优惠不适用于销售、出租不动产与转让土地使用权（衔接公告排除）；小规模纳税人（不含自然人）
+                    销售自己使用过的固定资产按 3% 减按 2%，个人出租住房按 3% 减按 1.5%。本工具未单独拆分上述情形。
                   </p>
                 </>
               )}
@@ -213,7 +231,8 @@ export function VatCalculator() {
               </div>
               {credit && (
                 <p className="text-xs text-brand-text-muted">
-                  进项大于销项，差额 {fmt(gInput - outputVat)} 元形成留抵税额，结转以后期间抵扣。
+                  进项大于销项，差额 {fmt(gInput - outputVat)} 元为留抵税额：按《增值税法》第二十一条，可选择结转下期
+                  继续抵扣，或按国务院规定申请退还；本工具按结转抵扣提示，实际以主管税务机关要求为准。
                 </p>
               )}
             </div>
@@ -224,10 +243,12 @@ export function VatCalculator() {
       <div className="mt-5 p-4 bg-white border border-brand-border rounded-sm flex gap-2.5">
         <Info size={15} className="text-brand-gold flex-shrink-0 mt-0.5" />
         <p className="text-xs text-brand-text-muted leading-relaxed">
-          依据：《中华人民共和国增值税法》（2026-01-01 施行）及财政部、税务总局衔接公告
-          （小规模纳税人起征点月销售额 10 万元、适用 3% 征收率的减按 1%，有效期至 2027-12-31）。
+          依据：《中华人民共和国增值税法》（2026-01-01 施行）第九条至第十一条、第十四条、第二十一条至第二十三条，
+          及财政部、税务总局《关于增值税法施行后增值税优惠政策衔接事项的公告》（2026 年第 10 号）：
+          小规模纳税人起征点为月销售额 10 万元（按季 30 万元、按次/日 1000 元），适用 3% 征收率的减按 1%，
+          有效期至 2027-12-31；起征点为"未达到免征、达到全额计税"。
           城建税及附加需另行计算，小规模纳税人或可享受减免优惠，以主管税务机关核定为准。
-          本工具为简化估算，不构成税务意见，实际以税务机关核定与最新政策为准。
+          本工具为简化估算，不构成税务意见，实际以税务机关核定与最新政策为准。口径核验日期：2026 年 10 月。
         </p>
       </div>
     </div>
