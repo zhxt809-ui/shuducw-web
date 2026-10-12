@@ -22,6 +22,10 @@ export interface XiaohongshuNote {
   url: string;
   /** 可选：展示用日期，如 "2026-09" */
   date?: string;
+  /** 可选：站内落地页标题（如「账务风险自查」），用于小红书笔记→官网精准承接 */
+  landingLabel?: string;
+  /** 可选：站内落地页路径，必须以 / 开头；仅接受站内链接，站外地址一律不渲染 */
+  landingUrl?: string;
 }
 
 const ALLOWED_HOSTS = ['www.xiaohongshu.com', 'xiaohongshu.com', 'xhslink.com', 'www.xhslink.com'];
@@ -56,7 +60,10 @@ export async function getXiaohongshuNotes(limit = 3): Promise<XiaohongshuNote[]>
           typeof n.title === 'string' &&
           n.title.trim().length > 0 &&
           typeof n.url === 'string' &&
-          isSafeUrl(n.url)
+          isSafeUrl(n.url) &&
+          (!('landingUrl' in n) ||
+            (typeof n.landingUrl === 'string' && n.landingUrl.startsWith('/'))) &&
+          (!('landingLabel' in n) || typeof n.landingLabel === 'string')
       )
       .slice(0, limit);
   } catch {

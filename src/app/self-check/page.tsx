@@ -112,7 +112,7 @@ export default function SelfCheckPage() {
               </p>
               <p>
                 <strong className="text-brand-navy">信息如何保护？</strong>{' '}
-                您的提交信息仅用于与您联系和提供服务，由持有代理记账资质的会计对接，信息严格保密，
+                您的提交信息仅用于与您联系和提供服务，由本公司专业服务团队对接，信息严格保密，
                 详见{' '}
                 <Link href="/privacy" className="text-brand-navy hover:text-brand-gold font-medium">
                   隐私政策

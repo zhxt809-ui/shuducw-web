@@ -86,7 +86,7 @@ export default function ConsultationForm({
           <CheckCircle size={48} className="mx-auto text-green-500 mb-4" />
           <h3 className="text-xl font-bold text-brand-navy mb-2">提交成功</h3>
           <p className="text-brand-text-muted text-sm mb-1">
-            客服会尽快与您联系（工作时段响应更快），由持有代理记账资质的会计一对一沟通
+            客服会尽快与您联系（工作时段响应更快），由本公司专业服务团队一对一沟通
           </p>
           <p className="text-brand-text-muted text-xs mb-6">
             也可以关注我们的小红书账号（6521552259），获取最新财税政策更新
@@ -226,18 +226,18 @@ export default function ConsultationForm({
               '提交咨询'
             )}
           </button>
-          <p className="text-xs text-brand-text-muted mt-2 text-center">
-            提交后顾问会尽快与您联系（工作时段响应更快）
+          <p className="text-xs text-brand-text-muted mt-2 text-center leading-relaxed">
+            提交咨询后，本公司自有专业服务团队将与您联系，了解企业实际经营情况及财税需求，提供相应的服务说明与咨询建议。
           </p>
-          <p className="text-xs text-brand-text-muted mt-1.5 text-center flex items-center justify-center gap-1.5">
-            <Shield size={12} className="text-brand-gold flex-shrink-0" />
-            提交信息后由持有代理记账资质的会计对接，信息严格保密
+          <p className="text-xs text-brand-text-muted mt-1 text-center leading-relaxed">
+            本公司持有《代理记账许可证书》，代理记账业务由自有专业团队直接承接并实施，不转包给第三方；具体服务范围、交付内容及双方责任以正式签订的服务合同为准。
           </p>
           <p className="text-xs text-brand-text-muted mt-1.5 text-center leading-relaxed">
-            请勿在咨询内容中填写身份证号、银行卡号等敏感信息。信息用途、保存与删除方式见
+            您提交的信息仅用于本次咨询联系，并按照
             <Link href="/privacy" className="text-brand-navy hover:text-brand-gold font-medium mx-0.5">
               隐私政策
             </Link>
+            处理。请勿在咨询内容中填写身份证号、银行卡号等非必要敏感信息。
           </p>
         </div>
       </form>

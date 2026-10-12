@@ -80,7 +80,7 @@ const responsibilities = {
   ours: [
     '按约定完成账务处理与各税种申报，不遗漏、不逾期',
     '发现账务异常、发票疑点或申报数据比对异常时及时告知并给出处理建议',
-    '由持有代理记账资质的会计人员对接，日常问题在工作时间内答疑',
+    '由本公司专业服务团队对接，日常问题在工作时间内答疑',
     '服务期间账簿、凭证、申报资料完整保管，服务终止时按清单完整移交',
   ],
   clients: [
@@ -198,7 +198,7 @@ export default function DeliveryPage() {
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 max-w-6xl mx-auto">
             <div className="p-6 bg-white border border-brand-border rounded-sm">
               <h3 className="font-bold text-brand-navy mb-4">财税风险排查交付</h3>
-              <ol className="space-y-2.5">
+              <ul className="space-y-2.5">
                 {['需求访谈', '资料收集', '风险分析', '诊断报告', '整改建议', '跟踪复核'].map((s, i) => (
                   <li key={s} className="flex items-center gap-2.5 text-sm text-brand-text">
                     <span className="w-6 h-6 rounded-full bg-brand-gold/10 text-brand-gold text-xs font-bold flex items-center justify-center flex-shrink-0">
@@ -207,7 +207,7 @@ export default function DeliveryPage() {
                     {s}
                   </li>
                 ))}
-              </ol>
+              </ul>
               <p className="mt-4 text-xs text-brand-text-muted leading-relaxed border-t border-brand-border pt-3">
                 交付物：风险诊断报告、问题清单、整改建议与跟踪复核记录
               </p>
@@ -215,7 +215,7 @@ export default function DeliveryPage() {
 
             <div className="p-6 bg-white border border-brand-border rounded-sm">
               <h3 className="font-bold text-brand-navy mb-4">内部财务核查交付</h3>
-              <ol className="space-y-2.5">
+              <ul className="space-y-2.5">
                 {['项目启动', '确定审计范围', '资料分析', '现场/专项核查', '问题清单', '整改建议', '复核确认'].map((s, i) => (
                   <li key={s} className="flex items-center gap-2.5 text-sm text-brand-text">
                     <span className="w-6 h-6 rounded-full bg-brand-gold/10 text-brand-gold text-xs font-bold flex items-center justify-center flex-shrink-0">
@@ -224,15 +224,15 @@ export default function DeliveryPage() {
                     {s}
                   </li>
                 ))}
-              </ol>
+              </ul>
               <p className="mt-4 text-xs text-brand-text-muted leading-relaxed border-t border-brand-border pt-3">
-                交付物：审计报告、问题与风险清单、整改建议书及复核结论
+                交付物：核查报告、问题与风险清单、整改建议书及复核结论
               </p>
             </div>
 
             <div className="p-6 bg-white border border-brand-border rounded-sm">
               <h3 className="font-bold text-brand-navy mb-4">常年财税顾问交付</h3>
-              <ol className="space-y-2.5">
+              <ul className="space-y-2.5">
                 {['月度咨询', '事项提醒', '专项分析', '政策解读', '年度复盘'].map((s, i) => (
                   <li key={s} className="flex items-center gap-2.5 text-sm text-brand-text">
                     <span className="w-6 h-6 rounded-full bg-brand-gold/10 text-brand-gold text-xs font-bold flex items-center justify-center flex-shrink-0">
@@ -241,7 +241,7 @@ export default function DeliveryPage() {
                     {s}
                   </li>
                 ))}
-              </ol>
+              </ul>
               <p className="mt-4 text-xs text-brand-text-muted leading-relaxed border-t border-brand-border pt-3">
                 交付物：日常咨询答复、涉税事项提醒、专项分析意见与年度财税复盘
               </p>

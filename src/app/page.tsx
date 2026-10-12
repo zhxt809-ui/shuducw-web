@@ -598,6 +598,14 @@ export default async function HomePage() {
                           </span>
                         )}
                       </a>
+                      {note.landingUrl && note.landingLabel && (
+                        <Link
+                          href={note.landingUrl}
+                          className="flex items-center gap-1 mt-1 ml-4 text-xs text-brand-gold hover:text-brand-navy font-medium transition-colors"
+                        >
+                          相关：{note.landingLabel} <ArrowRight size={12} />
+                        </Link>
+                      )}
                     </li>
                   ))}
                 </ul>

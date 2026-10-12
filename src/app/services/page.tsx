@@ -136,7 +136,7 @@ const deliveryStandards = [
   {
     icon: UserCheck,
     title: '专属会计对接',
-    desc: '由持有代理记账资质的会计人员对接服务，日常财税问题在工作时间内答疑，重大事项提供书面说明。',
+    desc: '由本公司专业服务团队对接服务，日常财税问题在工作时间内答疑，重大事项提供书面说明。',
   },
   {
     icon: Archive,

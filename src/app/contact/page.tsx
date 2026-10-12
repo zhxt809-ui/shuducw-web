@@ -224,8 +224,8 @@ export default function ContactPage() {
             <div className="w-16 h-[2px] bg-brand-gold mx-auto mb-8" />
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
               {[
-                { title: '专业合规', desc: '持证专家团队，全程合法合规' },
-                { title: '落地执行', desc: '方案配套跟进，确保落地见效' },
+                { title: '专业合规', desc: '由具备相应专业能力的团队提供服务，在法律法规及服务合同约定范围内开展工作' },
+                { title: '落地执行', desc: '根据服务约定提供实施指导与后续跟进，结合企业实际情况推动方案落实与持续优化' },
                 { title: '安全保密', desc: '严格信息保密，保障客户权益' },
               ].map((item) => (
                 <div key={item.title} className="p-6 border border-white/10 rounded-sm">

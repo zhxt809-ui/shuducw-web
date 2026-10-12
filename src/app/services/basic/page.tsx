@@ -124,26 +124,54 @@ export default function BasicServicePage() {
               工商年报、代理记账报税、税控托管、汇算清缴、社保公积金托管等一站式财税托管，
               标准化操作，合规省心。
             </p>
+            <p className="text-white/70 text-sm mt-3 leading-relaxed">
+              本公司持有《代理记账许可证书》，代理记账报税业务由自有专业团队直接承接并实施，不转包给第三方。
+            </p>
           </div>
         </div>
       </section>
 
-      {/* 参考价格条（直给区间，减少价格敏感客户流失；口径与 FAQ/费用参考一致） */}
+      {/* 代理记账费用参考（分档展示，口径与 FAQ/费用参考一致；价格与交付标准关联） */}
       <section className="bg-brand-bg border-b border-brand-border">
-        <div className="container-brand !py-5 md:!py-6">
-          <div className="flex flex-col sm:flex-row flex-wrap items-center justify-center gap-x-6 gap-y-2 text-sm">
-            <span className="text-brand-navy font-medium">代账参考区间：</span>
-            <span className="text-brand-navy">
-              小规模纳税人 <strong className="text-brand-gold text-base">2000-4000 元/年</strong>
-            </span>
-            <span className="text-brand-text-muted">一般纳税人略高 · 个体户/零申报更低</span>
-            <span className="text-brand-text-muted">具体按开票量与票据量核算，以服务合同为准</span>
-            <Link
-              href="/services/delivery"
-              className="inline-flex items-center gap-1.5 text-brand-gold hover:text-brand-navy transition-colors"
-            >
-              查看交付标准 <ArrowRight size={13} />
-            </Link>
+        <div className="container-brand !py-8 md:!py-10">
+          <div className="max-w-3xl mx-auto">
+            <div className="text-center mb-5">
+              <h2 className="text-xl md:text-2xl font-bold text-brand-navy mb-1.5">代理记账费用参考</h2>
+              <p className="text-sm text-brand-text-muted">公开参考区间，具体以服务合同为准</p>
+            </div>
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+              <div className="bg-white border border-brand-border rounded-sm p-5 text-center">
+                <p className="text-sm text-brand-text mb-2">小规模纳税人</p>
+                <p className="text-brand-gold text-2xl font-bold mb-2">2,000–4,000 元/年</p>
+                <p className="text-xs text-brand-text-muted leading-relaxed">
+                  参考区间，根据业务量、开票量、票据量及账务复杂度确定
+                </p>
+              </div>
+              <div className="bg-white border border-brand-border rounded-sm p-5 text-center">
+                <p className="text-sm text-brand-text mb-2">一般纳税人</p>
+                <p className="text-brand-navy text-xl font-bold mb-2">按业务量核算</p>
+                <p className="text-xs text-brand-text-muted leading-relaxed">
+                  根据企业业务量、进销项处理工作量及账务复杂程度核算
+                </p>
+              </div>
+              <div className="bg-white border border-brand-border rounded-sm p-5 text-center">
+                <p className="text-sm text-brand-text mb-2">个体户及业务较简单的企业</p>
+                <p className="text-brand-navy text-xl font-bold mb-2">按实际情况报价</p>
+                <p className="text-xs text-brand-text-muted leading-relaxed">
+                  根据实际经营情况、申报事项及约定服务范围报价
+                </p>
+              </div>
+            </div>
+            <p className="mt-4 text-center text-xs text-brand-text-muted leading-relaxed">
+              以上为参考价格，价格对应的服务清单与交付标准见
+              <Link
+                href="/services/delivery"
+                className="text-brand-gold hover:text-brand-navy font-medium mx-0.5"
+              >
+                基础财税服务交付标准
+              </Link>
+              ；最终费用、服务项目及交付责任以双方签订的合同为准。
+            </p>
           </div>
         </div>
       </section>
