@@ -438,8 +438,8 @@ export default async function ArticlePage({
               const bizMap: Record<string, { href: string; name: string; desc: string }> = {
                 shilu: {
                   href: '/services/compliance',
-                  name: '财税合规 · 内部审计',
-                  desc: '企业财税合规自查、内部管理审计、常年财税顾问，帮您把账做规范、把风险控住',
+                  name: '财税合规 · 内部财务核查',
+                  desc: '企业财税合规自查、财务内控管理、常年财税顾问，帮您把账做规范、把风险控住',
                 },
                 tips: {
                   href: '/services/basic',
@@ -448,8 +448,8 @@ export default async function ArticlePage({
                 },
                 cases: {
                   href: '/services/compliance',
-                  name: '财税合规 · 内部审计',
-                  desc: '企业财税合规自查、内部管理审计、历史账务梳理，帮您提前排查涉税风险',
+                  name: '财税合规 · 内部财务核查',
+                  desc: '企业财税合规自查、财务内控管理、历史账务梳理，帮您提前排查涉税风险',
                 },
                 policies: {
                   href: '/services/consulting',
@@ -486,7 +486,7 @@ export default async function ArticlePage({
                   <p className="text-white/80 text-sm leading-relaxed">
                     西安数度财务咨询 2012 年成立，首届西安市代理记账协会副会长单位，
                     高级会计师、国际注册会计师、税务师团队为您提供工商财税托管、
-                    财税合规、内部审计、财税风控一站式服务。
+                    财税合规、内部财务核查、财税风控一站式服务。
                   </p>
                   <div className="flex flex-wrap items-center gap-4 mt-4 text-sm text-white/80">
                     <span className="flex items-center gap-2">

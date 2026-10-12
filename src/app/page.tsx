@@ -7,20 +7,21 @@ import { XiaohongshuIcon } from '@/components/xiaohongshu-icon';
 import { districts } from '@/data/districts';
 import { industries } from '@/data/industries';
 import { InlineConsultForm } from '@/components/inline-consult-form';
+import { stripKeywordTail } from '@/lib/utils';
 
 // 首页含服务实录动态数据，ISR 定期刷新
 export const revalidate = 60;
 
 export const metadata: Metadata = {
-  title: '西安数度财务咨询-2012年老牌财税咨询-企业财税合规-内部管理审计服务',
+  title: '西安数度财务咨询-代理记账报税-企业财税合规-财务内控管理',
   description:
-    '西安数度财务咨询有限公司2012年成立，首届西安市代理记账协会副会长单位，拥有高级会计师、国际注册会计师、税务师团队，专业提供工商财税托管、企业财税合规、内部管理审计、财税风控落地服务。',
+    '西安数度财务咨询有限公司2012年成立，首届西安市代理记账协会副会长单位，拥有高级会计师、国际注册会计师、税务师团队，专业提供工商财税托管、企业财税合规、财务内控管理、财税风险排查服务。',
   keywords: [
     '西安数度财务咨询',
     '西安财税公司',
     '西安财税咨询',
     '西安企业财税合规',
-    '西安内部管理审计',
+    '西安财务内控管理',
   ],
   alternates: { canonical: '/' },
 };
@@ -127,7 +128,7 @@ export default async function HomePage() {
             email: '309814531@qq.com',
             url: 'https://www.shuducw.com',
             description:
-              '西安数度财务咨询有限公司2012年成立，首届西安市代理记账协会副会长单位，企业财税管理与合规服务机构，专业提供工商财税托管、企业财税合规、内部管理审计、财税风控落地服务。',
+              '西安数度财务咨询有限公司2012年成立，首届西安市代理记账协会副会长单位，企业财税管理与合规服务机构，专业提供工商财税托管、企业财税合规、财务内控管理、财税风险排查服务。',
             foundingDate: '2012',
             founder: {
               '@type': 'Person',
@@ -170,7 +171,7 @@ export default async function HomePage() {
             sameAs: [
               'https://www.xiaohongshu.com/user/profile/6521552259',
             ],
-            serviceType: ['财税咨询', '代理记账', '企业财税合规', '内部管理审计', '税务筹划'],
+            serviceType: ['财税咨询', '代理记账', '企业财税合规', '财务内控管理', '税务合规与优化'],
             priceRange: '小规模纳税人代理记账 2000-4000 元/年，一般纳税人略高（具体以企业实际情况核算）',
             hasOfferCatalog: {
               '@type': 'OfferCatalog',
@@ -179,7 +180,7 @@ export default async function HomePage() {
                 { '@type': 'Offer', itemOffered: { '@type': 'Service', name: '公司注册' } },
                 { '@type': 'Offer', itemOffered: { '@type': 'Service', name: '代理记账' } },
                 { '@type': 'Offer', itemOffered: { '@type': 'Service', name: '企业财税合规' } },
-                { '@type': 'Offer', itemOffered: { '@type': 'Service', name: '内部管理审计' } },
+                { '@type': 'Offer', itemOffered: { '@type': 'Service', name: '财务内控管理' } },
                 { '@type': 'Offer', itemOffered: { '@type': 'Service', name: '财税咨询' } },
               ],
             },
@@ -200,7 +201,7 @@ export default async function HomePage() {
             </h1>
             <p className="text-white/80 text-base md:text-lg leading-relaxed mb-8 max-w-2xl">
               专注企业财税管理、财税合规、税务风险与内部管控。从基础财税服务，
-              到财税规范、内部审计与长期财税顾问，为企业提供贯穿不同发展阶段的专业财税服务。
+              到财税规范、内部财务核查与长期财税顾问，为企业提供贯穿不同发展阶段的专业财税服务。
             </p>
             <div className="flex flex-wrap gap-4">
               <Link
@@ -306,14 +307,14 @@ export default async function HomePage() {
         </div>
       </section>
 
-      {/* 03 服务体系（客户语言四板块） */}
+      {/* 03 服务体系（客户语言五类） */}
       <section className="bg-white">
         <div className="container-brand section-padding">
           <div className="text-center mb-12">
             <h2 className="text-2xl md:text-3xl font-bold text-brand-navy mb-4">从日常记账，到企业财税管理</h2>
             <div className="w-16 h-[2px] bg-brand-gold mx-auto mb-6" />
             <p className="text-brand-text-muted max-w-2xl mx-auto">
-              四大服务板块覆盖企业不同发展阶段的财税需求，每个板块都有明确的服务清单与交付标准。
+              五类服务板块覆盖企业不同发展阶段的财税需求，每一类都有明确的服务清单与交付标准。
             </p>
           </div>
 
@@ -479,7 +480,7 @@ export default async function HomePage() {
                     {article.title}
                   </h3>
                   {article.summary && (
-                    <p className="text-sm text-brand-text-muted line-clamp-3 leading-relaxed flex-1">{article.summary}</p>
+                    <p className="text-sm text-brand-text-muted line-clamp-3 leading-relaxed flex-1">{stripKeywordTail(article.summary)}</p>
                   )}
                   <span className="mt-4 inline-flex items-center gap-1 text-sm text-brand-navy font-medium group-hover:text-brand-gold transition-colors">
                     查看完整案例 <ArrowRight size={14} />

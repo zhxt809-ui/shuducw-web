@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import Link from 'next/link';
 import { ArrowRight, ShieldCheck, BadgeCheck, FileText, Phone } from 'lucide-react';
 import { listArticles } from '@/lib/store';
+import { stripKeywordTail } from '@/lib/utils';
 
 export const revalidate = 60;
 
@@ -95,7 +96,7 @@ export default async function CasesPage() {
                     {article.title}
                   </h3>
                   {article.summary && (
-                    <p className="text-sm text-brand-text-muted line-clamp-4 leading-relaxed flex-1">{article.summary}</p>
+                    <p className="text-sm text-brand-text-muted line-clamp-4 leading-relaxed flex-1">{stripKeywordTail(article.summary)}</p>
                   )}
                   <span className="mt-5 inline-flex items-center gap-1 text-sm text-brand-navy font-medium group-hover:text-brand-gold transition-colors">
                     查看案例详情 <ArrowRight size={14} />

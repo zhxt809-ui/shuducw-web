@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import Link from 'next/link';
 import { BookOpen, TrendingUp, FileText, Award, ArrowRight, ChevronRight } from 'lucide-react';
 import { listArticles } from '@/lib/store';
+import { stripKeywordTail } from '@/lib/utils';
 
 export const revalidate = 60;
 
@@ -192,7 +193,7 @@ export default async function NewsListPage({
                       </h3>
                       {article.summary && (
                         <p className="text-sm text-brand-text-muted line-clamp-3 leading-relaxed">
-                          {article.summary}
+                          {stripKeywordTail(article.summary)}
                         </p>
                       )}
                       <div className="mt-4 flex items-center text-sm text-brand-navy font-medium">

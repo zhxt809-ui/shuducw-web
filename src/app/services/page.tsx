@@ -28,7 +28,7 @@ export const metadata: Metadata = {
     '西安代理记账',
     '西安税务合规与优化',
     '西安财务内控管理',
-    '西安企业内部审计',
+    '西安企业内部财务核查',
     '西安股权架构设计',
     '西安投融资财税',
     '西安企业专项财税服务',
@@ -70,11 +70,11 @@ const businessAreas = [
     icon: Shield,
     num: '03',
     title: '财务内控管理服务',
-    scene: '内部审计、制度流程、成本费用、经营分析',
+    scene: '内部财务核查、制度流程、成本费用、经营分析',
     desc: '面向已有财务团队或管理基础的企业，从制度、流程、成本与数据四个方向搭建财务内控，把风险控制嵌入日常经营，并让经营数据真正可用。',
     services: [
       '制度与流程：财务制度搭建、财务流程优化、岗位分离设计',
-      '内部核查：企业内部管理审计、往来款项核查、资产与费用专项核查',
+      '企业内部财务核查：往来款项核查、资产与费用专项核查',
       '成本与风控：成本费用管控、企业内部风控、资金安全管理',
       '经营分析：经营财务数据分析、管理报表体系',
     ],
@@ -169,7 +169,7 @@ export default function ServicesPage() {
     '@context': 'https://schema.org',
     '@type': 'Service',
     name: '西安数度财务咨询有限公司 - 业务范围',
-    description: '提供全品类企业财税服务，涵盖工商记账报税一站式托管、乱账整改、税务优化、财税合规搭建、内部管理审计、股权架构搭建与专项财税风控',
+    description: '提供覆盖企业主要财税需求的企业财税服务，涵盖工商记账报税一站式托管、乱账整改、税务优化、财税合规搭建、财务内控管理、股权架构搭建与专项财税风控',
     provider: {
       '@type': 'Organization',
       name: '西安数度财务咨询有限公司',
@@ -234,27 +234,27 @@ export default function ServicesPage() {
         <div className="container-brand section-padding !py-16 md:!py-20">
           <div className="max-w-3xl">
             <div className="inline-block px-4 py-1.5 bg-brand-gold/20 border border-brand-gold/40 text-brand-gold-light text-sm rounded-sm mb-6">
-              全品类企业财税服务
+              企业财税服务体系
             </div>
             <h1 className="text-3xl md:text-4xl font-bold mb-4">业务范围</h1>
             <p className="text-white/80 text-base md:text-lg leading-relaxed">
-              西安数度财务咨询有限公司提供全品类企业财税服务，涵盖西安工商记账报税一站式托管、
-              乱账整改、税务优化、财税合规搭建、内部管理审计、股权架构搭建与专项财税风控，
+              西安数度财务咨询有限公司提供覆盖企业主要财税需求的企业财税服务，涵盖西安工商记账报税一站式托管、
+              乱账整改、税务优化、财税合规搭建、财务内控管理、股权架构搭建与专项财税风控，
               满足各行业企业全周期财税发展需求。
             </p>
           </div>
         </div>
       </section>
 
-      {/* 核心业务：四层服务体系 */}
+      {/* 核心业务：五类服务体系 */}
       <section className="bg-white">
         <div className="container-brand section-padding">
           <div className="text-center mb-12">
             <h2 className="text-2xl md:text-3xl font-bold text-brand-navy mb-4">核心业务体系</h2>
             <div className="w-16 h-[2px] bg-brand-gold mx-auto mb-6" />
             <p className="text-brand-text-muted max-w-2xl mx-auto">
-              四层核心业务覆盖企业不同发展阶段的财税需求——从日常记账报税，到财务规范、
-              内部管理与长期财税顾问，每层都有明确的服务清单与交付标准。
+              五类核心业务覆盖企业不同发展阶段的财税需求——从日常记账报税，到税务合规与优化、
+              财务内控管理，再到股权与投融资财税与企业专项定制，每一类都有明确的服务清单与交付标准。
             </p>
           </div>
 
@@ -455,7 +455,7 @@ export default function ServicesPage() {
 
           <div className="mt-8 p-5 bg-white border border-brand-border rounded-sm">
             <p className="text-sm text-brand-text-muted leading-relaxed">
-              <strong className="text-brand-navy">合规与咨询类服务</strong>（财税合规体系搭建、内部管理审计、股权架构与常年财税顾问、
+              <strong className="text-brand-navy">合规与咨询类服务</strong>（财税合规体系搭建、财务内控管理、股权架构与常年财税顾问、
               专项财税风控）：这类服务需先了解企业实际经营与账务状况，按项目复杂度、服务范围与工作量评估报价，
               提供<strong className="text-brand-navy">免费初步诊断</strong>后再确定方案与费用。
             </p>

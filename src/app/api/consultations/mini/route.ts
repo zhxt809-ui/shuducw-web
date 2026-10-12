@@ -7,7 +7,7 @@ import { getClientIp, hitLimit, pruneRateMap, LIMITS } from '@/lib/rate-limit';
 // 与完整表单共用同一套进程内限流与蜜罐防刷，键前缀 mini- 区分
 
 const BUSINESS_TYPES = ['个体户', '小微企业', '一般纳税人企业', '高新技术企业', '集团/多主体企业', '其他'];
-const QUESTION_TOPICS = ['代理记账报税', '税务异常处理', '乱账清理', '财税合规体检', '内部审计', '股权架构税务', '其他问题'];
+const QUESTION_TOPICS = ['代理记账报税', '税务异常处理', '乱账清理', '财税合规体检', '内部财务核查', '股权架构税务', '其他问题'];
 
 export async function POST(request: NextRequest) {
   try {

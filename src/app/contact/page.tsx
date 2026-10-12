@@ -7,7 +7,7 @@ import { XiaohongshuIcon } from '@/components/xiaohongshu-icon';
 export const metadata: Metadata = {
   title: '联系我们-西安数度财务咨询-西安财税咨询-预约财税服务',
   description:
-    '联系西安数度财务咨询有限公司，预约工商财税托管、企业财税合规、内部管理审计、财税风控等各项专业财税服务。2012年成立，首届西安市代理记账协会副会长单位。',
+    '联系西安数度财务咨询有限公司，预约工商财税托管、企业财税合规、财务内控管理、财税风控等各项专业财税服务。2012年成立，首届西安市代理记账协会副会长单位。',
   keywords: [
     '西安数度财务咨询',
     '西安财税咨询联系方式',
@@ -85,7 +85,7 @@ export default function ContactPage() {
             <h1 className="text-3xl md:text-4xl font-bold mb-4">联系我们</h1>
             <p className="text-white/80 text-base md:text-lg leading-relaxed">
               欢迎联系西安数度财务咨询有限公司，我们为您提供专业的工商财税托管、
-              企业财税合规、内部管理审计、财税风控等各项财税服务咨询。
+              企业财税合规、财务内控管理、财税风控等各项财税服务咨询。
             </p>
           </div>
         </div>

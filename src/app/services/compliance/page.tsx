@@ -5,11 +5,11 @@ import { ShieldCheck, Search, FileCheck, TrendingUp, AlertTriangle, ArrowRight, 
 export const metadata: Metadata = {
   title: '税务合规与优化服务-西安数度财务咨询-税务风险排查-合规体系搭建-财务内控',
   description:
-    '专注企业财税风险排查、历史账务整改、合规体系搭建、内部管理审计、资产费用专项核查，助力企业完善财务内控、规避涉税风险。',
+    '专注企业财税风险排查、历史账务整改、合规体系搭建、财务内控管理、资产费用专项核查，助力企业完善财务内控、规避涉税风险。',
   keywords: [
     '西安数度财务咨询',
     '西安企业财税合规',
-    '西安内部管理审计',
+    '西安财务内控管理',
     '西安财务内控搭建',
     '西安财税风险排查',
   ],
@@ -34,7 +34,7 @@ const coreServices = [
   },
   {
     icon: Search,
-    title: '企业内部管理审计',
+    title: '企业内部财务核查',
     desc: '专注企业内部财务自查、流程核查、风险管控与管理优化，助力企业完善内控制度、堵塞管理漏洞、提升财务运营规范化水平。',
     items: [
       '常态化内部财务核查',
@@ -91,12 +91,12 @@ export default function CompliancePage() {
       url: 'https://www.shuducw.com',
     },
     description:
-      '专注企业财税风险排查、历史账务整改、合规体系搭建、内部管理审计、资产费用专项核查与内审制度落地，解决企业财务不规范、内控薄弱、涉税风险等难题。',
+      '专注企业财税风险排查、历史账务整改、合规体系搭建、财务内控管理、资产费用专项核查与内审制度落地，解决企业财务不规范、内控薄弱、涉税风险等难题。',
     areaServed: {
       '@type': 'City',
       name: '西安',
     },
-    serviceType: ['企业财税合规', '内部管理审计', '财务内控搭建', '财税风险排查'],
+    serviceType: ['企业财税合规', '财务内控管理', '财务内控搭建', '财税风险排查'],
   };
 
   const faqList = [
@@ -109,8 +109,8 @@ export default function CompliancePage() {
       a: '建议先做全面账务梳理，摸清真实财务状况，再逐项排查涉税风险、按轻重缓急制定整改方案。涉及多年错账、漏报的，尽早请专业机构协助规范调整，避免问题积累扩大。',
     },
     {
-      q: '内部管理审计主要审什么？',
-      a: '内部管理审计重点审查资金管理、采购与费用审批、收入确认口径、往来账款、存货、关联交易和内控制度执行情况，帮助企业发现流程漏洞、资产损失风险和潜在舞弊隐患，属于经营管理层面的风险体检。',
+      q: '内部财务核查主要审什么？',
+      a: '内部财务核查（以下简称内部核查）重点审查资金管理、采购与费用审批、收入确认口径、往来账款、存货、关联交易和内控制度执行情况，帮助企业发现流程漏洞、资产损失风险和潜在舞弊隐患，属于经营管理层面的风险体检。',
     },
     {
       q: '收到税务稽查通知怎么办？',
@@ -144,7 +144,7 @@ export default function CompliancePage() {
             <h1 className="text-3xl md:text-4xl font-bold mb-4">税务合规与优化服务</h1>
             <p className="text-white/80 text-base md:text-lg leading-relaxed">
               西安数度财务咨询有限公司专注企业财税风险排查、
-              历史账务整改、合规体系搭建、内部管理审计、资产费用专项核查与内审制度落地，
+              历史账务整改、合规体系搭建、财务内控管理、资产费用专项核查与内审制度落地，
               解决企业财务不规范、内控薄弱、涉税风险等难题。
             </p>
           </div>
@@ -303,7 +303,7 @@ export default function CompliancePage() {
               <h3 className="text-xl md:text-2xl font-bold text-brand-navy mb-2">需要财税合规或内审服务？</h3>
               <p className="text-brand-text-muted text-sm md:text-base">资深持证团队为您提供从风险排查到整改落地的全流程闭环服务。</p>
               <p className="text-xs text-brand-text-muted mt-2">
-                费用说明：合规体系搭建、内部管理审计按项目复杂度、服务范围与工作量评估报价，先免费初步诊断，再确定方案与费用。
+                费用说明：合规体系搭建、财务内控管理按项目复杂度、服务范围与工作量评估报价，先免费初步诊断，再确定方案与费用。
               </p>
               <div className="flex flex-wrap items-center gap-4 mt-4 text-sm text-brand-text">
                 <span className="flex items-center gap-2">

@@ -5,7 +5,7 @@ import { Loader2, CheckCircle, Shield, Phone } from 'lucide-react';
 import { trackEvent } from '@/lib/analytics';
 
 const BUSINESS_TYPES = ['个体户', '小微企业', '一般纳税人企业', '高新技术企业', '集团/多主体企业', '其他'];
-const QUESTION_TOPICS = ['代理记账报税', '税务异常处理', '乱账清理', '财税合规体检', '内部审计', '股权架构税务', '其他问题'];
+const QUESTION_TOPICS = ['代理记账报税', '税务异常处理', '乱账清理', '财税合规体检', '内部财务核查', '股权架构税务', '其他问题'];
 
 /**
  * 首页内嵌极简留资表单（2026-09 新增）

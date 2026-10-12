@@ -1,6 +1,7 @@
 'use client';
 
 import { useRef, useState, type FormEvent } from 'react';
+import Link from 'next/link';
 import { MessageSquare, CheckCircle, Loader2, Shield, BookOpen } from 'lucide-react';
 import { trackEvent } from '@/lib/analytics';
 
@@ -231,6 +232,12 @@ export default function ConsultationForm({
           <p className="text-xs text-brand-text-muted mt-1.5 text-center flex items-center justify-center gap-1.5">
             <Shield size={12} className="text-brand-gold flex-shrink-0" />
             提交信息后由持有代理记账资质的会计对接，信息严格保密
+          </p>
+          <p className="text-xs text-brand-text-muted mt-1.5 text-center leading-relaxed">
+            请勿在咨询内容中填写身份证号、银行卡号等敏感信息。信息用途、保存与删除方式见
+            <Link href="/privacy" className="text-brand-navy hover:text-brand-gold font-medium mx-0.5">
+              隐私政策
+            </Link>
           </p>
         </div>
       </form>
