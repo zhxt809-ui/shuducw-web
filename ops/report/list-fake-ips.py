@@ -73,8 +73,9 @@ for i in range(days):
                 ip_200[ip] += 1
             ip_ua.setdefault(ip, set()).add((ua or '')[:90])
 
-print(f'近 {days} 天：同一 IP 出现 >=2 种爬虫身份的伪装扫描器共 {len(ip_ids)} 个：\n')
-for ip, ids in sorted(ip_ids.items(), key=lambda kv: -len(kv[1])):
+fake = {ip: ids for ip, ids in ip_ids.items() if len(ids) >= 2}
+print(f'近 {days} 天：同一 IP 出现 >=2 种爬虫身份的伪装扫描器共 {len(fake)} 个：\n')
+for ip, ids in sorted(fake.items(), key=lambda kv: -len(kv[1])):
     print(f'  {ip}  冒充 {len(ids)} 种身份  总请求 {ip_total[ip]} 次(200×{ip_200[ip]})')
     print(f'      身份: {", ".join(sorted(ids))}')
     for ua in list(ip_ua[ip])[:2]:
