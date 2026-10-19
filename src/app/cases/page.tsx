@@ -123,7 +123,7 @@ export default async function CasesPage() {
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             {[
               { icon: ShieldCheck, title: '十余年实战沉淀', desc: '2012 年成立，首届西安市代理记账协会副会长单位，服务企业覆盖多个行业与成长阶段' },
-              { icon: BadgeCheck, title: '资质经得起查', desc: '代理记账许可证书、纳税信用 A 级（信用中国查询核验）、守信激励对象，均可公开核验' },
+              { icon: BadgeCheck, title: '资质经得起查', desc: '代理记账许可证书、纳税信用 A 级（信用中国查询核验）、涉税专业服务信用 TSC5 级（12366 可查）、守信激励对象，均可公开核验' },
               { icon: FileText, title: '案例全部脱敏', desc: '隐去企业名称与人员信息，只保留服务内容与成果描述，尊重客户商业信息保密' },
             ].map((item) => {
               const Icon = item.icon;

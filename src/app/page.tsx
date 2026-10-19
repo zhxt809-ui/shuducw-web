@@ -260,6 +260,14 @@ export default async function HomePage() {
               </div>
             </div>
           </div>
+          {/* 涉税专业服务信用（12366 纳税服务平台公开可查） */}
+          <div className="mt-4 flex items-center gap-3 p-4 bg-brand-bg rounded-sm">
+            <BadgeCheck size={28} className="text-brand-gold flex-shrink-0" />
+            <div className="min-w-0">
+              <p className="font-bold text-brand-navy leading-snug">涉税专业服务信用 TSC5 级</p>
+              <p className="text-xs text-brand-text-muted mt-1">国家税务总局评定的最高档 · 12366 纳税服务平台可公开查验</p>
+            </div>
+          </div>
           {/* 媒体报道：高校特邀讲座（来源：西安财经大学商学院官网） */}
           <div className="mt-4 flex items-center gap-3 p-4 bg-brand-bg rounded-sm">
             <Newspaper size={28} className="text-brand-gold flex-shrink-0" />
