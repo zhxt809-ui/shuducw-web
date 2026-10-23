@@ -56,7 +56,7 @@ export function BonusTaxCalculator() {
         <div>
           <h2 className="text-xl font-bold text-brand-navy">年终奖个税试算器</h2>
           <p className="text-xs text-brand-text-muted">
-            单独计税 / 并入综合所得 双算对比 · 含"多发不如少发"临界点提醒
+            单独计税 / 并入综合所得 双算对比 · 含“多发不如少发”临界点提醒
           </p>
         </div>
       </div>
@@ -79,7 +79,7 @@ export function BonusTaxCalculator() {
 
         <div className="p-4 bg-brand-bg border border-brand-border rounded-sm space-y-4">
           <p className="text-xs text-brand-text-muted leading-relaxed">
-            以下三项用于对比"并入综合所得"是否更划算；不填则只显示单独计税结果。
+            以下三项用于对比“并入综合所得”是否更划算；不填则只显示单独计税结果。
           </p>
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
             <div>
@@ -144,7 +144,7 @@ export function BonusTaxCalculator() {
             <AlertTriangle size={16} className="text-red-500 flex-shrink-0 mt-0.5" />
             <div className="text-xs text-red-700 leading-relaxed space-y-1">
               <p className="font-bold">
-                ⚠️ 这个金额正好落在"多发不如少发"区间（{fmt(blind.boundary)} 元 ＜ 奖金 ≤ {fmt(blind.upper)} 元）
+                ⚠️ 这个金额正好落在“多发不如少发”区间（{fmt(blind.boundary)} 元 ＜ 奖金 ≤ {fmt(blind.upper)} 元）
               </p>
               <p>
                 发放 {fmt(blind.boundary)} 元时：应纳税额 {fmt(bonusAloneTax(blind.boundary).tax)} 元，税后到手 {fmt(blind.netAtBoundary)} 元；
@@ -190,7 +190,7 @@ export function BonusTaxCalculator() {
             </div>
             <p className="text-xs text-brand-text-muted leading-relaxed">
               提示：年终奖单独计税方式在一个纳税年度内只能使用一次。若发放时单位已按单独计税预扣预缴，而汇算时发现并入更划算，
-              可在办理个税年度汇算时，通过个人所得税 App 在申报表"工资薪金"项下的"奖金计税方式选择"中改为并入综合所得
+              可在办理个税年度汇算时，通过个人所得税 App 在申报表“工资薪金”项下的“奖金计税方式选择”中改为并入综合所得
               （国家税务总局 12366 口径）。两种方式均以年度汇算清缴的最终结果为准。本工具为简化估算，
               未考虑劳务报酬、稿酬、特许权使用费等其他综合所得项目，也未考虑大病医疗等据实扣除。
             </p>
@@ -202,7 +202,7 @@ export function BonusTaxCalculator() {
         <Info size={15} className="text-brand-gold flex-shrink-0 mt-0.5" />
         <p className="text-xs text-brand-text-muted leading-relaxed">
           依据：财政部 税务总局《关于延续实施全年一次性奖金个人所得税政策的公告》（2023 年第 30 号）：
-          应纳税额＝全年一次性奖金收入×适用税率－速算扣除数，适用税率和速算扣除数按"奖金 ÷ 12"查
+          应纳税额＝全年一次性奖金收入×适用税率－速算扣除数，适用税率和速算扣除数按“奖金 ÷ 12”查
           《按月换算后的综合所得税率表》确定；也可选择并入当年综合所得计算纳税；政策执行至 2027-12-31。
           本工具为简化估算，不构成税务意见，实际以预扣预缴与年度汇算清缴结果为准。口径核验日期：2026 年 10 月。
         </p>

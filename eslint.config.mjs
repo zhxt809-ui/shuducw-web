@@ -39,6 +39,7 @@ const eslintConfig = defineConfig([
   globalIgnores([
     // Default ignores of eslint-config-next:
     '.next/**',
+    '.deploy-stage/**',
     'out/**',
     'build/**',
     'next-env.d.ts',
@@ -47,6 +48,7 @@ const eslintConfig = defineConfig([
     'dist/**',
     // Script files (CommonJS):
     'scripts/**/*.js',
+    'ops/**/*.js',
   ]),
 ]);
 

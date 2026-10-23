@@ -15,7 +15,7 @@ export const companyDeregistration: TopicData = {
   h1: '公司注销：先把账和税结清，再谈退出',
   intro: (
     <>
-      注销不是"提交一份材料"那么简单：税务要结清、债权债务要处理、清算程序要合规，其中任何一环没走完，注销都会被卡住，甚至影响股东个人责任。本专题梳理注销的关键时限、常见卡点与规范流程，股东往来问题可另见
+      注销不是“提交一份材料”那么简单：税务要结清、债权债务要处理、清算程序要合规，其中任何一环没走完，注销都会被卡住，甚至影响股东个人责任。本专题梳理注销的关键时限、常见卡点与规范流程，股东往来问题可另见
       <Link href="/shareholder-loans" className="text-brand-gold-light hover:underline mx-1">
         股东往来专题
       </Link>

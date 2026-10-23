@@ -265,7 +265,7 @@ export default function ShareholderLoansPage() {
             <h2 className="text-2xl md:text-3xl font-bold text-brand-navy mb-4">股东往来合规处理路径</h2>
             <div className="w-16 h-[2px] bg-brand-gold mx-auto mb-6" />
             <p className="text-brand-text-muted max-w-2xl mx-auto text-sm md:text-base">
-              把"老板拿钱"这件事，从模糊地带放进规范轨道
+              把“老板拿钱”这件事，从模糊地带放进规范轨道
             </p>
           </div>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 max-w-5xl mx-auto">
@@ -342,7 +342,7 @@ export default function ShareholderLoansPage() {
             </div>
             <h2 className="text-2xl md:text-3xl font-bold mb-4">股东往来梳理与合规方案</h2>
             <p className="text-white/70 text-sm md:text-base leading-relaxed mb-8 max-w-2xl mx-auto">
-              由持证会计协助梳理"其他应收款—股东"等往来科目，评估视同分红风险，
+              由持证会计协助梳理“其他应收款—股东”等往来科目，评估视同分红风险，
               出具书面协议模板与处理方案。如需了解，可先通过自查或致电获取初步判断。
             </p>
             <div className="flex flex-col sm:flex-row items-center justify-center gap-4">

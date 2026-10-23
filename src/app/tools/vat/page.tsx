@@ -131,7 +131,7 @@ export default function VatCalculatorPage() {
                 <h3 className="font-bold text-brand-navy mb-2">小规模纳税人（含个体户）</h3>
                 <ul className="space-y-1.5">
                   <li>· 起征点：月销售额 10 万元（按季申报为季度销售额 30 万元，按次纳税为每次/日销售额 1000 元），有效期 2026-01-01 至 2027-12-31——依据财政部、税务总局《关于增值税法施行后增值税优惠政策衔接事项的公告》</li>
-                  <li>· 判断口径：《增值税法》第二十三条规定"销售额未达到起征点的，免征增值税；达到起征点的，依照本法规定全额计算缴纳增值税"。据此，销售额<strong className="text-brand-navy font-medium">未达到</strong> 10 万元免征；<strong className="text-brand-navy font-medium">刚好等于或超过</strong> 10 万元，按全部销售额计税（不是只算超出部分）</li>
+                  <li>· 判断口径：《增值税法》第二十三条规定“销售额未达到起征点的，免征增值税；达到起征点的，依照本法规定全额计算缴纳增值税”。据此，销售额<strong className="text-brand-navy font-medium">未达到</strong> 10 万元免征；<strong className="text-brand-navy font-medium">刚好等于或超过</strong> 10 万元，按全部销售额计税（不是只算超出部分）</li>
                   <li>· 换算：销售额 = 含税销售额 ÷（1 + 规定征收率）；减按 1% 征收时除以 1.01</li>
                   <li>· 征收率：适用 3% 征收率的应税销售收入，减按 1% 征收（2026-01-01 至 2027-12-31）</li>
                   <li>· 不适用 1% 优惠的情形：销售、出租不动产，转让土地使用权（同一公告排除）</li>

@@ -16,6 +16,8 @@ function loadEnv(): void {
 
   try {
     try {
+      // dotenv 为可选依赖：仅在运行时环境未注入变量时按需加载，故用 require 而非静态 import
+      // eslint-disable-next-line @typescript-eslint/no-require-imports
       require('dotenv').config();
       if (process.env.COZE_SUPABASE_URL && process.env.COZE_SUPABASE_ANON_KEY) {
         envLoaded = true;
@@ -100,7 +102,7 @@ function getSupabaseClient(token?: string): SupabaseClient {
     key = serviceRoleKey ?? anonKey;
   }
 
-  const globalOptions: Record<string, any> = {};
+  const globalOptions: { headers?: Record<string, string>; fetch?: typeof fetch } = {};
   if (token) {
     globalOptions.headers = { Authorization: `Bearer ${token}` };
   }

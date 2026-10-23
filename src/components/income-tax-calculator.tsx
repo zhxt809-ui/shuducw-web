@@ -209,7 +209,7 @@ export function IncomeTaxCalculator() {
               )}
               {halfOverLimit && (
                 <p className="text-xs text-red-600 leading-relaxed">
-                  ⚠️ 应纳税所得额已超过 200 万元：超过部分不适用减半征收，本工具此处按"全额减半"简化计算会低估税额，
+                  ⚠️ 应纳税所得额已超过 200 万元：超过部分不适用减半征收，本工具此处按“全额减半”简化计算会低估税额，
                   实际减免额应按国家税务总局公告规定的公式计算，建议与主管税务机关或我们确认。
                 </p>
               )}

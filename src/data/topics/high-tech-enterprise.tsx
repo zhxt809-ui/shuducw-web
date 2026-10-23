@@ -14,7 +14,7 @@ export const highTechEnterprise: TopicData = {
   h1: '高新技术企业认定：四项硬指标与资格维护',
   intro: (
     <>
-      高新技术企业认定不是"一次性申报"，而是一套需要提前一年布局、认定后持续维护的体系：研发费用要按项目归集、科技人员要有佐证、高新收入要与核心技术对应。本专题梳理认定条件中的量化指标、常见失分点与资格维护要点，也可以先看
+      高新技术企业认定不是“一次性申报”，而是一套需要提前一年布局、认定后持续维护的体系：研发费用要按项目归集、科技人员要有佐证、高新收入要与核心技术对应。本专题梳理认定条件中的量化指标、常见失分点与资格维护要点，也可以先看
       <Link href="/news/xian-gaoxin-jishu-qiye-caiwu-guwen-anli" className="text-brand-gold-light hover:underline mx-1">
         高新技术企业常年财税顾问服务实录
       </Link>

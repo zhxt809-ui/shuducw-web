@@ -138,7 +138,7 @@ export default function DeliveryPage() {
             </div>
             <h1 className="text-3xl md:text-4xl font-bold mb-4">服务交付标准</h1>
             <p className="text-white/80 text-base md:text-lg leading-relaxed">
-              财税服务最怕"交完钱不知道能得到什么"。本页把西安数度财务咨询的代理记账与财税服务流程、
+              财税服务最怕“交完钱不知道能得到什么”。本页把西安数度财务咨询的代理记账与财税服务流程、
               每个节点的交付物、时效依据与双方责任边界一次讲清楚，服务过程可预期、可追溯。
             </p>
           </div>

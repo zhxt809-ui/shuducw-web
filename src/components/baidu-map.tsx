@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect, useRef } from 'react';
+import { useCallback, useEffect, useRef } from 'react';
 
 // 百度地图浏览器端 AK（公开用途，受 Referer 白名单约束，非机密）
 const BAIDU_MAP_AK = 'FPO1FZ68t7p78X8EpBfqHvbXZHRFE2UZ';
@@ -36,35 +36,8 @@ type BMapType = {
 export default function BaiduMap() {
   const containerRef = useRef<HTMLDivElement>(null);
 
-  useEffect(() => {
-    const el = containerRef.current;
-    if (!el) return;
-
-    const win = window as unknown as { BMap?: BMapType };
-    if (win.BMap) {
-      initMap(win.BMap);
-      return;
-    }
-
-    let disposed = false;
-    const init = () => {
-      if (disposed || !win.BMap) return;
-      initMap(win.BMap);
-    };
-    (window as unknown as Record<string, unknown>).__baiduMapInit = init;
-
-    const script = document.createElement('script');
-    script.src = `https://api.map.baidu.com/api?v=3.0&ak=${BAIDU_MAP_AK}&callback=__baiduMapInit`;
-    script.async = true;
-    document.body.appendChild(script);
-
-    return () => {
-      disposed = true;
-      delete (window as unknown as Record<string, unknown>).__baiduMapInit;
-    };
-  }, []);
-
-  function initMap(BMap: BMapType) {
+  // 地图初始化：提前声明为 useCallback，避免 useEffect 内引用后置声明的变量
+  const initMap = useCallback((BMap: BMapType) => {
     const el = containerRef.current;
     if (!el) return;
 
@@ -96,7 +69,35 @@ export default function BaiduMap() {
 
     const ls = new BMap.LocalSearch('西安市', { onSearchComplete: onComplete });
     ls.search('唐延路35号旺座现代城');
-  }
+  }, []);
+
+  useEffect(() => {
+    const el = containerRef.current;
+    if (!el) return;
+
+    const win = window as unknown as { BMap?: BMapType };
+    if (win.BMap) {
+      initMap(win.BMap);
+      return;
+    }
+
+    let disposed = false;
+    const init = () => {
+      if (disposed || !win.BMap) return;
+      initMap(win.BMap);
+    };
+    (window as unknown as Record<string, unknown>).__baiduMapInit = init;
+
+    const script = document.createElement('script');
+    script.src = `https://api.map.baidu.com/api?v=3.0&ak=${BAIDU_MAP_AK}&callback=__baiduMapInit`;
+    script.async = true;
+    document.body.appendChild(script);
+
+    return () => {
+      disposed = true;
+      delete (window as unknown as Record<string, unknown>).__baiduMapInit;
+    };
+  }, [initMap]);
 
   return (
     <div

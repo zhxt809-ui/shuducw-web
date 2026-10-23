@@ -102,7 +102,7 @@ export default function RmbUppercasePage() {
             <h1 className="text-3xl md:text-4xl font-bold mb-4">人民币大写转换器</h1>
             <p className="text-white/80 text-base md:text-lg leading-relaxed">
               合同、发票、支票填写金额时需要中文大写。输入数字金额，实时转换为规范大写，
-              自动处理"零"与"整"的规则，结果可一键复制。
+              自动处理“零”与“整”的规则，结果可一键复制。
             </p>
           </div>
         </div>
@@ -132,7 +132,7 @@ export default function RmbUppercasePage() {
               <div className="p-5 bg-brand-bg border border-brand-border rounded-sm">
                 <h3 className="text-sm font-bold text-brand-navy mb-2">开支票</h3>
                 <p className="text-xs text-brand-text-muted leading-relaxed">
-                  支票金额栏必须用中文大写，"零""整"书写不规范可能被银行退票。
+                  支票金额栏必须用中文大写，“零”“整”书写不规范可能被银行退票。
                 </p>
               </div>
               <div className="p-5 bg-brand-bg border border-brand-border rounded-sm">
@@ -153,7 +153,7 @@ export default function RmbUppercasePage() {
             <h2 className="text-xl md:text-2xl font-bold text-brand-navy mb-3">大写金额书写规则（官方口径）</h2>
             <div className="w-16 h-[2px] bg-brand-gold mb-5" />
             <p className="text-sm text-brand-text-muted leading-relaxed mb-6">
-              票据和结算凭证上的大写金额不是"随便写写"：少写一个"整"、零的位置不对，都可能被银行退回重开。
+              票据和结算凭证上的大写金额不是“随便写写”：少写一个“整”、零的位置不对，都可能被银行退回重开。
               以下要点依据中国人民银行《支付结算办法》（银发〔1997〕393 号）附一《正确填写票据和结算凭证的基本规定》。
             </p>
 
@@ -165,9 +165,9 @@ export default function RmbUppercasePage() {
                 </p>
               </div>
               <div className="p-5 bg-white border border-brand-border rounded-sm">
-                <h3 className="text-sm font-bold text-brand-navy mb-2">"整"字与"人民币"字样</h3>
+                <h3 className="text-sm font-bold text-brand-navy mb-2">“整”字与“人民币”字样</h3>
                 <p className="text-xs text-brand-text-muted leading-relaxed">
-                  到"元"为止的，"元"后应写"整"（或"正"）；到"角"为止的，"角"后可以不写；有"分"的，"分"后不写"整"。大写金额前应标明"人民币"，并紧接填写、不得留有空白。
+                  到“元”为止的，“元”后应写“整”（或“正”）；到“角”为止的，“角”后可以不写；有“分”的，“分”后不写“整”。大写金额前应标明“人民币”，并紧接填写、不得留有空白。
                 </p>
               </div>
               <div className="p-5 bg-white border border-brand-border rounded-sm">
@@ -184,7 +184,7 @@ export default function RmbUppercasePage() {
               </div>
             </div>
 
-            <h3 className="text-base font-bold text-brand-navy mb-3">含"0"的金额怎么写：官方原文举例</h3>
+            <h3 className="text-base font-bold text-brand-navy mb-3">含“0”的金额怎么写：官方原文举例</h3>
             <div className="overflow-x-auto">
               <table className="w-full text-sm border border-brand-border bg-white">
                 <thead className="bg-brand-navy/5 text-brand-navy">
@@ -233,11 +233,11 @@ export default function RmbUppercasePage() {
               </li>
               <li className="flex gap-2">
                 <span className="text-brand-gold flex-shrink-0">·</span>
-                月份为壹、贰和壹拾的，日期为壹至玖和壹拾、贰拾、叁拾的，应在其前加"零"。
+                月份为壹、贰和壹拾的，日期为壹至玖和壹拾、贰拾、叁拾的，应在其前加“零”。
               </li>
               <li className="flex gap-2">
                 <span className="text-brand-gold flex-shrink-0">·</span>
-                日期为拾壹至拾玖的，应在其前面加"壹"。
+                日期为拾壹至拾玖的，应在其前面加“壹”。
               </li>
               <li className="flex gap-2">
                 <span className="text-brand-gold flex-shrink-0">·</span>
