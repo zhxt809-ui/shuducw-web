@@ -73,7 +73,7 @@ export function Header() {
           <Image
             src="/logo.png"
             alt="西安数度财务咨询"
-            width={158}
+            width={159}
             height={150}
             priority
             className="h-8 w-auto md:h-9"
