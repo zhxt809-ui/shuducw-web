@@ -124,6 +124,8 @@ export default async function HomePage() {
             '@context': 'https://schema.org',
             '@type': 'ProfessionalService',
             name: '西安数度财务咨询有限公司',
+            logo: 'https://www.shuducw.com/logo.png',
+            image: 'https://www.shuducw.com/logo.png',
             telephone: '029-88456877',
             email: '309814531@qq.com',
             url: 'https://www.shuducw.com',

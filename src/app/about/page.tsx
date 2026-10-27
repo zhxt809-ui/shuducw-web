@@ -63,6 +63,7 @@ export default function AboutPage() {
             '@context': 'https://schema.org',
             '@type': 'Organization',
             name: '西安数度财务咨询有限公司',
+            logo: 'https://www.shuducw.com/logo.png',
             description: '西安数度财务咨询有限公司2012年成立，西安市代理记账协会首届副会长单位，深耕西安财税十余年。',
             foundingDate: '2012',
             address: {

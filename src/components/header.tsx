@@ -1,6 +1,7 @@
 'use client';
 
 import Link from 'next/link';
+import Image from 'next/image';
 import { usePathname } from 'next/navigation';
 import { useState } from 'react';
 import { Menu, X, ChevronDown, Phone } from 'lucide-react';
@@ -69,9 +70,14 @@ export function Header() {
       <div className="container-brand flex items-center justify-between h-16 md:h-20 px-4 md:px-8">
         {/* Logo */}
         <Link href="/" className="flex items-center gap-3 flex-shrink-0">
-          <div className="w-9 h-9 md:w-10 md:h-10 bg-brand-navy rounded-sm flex items-center justify-center">
-            <span className="text-white font-bold text-base md:text-lg">数</span>
-          </div>
+          <Image
+            src="/logo.png"
+            alt="西安数度财务咨询"
+            width={190}
+            height={180}
+            priority
+            className="h-9 w-auto md:h-10"
+          />
           <div className="hidden sm:block">
             <div className="text-brand-navy font-bold text-base md:text-lg leading-tight">西安数度财务咨询</div>
             <div className="text-brand-text-muted text-xs">Xi&apos;an Shudu Financial Consulting</div>
