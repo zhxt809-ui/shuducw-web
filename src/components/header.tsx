@@ -73,10 +73,10 @@ export function Header() {
           <Image
             src="/logo.png"
             alt="西安数度财务咨询"
-            width={190}
-            height={180}
+            width={158}
+            height={150}
             priority
-            className="h-9 w-auto md:h-10"
+            className="h-8 w-auto md:h-9"
           />
           <div className="hidden sm:block">
             <div className="text-brand-navy font-bold text-base md:text-lg leading-tight">西安数度财务咨询</div>
